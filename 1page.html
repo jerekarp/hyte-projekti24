@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenBeat Wellness App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img id="logo" src="images/ZenBeatLogo.webp" alt="ZenBeat Logo" height="50">
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Features</a>
+            <a href="#" class="nav-link">About</a>
+            <!-- Add more links as needed -->
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="esitieto">
+            <h2>Esitietolomake</h2>
+            <form id="user-information-form">
+                <div class="form-field">
+                    <label for="age">Ikä</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-field">
+                    <label for="weight">Paino (kg)</label>
+                    <input type="number" id="weight" name="weight" required>
+                </div>
+                <div class="form-field">
+                    <label for="sleep-quantity">Unen määrä (tunteina)</label>
+                    <input type="number" id="sleep-quantity" name="sleep-quantity" required step="0.1">
+                </div>
+                <div class="form-field">
+                    <label for="sleep-quality">Unen laatu</label>
+                    <select id="sleep-quality" name="sleep-quality" required>
+                        <option value="">Valitse...</option>
+                        <option value="poor">Huono</option>
+                        <option value="average">Keskiverto</option>
+                        <option value="good">Hyvä</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="stress-level">Stressitason</label>
+                    <select id="stress-level" name="stress-level" required>
+                        <option value="">Valitse...</option>
+                        <option value="low">Alhainen</option>
+                        <option value="medium">Keskiverto</option>
+                        <option value="high">Korkea</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="mood">Mieliala</label>
+                    <input type="text" id="mood" name="mood" required>
+                </div>
+                <button type="submit" class="btn">Lähetä</button>
+            </form>
+        </section>
+        
+        
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 ZenBeat</p>
+    </footer>
+
+    
+</body>
+</html>
