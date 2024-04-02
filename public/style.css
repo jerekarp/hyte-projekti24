@@ -1,0 +1,202 @@
+/* Navigaatiopalkki tyylittely */
+
+.navbar {
+  width: 100%;
+  background-color: #044465;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: center; /* Aseta linkit keskelle */
+  width: 100%;
+  padding: 0; /* Poista ylimääräinen sisäinen täyttö */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  margin: 0 10px; /* Lisää väliä linkkien välille */
+}
+
+.nav-link.nav-link-right {
+  margin-left: auto;
+  margin-right: 30px;
+  white-space: nowrap; /* Estä tekstiä menemästä riville */
+}
+
+
+/* .navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 100%;
+
+
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+}
+
+.navbar-menu {
+  display: block;
+  float: left;
+
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: #e6f7ff;
+    border-radius: 5px;
+} */
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+	blockquote:before, blockquote:after, q:before, q:after {
+		content: '';
+		content: none;
+	}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+mark {
+	background-color: transparent;
+	color: inherit;
+}
+
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input, select, textarea {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+}
+
+
+/* Sivuston perusrunko, 12 column grid */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    margin-top: 200px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.col {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Määritä erikokoiset sarakkeet */
+.col-1 {
+    grid-column: span 4;
+}
+
+.col-2 {
+    grid-column: span 4;
+}
+
+.col-3 {
+    grid-column: span 4;
+}
+
+.col-4 {
+    grid-column: span 4;
+}
+
+.col-5 {
+    grid-column: span 4;
+}
+
+.col-6 {
+    grid-column: span 4;
+}
+
+.col-7 {
+    grid-column: span 4;
+}
+
+.col-8 {
+    grid-column: span 4;
+}
+
+.col-9 {
+    grid-column: span 4;
+}
+
+.col-10 {
+    grid-column: span 4;
+}
+
+.col-11 {
+    grid-column: span 4;
+}
+
+.col-12 {
+    grid-column: span 4;
+}
+
+/* Footer */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}

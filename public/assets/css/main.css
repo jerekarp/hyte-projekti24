@@ -37,12 +37,14 @@ body {
 
 .navbar {
 	width: 100%; /* Vie koko käytettävissä olevan leveyden */
-	background-color: #f0f0f0; /* Taustaväri */
+	background-color: #044465; /* Taustaväri */
 	display: flex; /* Käytetään flexboxia sisällön asettelussa */
 	justify-content: space-between; /* Asettaa sisällön tasaisesti jaettuna */
 	padding: 10px; /* Lisää hieman tilaa ympärille */
 	position: fixed;
 	top: 0;
+	z-index: 999;
+	opacity: 90%;
   }
   
   .navbar-menu {
@@ -54,7 +56,7 @@ body {
   
   .nav-link {
 	text-decoration: none; /* Poistaa linkin alleviivauksen */
-	color: black; /* Linkin tekstiväri */
+	color: rgb(255, 255, 255); /* Linkin tekstiväri */
 	margin-left: 20px; /* Lisää väliä linkkien välille */
   }
 
