@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html2>
+<head>
+    <title>ZenBeat</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<main class="main2">
+<body class="is-preload">
+
+    <!-- Header -->
+    <section id="header">
+        <header class="major">
+            <h1>Päiväkirjasi</h1>
+        </header>
+        <div class="container">
+            <ul class="actions special">
+                <li><a href="#one" class="button primary scrolly">Aloita</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Päiväkirjamerkintä -->
+    <section id="one" class="main special">
+        <div class="container">
+            <header class="major">
+                <h2>Päiväkirjamerkintä</h2>
+            </header>
+            <form method="post" action="#">
+                <div class="row gtr-uniform">
+                    <div class="col-6 col-12-xsmall"><input type="date" name="date" id="date" placeholder="Päivämäärä" /></div>
+                    <div class="col-6 col-12-xsmall"><input type="text" name="mood" id="mood" placeholder="Tunnetila" /></div>
+                    <div class="col-6 col-12-xsmall"><input type="number" name="stress" id="stress" placeholder="Stressitaso" min="1" max="10" /></div>
+                    <div class="col-6 col-12-xsmall"><input type="number" name="sleep_hours" id="sleep_hours" placeholder="Unen määrä (tunteina)" min="0" /></div>
+                    <div class="col-6 col-12-xsmall"><input type="text" name="sleep_quality" id="sleep_quality" placeholder="Unen laatu" /></div>
+                    <div class="col-6 col-12-xsmall"><input type="number" name="weight" id="weight" placeholder="Paino" /></div>
+                    <div class="col-12"><textarea name="journal" id="journal" placeholder="Päiväkirjamerkintä" rows="6"></textarea></div>
+                    <div class="col-12">
+                        <ul class="actions special">
+                            <li><input type="submit" value="Tallenna merkintä" class="primary" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <a href="#previous_entries" class="goto-next scrolly">Aikaisemmat merkinnät</a>
+    </section>
+
+    <!-- Aikaisemmat merkinnät (Placeholder) -->
+    <section id="previous_entries" class="main special">
+        <div class="container">
+            <header class="major">
+                <h2>Aikaisemmat merkinnät</h2>
+            </header>
+            <!-- Placeholder sisältö -->
+            <p>Tähän tulee listaus aikaisemmista päiväkirjamerkinnöistä.</p>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</main>
+</html2>
