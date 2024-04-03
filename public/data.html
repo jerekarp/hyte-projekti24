@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="data.css">
     <title>Otsikko tähän</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -23,48 +24,60 @@
   </nav>
 
       <main>
-        <p style="text-align: center;">DATA SIVU TÄNNE</p>
         <div class="container">
             <div class="col col-1">
-              <p>Col 1</p>
+              <div id="chart-container">
+                <div>
+                    <canvas id="myChart"></canvas>
+                    <!-- Tähän lisätään kuvaaja -->
+                </div>
+                <div>
+                  <select id="chartSelection">
+                    <option value="all">Kaikki data</option>
+                    <option value="stress_index">Stressi</option>
+                    <option value="respiratory_rate">Hengitysnopeus</option>
+                    <option value="mean_hr_bpm">Keskimääräinen syke</option>
+                    <option value="readiness">Readiness</option>
+                  </select>
+                    
+                </div>
+              </div>
+
+              
             </div>
             <div class="col col-2">
-              <p>Col 2</p>
+              <div id="max-data-container">
+                <h1>Korkeimmat arvosi</h1>
+                <div id="max-data">
+                  <!-- Tähän lisätään maksimiarvot -->
+                </div>
+              </div>
             </div>
             <div class="col col-3">
-              <p>Col 3</p>
             </div>
             <div class="col col-4">
-              <p>Col 4</p>
             </div>
             <div class="col col-5">
-              <p>Col 5</p>
             </div>
             <div class="col col-6">
-              <p>Col 6</p>
             </div>
             <div class="col col-7">
-              <p>Col 7</p>
             </div>
             <div class="col col-8">
-              <p>Col 8</p>
             </div>
             <div class="col col-9">
-              <p>Col 9</p>
             </div>
             <div class="col col-10">
-              <p>Col 10</p>
             </div>
             <div class="col col-11">
-              <p>Col 11</p>
             </div>
             <div class="col col-12">
-              <p>Col 12</p>
             </div>
           </div>
       </main>
     <footer>
         <!-- Alatunniste ja footer-elementit sijoitetaan tänne -->
     </footer>
+    <script type="module" src="data.js"></script>
 </body>
 </html>
