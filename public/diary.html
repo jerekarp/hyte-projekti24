@@ -26,10 +26,82 @@
         <p style="text-align: center;">DIARY SIVU TÄNNE</p>
         <div class="container">
             <div class="col col-1">
-              <p>Col 1</p>
+              <h3>Kuinka päiväsi on sujunut tänään?</h3>
+              <form class="create_diary_form">
+                <!--merkintäpäivämäärä-->
+                <label class="form-label" for="entry_date">Merkintäpäivämäärä:</label>
+                <input class="form-input" type="date" name="entry_date" />
+                <!-- tunnetila-->
+                <label class="form-label" for="notes">Tunnetila:</label>
+                <input class="form-input" type="text" name="notes" />
+                <div id="mood-options">
+                  <button type="button" class="mood-option-button" data-mood="happy">😊 Iloinen</button>
+                  <button type="button" class="mood-option-button" data-mood="energetic">🥳 Energinen</button>
+                  <button type="button" class="mood-option-button" data-mood="calm">😌 Rauhallinen</button>
+                  <button type="button" class="mood-option-button" data-mood="excited">🤩 Innostunut</button>
+                  <button type="button" class="mood-option-button" data-mood="silly"> 😜 Leikkisä</button>
+                  <button type="button" class="mood-option-button" data-mood="tired">😴 Väsynyt</button>
+                  <button type="button" class="mood-option-button" data-mood="mood-swings">😵 Mielialan vaiheteluita</button>
+                  <button type="button" class="mood-option-button" data-mood="sad">😢 Surullinen</button>
+                  <button type="button" class="mood-option-button" data-mood="irritated">😠	Ärtyisä</button>
+                  <button type="button" class="mood-option-button" data-mood="anxious">😨 Ahdistunut</button>
+                  <button type="button" class="mood-option-button" data-mood="low-energy"> 😔 Matala energiataso</button>
+                </div>
+                <!-- uni -->
+                <label class="form-label" for="sleep_hours">Kuinka monta tuntia nukuit viime yönä</label>
+                <input class="form-input" type="number" name="sleep_hours" />
+                <!-- stressi -->
+                <label class="form-label" id="stress-label" for="stress_level">Arvioi stressin määrä asteikolla 0 (ei stressiä) - 10 (maksimaalinen stressi):</label>
+                <input type="range" id="stress_level" name="stress_level" min="0" max="100" class="stress-slider">
+                <div id="slider-marks"></div>
+                <!-- muistinpanot & paino -->
+                <label class="form-label" for="weight">Paino:</label>
+                <input class="form-input" type="number" name="weight" />
+                <label class="form-label" for="notes">Muistinpanot:</label>
+                <textarea id="notes" name="notes" rows="5" cols="50"></textarea>
+                <input name="submit" type="submit" value="Tallenna" class="createEntry" />
+              </form>
             </div>
             <div class="col col-2">
               <p>Col 2</p>
+              <div class="calendar">
+                <div class="calendar-header">
+                  <span class="month-picker" id="month-picker"> Toukokuu </span>
+                  <div class="year-picker" id="year-picker">
+                    <span class="year-change" id="pre-year">
+                      <pre><</pre>
+                    </span>
+                    <span id="year">2024 </span>
+                    <span class="year-change" id="next-year">
+                      <pre></pre>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="calendar-body">
+                  <div class="calendar-week-days">
+                    <div>Ma</div>
+                    <div>Ti</div>
+                    <div>Ke</div>
+                    <div>To</div>
+                    <div>Pe</div>
+                    <div>La</div>
+                    <div>Su</div>
+                  </div>
+                  <div class="calendar-days">
+                  </div>
+                </div>
+                <div class="calendar-footer">
+                </div>
+                <div class="date-time-formate">
+                  <div class="day-text-formate">TÄNÄÄN</div>
+                  <div class="date-time-value">
+                    <div class="time-formate">01:41:20</div>
+                    <div class="date-formate">04 - huhtikuu - 2024</div>
+                  </div>
+                </div>
+                <div class="month-list"></div>
+              </div>
             </div>
             <div class="col col-3">
               <p>Col 3</p>
@@ -66,5 +138,6 @@
     <footer>
         <!-- Alatunniste ja footer-elementit sijoitetaan tänne -->
     </footer>
+    <script src="diary.js"></script>
 </body>
 </html>

@@ -100,21 +100,24 @@ main {
     grid-gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    background-color: #044565c4;
 }
 
 .col {
-    background-color: #f4f4f4;
+
     padding: 20px;
     border: 1px solid #ccc;
 }
 
 /* Määritä erikokoiset sarakkeet */
 .col-1 {
-    grid-column: span 4;
+    grid-column: span 6;
+
 }
 
 .col-2 {
-    grid-column: span 4;
+    grid-column: span 6;
+    height: 50%;
 }
 
 .col-3 {
@@ -156,6 +159,432 @@ main {
 .col-12 {
     grid-column: span 4;
 }
+
+/* Lomakkeen yleinen asettelu */
+
+.create_diary_form {
+  display: grid;
+  grid-template-columns: 1fr; /* Asettaa yhden sarakkeen joka täyttää koko käytettävissä olevan tilan */
+  gap: 20px;
+  max-width: 90%;
+  margin: 40px auto; /* Keskitä lomake */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 8px 10px rgba(0,0,0,0.1);
+  background-color: #ccc;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px; /* Lisää väliä labelin ja input-kentän välille */
+  color: black;
+}
+
+.form-input {
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #044465;
+}
+
+.form-input:focus {
+  border-color: #044465; /* Highlight border to match your navbar color */
+  box-shadow: 0 0 8px rgba(0, 68, 101, 0.5); /* Glowing effect on focus */
+  outline: none; /* Removes the default focus outline */
+}
+
+#notes {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #044465;
+  resize: vertical; /* Sallii käyttäjän muuttaa kentän kokoa vain pystysuunnassa */
+}
+
+
+.createEntry {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 20px;
+  width: 50%;
+  margin: 40px auto 10px auto;
+  border: 1px solid #044465;
+ font-size: 15px;
+}
+
+.col-1 h3 {
+  color: #d1d1d1;
+  margin-bottom: 16px;
+}
+
+/* Tyyli stressille */
+.stress-slider {
+  width: auto;
+  height: 15px;
+  border-radius: 15px;
+  background: linear-gradient(to right, #FFC371, #fd5664);
+  opacity: 0.5; /* Makes it slightly transparent */
+}
+
+.stress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default appearance */
+  appearance: none;
+  width: 25px; /* Custom thumb width */
+  height: 25px; /* Custom thumb height */
+  border-radius: 50%; /* Circular thumb */
+  background: #ffffff; /* Thumb color */
+  cursor: pointer; /* Cursor changes to pointer when hovering over the thumb */
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+.stress-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.stress-slider:focus,
+.stress-slider:hover {
+  outline: none; /* Remove default focus outline */
+  opacity: 1; /* Full opacity on focus/hover */
+}
+
+/* Tyyli liukumerkille */
+
+#slider-marks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px; /* Adjust based on your layout */
+  padding: 0 10px; /* Aligns the edges of the marks with the slider ends */
+}
+
+#slider-marks span {
+  font-size: 12px; /* Adjust according to your design */
+  cursor: pointer; /* Indicates the marks are clickable */
+  user-select: none; /* Prevents text selection */
+  text-align: center;
+  min-width: 50px;
+}
+
+.stress-slider {
+  margin: 0 auto; /* Center the slider if it's not full-width */
+  width: calc(100% - 20px); /* Adjust width considering the container's padding */
+}
+
+#stress-label {
+  color: #8089FE;
+}
+
+
+/* moood formi */
+
+#mood-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Sallii elementtien siirtyä seuraavalle riville tarvittaessa */
+}
+
+.mood-option-button {
+  padding: 5px;
+  width: auto;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 0 1 auto;
+  font-size: 15px;
+}
+
+
+/* KALENTERI KOODI */
+
+.calendar {
+  height: 30rem;
+  width: 80%;
+  background-color: white;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 35px 50px 0px 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+.calendar-header {
+  background: #8089FE;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 7px;
+  align-items: center;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.calendar-body {
+  padding: 10px;
+}
+
+.calendar-week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+  cursor: pointer;
+  color: rgb(104, 104, 104);
+}
+
+.calendar-week-days div:hover {
+  color: black;
+  transform: scale(1.2);
+  transition: all .2s ease-in-out;
+}
+
+.calendar-week-days div {
+  display: grid;
+  place-items: center;
+  color: #6D67CF;
+  height: 50px;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  color: #0A0921;
+}
+
+.calendar-days div {
+  width: 37px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+  animation: to-top 1s forwards;
+}
+
+.month-picker {
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.year-picker {
+  display: flex;
+  align-items: center;
+}
+
+.year-change {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.year-change:hover {
+  background-color: #9796f0;
+  transition: all .2s ease-in-out;
+  transform: scale(1.12);
+}
+
+.calendar-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#year:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.2 ease-in-out;
+}
+
+.calendar-days div span {
+  position: absolute;
+}
+
+.calendar-days div:hover {
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  background-color: #fbc7d4;
+  border-radius: 20%;
+  color: #f8fbff;
+}
+
+.calendar-days div.current-date {
+  color: #f8fbff;
+  background-color: #9796f0;
+  border-radius: 20%;
+}
+
+.month-list {
+  position: relative;
+  left: 0;
+  top: -150px;
+  background-color: #ebebeb;
+  color: #151426;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 5px;
+  border-radius: 20px;
+}
+
+.month-list>div {
+  display: grid;
+  place-content: center;
+  margin: 5px 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.month-list>div>div {
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.month-list>div>div:hover {
+  background-color: #9796f0;
+  color: #f8fbff;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in-out;
+}
+
+.month-list.show {
+  visibility: visible;
+  pointer-events: visible;
+  transition: 0.6s ease-in-out;
+  animation: to-left .71s forwards;
+}
+
+.month-list.hideonce {
+  visibility: hidden;
+}
+
+.month-list.hide {
+  animation: to-right 1s forwards;
+  visibility: none;
+  pointer-events: none;
+}
+
+.date-time-formate {
+  height: 4rem;
+  width: 100%;
+  font-family: Dubai Light, Century Gothic;
+  position: relative;
+  display: flex;
+  top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-text-formate {
+  font-family: Microsoft JhengHei UI;
+  font-size: 1.4rem;
+  padding-right: 5%;
+  border-right: 3px solid #9796f0;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 5%;
+}
+
+.time-formate {
+  font-size: 1.5rem;
+}
+
+.time-formate.hideTime {
+  animation: hidetime 1.5s forwards;
+}
+
+.day-text-formate.hidetime {
+  animation: hidetime 1.5s forwards;
+}
+
+.date-formate.hideTime {
+  animation: hidetime 1.5s forwards;
+}
+
+.day-text-formate.showtime {
+  animation: showtime 1s forwards;
+}
+
+.time-formate.showtime {
+  animation: showtime 1s forwards;
+}
+
+.date-formate.showtime {
+  animation: showtime 1s forwards;
+}
+
+@keyframes to-top {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+}
+
+@keyframes to-left {
+  0% {
+    transform: translatex(230%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translatex(0);
+    opacity: 1;
+  }
+}
+
+@keyframes to-right {
+  10% {
+    transform: translatex(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translatex(-150%);
+    opacity: 1;
+  }
+}
+
+@keyframes showtime {
+  0% {
+    transform: translatex(250%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translatex(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes hidetime {
+  0% {
+    transform: translatex(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translatex(-370%);
+    opacity: 1;
+  }
+}
+
 
 /* Footer */
 
