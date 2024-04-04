@@ -1,39 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.9.13 on win32)" generated="2024-03-25T13:46:54.546882" rpa="false" schemaversion="5">
-<suite id="s1" name="Test" source="C:\Users\jerep\AMK\HyTe\hyte-projekti24\testaus\test.robot">
-<test id="s1-t1" name="Example Test" line="5">
+<robot generator="Robot 7.0 (Python 3.9.13 on win32)" generated="2024-04-04T15:56:50.960573" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="C:\Users\jerep\AMK\HyTe\hyte-projekti24\testaus\login.robot">
+<test id="s1-t1" name="Oikea tunnus ja salasana" line="11">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-04-04T15:56:58.637357" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\jerep\\AMK\\HyTe\\hyte-projekti24\\testaus\\browser\\traces\\f31d044d-072b-44c5-b7f1-f6eacac88df8"}</msg>
+<msg time="2024-04-04T15:56:59.595365" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\jerep\\AMK\\HyTe\\hyte-projekti24\\testaus\\browser\\traces\\f31d044d-072b-44c5-b7f1-f6eacac88df8"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=false</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-04-04T15:56:58.637357" elapsed="0.958008"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2024-04-04T15:56:59.595365" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "height": 600,
+    "width": 800
+  }
+}</msg>
+<msg time="2024-04-04T15:56:59.619457" level="INFO">Successfully created context. </msg>
+<msg time="2024-04-04T15:56:59.619457" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 600, 'width': 800}}</msg>
+<arg>viewport={'width': 800, 'height': 600}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2024-04-04T15:56:59.595365" elapsed="0.024092"/>
+</kw>
 <kw name="New Page" owner="Browser">
-<msg time="2024-03-25T13:47:01.712977" level="INFO">Successfully initialized new page object and opened url: https://jerek.norwayeast.cloudapp.azure.com/</msg>
-<msg time="2024-03-25T13:47:01.712977" level="INFO">No browser and context was open. New browser and context was automatically opened when page is created.</msg>
-<arg>https://jerek.norwayeast.cloudapp.azure.com/</arg>
+<msg time="2024-04-04T15:57:00.320216" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+<arg>${URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2024-03-25T13:46:56.826752" elapsed="4.886225"/>
+<status status="PASS" start="2024-04-04T15:56:59.619457" elapsed="0.700759"/>
 </kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2024-03-25T13:47:02.441102" level="INFO">Text: 'HYVINVOINTIPÄIVÄKIRJA'</msg>
-<arg>h2</arg>
-<arg>contains</arg>
-<arg>HYVINVOINTIPÄIVÄKIRJA</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-04T15:57:00.320216" level="INFO">Fills the text 'jerep.karppinen@gmail.com' in the given field.</msg>
+<arg>//input[@id = 'email']</arg>
+<arg>${EMAIL}</arg>
 <tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2024-03-25T13:47:01.713985" elapsed="0.728117"/>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:00.320216" elapsed="0.089069"/>
 </kw>
-<status status="PASS" start="2024-03-25T13:46:56.820247" elapsed="5.621855"/>
+<kw name="Fill Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$PASSWORD</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Fills the given secret from ``variable_name`` into the
+text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:00.409285" elapsed="0.044623"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//input[@type='submit']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:00.453908" elapsed="1.048316"/>
+</kw>
+<doc>Testaa kirjautumisen oikealla tunnuksella ja salasanalla</doc>
+<tag>positive auth</tag>
+<status status="PASS" start="2024-04-04T15:56:58.637357" elapsed="2.865897"/>
 </test>
-<status status="PASS" start="2024-03-25T13:46:54.553454" elapsed="7.981059"/>
+<test id="s1-t2" name="Väärä tunnus" line="23">
+<kw name="New Page" owner="Browser">
+<msg time="2024-04-04T15:57:01.930433" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-04-04T15:57:01.513021" elapsed="0.418430"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-04T15:57:01.932451" level="INFO">Fills the text 'aku.ankka@ankkalinna.fi' in the given field.</msg>
+<arg>//input[@id = 'email']</arg>
+<arg>${WRONG_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:01.931451" elapsed="0.070582"/>
+</kw>
+<kw name="Fill Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$PASSWORD</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Fills the given secret from ``variable_name`` into the
+text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:02.003061" elapsed="0.034961"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//input[@type='submit']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:02.040118" elapsed="1.025923"/>
+</kw>
+<doc>Testaa kirjautumisen väärällä käyttäjätunnuksella</doc>
+<tag>negative auth</tag>
+<status status="PASS" start="2024-04-04T15:57:01.511993" elapsed="1.555052"/>
+</test>
+<test id="s1-t3" name="Väärä salasana" line="33">
+<kw name="New Page" owner="Browser">
+<msg time="2024-04-04T15:57:03.387754" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-04-04T15:57:03.075501" elapsed="0.313285"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-04T15:57:03.391243" level="INFO">Fills the text 'jerep.karppinen@gmail.com' in the given field.</msg>
+<arg>//input[@id = 'email']</arg>
+<arg>${EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:03.388786" elapsed="0.075561"/>
+</kw>
+<kw name="Fill Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$WRONG_PASSWORD</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Fills the given secret from ``variable_name`` into the
+text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:03.465529" elapsed="0.041008"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//input[@type='submit']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-04T15:57:03.508020" elapsed="1.040783"/>
+</kw>
+<doc>Testaa kirjautumisen väärällä salasanalla</doc>
+<tag>negative auth</tag>
+<status status="PASS" start="2024-04-04T15:57:03.074487" elapsed="1.475316"/>
+</test>
+<status status="PASS" start="2024-04-04T15:56:50.976209" elapsed="13.580597"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="2" fail="0" skip="0">negative auth</stat>
+<stat pass="1" fail="0" skip="0">positive auth</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Test">Test</stat>
+<stat pass="3" fail="0" skip="0" id="s1" name="Login">Login</stat>
 </suite>
 </statistics>
 <errors>
