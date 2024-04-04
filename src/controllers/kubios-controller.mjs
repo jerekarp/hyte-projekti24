@@ -53,6 +53,7 @@ const getUserInfo = async (req, res, next) => {
   return res.json(userInfo);
 };
 
+// Funktio filtteröi Kubios-datasta halutut parametrit, jotka palautetaan käyttäjälle Fronttiin
 const getFilteredData = async (req, res, next) => {
   try {
     const { kubiosIdToken } = req.user;
@@ -67,22 +68,50 @@ const getFilteredData = async (req, res, next) => {
 
     const data = await response.json();
 
-    // Suorita filtteröinti
-    const filteredData = data.results.map(result => ({
+    // Otetaan vain päivän viimeinen mittaus
+    const filteredData = {};
+    data.results.forEach(result => {
+      const date = new Date(result.measured_timestamp).toLocaleDateString();
+      filteredData[date] = result;
+    });
+
+    // Muunnetaan objektista taulukoksi
+    const filteredDataArray = Object.values(filteredData).map(result => ({
       measured_timestamp: result.measured_timestamp,
       stress_index: result.result.stress_index,
       respiratory_rate: result.result.respiratory_rate,
       mean_hr_bpm: result.result.mean_hr_bpm,
-      rmssd_ms: result.result.rmssd_ms,
-      user_happiness: result.user_happiness
+      //rmssd_ms: result.result.rmssd_ms,
+      readiness: result.result.readiness,
     }));
 
-    return res.json({ status: 'ok', filteredData });
+    // Haetaan korkeimmat arvot
+    const maxValues = getMaxValues(filteredDataArray);
+
+    return res.json({ status: 'ok', filteredData: filteredDataArray, maxValues });
   } catch (error) {
     // Käsittely virheitä, jos niitä tapahtuu
     console.error('Error occurred:', error);
     return res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
+
+// Apufunktio, joka palauttaa filtteröidyn datan korkeimmat arvot
+const getMaxValues = (filteredData) => {
+  const maxValues = {};
+  
+  filteredData.forEach(entry => {
+    Object.keys(entry).forEach(param => {
+      // Jos parametri on numero ja suurempi kuin tallennettu maksimiarvo, päivitetään uusi maksimiarvo
+      if (typeof entry[param] === 'number' && (!maxValues[param] || entry[param] > maxValues[param])) {
+        maxValues[param] = entry[param];
+      }
+    });
+  });
+
+  return maxValues;
+};
+
+
 
 export {getUserData, getUserInfo, getFilteredData};

@@ -110,13 +110,13 @@
 					</header>
 					<form method="post" action="#">
 						<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Käyttäjänimi" /></div>
+							<!-- <div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Käyttäjänimi" /></div> -->
+							<div class="col-6 col-12"><input type="email" name="email" id="email" placeholder="Käyttäjätunnus (sähköposti)" /></div>
 							<div class="col-6 col-12-xsmall"><input type="password" name="password" id="password" placeholder="Salasana" /></div>
-							<div class="col-6 col-12"><input type="email" name="email" id="email" placeholder="Sähköposti" /></div>
 							<!-- <div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div> -->
 							<div class="col-12">
 								<ul class="actions special">
-									<li><input type="submit" value="Kirjaudu" class="primary" /></li>
+									<li><input type="submit" value="Kirjaudu" class="primary" id="loginButton"></li>
 								</ul>
 							</div>
 						</div>
@@ -468,5 +468,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				</div>
 			</section>
 		-->
+		<script type="module" src="index.js"></script>
 
 		
