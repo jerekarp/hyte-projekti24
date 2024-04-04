@@ -3,3 +3,6 @@ node_modules
 db/create-db-user.sql
 .env
 docs/
+db/zenbeat.sql
+package.json
+package-lock.json
