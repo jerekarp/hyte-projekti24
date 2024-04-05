@@ -132,7 +132,89 @@ input, select, textarea {
 
 /* Basic */
 
-	html {
+.main1 {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+.main1 {
+	background-color: #313a3d;
+	background-attachment: fixed,						fixed;
+	background-image: url("images/zentheme.webp"), url("../../images/zentheme.webp");
+	background-position: top left,					center center;
+	background-repeat: repeat,						none;
+	background-size: auto,						cover;
+}
+
+.main1.is-preload *, .main1.is-preload *:before, .main1.is-preload *:after {
+	-moz-animation: none !important;
+	-webkit-animation: none !important;
+	-ms-animation: none !important;
+	animation: none !important;
+	-moz-transition: none !important;
+	-webkit-transition: none !important;
+	-ms-transition: none !important;
+	transition: none !important;
+}
+
+.main1.is-touch {
+	height: 100vh;
+	overflow: hidden;
+}
+
+	.main1.is-touch #wrapper {
+		-webkit-backface-visibility: hidden;
+		-webkit-overflow-scrolling: touch;
+		-webkit-transform: translate3d(0, 0, 0);
+		height: 100vh;
+		overflow: auto;
+	}
+	
+.main1 {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+.main1 {
+	background-color: #313a3d;
+	background-attachment: fixed,						fixed;
+	background-image: url("images/zentheme.webp"), url("../../images/zentheme.webp");
+	background-position: top left,					center center;
+	background-repeat: repeat,						none;
+	background-size: auto,						cover;
+}
+
+.main1.is-preload *, .main1.is-preload *:before, .main1.is-preload *:after {
+	-moz-animation: none !important;
+	-webkit-animation: none !important;
+	-ms-animation: none !important;
+	animation: none !important;
+	-moz-transition: none !important;
+	-webkit-transition: none !important;
+	-ms-transition: none !important;
+	transition: none !important;
+}
+
+.main1.is-touch {
+	height: 100vh;
+	overflow: hidden;
+}
+
+	.main1.is-touch #wrapper {
+		-webkit-backface-visibility: hidden;
+		-webkit-overflow-scrolling: touch;
+		-webkit-transform: translate3d(0, 0, 0);
+		height: 100vh;
+		overflow: auto;
+	}
+
+	/* html {
 		box-sizing: border-box;
 	}
 
@@ -172,6 +254,51 @@ input, select, textarea {
 			height: 100vh;
 			overflow: auto;
 		}
+		
+html {
+		box-sizing: border-box;
+	}
+
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+
+	html {
+		background-color: #313a3d;
+		background-attachment: fixed,						fixed;
+		background-image: url("images/zentheme.webp"), url("../../images/zentheme.webp");
+		background-position: top left,					center center;
+		background-repeat: repeat,						none;
+		background-size: auto,						cover;
+	}
+
+	html.is-preload *, html.is-preload *:before, html.is-preload *:after {
+		-moz-animation: none !important;
+		-webkit-animation: none !important;
+		-ms-animation: none !important;
+		animation: none !important;
+		-moz-transition: none !important;
+		-webkit-transition: none !important;
+		-ms-transition: none !important;
+		transition: none !important;
+	}
+
+	html.is-touch {
+		height: 100vh;
+		overflow: hidden;
+	}
+
+		html.is-touch #wrapper {
+			-webkit-backface-visibility: hidden;
+			-webkit-overflow-scrolling: touch;
+			-webkit-transform: translate3d(0, 0, 0);
+			height: 100vh;
+			overflow: auto;
+		} */
+
+
+
+
 
 	body, input, select, textarea {
 		color: #6f7577;
@@ -3207,3 +3334,7 @@ input, select, textarea {
 				}
 
 	}
+
+	/* Toisen sivun sääntöjä */
+
+	

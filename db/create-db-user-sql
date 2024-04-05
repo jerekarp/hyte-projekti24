@@ -1,0 +1,3 @@
+CREATE USER 'zenuser'@'localhost' IDENTIFIED BY 'Zenpass!123';
+GRANT ALL PRIVILEGES ON `zenbeat`.* TO 'zenuser'@'localhost';
+FLUSH PRIVILEGES;
