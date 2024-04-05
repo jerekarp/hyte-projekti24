@@ -12,21 +12,21 @@
 
 .navbar-menu {
   display: flex;
-  justify-content: center; /* Aseta linkit keskelle */
-  width: 100%;
-  padding: 0; /* Poista ylimääräinen sisäinen täyttö */
+  align-items: center;
+  width: auto; /* Muuta width: 100% width: auto; jotta se vie vain tarvittavan tilan */
+  padding: 0;
 }
 
 .nav-link {
   text-decoration: none;
   color: rgb(255, 255, 255);
-  margin: 0 10px; /* Lisää väliä linkkien välille */
+  margin: 0 10px;
 }
 
 .nav-link.nav-link-right {
-  margin-left: auto;
+  margin-left: auto; /* Säilytä tämä pitääksesi Kirjaudu ulos -linkin oikealla */
   margin-right: 30px;
-  white-space: nowrap; /* Estä tekstiä menemästä riville */
+  white-space: nowrap;
 }
 
 
@@ -73,6 +73,12 @@ body {
     margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none;
+
+    /* taustakuva */
+    background-image: url(images/stats.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 header {
@@ -92,6 +98,7 @@ nav {
 main {
     padding: 20px;
     margin-top: 200px;
+    margin-bottom: 100px;
 }
 
 .container {
@@ -111,14 +118,18 @@ main {
 .col-1 {
     grid-column: span 12;
     background-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px #044465;
+    background-color: #044465;
+
 }
 
 .col-2 {
-    grid-column: span 4;
+    grid-column: span 12;
     background-color: transparent;
 }
 
-.col-3 {
+/* .col-3 {
     grid-column: span 4;
     background-color: transparent;
 }
@@ -166,7 +177,7 @@ main {
 .col-12 {
     grid-column: span 4;
     background-color: transparent;
-}
+} */
 
 /* Data /*
 /* Datan kuvaajien container */
@@ -184,9 +195,12 @@ main {
 }
 
 #max-data-container {
+    text-align: center;
     background-color: #044465;
     color: white;
     padding: 2px;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px #044465;
 }
 
 #max-data-container p {
