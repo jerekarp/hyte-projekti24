@@ -1,0 +1,213 @@
+/* Navigaatiopalkki tyylittely */
+
+.navbar {
+  width: 100%;
+  background-color: #044465;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: center; /* Aseta linkit keskelle */
+  width: 100%;
+  padding: 0; /* Poista ylimääräinen sisäinen täyttö */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  margin: 0 10px; /* Lisää väliä linkkien välille */
+}
+
+.nav-link.nav-link-right {
+  margin-left: auto;
+  margin-right: 30px;
+  white-space: nowrap; /* Estä tekstiä menemästä riville */
+}
+
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+	blockquote:before, blockquote:after, q:before, q:after {
+		content: '';
+		content: none;
+	}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+mark {
+	background-color: transparent;
+	color: inherit;
+}
+
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input, select, textarea {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+}
+
+
+/* Sivuston perusrunko, 12 column grid */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    margin-top: 200px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.col {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Määritä erikokoiset sarakkeet */
+.col-1 {
+    grid-column: span 12;
+    background-color: transparent;
+}
+
+.col-2 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-3 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-4 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-5 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-6 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-7 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-8 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-9 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-10 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-11 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+.col-12 {
+    grid-column: span 4;
+    background-color: transparent;
+}
+
+/* Data /*
+/* Datan kuvaajien container */
+
+#chart-container {
+    background-color: #ffffff;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+/* Selectori datan vaihtoon */
+#chartSelection {
+    font-size: 16px;
+    padding: 5px;
+}
+
+#max-data-container {
+    background-color: #044465;
+    color: white;
+    padding: 2px;
+}
+
+#max-data-container p {
+    margin-left: 30px;
+}
+
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+/* Footer */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
