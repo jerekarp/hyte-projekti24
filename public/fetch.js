@@ -13,7 +13,7 @@ const fetchData = async (url, options = {}) => {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status} - ${response.statusText}`);
       }
-  
+
       jsonData = await response.json();
     } catch (error) {
       console.error('fetchData() error', error);
@@ -22,5 +22,5 @@ const fetchData = async (url, options = {}) => {
     //console.log(jsonData);
     return jsonData;
   };
-  
+
   export { fetchData };
