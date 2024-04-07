@@ -47,18 +47,18 @@ body {
 	opacity: 90%;
   }
   
-  .navbar-menu {
+.navbar-menu {
 	display: flex; /* Ota käyttöön flexbox asettelu */
 	justify-content: flex-end; /* Asettaa linkit oikealle */
 	width: 100%; /* Vie koko käytettävissä olevan leveyden */
 	padding-right: 15px;
-  }
+}
   
-  .nav-link {
+.nav-link {
 	text-decoration: none; /* Poistaa linkin alleviivauksen */
 	color: rgb(255, 255, 255); /* Linkin tekstiväri */
 	margin-left: 20px; /* Lisää väliä linkkien välille */
-  }
+}
 
 /* .navbar {
     background-color: #ffffff;
@@ -2161,6 +2161,7 @@ html {
 
 /* Form */
 
+
 	form {
 		margin: 0 0 2em 0;
 	}
@@ -2334,6 +2335,32 @@ html {
 		color: #a8b0b3 !important;
 		opacity: 1.0;
 	}
+
+	/* Jos käyttäjä syöttää tunnuksen väärin niin suoritetaan shake animaatio*/
+	@keyframes shake {
+		0%,
+		100% {
+		  transform: translateX(0);
+		}
+		5%,
+		25%,
+		45%,
+		65%,
+		85% {
+		  transform: translateX(-20px);
+		}
+		15%,
+		35%,
+		55%,
+		75% {
+		  transform: translateX(20px);
+		}
+	}
+	
+	.shake {
+		animation: shake 1.9s ease;
+	}
+	
 
 /* Box */
 
@@ -2846,6 +2873,7 @@ html {
 			border: 0;
 			box-shadow: none;
 			color: #ffffff !important;
+			margin-top: 2.5rem;
 		}
 
 			input[type="submit"].primary:hover,
