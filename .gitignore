@@ -1,8 +1,9 @@
 node_modules
 .vscode
-db/create-db-user.sql
 .env
 docs/
+db/create-db-user.sql
 db/zenbeat.sql
 package.json
 package-lock.json
+testaus/login_variables.resource

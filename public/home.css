@@ -1,19 +1,24 @@
 /* Navigaatiopalkki tyylittely */
 
 .navbar {
-  width: 100%;
+  width: auto;
+  left: 20px;
+  right: 20px;
+  margin-top: 20px;
   background-color: #044465;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   position: fixed;
   top: 0;
+  z-index: 2;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .navbar-menu {
   display: flex;
   justify-content: center; /* Aseta linkit keskelle */
-  width: 100%;
+  width: auto;
   padding: 0; /* Poista ylimääräinen sisäinen täyttö */
 }
 
@@ -29,6 +34,39 @@
   white-space: nowrap; /* Estä tekstiä menemästä riville */
 }
 
+#taustakuva {
+  background-image: url(images/pic01.jpg);
+  width: 100%;
+  height: 500px;
+  left: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px black;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#buddha {
+  background-image: url(images/buddha.png);
+  position: absolute;
+  top: 385px;
+  right: 85%; /* Keskittää vaakasuunnassa, muokkaa tarpeen mukaan */
+  transform: translateX(50%); /* Kompensoidaan right-arvo, jotta keskitys toimii oikein */
+  width: 100px; /* Määritä sopiva leveys */
+  height: 300px; /* Määritä sopiva korkeus */
+  background-size: contain; /* Varmistetaan, että kuva mahtuu kokonaan alueelle ja säilyttää mittasuhteensa */
+  background-repeat: no-repeat; /* Estetään kuvan toistuminen */
+  z-index: 2;
+}
 
 ol, ul {
 	list-style: none;
@@ -70,7 +108,6 @@ input, select, textarea {
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none;
 }
@@ -91,50 +128,97 @@ nav {
 
 main {
     padding: 20px;
-    margin-top: 200px;
+    margin-top: 20px;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+.user {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Sivujen esittely laatikoiden tyylittely */
+.intro-container {
+  background-color: #0A8ECC;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 3px 10px  #044465;
+}
+
+
+.boksi {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px  #044465;
+  background-color: ;
+
+}
+
+
+button {
+  border-radius: 20px;
+  background-color: white;
+  padding: 5px;
+
 }
 
 .col {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border: 1px solid #ccc;
+  color: white;
+  background-color:  #044465;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px  #044465;
+  padding: 10px;
+  justify-content: space-between;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+button:hover {
+  background-color: #0A8ECC;
+}
 /* Määritä erikokoiset sarakkeet */
 .col-1 {
-    grid-column: span 4;
+    grid-column: span 3;
 }
 
 .col-2 {
-    grid-column: span 4;
+    grid-column: span 3;
 }
 
 .col-3 {
-    grid-column: span 4;
+    grid-column: span 3;
 }
 
 .col-4 {
-    grid-column: span 4;
+    grid-column: span 3;
 }
 
 .col-5 {
-    grid-column: span 4;
+    grid-column: span 12;
 }
 
 .col-6 {
-    grid-column: span 4;
+    grid-column: span 12;
 }
 
 .col-7 {
-    grid-column: span 4;
+    grid-column: span 12;
 }
 
 .col-8 {
