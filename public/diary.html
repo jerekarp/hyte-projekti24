@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="diary.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Otsikko tähän</title>
 </head>
 <body>
@@ -29,10 +30,10 @@
               <h3>Kuinka päiväsi on sujunut tänään?</h3>
               <form class="create_diary_form">
                 <!--merkintäpäivämäärä-->
-                <label class="form-label" for="entry_date">Merkintäpäivämäärä:</label>
+                <label class="form-label" id="day-label" for="entry_date">Merkintäpäivämäärä:</label>
                 <input class="form-input" type="date" name="entry_date" />
                 <!-- tunnetila-->
-                <label class="form-label" for="notes">Tunnetila:</label>
+                <label class="form-label" id="mood-label" for="notes">Tunnetila:</label>
                 <input class="form-input" type="text" name="notes" />
                 <div id="mood-options">
                   <button type="button" class="mood-option-button" data-mood="happy">😊 Iloinen</button>
@@ -47,33 +48,33 @@
                   <button type="button" class="mood-option-button" data-mood="anxious">😨 Ahdistunut</button>
                   <button type="button" class="mood-option-button" data-mood="low-energy"> 😔 Matala energiataso</button>
                 </div>
-                <!-- uni -->
-                <label class="form-label" for="sleep_hours">Kuinka monta tuntia nukuit viime yönä</label>
-                <input class="form-input" type="number" name="sleep_hours" />
                 <!-- stressi -->
                 <label class="form-label" id="stress-label" for="stress_level">Arvioi stressin määrä asteikolla 0 (ei stressiä) - 10 (maksimaalinen stressi):</label>
                 <input type="range" id="stress_level" name="stress_level" min="0" max="100" class="stress-slider">
                 <div id="slider-marks"></div>
+                <!-- uni -->
+                <label class="form-label" id="sleep-label" for="sleep_hours">Kuinka monta tuntia nukuit viime yönä?</label>
+                <input class="form-input" type="number" name="sleep_hours" />
                 <!-- muistinpanot & paino -->
-                <label class="form-label" for="weight">Paino:</label>
+                <label class="form-label" id="weight-label" for="weight">Paino:</label>
                 <input class="form-input" type="number" name="weight" />
-                <label class="form-label" for="notes">Muistinpanot:</label>
+                <label class="form-label" id="note-label" for="notes">Muistinpanot:</label>
                 <textarea id="notes" name="notes" rows="5" cols="50"></textarea>
                 <input name="submit" type="submit" value="Tallenna" class="createEntry" />
               </form>
             </div>
             <div class="col col-2">
-              <p>Col 2</p>
+              <h3>Tarkasta päiväkirjamerkinnät: </h3>
               <div class="calendar">
                 <div class="calendar-header">
-                  <span class="month-picker" id="month-picker"> Toukokuu </span>
+                  <span class="month-picker" id="month-picker">Huuhtikuu</span>
                   <div class="year-picker" id="year-picker">
                     <span class="year-change" id="pre-year">
-                      <pre><</pre>
+                      <pre><i class="fa fa-chevron-left"></i></pre>
                     </span>
-                    <span id="year">2024 </span>
+                    <span id="year">2024</span>
                     <span class="year-change" id="next-year">
-                      <pre></pre>
+                      <pre><i class="fa fa-chevron-right"></i></pre>
                     </span>
                   </div>
                 </div>

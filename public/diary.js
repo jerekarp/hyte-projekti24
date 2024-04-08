@@ -2,7 +2,7 @@
 // Stressi merkintä
 document.addEventListener('DOMContentLoaded', function () {
   const marksContainer = document.getElementById('slider-marks');
-  const marks = ['0', '3', '5','8', '10']; // Define your scale marks here
+  const marks = ['0', '2', '4', '6' , '8', '10']; // Define your scale marks here
 
   marks.forEach(mark => {
     const span = document.createElement('span');
@@ -47,7 +47,7 @@ const month_names = [
     'Marraskuu',
     'Joulukuu',
   ];
-  
+
 let month_picker = document.querySelector('#month-picker');
 const dayTextFormate = document.querySelector('.day-text-formate');
 const timeFormate = document.querySelector('.time-formate');
@@ -92,15 +92,18 @@ const generateCalendar = (month, year) => {
 
   let first_day = new Date(year, month);
 
+  // Muokataan kuukauden alkamaan maanataista
+  let firstDayMonday = first_day.getDay() === 0 ? 6 : first_day.getDay() - 1;
 
-  for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+
+  for (let i = 0; i <= days_of_month[month] + firstDayMonday - 1; i++) {
 
     let day = document.createElement('div');
 
-    if (i >= first_day.getDay()) {
-      day.innerHTML = i - first_day.getDay() + 1;
+    if (i >= firstDayMonday) {
+      day.innerHTML = i - firstDayMonday + 1;
 
-      if (i - first_day.getDay() + 1 === currentDate.getDate() &&
+      if (i - firstDayMonday + 1 === currentDate.getDate() &&
         year === currentDate.getFullYear() &&
         month === currentDate.getMonth()
       ) {

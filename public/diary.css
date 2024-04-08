@@ -72,7 +72,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    -webkit-text-size-adjust: none;
+
 }
 
 header {
@@ -97,16 +97,16 @@ main {
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: 20px;
+    grid-gap: 10px;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #044565c4;
+    background: rgba(128, 128, 128, 0.19);
+    border-radius: 20px;
 }
 
 .col {
-
-    padding: 20px;
-    border: 1px solid #ccc;
+  margin-left: 20px;
+  border: none;
 }
 
 /* Määritä erikokoiset sarakkeet */
@@ -120,44 +120,17 @@ main {
     height: 50%;
 }
 
-.col-3 {
-    grid-column: span 4;
+.col-1 h3, .col-2 h3 {
+  color: #044465;
+  margin:60px 0px 0 20px;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
 }
 
-.col-4 {
+.col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     grid-column: span 4;
-}
-
-.col-5 {
-    grid-column: span 4;
-}
-
-.col-6 {
-    grid-column: span 4;
-}
-
-.col-7 {
-    grid-column: span 4;
-}
-
-.col-8 {
-    grid-column: span 4;
-}
-
-.col-9 {
-    grid-column: span 4;
-}
-
-.col-10 {
-    grid-column: span 4;
-}
-
-.col-11 {
-    grid-column: span 4;
-}
-
-.col-12 {
-    grid-column: span 4;
+    visibility: hidden;
 }
 
 /* Lomakkeen yleinen asettelu */
@@ -169,34 +142,50 @@ main {
   max-width: 90%;
   margin: 40px auto; /* Keskitä lomake */
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 8px 10px rgba(0,0,0,0.1);
-  background-color: #ccc;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: #FFFFFF;
+
 }
 
 .form-label {
   font-weight: bold;
-  margin-bottom: 5px; /* Lisää väliä labelin ja input-kentän välille */
   color: black;
 }
 
 .form-input {
   padding: 15px;
   border-radius: 8px;
-  border: 1px solid #044465;
+  padding: 10px;
+  border: 2px solid #044565;;
+  box-shadow: 0 0 5px #04456587;
+}
+
+.form-input:hover {
+  border: 2px solid #044565c4;
+  box-shadow: 0 0 5px #044565c4;
+  cursor: pointer;
 }
 
 .form-input:focus {
-  border-color: #044465; /* Highlight border to match your navbar color */
-  box-shadow: 0 0 8px rgba(0, 68, 101, 0.5); /* Glowing effect on focus */
-  outline: none; /* Removes the default focus outline */
+  cursor: text;
+
 }
+
 
 #notes {
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #044465;
   resize: vertical; /* Sallii käyttäjän muuttaa kentän kokoa vain pystysuunnassa */
+  border: 2px solid #044565;;
+  box-shadow: 0 0 5px #04456587;
+  padding: 10px;
+}
+
+#notes:hover {
+  border: 2px solid #044565c4;
+  box-shadow: 0 0 5px #044565c4;
+  cursor: pointer;
 }
 
 
@@ -206,15 +195,24 @@ main {
   padding: 15px;
   border-radius: 20px;
   width: 50%;
-  margin: 40px auto 10px auto;
+  height: 70%;
+  margin: 20px auto 10px auto;
+  font-size: 16px;
+  text-transform: uppercase;
+  white-space: normal;
   border: 1px solid #044465;
- font-size: 15px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px #044465;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.col-1 h3 {
-  color: #d1d1d1;
-  margin-bottom: 16px;
+.createEntry:hover {
+    color: #fff;
+    background-color: #044465;
 }
+
 
 /* Tyyli stressille */
 .stress-slider {
@@ -273,8 +271,11 @@ main {
   width: calc(100% - 20px); /* Adjust width considering the container's padding */
 }
 
-#stress-label {
-  color: #8089FE;
+#day-label, #mood-label, #sleep-label, #weight-label, #note-label, #stress-label{
+  color: #044465;
+  margin-bottom: -5px;
+  margin-top: 20px;
+
 }
 
 
@@ -284,27 +285,43 @@ main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap; /* Sallii elementtien siirtyä seuraavalle riville tarvittaessa */
+  margin: 5px 0;
+
 }
 
 .mood-option-button {
-  padding: 5px;
+  padding: 8px;
   width: auto;
-  margin: 5px;
+  margin: 6px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   flex: 0 1 auto;
   font-size: 15px;
+  outline: none;
+  line-height: 1;
+  letter-spacing: 2px;;
+  background-color: #8088feb0;
+  color: rgb(3, 3, 3);
 }
 
+.mood-option-button:hover {
+  cursor: pointer;
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  background-color: #fbc7d4;
+  color: #f8fbff;
+  transform: scale(1.3);
+  padding: 10px;
+}
 
 /* KALENTERI KOODI */
 
 .calendar {
+  margin-top: 2.5rem;
   height: 30rem;
   width: 80%;
   background-color: white;
-  border-radius: 25px;
+  border-radius: 26px;
   overflow: hidden;
   padding: 35px 50px 0px 50px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -375,17 +392,17 @@ main {
 .year-picker {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.year-change {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  margin: 0px 10px;
+.year-change, #year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
   cursor: pointer;
 }
+
 
 .year-change:hover {
   background-color: #9796f0;
