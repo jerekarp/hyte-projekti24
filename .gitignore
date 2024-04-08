@@ -5,3 +5,4 @@ docs/
 testaus/login_variables.resource
 testaus/output.xml
 testaus/playwright-log.txt
+db/create-db-user.sql
