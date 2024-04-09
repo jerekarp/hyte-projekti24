@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {"level":30,"time":"2024-04-08T15:03:37.759Z","pid":17556,"hostname":"DESKTOP-6FEELHD","msg":"Listening on 58875"}
 (node:17556) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
 (Use `node --trace-deprecation ...` to show where the warning was created)
@@ -58,64 +57,3 @@
 {"level":30,"time":"2024-04-08T15:03:46.637Z","pid":17556,"hostname":"DESKTOP-6FEELHD","msg":"End of node method closeContext"}
 {"level":30,"time":"2024-04-08T15:03:46.691Z","pid":17556,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method closeAllBrowsers"}
 {"level":30,"time":"2024-04-08T15:03:46.866Z","pid":17556,"hostname":"DESKTOP-6FEELHD","msg":"End of node method closeAllBrowsers"}
-=======
-{"level":30,"time":"2024-04-09T11:45:59.683Z","pid":24265,"hostname":"Roni-Air","msg":"Listening on 57632"}
-(node:24265) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-{"level":30,"time":"2024-04-09T11:46:00.773Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:00.774Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:00.782Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method newBrowser"}
-{"level":30,"time":"2024-04-09T11:46:01.168Z","pid":24265,"hostname":"Roni-Air","msg":"Adding browser to stack: chromium, version: 121.0.6167.57"}
-{"level":30,"time":"2024-04-09T11:46:01.169Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method newBrowser"}
-{"level":30,"time":"2024-04-09T11:46:01.169Z","pid":24265,"hostname":"Roni-Air","msg":"Adding 0 contexts to browser"}
-{"level":30,"time":"2024-04-09T11:46:01.174Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method newContext"}
-{"level":30,"time":"2024-04-09T11:46:01.174Z","pid":24265,"hostname":"Roni-Air","msg":"currentBrowser: [object Object]"}
-{"level":30,"time":"2024-04-09T11:46:01.174Z","pid":24265,"hostname":"Roni-Air","msg":"Trace file: "}
-{"level":30,"time":"2024-04-09T11:46:01.181Z","pid":24265,"hostname":"Roni-Air","msg":"Changed active context"}
-{"level":30,"time":"2024-04-09T11:46:01.184Z","pid":24265,"hostname":"Roni-Air","msg":"currentBrowser: [object Object]"}
-{"level":30,"time":"2024-04-09T11:46:01.181Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method newContext"}
-{"level":30,"time":"2024-04-09T11:46:01.183Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method newPage"}
-{"level":30,"time":"2024-04-09T11:46:01.522Z","pid":24265,"hostname":"Roni-Air","msg":"Video path: undefined"}
-{"level":30,"time":"2024-04-09T11:46:01.523Z","pid":24265,"hostname":"Roni-Air","msg":"Changed active page"}
-{"level":30,"time":"2024-04-09T11:46:02.022Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method newPage"}
-{"level":30,"time":"2024-04-09T11:46:02.027Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method fillText"}
-{"level":30,"time":"2024-04-09T11:46:02.027Z","pid":24265,"hostname":"Roni-Air","msg":"Strict mode is enabled, find Locator with //input[@id = 'email'] in page."}
-{"level":30,"time":"2024-04-09T11:46:02.064Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method fillText"}
-{"level":30,"time":"2024-04-09T11:46:02.066Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method fillText"}
-{"level":30,"time":"2024-04-09T11:46:02.066Z","pid":24265,"hostname":"Roni-Air","msg":"Strict mode is enabled, find Locator with //input[@id='password'] in page."}
-{"level":30,"time":"2024-04-09T11:46:02.120Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method fillText"}
-{"level":30,"time":"2024-04-09T11:46:02.122Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method click"}
-{"level":30,"time":"2024-04-09T11:46:02.123Z","pid":24265,"hostname":"Roni-Air","msg":"Strict mode is enabled, find Locator with //input[@type='submit'] in page."}
-{"level":30,"time":"2024-04-09T11:46:03.046Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method click"}
-{"level":30,"time":"2024-04-09T11:46:03.049Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method click"}
-{"level":30,"time":"2024-04-09T11:46:03.050Z","pid":24265,"hostname":"Roni-Air","msg":"Strict mode is enabled, find Locator with css=.navbar-menu > a[href='tools.html'] in page."}
-{"level":30,"time":"2024-04-09T11:46:05.432Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method click"}
-{"level":30,"time":"2024-04-09T11:46:07.441Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method click"}
-{"level":30,"time":"2024-04-09T11:46:07.441Z","pid":24265,"hostname":"Roni-Air","msg":"Strict mode is enabled, find Locator with css=a.nav-link.nav-link-right in page."}
-{"level":30,"time":"2024-04-09T11:46:07.520Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method click"}
-{"level":30,"time":"2024-04-09T11:46:11.534Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.538Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.541Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.543Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.546Z","pid":24265,"hostname":"Roni-Air","msg":"Changed active context"}
-{"level":30,"time":"2024-04-09T11:46:11.546Z","pid":24265,"hostname":"Roni-Air","msg":"Changing current active page: page=117a567f-418b-440b-b749-1b8791c846cb"}
-{"level":30,"time":"2024-04-09T11:46:11.546Z","pid":24265,"hostname":"Roni-Air","msg":"Changed active page"}
-{"level":30,"time":"2024-04-09T11:46:11.552Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.553Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.555Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method switchBrowser"}
-{"level":30,"time":"2024-04-09T11:46:11.555Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method switchBrowser"}
-{"level":30,"time":"2024-04-09T11:46:11.557Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method switchBrowser"}
-{"level":30,"time":"2024-04-09T11:46:11.557Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method switchBrowser"}
-{"level":30,"time":"2024-04-09T11:46:11.559Z","pid":24265,"hostname":"Roni-Air","msg":"Changing current active page: page=117a567f-418b-440b-b749-1b8791c846cb"}
-{"level":30,"time":"2024-04-09T11:46:11.559Z","pid":24265,"hostname":"Roni-Air","msg":"Changed active page"}
-{"level":30,"time":"2024-04-09T11:46:11.566Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.567Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method getBrowserCatalog"}
-{"level":30,"time":"2024-04-09T11:46:11.568Z","pid":24265,"hostname":"Roni-Air","msg":"Changed active context"}
-{"level":30,"time":"2024-04-09T11:46:11.569Z","pid":24265,"hostname":"Roni-Air","msg":"Changing current active page: page=117a567f-418b-440b-b749-1b8791c846cb"}
-{"level":30,"time":"2024-04-09T11:46:11.569Z","pid":24265,"hostname":"Roni-Air","msg":"Changed active page"}
-{"level":30,"time":"2024-04-09T11:46:11.571Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method closeContext"}
-{"level":30,"time":"2024-04-09T11:46:11.596Z","pid":24265,"hostname":"Roni-Air","msg":"Removed page=060ddad9-c631-44cb-bc41-6cc3ba5b39b4 from context=128a4a0e-942b-434a-8822-bb4989fd9bb5 page stack"}
-{"level":30,"time":"2024-04-09T11:46:11.603Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method closeContext"}
-{"level":30,"time":"2024-04-09T11:46:11.622Z","pid":24265,"hostname":"Roni-Air","msg":"Start of node method closeAllBrowsers"}
-{"level":30,"time":"2024-04-09T11:46:11.671Z","pid":24265,"hostname":"Roni-Air","msg":"End of node method closeAllBrowsers"}
->>>>>>> roni

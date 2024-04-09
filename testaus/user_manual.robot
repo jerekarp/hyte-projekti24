@@ -6,7 +6,19 @@ Resource    login_variables.resource    # tunnukset ja salasanat on tallennettu 
 ${BROWSER}    chromium    # muut vaihtoehdot: firefox, webkit
 ${URL}    http://127.0.0.1:3000/    # Sisältää esimerkkiweb-sovelluksia kirjautumisen testaamiseen
 
-
 *** Test Cases ***
-
-# Tänne UC_3 eli Käyttäjän tulee kirjautua sisään ja navigoida “info” välilehdelle, josta käyttöohjeet löytyvät
+Kirjautuminen ja sovelluksen käyttöohjeisiin tutustuminen
+    [Documentation]  Testaa kirjautuminen oikeilla tunnuksilla
+    New Browser    ${BROWSER}    headless=false    # headless=true, jos et tarvitse GUI
+    New Context    viewport={'width': 800, 'height': 600}
+    New Page    ${URL}
+    Sleep    2
+    Click    //a[@href='#footer' and contains(@class, 'nav-link')]    # Klikkaa "Kirjaudu"-painiketta
+    Sleep   2
+    Fill Text    //input[@id = 'email']    ${EMAIL}    # Syötä sähköposti
+    Fill Secret    //input[@id='password']    $PASSWORD    # Syötä salasana
+    Sleep    2
+    Click    //input[@type='submit']    # Klikkaa Log in -nappulaa
+    Sleep    2
+    Click    //a[@href='about.html' and contains(@class, 'nav-link')]    #Klikkaa navigointipalkista "Info"-sivua
+    Sleep    2
