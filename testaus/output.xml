@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.10.0 on win32)" generated="2024-04-08T18:03:37.213080" rpa="false" schemaversion="5">
-<suite id="s1" name="Data-Analysis" source="C:\Users\Jere\hyte24\hyte-projekti24\testaus\data-analysis.robot">
-<test id="s1-t1" name="Kirjaudutaan sisään ja navigoidaan sovelluksen Data-sivulle" line="11">
+<robot generator="Robot 7.0 (Python 3.11.4 on darwin)" generated="2024-04-09T14:54:20.038614" rpa="false" schemaversion="5">
+<suite id="s1" name="User Manual" source="/Users/juliusvalkeinen/Desktop/Metropolia/HyTe/5Projekti/hyte-projekti24/testaus/user_manual.robot">
+<test id="s1-t1" name="Kirjautuminen ja sovelluksen käyttöohjeisiin tutustuminen" line="10">
 <kw name="New Browser" owner="Browser">
-<msg time="2024-04-08T18:03:37.924180" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Jere\\hyte24\\hyte-projekti24\\testaus\\browser\\traces\\7e4e7360-cb1f-4b96-acdd-84b3717a5431"}</msg>
-<msg time="2024-04-08T18:03:38.249311" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Jere\\hyte24\\hyte-projekti24\\testaus\\browser\\traces\\7e4e7360-cb1f-4b96-acdd-84b3717a5431"}</msg>
+<msg time="2024-04-09T14:54:21.478322" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/juliusvalkeinen/Desktop/Metropolia/HyTe/5Projekti/hyte-projekti24/testaus/browser/traces/400e1c59-3f34-4688-a3b6-05386cd644d9"}</msg>
+<msg time="2024-04-09T14:54:21.844509" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/juliusvalkeinen/Desktop/Metropolia/HyTe/5Projekti/hyte-projekti24/testaus/browser/traces/400e1c59-3f34-4688-a3b6-05386cd644d9"}</msg>
 <arg>${BROWSER}</arg>
 <arg>headless=false</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
-<status status="PASS" start="2024-04-08T18:03:37.924180" elapsed="0.325131"/>
+<status status="PASS" start="2024-04-09T14:54:21.477142" elapsed="0.367485"/>
 </kw>
 <kw name="New Context" owner="Browser">
-<msg time="2024-04-08T18:03:38.250309" level="INFO">{
+<msg time="2024-04-09T14:54:21.845335" level="INFO">{
   "acceptDownloads": true,
   "bypassCSP": false,
   "forcedColors": "none",
@@ -23,34 +23,53 @@
   "reducedMotion": "no-preference",
   "serviceWorkers": "allow",
   "viewport": {
-    "height": 1080,
-    "width": 1400
+    "width": 800,
+    "height": 600
   }
 }</msg>
-<msg time="2024-04-08T18:03:38.265268" level="INFO">Successfully created context. </msg>
-<msg time="2024-04-08T18:03:38.265268" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 1080, 'width': 1400}}</msg>
-<arg>viewport={'width': 1400, 'height': 1080}</arg>
+<msg time="2024-04-09T14:54:21.852748" level="INFO">Successfully created context. </msg>
+<msg time="2024-04-09T14:54:21.852779" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 800, 'height': 600}}</msg>
+<arg>viewport={'width': 800, 'height': 600}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new BrowserContext with specified options.</doc>
-<status status="PASS" start="2024-04-08T18:03:38.250309" elapsed="0.014959"/>
+<status status="PASS" start="2024-04-09T14:54:21.844843" elapsed="0.007979"/>
 </kw>
 <kw name="New Page" owner="Browser">
-<msg time="2024-04-08T18:03:39.204757" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+<msg time="2024-04-09T14:54:22.255435" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
 <arg>${URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2024-04-08T18:03:38.266266" elapsed="0.939489"/>
+<status status="PASS" start="2024-04-09T14:54:21.852956" elapsed="0.402586"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-09T14:54:24.256879" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-09T14:54:22.255714" elapsed="2.002165"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//a[@href='#footer' and contains(@class, 'nav-link')]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-09T14:54:24.259376" elapsed="0.111795"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-09T14:54:26.373412" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-09T14:54:24.371363" elapsed="2.002559"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2024-04-08T18:03:39.206752" level="INFO">Fills the text 'jerep.karppinen@gmail.com' in the given field.</msg>
+<msg time="2024-04-09T14:54:26.377962" level="INFO">Fills the text 'juliusev@metropolia.fi' in the given field.</msg>
 <arg>//input[@id = 'email']</arg>
 <arg>${EMAIL}</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2024-04-08T18:03:39.205755" elapsed="0.041888"/>
+<status status="PASS" start="2024-04-09T14:54:26.375868" elapsed="0.023658"/>
 </kw>
 <kw name="Fill Secret" owner="Browser">
 <arg>//input[@id='password']</arg>
@@ -59,54 +78,53 @@
 <tag>Setter</tag>
 <doc>Fills the given secret from ``variable_name`` into the
 text field found by ``selector``.</doc>
-<status status="PASS" start="2024-04-08T18:03:39.248640" elapsed="0.014960"/>
+<status status="PASS" start="2024-04-09T14:54:26.399925" elapsed="0.013815"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-09T14:54:28.414743" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-09T14:54:26.413982" elapsed="2.002164"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2024-04-08T18:03:39.264598" level="INFO">Clicks the element '//input[@type='submit']'.</msg>
 <arg>//input[@type='submit']</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2024-04-08T18:03:39.264598" elapsed="1.341413"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2024-04-08T18:03:40.607009" level="INFO">Clicks the element 'css=.navbar-menu &gt; a[href='data.html']'.</msg>
-<arg>css=.navbar-menu &gt; a[href='data.html']</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2024-04-08T18:03:40.607009" elapsed="1.907900"/>
+<status status="PASS" start="2024-04-09T14:54:28.417746" elapsed="0.046617"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-04-08T18:03:44.524536" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
+<msg time="2024-04-09T14:54:30.465982" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-04-08T18:03:42.515907" elapsed="2.008629"/>
+<status status="PASS" start="2024-04-09T14:54:28.464541" elapsed="2.001608"/>
 </kw>
-<kw name="Click With Options" owner="Browser">
-<msg time="2024-04-08T18:03:44.525534" level="INFO">Clicks the element 'css=#chartSelection'.</msg>
-<arg>css=#chartSelection</arg>
-<arg>delay=2s</arg>
+<kw name="Click" owner="Browser">
+<arg>//a[@href='about.html' and contains(@class, 'nav-link')]</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2024-04-08T18:03:44.524536" elapsed="2.043538"/>
+<status status="PASS" start="2024-04-09T14:54:30.466494" elapsed="0.240774"/>
 </kw>
-<doc>Kirjaudutaan sisään ja navigoidaan Data-sivulle</doc>
-<tag>login</tag>
-<status status="PASS" start="2024-04-08T18:03:37.923182" elapsed="8.644892"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-09T14:54:32.709528" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-09T14:54:30.707429" elapsed="2.002288"/>
+</kw>
+<doc>Testaa kirjautuminen oikeilla tunnuksilla</doc>
+<status status="PASS" start="2024-04-09T14:54:21.475756" elapsed="11.234311"/>
 </test>
-<status status="PASS" start="2024-04-08T18:03:37.215076" elapsed="9.356987"/>
+<status status="PASS" start="2024-04-09T14:54:20.039122" elapsed="12.676435"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">login</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Data-Analysis">Data-Analysis</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="User Manual">User Manual</stat>
 </suite>
 </statistics>
 <errors>
