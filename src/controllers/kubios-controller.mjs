@@ -61,7 +61,17 @@ const getFilteredData = async (req, res, next) => {
     headers.append('User-Agent', process.env.KUBIOS_USER_AGENT);
     headers.append('Authorization', kubiosIdToken);
 
-    const response = await fetch(baseUrl + '/result/self?from=2022-01-01T00%3A00%3A00%2B00%3A00', {
+    // Nykyinen päivämäärä
+    const currentDate = new Date();
+
+    // Vähennetään yksi kuukausi nykyisestä päivämäärästä
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+
+    const formattedDate = oneMonthAgo.toISOString();
+
+    // Haetaan Kubioksesta viimeisen 30 päivän HRV-data
+    const response = await fetch(baseUrl + '/result/self?from=' + formattedDate, {
       method: 'GET',
       headers: headers,
     });
