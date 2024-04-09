@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.11.5 on darwin)" generated="2024-04-09T14:27:30.349472" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.11.5 on darwin)" generated="2024-04-09T14:45:59.465442" rpa="false" schemaversion="5">
 <suite id="s1" name="Logout" source="/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/logout.robot">
 <test id="s1-t1" name="Oikea tunnus ja salasana" line="11">
 <kw name="New Browser" owner="Browser">
-<msg time="2024-04-09T14:27:31.796931" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/browser/traces/05f53b3d-b074-43f6-a097-55dfdd37769b"}</msg>
-<msg time="2024-04-09T14:27:32.296431" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/browser/traces/05f53b3d-b074-43f6-a097-55dfdd37769b"}</msg>
+<msg time="2024-04-09T14:46:00.779841" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/browser/traces/fe0daf46-98cb-4e71-a7cf-10943d6ac8d5"}</msg>
+<msg time="2024-04-09T14:46:01.170964" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/browser/traces/fe0daf46-98cb-4e71-a7cf-10943d6ac8d5"}</msg>
 <arg>${BROWSER}</arg>
 <arg>headless=false</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
-<status status="PASS" start="2024-04-09T14:27:31.795350" elapsed="0.501179"/>
+<status status="PASS" start="2024-04-09T14:46:00.778547" elapsed="0.392662"/>
 </kw>
 <kw name="New Context" owner="Browser">
-<msg time="2024-04-09T14:27:32.297445" level="INFO">{
+<msg time="2024-04-09T14:46:01.173004" level="INFO">{
   "acceptDownloads": true,
   "bypassCSP": false,
   "forcedColors": "none",
@@ -23,34 +23,34 @@
   "reducedMotion": "no-preference",
   "serviceWorkers": "allow",
   "viewport": {
-    "height": 600,
-    "width": 800
+    "width": 800,
+    "height": 600
   }
 }</msg>
-<msg time="2024-04-09T14:27:32.304899" level="INFO">Successfully created context. </msg>
-<msg time="2024-04-09T14:27:32.304941" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 600, 'width': 800}}</msg>
+<msg time="2024-04-09T14:46:01.181767" level="INFO">Successfully created context. </msg>
+<msg time="2024-04-09T14:46:01.181810" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 800, 'height': 600}}</msg>
 <arg>viewport={'width': 800, 'height': 600}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new BrowserContext with specified options.</doc>
-<status status="PASS" start="2024-04-09T14:27:32.296721" elapsed="0.008270"/>
+<status status="PASS" start="2024-04-09T14:46:01.171797" elapsed="0.010062"/>
 </kw>
 <kw name="New Page" owner="Browser">
-<msg time="2024-04-09T14:27:32.943807" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+<msg time="2024-04-09T14:46:02.024415" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
 <arg>${URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2024-04-09T14:27:32.305158" elapsed="0.638981"/>
+<status status="PASS" start="2024-04-09T14:46:01.182031" elapsed="0.842579"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2024-04-09T14:27:32.945249" level="INFO">Fills the text 'roni.timonen@metropolia.fi' in the given field.</msg>
+<msg time="2024-04-09T14:46:02.025610" level="INFO">Fills the text 'roni.timonen@metropolia.fi' in the given field.</msg>
 <arg>//input[@id = 'email']</arg>
 <arg>${EMAIL}</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2024-04-09T14:27:32.944522" elapsed="0.033200"/>
+<status status="PASS" start="2024-04-09T14:46:02.024959" elapsed="0.039823"/>
 </kw>
 <kw name="Fill Secret" owner="Browser">
 <arg>//input[@id='password']</arg>
@@ -59,80 +59,56 @@
 <tag>Setter</tag>
 <doc>Fills the given secret from ``variable_name`` into the
 text field found by ``selector``.</doc>
-<status status="PASS" start="2024-04-09T14:27:32.977919" elapsed="0.054782"/>
+<status status="PASS" start="2024-04-09T14:46:02.064996" elapsed="0.056539"/>
 </kw>
 <kw name="Click" owner="Browser">
 <arg>//input[@type='submit']</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2024-04-09T14:27:33.032957" elapsed="0.922192"/>
+<status status="PASS" start="2024-04-09T14:46:02.121759" elapsed="0.925426"/>
 </kw>
 <kw name="Click" owner="Browser">
 <arg>css=.navbar-menu &gt; a[href='tools.html']</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2024-04-09T14:27:33.955357" elapsed="2.392201"/>
+<status status="PASS" start="2024-04-09T14:46:03.047535" elapsed="2.385892"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-04-09T14:27:38.348847" level="INFO">Slept 2 seconds.</msg>
+<msg time="2024-04-09T14:46:07.435399" level="INFO">Slept 2 seconds.</msg>
 <arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-04-09T14:27:36.347820" elapsed="2.001407"/>
+<status status="PASS" start="2024-04-09T14:46:05.433790" elapsed="2.001956"/>
 </kw>
 <kw name="Click" owner="Browser">
-<arg>css=#avaaNappi1</arg>
+<arg>css=a.nav-link.nav-link-right</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2024-04-09T14:27:38.349909" elapsed="0.055830"/>
+<status status="PASS" start="2024-04-09T14:46:07.436498" elapsed="0.084693"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-04-09T14:27:42.407503" level="INFO">Slept 4 seconds.</msg>
+<msg time="2024-04-09T14:46:11.523265" level="INFO">Slept 4 seconds.</msg>
 <arg>4s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-04-09T14:27:38.406026" elapsed="4.001694"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2024-04-09T14:27:42.536495" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-09T14:27:42.536559" level="INFO">See also file:///Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/playwright-log.txt for additional details.</msg>
-<msg time="2024-04-09T14:27:42.536661" level="FAIL">Error: locator.click: Unexpected token "." while parsing selector "css:.modal-content .close"
-Call log:
-  [2m- waiting for css:.modal-content .close[22m
-</msg>
-<arg>css:.modal-content .close</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="FAIL" start="2024-04-09T14:27:42.408147" elapsed="0.132366">Error: locator.click: Unexpected token "." while parsing selector "css:.modal-content .close"
-Call log:
-  [2m- waiting for css:.modal-content .close[22m
-</status>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<arg>4s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2024-04-09T14:27:42.540678" elapsed="0.000026"/>
+<status status="PASS" start="2024-04-09T14:46:07.521400" elapsed="4.002044"/>
 </kw>
 <doc>Testaa kirjautumisen oikealla tunnuksella ja salasanalla</doc>
 <tag>positive auth</tag>
-<status status="FAIL" start="2024-04-09T14:27:31.793069" elapsed="10.747758">Error: locator.click: Unexpected token "." while parsing selector "css:.modal-content .close"
-Call log:
-  [2m- waiting for css:.modal-content .close[22m
-</status>
+<status status="PASS" start="2024-04-09T14:46:00.776925" elapsed="10.746823"/>
 </test>
-<status status="FAIL" start="2024-04-09T14:27:30.349994" elapsed="12.192763"/>
+<status status="PASS" start="2024-04-09T14:45:59.465964" elapsed="12.064058"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">positive auth</stat>
+<stat pass="1" fail="0" skip="0">positive auth</stat>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Logout">Logout</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Logout">Logout</stat>
 </suite>
 </statistics>
 <errors>

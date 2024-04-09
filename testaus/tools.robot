@@ -22,6 +22,10 @@ Oikea tunnus ja salasana
 
     Click    css=.navbar-menu > a[href='tools.html']
     Sleep    2s
-
-    Click    css=a.nav-link.nav-link-right
+    Click    css=#avaaNappi1
     Sleep    4s
+    Click    css:.modal-content .close
+    Sleep    4s
+
+    
+
