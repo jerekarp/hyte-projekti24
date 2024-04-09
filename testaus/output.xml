@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <robot generator="Robot 7.0 (Python 3.10.0 on win32)" generated="2024-04-08T18:03:37.213080" rpa="false" schemaversion="5">
 <suite id="s1" name="Data-Analysis" source="C:\Users\Jere\hyte24\hyte-projekti24\testaus\data-analysis.robot">
 <test id="s1-t1" name="Kirjaudutaan sisään ja navigoidaan sovelluksen Data-sivulle" line="11">
 <kw name="New Browser" owner="Browser">
 <msg time="2024-04-08T18:03:37.924180" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Jere\\hyte24\\hyte-projekti24\\testaus\\browser\\traces\\7e4e7360-cb1f-4b96-acdd-84b3717a5431"}</msg>
 <msg time="2024-04-08T18:03:38.249311" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Jere\\hyte24\\hyte-projekti24\\testaus\\browser\\traces\\7e4e7360-cb1f-4b96-acdd-84b3717a5431"}</msg>
+=======
+<robot generator="Robot 7.0 (Python 3.11.5 on darwin)" generated="2024-04-09T14:45:59.465442" rpa="false" schemaversion="5">
+<suite id="s1" name="Logout" source="/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/logout.robot">
+<test id="s1-t1" name="Oikea tunnus ja salasana" line="11">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-04-09T14:46:00.779841" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/browser/traces/fe0daf46-98cb-4e71-a7cf-10943d6ac8d5"}</msg>
+<msg time="2024-04-09T14:46:01.170964" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/browser/traces/fe0daf46-98cb-4e71-a7cf-10943d6ac8d5"}</msg>
+>>>>>>> roni
 <arg>${BROWSER}</arg>
 <arg>headless=false</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-08T18:03:37.924180" elapsed="0.325131"/>
 </kw>
 <kw name="New Context" owner="Browser">
 <msg time="2024-04-08T18:03:38.250309" level="INFO">{
+=======
+<status status="PASS" start="2024-04-09T14:46:00.778547" elapsed="0.392662"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2024-04-09T14:46:01.173004" level="INFO">{
+>>>>>>> roni
   "acceptDownloads": true,
   "bypassCSP": false,
   "forcedColors": "none",
@@ -23,6 +39,7 @@
   "reducedMotion": "no-preference",
   "serviceWorkers": "allow",
   "viewport": {
+<<<<<<< HEAD
     "height": 1080,
     "width": 1400
   }
@@ -37,20 +54,47 @@
 </kw>
 <kw name="New Page" owner="Browser">
 <msg time="2024-04-08T18:03:39.204757" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+=======
+    "width": 800,
+    "height": 600
+  }
+}</msg>
+<msg time="2024-04-09T14:46:01.181767" level="INFO">Successfully created context. </msg>
+<msg time="2024-04-09T14:46:01.181810" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 800, 'height': 600}}</msg>
+<arg>viewport={'width': 800, 'height': 600}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2024-04-09T14:46:01.171797" elapsed="0.010062"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2024-04-09T14:46:02.024415" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+>>>>>>> roni
 <arg>${URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-08T18:03:38.266266" elapsed="0.939489"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
 <msg time="2024-04-08T18:03:39.206752" level="INFO">Fills the text 'jerep.karppinen@gmail.com' in the given field.</msg>
+=======
+<status status="PASS" start="2024-04-09T14:46:01.182031" elapsed="0.842579"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-09T14:46:02.025610" level="INFO">Fills the text 'roni.timonen@metropolia.fi' in the given field.</msg>
+>>>>>>> roni
 <arg>//input[@id = 'email']</arg>
 <arg>${EMAIL}</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-08T18:03:39.205755" elapsed="0.041888"/>
+=======
+<status status="PASS" start="2024-04-09T14:46:02.024959" elapsed="0.039823"/>
+>>>>>>> roni
 </kw>
 <kw name="Fill Secret" owner="Browser">
 <arg>//input[@id='password']</arg>
@@ -59,7 +103,11 @@
 <tag>Setter</tag>
 <doc>Fills the given secret from ``variable_name`` into the
 text field found by ``selector``.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-08T18:03:39.248640" elapsed="0.014960"/>
+=======
+<status status="PASS" start="2024-04-09T14:46:02.064996" elapsed="0.056539"/>
+>>>>>>> roni
 </kw>
 <kw name="Click" owner="Browser">
 <msg time="2024-04-08T18:03:39.264598" level="INFO">Clicks the element '//input[@type='submit']'.</msg>
@@ -67,6 +115,7 @@ text field found by ``selector``.</doc>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-08T18:03:39.264598" elapsed="1.341413"/>
 </kw>
 <kw name="Click" owner="Browser">
@@ -97,16 +146,58 @@ text field found by ``selector``.</doc>
 <status status="PASS" start="2024-04-08T18:03:37.923182" elapsed="8.644892"/>
 </test>
 <status status="PASS" start="2024-04-08T18:03:37.215076" elapsed="9.356987"/>
+=======
+<status status="PASS" start="2024-04-09T14:46:02.121759" elapsed="0.925426"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>css=.navbar-menu &gt; a[href='tools.html']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-09T14:46:03.047535" elapsed="2.385892"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-09T14:46:07.435399" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-09T14:46:05.433790" elapsed="2.001956"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>css=a.nav-link.nav-link-right</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-09T14:46:07.436498" elapsed="0.084693"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-09T14:46:11.523265" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-09T14:46:07.521400" elapsed="4.002044"/>
+</kw>
+<doc>Testaa kirjautumisen oikealla tunnuksella ja salasanalla</doc>
+<tag>positive auth</tag>
+<status status="PASS" start="2024-04-09T14:46:00.776925" elapsed="10.746823"/>
+</test>
+<status status="PASS" start="2024-04-09T14:45:59.465964" elapsed="12.064058"/>
+>>>>>>> roni
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<<<<<<< HEAD
 <stat pass="1" fail="0" skip="0">login</stat>
 </tag>
 <suite>
 <stat pass="1" fail="0" skip="0" id="s1" name="Data-Analysis">Data-Analysis</stat>
+=======
+<stat pass="1" fail="0" skip="0">positive auth</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Logout">Logout</stat>
+>>>>>>> roni
 </suite>
 </statistics>
 <errors>
