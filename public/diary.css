@@ -1,19 +1,24 @@
 /* Navigaatiopalkki tyylittely */
 
 .navbar {
-  width: 100%;
+  width: auto;
+  left: 20px;
+  right: 20px;
+  margin-top: 20px;
   background-color: #044465;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   position: fixed;
   top: 0;
+  z-index: 2;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .navbar-menu {
   display: flex;
   justify-content: center; /* Aseta linkit keskelle */
-  width: 100%;
+  width: auto;
   padding: 0; /* Poista ylimääräinen sisäinen täyttö */
 }
 
@@ -83,11 +88,12 @@ header {
 }
 
 nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
+
 
 main {
     padding: 20px;
@@ -204,13 +210,14 @@ main {
   letter-spacing: 2px;
   font-weight: 700;
   box-shadow: inset 0 0 0 1px #044465;
-  background-color: transparent;
+  background-color: #044465;
+  color: #FFFFFF;
   cursor: pointer;
 }
 
 .createEntry:hover {
-    color: #fff;
-    background-color: #044465;
+    color: #044465;
+    background-color: transparent;
 }
 
 
@@ -219,8 +226,8 @@ main {
   width: auto;
   height: 15px;
   border-radius: 15px;
-  background: linear-gradient(to right, #FFC371, #fd5664);
-  opacity: 0.5; /* Makes it slightly transparent */
+  background: linear-gradient(to right, #0a0af9c9, #D3D3D3, #970000);
+  opacity: 0.6; /* Makes it slightly transparent */
 }
 
 .stress-slider::-webkit-slider-thumb {
