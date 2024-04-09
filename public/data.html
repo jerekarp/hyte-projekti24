@@ -33,13 +33,14 @@
                 </div>
                 <div>
                   <select id="chartSelection">
-                    <option value="all">Kaikki data</option>
-                    <option value="stress_index">Stressi</option>
-                    <option value="respiratory_rate">Hengitysnopeus</option>
-                    <option value="mean_hr_bpm">Keskimääräinen syke</option>
-                    <option value="readiness">Readiness</option>
+                    <option value="" selected disabled hidden>Vaihda datanäkymää</option>
+                    <option id="all" value="all">Kaikki data</option>
+                    <option id="stress_index" value="stress_index">Stressi</option>
+                    <option id="respiratory_rate" value="respiratory_rate">Hengitysnopeus</option>
+                    <option id="mean_hr_bpm" value="mean_hr_bpm">Keskimääräinen syke</option>
+                    <option id="readiness" value="readiness">Readiness</option>
                   </select>
-
+                
                 </div>
               </div>
 
@@ -47,7 +48,7 @@
             </div>
             <div class="col col-2">
               <div id="max-data-container">
-                <h1>Korkeimmat arvosi</h1>
+                <h1>Korkeimmat arvosi 30 päivän aikana:</h1>
                 <div id="max-data">
                   <!-- Tähän lisätään maksimiarvot -->
                 </div>
