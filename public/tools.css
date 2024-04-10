@@ -1,35 +1,38 @@
 /* Navigaatiopalkki tyylittely */
 
 .navbar {
-  width: 100%;
-  background-color: #044465;
+  width: auto;
+  left: 20px;
+  right: 20px;
+  margin-top: 20px;
+  background-color: #BEF6E0;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   position: fixed;
   top: 0;
+  z-index: 2;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .navbar-menu {
   display: flex;
-  align-items: center;
-  width: auto; /* Muuta width: 100% width: auto; jotta se vie vain tarvittavan tilan */
-  padding: 0;
+  justify-content: center; /* Aseta linkit keskelle */
+  width: auto;
+  padding: 0; /* Poista ylimääräinen sisäinen täyttö */
 }
 
 .nav-link {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  margin: 0 10px;
+  color: black;
+  margin: 0 10px; /* Lisää väliä linkkien välille */
 }
 
 .nav-link.nav-link-right {
-  margin-left: auto; /* Säilytä tämä pitääksesi Kirjaudu ulos -linkin oikealla */
+  margin-left: auto;
   margin-right: 30px;
-  white-space: nowrap;
+  white-space: nowrap; /* Estä tekstiä menemästä riville */
 }
-
-
 
 ol, ul {
 	list-style: none;
@@ -67,6 +70,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
