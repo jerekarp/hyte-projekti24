@@ -2,10 +2,12 @@
 
 .navbar {
   width: auto;
+  height: 100%;
   left: 20px;
   right: 20px;
   margin-top: 20px;
-  background-color: #044465;
+  background-color: rgba(4, 68, 101, 0.85);
+  box-shadow: 0 3px 10px white;
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -13,26 +15,47 @@
   z-index: 2;
   padding: 10px;
   border-radius: 10px;
+  height: 25px;
 }
 
 .navbar-menu {
   display: flex;
   justify-content: center; /* Aseta linkit keskelle */
+  align-items: center;
   width: auto;
   padding: 0; /* Poista ylimääräinen sisäinen täyttö */
+  height: 100%;
 }
 
 .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: rgb(255, 255, 255);
   margin: 0 10px; /* Lisää väliä linkkien välille */
+  height: 100%;
+  height: 25px;
+  padding: 0 7px;
 }
 
 .nav-link.nav-link-right {
+  display: flex;
   margin-left: auto;
-  margin-right: 30px;
+  margin-right: 20px;
   white-space: nowrap; /* Estä tekstiä menemästä riville */
+  align-items: center;
+  justify-content: flex-end;
+
 }
+
+/* Navigointipalkin hoverit */
+
+.nav-link:hover {
+  background-color: #0A8ECC;
+  border-radius: 5px;
+}
+
 
 
 ol, ul {

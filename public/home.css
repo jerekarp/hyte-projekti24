@@ -256,4 +256,7 @@ footer {
   .col {
     grid-column: span 12; /* Asettaa kaikki .col-elementit viemään koko rivin leveyden pienillä näytöillä */
   }
+  #banneri {
+    display: none;
+  }
 }
