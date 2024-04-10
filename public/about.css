@@ -130,6 +130,8 @@ main {
     margin-top: 100px;
     background-color: #04456560;
     width: 80%;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px white;
 }
 
 .container {
