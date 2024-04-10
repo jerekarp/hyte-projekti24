@@ -146,7 +146,7 @@ main {
     background-color: transparent;
     border-radius: 20px;
     box-shadow: 0 3px 10px #044465;
-    background-color: #044465;
+    background-color: rgba(4, 68, 101, 0.85);
 
 }
 
@@ -222,7 +222,7 @@ main {
 
 #max-data-container {
     text-align: center;
-    background-color: #044465;
+    background-color: rgba(4, 68, 101, 0.85);
     color: white;
     padding: 2px;
     border-radius: 20px;
