@@ -150,7 +150,6 @@ main {
 
 .col-2 {
     grid-column: span 6;
-    height: 50%;
 }
 
 .col-1 h3, .col-2 h3 {
@@ -251,7 +250,7 @@ main {
   width: auto;
   height: 15px;
   border-radius: 15px;
-  background: linear-gradient(to right, #0a0af9c9, #D3D3D3, #970000);
+  background: linear-gradient(to right, #CFF0CC, #FFFACD, #FFB6C1);
   opacity: 0.6; /* Makes it slightly transparent */
 }
 
@@ -333,14 +332,14 @@ main {
   outline: none;
   line-height: 1;
   letter-spacing: 2px;;
-  background-color: #8088feb0;
-  color: rgb(3, 3, 3);
+  background-color:  #056398;
+  color: rgb(255, 255, 255);
 }
 
 .mood-option-button:hover {
   cursor: pointer;
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-  background-color: #bef6e0a7;
+  background-color: #a3d2d9;
   color: #000000;
   transform: scale(1.3);
   padding: 10px;
@@ -350,7 +349,7 @@ main {
 
 .calendar {
   margin-top: 2.5rem;
-  height: 30rem;
+  height: 33rem;
   width: 80%;
   background-color: white;
   border-radius: 26px;
@@ -361,7 +360,7 @@ main {
 
 
 .calendar-header {
-  background: #8089FE;
+  background: #056398;
   display: flex;
   justify-content: space-between;
   border-radius: 7px;
@@ -392,7 +391,7 @@ main {
 .calendar-week-days div {
   display: grid;
   place-items: center;
-  color: #6D67CF;
+  color: #056398;
   height: 50px;
 }
 
@@ -437,7 +436,7 @@ main {
 
 
 .year-change:hover {
-  background-color: #9796f0;
+  background-color: #056398;
   transition: all .2s ease-in-out;
   transform: scale(1.12);
 }
@@ -461,14 +460,14 @@ main {
 
 .calendar-days div:hover {
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-  background-color: #fbc7d4;
+  background-color: #a3d2d9;
   border-radius: 20%;
   color: #f8fbff;
 }
 
 .calendar-days div.current-date {
   color: #f8fbff;
-  background-color: #9796f0;
+  background-color: #056398;
   border-radius: 20%;
 }
 
@@ -498,7 +497,7 @@ main {
 }
 
 .month-list>div>div:hover {
-  background-color: #9796f0;
+  background-color: #056298c4;
   color: #f8fbff;
   transform: scale(0.9);
   transition: all 0.2s ease-in-out;
@@ -536,7 +535,7 @@ main {
   font-family: Microsoft JhengHei UI;
   font-size: 1.4rem;
   padding-right: 5%;
-  border-right: 3px solid #9796f0;
+  border-right: 3px solid #056398;
 }
 
 .date-time-value {
