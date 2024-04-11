@@ -6,3 +6,4 @@ db/create-db-user.sql
 testaus/login_variables.resource
 testaus/output.xml
 testaus/playwright-log.txt
+testaus/apitesti/restful_healthdiary_keywords.resource
