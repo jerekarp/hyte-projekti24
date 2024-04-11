@@ -180,6 +180,12 @@ button {
   justify-content: space-between;
 }
 
+.col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover, .col-5:hover, .col-6:hover {
+  border: 2px solid #044565c4;
+  box-shadow: 0 0 10px #044565c4;
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   color: black;
