@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.9.13 on win32)" generated="2024-04-11T11:22:39.518068" rpa="false" schemaversion="5">
+<suite id="s1" name="Restful Healthdiary" source="C:\Users\jerep\AMK\HyTe\hyte-projekti24\testaus\apitesti\restful_healthdiary.robot">
+<kw name="Authenticate as Admin" owner="restful_healthdiary_keywords" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-11T11:22:39.745613" level="INFO">${body} = {'username': 'testeri', 'password': 'testeri1'}</msg>
+<var>${body}</var>
+<arg>username=testeri</arg>
+<arg>password=testeri1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-11T11:22:39.744591" elapsed="0.001022"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-11T11:22:40.105587" level="INFO">POST Request : url=https://healthdiary.northeurope.cloudapp.azure.com/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '47', 'Content-Type': 'application/json'} 
+ body=b'{"username": "testeri", "password": "testeri1"}' 
+ </msg>
+<msg time="2024-04-11T11:22:40.106108" level="INFO">POST Response : url=https://healthdiary.northeurope.cloudapp.azure.com/api/auth/login 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 11 Apr 2024 08:22:38 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '480', 'ETag': 'W/"1e0-w9EveDjtwNVNn8Dub0cAJOp8r9M"', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive'} 
+ body={"message":"logged in successfully","user":{"user_id":5,"username":"testeri","email":"testeri@testeri1.com","created_at":"2024-03-14T09:01:15.000Z","user_level":"regular"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzEyODIzNzU4LCJleHAiOjE3MTI5MTAxNTh9.4c7M7StgNxUAEGoMIDLkzdGt9o8wxgIPvDoswV8VR9I"} 
+ </msg>
+<msg time="2024-04-11T11:22:40.106108" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>https://healthdiary.northeurope.cloudapp.azure.com/api/auth/login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-11T11:22:39.745613" elapsed="0.360495"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.107129" level="INFO">{'message': 'logged in successfully', 'user': {'user_id': 5, 'username': 'testeri', 'email': 'testeri@testeri1.com', 'created_at': '2024-03-14T09:01:15.000Z', 'user_level': 'regular'}, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzEyODIzNzU4LCJleHAiOjE3MTI5MTAxNTh9.4c7M7StgNxUAEGoMIDLkzdGt9o8wxgIPvDoswV8VR9I'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.106108" elapsed="0.001021"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.108132" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd...</msg>
+<var>${token}</var>
+<arg>${response.json()}[token]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.108132" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.109132" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzEyODIzNzU4LCJleHAiOjE3MTI5MTAxNTh9.4c7M7StgNxUAEGoMIDLkzdGt9o8wxgIPvDoswV8VR9I</msg>
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.108132" elapsed="0.001000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.109132" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd...</msg>
+<arg>${token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.109132" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-04-11T11:22:40.109132" elapsed="0.001000"/>
+</return>
+<doc>Authenticate as admin and return response</doc>
+<status status="PASS" start="2024-04-11T11:22:39.742958" elapsed="0.367174"/>
+</kw>
+<test id="s1-t1" name="Login test" line="9">
+<kw name="Authenticate as Admin" owner="restful_healthdiary_keywords">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.112117" level="INFO">${body} = {'username': 'testeri', 'password': 'testeri1'}</msg>
+<var>${body}</var>
+<arg>username=testeri</arg>
+<arg>password=testeri1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.112117" elapsed="0.000000"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-11T11:22:40.429308" level="INFO">POST Request : url=https://healthdiary.northeurope.cloudapp.azure.com/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '47', 'Content-Type': 'application/json'} 
+ body=b'{"username": "testeri", "password": "testeri1"}' 
+ </msg>
+<msg time="2024-04-11T11:22:40.429308" level="INFO">POST Response : url=https://healthdiary.northeurope.cloudapp.azure.com/api/auth/login 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 11 Apr 2024 08:22:38 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '480', 'ETag': 'W/"1e0-w9EveDjtwNVNn8Dub0cAJOp8r9M"', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive'} 
+ body={"message":"logged in successfully","user":{"user_id":5,"username":"testeri","email":"testeri@testeri1.com","created_at":"2024-03-14T09:01:15.000Z","user_level":"regular"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzEyODIzNzU4LCJleHAiOjE3MTI5MTAxNTh9.4c7M7StgNxUAEGoMIDLkzdGt9o8wxgIPvDoswV8VR9I"} 
+ </msg>
+<msg time="2024-04-11T11:22:40.430309" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>https://healthdiary.northeurope.cloudapp.azure.com/api/auth/login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.113114" elapsed="0.317195"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.431309" level="INFO">{'message': 'logged in successfully', 'user': {'user_id': 5, 'username': 'testeri', 'email': 'testeri@testeri1.com', 'created_at': '2024-03-14T09:01:15.000Z', 'user_level': 'regular'}, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzEyODIzNzU4LCJleHAiOjE3MTI5MTAxNTh9.4c7M7StgNxUAEGoMIDLkzdGt9o8wxgIPvDoswV8VR9I'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.430309" elapsed="0.001000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.432309" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd...</msg>
+<var>${token}</var>
+<arg>${response.json()}[token]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.432309" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.433309" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzEyODIzNzU4LCJleHAiOjE3MTI5MTAxNTh9.4c7M7StgNxUAEGoMIDLkzdGt9o8wxgIPvDoswV8VR9I</msg>
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.433309" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.433309" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd...</msg>
+<arg>${token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.433309" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-04-11T11:22:40.434309" elapsed="0.000000"/>
+</return>
+<msg time="2024-04-11T11:22:40.434309" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<doc>Authenticate as admin and return response</doc>
+<status status="PASS" start="2024-04-11T11:22:40.111114" elapsed="0.323195"/>
+</kw>
+<kw name="Check Response Status Code Should Be 200" owner="restful_healthdiary_keywords">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.436778" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.436258" elapsed="0.000520"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.437800" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.436778" elapsed="0.001022"/>
+</kw>
+<arg>${response}</arg>
+<status status="PASS" start="2024-04-11T11:22:40.435738" elapsed="0.002062"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.437800" level="INFO">Authentication successful</msg>
+<arg>Authentication successful</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.437800" elapsed="0.001415"/>
+</kw>
+<doc>Authenticate and verify status code</doc>
+<status status="PASS" start="2024-04-11T11:22:40.110132" elapsed="0.329083"/>
+</test>
+<test id="s1-t2" name="Fetch Diary Entries" line="16">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.443144" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwW...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.442122" elapsed="0.001022"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-04-11T11:22:40.642925" level="INFO">GET Request : url=https://healthdiary.northeurope.cloudapp.azure.com/api/entries 
+ path_url=/api/entries 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InRlc3RlcmkiLCJlbWFpbCI6InRlc3RlcmlAdGVzdGVyaTEuY29tIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDMtMTRUMDk6MDE6MTUuMDAwWiIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzEyODIzNzU4LCJleHAiOjE3MTI5MTAxNTh9.4c7M7StgNxUAEGoMIDLkzdGt9o8wxgIPvDoswV8VR9I'} 
+ body=None 
+ </msg>
+<msg time="2024-04-11T11:22:40.642925" level="INFO">GET Response : url=https://healthdiary.northeurope.cloudapp.azure.com/api/entries 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 11 Apr 2024 08:22:38 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1994', 'ETag': 'W/"7ca-4bJ6tr+pu5EoD0AMDe0eFLmd7KM"', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive'} 
+ body=[{"entry_id":7,"user_id":5,"entry_date":"2024-01-11T00:00:00.000Z","mood":"Tired","weight":"74.00","sleep_hours":6,"notes":"Long day at work, need rest","created_at":"2024-01-11T20:00:00.000Z"},{"entry_id":8,"user_id":5,"entry_date":"2024-01-10T00:00:00.000Z","mood":"Stressed","weight":"65.00","sleep_hours":7,"notes":"Busy day, a bit stressed out","created_at":"2024-01-10T21:00:00.000Z"},{"entry_id":9,"user_id":5,"entry_date":"2024-01-10T00:00:00.000Z","mood":"Stressed","weight":"65.00","sleep_hours":6,"notes":"Busy day, a bit stressed out","created_at":"2024-01-10T21:00:00.000Z"},{"entry_id":10,"user_id":5,"entry_date":"2024-01-10T00:00:00.000Z","mood":"Stressed","weight":"90.00","sleep_hours":7,"notes":"Feeling overwhelmed","created_at":"2024-01-20T19:00:00.000Z"},{"entry_id":11,"user_id":5,"entry_date":"2024-01-17T00:00:00.000Z","mood":"Exhausted","weight":"91.00","sleep_hours":5,"notes":"Feeling burnt out","created_at":"2024-01-21T22:30:00.000Z"},{"entry_id":13,"user_id":5,"entry_date":"2024-01-12T00:00:00.000Z","mood":"Energetic","weight":"70.00","sleep_hours":9,"notes":"Slept well, feeling good","created_at":"2024-01-10T20:00:00.000Z"},{"entry_id":19,"user_id":5,"entry_date":"2024-03-14T00:00:00.000Z","mood":"Helpottunut","weight":"56.00","sleep_hours":2,"notes":"Alkaa olemaan valmista","created_at":"2024-03-17T10:40:43.000Z"},{"entry_id":23,"user_id":5,"entry_date":"2024-03-18T00:00:00.000Z","mood":"Stressaantunut","weight":"60.10","sleep_hours":2,"notes":"Ei kannata hajottaa täysin toimivaa koodia 4h ennen palautusta","created_at":"2024-03-18T18:59:40.000Z"},{"entry_id":25,"user_id":5,"entry_date":"2024-03-22T00:00:00.000Z","mood":"Quite great","weight":"60.00","sleep_hours":8,"notes":"Slept well, feeling good","created_at":"2024-03-22T12:24:25.000Z"},{"entry_id":26,"user_id":5,"entry_date":"2024-03-22T00:00:00.000Z","mood":"Innostunut","weight":"23.00","sleep_hours":8,"notes":"Nukuin hyvin, viikonloppu alkaa","created_at":"2024-03-22T12:53:07.000Z"}] 
+ </msg>
+<msg time="2024-04-11T11:22:40.643935" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>https://healthdiary.northeurope.cloudapp.azure.com/api/entries</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.443525" elapsed="0.200410"/>
+</kw>
+<kw name="Check Response Status Code Should Be 200" owner="restful_healthdiary_keywords">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.646935" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.645934" elapsed="0.002003"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.648938" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.647937" elapsed="0.001001"/>
+</kw>
+<arg>${response}</arg>
+<status status="PASS" start="2024-04-11T11:22:40.644934" elapsed="0.004004"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.651938" level="INFO">${entries} = [{'entry_id': 7, 'user_id': 5, 'entry_date': '2024-01-11T00:00:00.000Z', 'mood': 'Tired', 'weight': '74.00', 'sleep_hours': 6, 'notes': 'Long day at work, need rest', 'created_at': '2024-01-11T20:00:0...</msg>
+<var>${entries}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.649936" elapsed="0.002002"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-11T11:22:40.653090" level="INFO">[{'entry_id': 7, 'user_id': 5, 'entry_date': '2024-01-11T00:00:00.000Z', 'mood': 'Tired', 'weight': '74.00', 'sleep_hours': 6, 'notes': 'Long day at work, need rest', 'created_at': '2024-01-11T20:00:00.000Z'}, {'entry_id': 8, 'user_id': 5, 'entry_date': '2024-01-10T00:00:00.000Z', 'mood': 'Stressed', 'weight': '65.00', 'sleep_hours': 7, 'notes': 'Busy day, a bit stressed out', 'created_at': '2024-01-10T21:00:00.000Z'}, {'entry_id': 9, 'user_id': 5, 'entry_date': '2024-01-10T00:00:00.000Z', 'mood': 'Stressed', 'weight': '65.00', 'sleep_hours': 6, 'notes': 'Busy day, a bit stressed out', 'created_at': '2024-01-10T21:00:00.000Z'}, {'entry_id': 10, 'user_id': 5, 'entry_date': '2024-01-10T00:00:00.000Z', 'mood': 'Stressed', 'weight': '90.00', 'sleep_hours': 7, 'notes': 'Feeling overwhelmed', 'created_at': '2024-01-20T19:00:00.000Z'}, {'entry_id': 11, 'user_id': 5, 'entry_date': '2024-01-17T00:00:00.000Z', 'mood': 'Exhausted', 'weight': '91.00', 'sleep_hours': 5, 'notes': 'Feeling burnt out', 'created_at': '2024-01-21T22:30:00.000Z'}, {'entry_id': 13, 'user_id': 5, 'entry_date': '2024-01-12T00:00:00.000Z', 'mood': 'Energetic', 'weight': '70.00', 'sleep_hours': 9, 'notes': 'Slept well, feeling good', 'created_at': '2024-01-10T20:00:00.000Z'}, {'entry_id': 19, 'user_id': 5, 'entry_date': '2024-03-14T00:00:00.000Z', 'mood': 'Helpottunut', 'weight': '56.00', 'sleep_hours': 2, 'notes': 'Alkaa olemaan valmista', 'created_at': '2024-03-17T10:40:43.000Z'}, {'entry_id': 23, 'user_id': 5, 'entry_date': '2024-03-18T00:00:00.000Z', 'mood': 'Stressaantunut', 'weight': '60.10', 'sleep_hours': 2, 'notes': 'Ei kannata hajottaa täysin toimivaa koodia 4h ennen palautusta', 'created_at': '2024-03-18T18:59:40.000Z'}, {'entry_id': 25, 'user_id': 5, 'entry_date': '2024-03-22T00:00:00.000Z', 'mood': 'Quite great', 'weight': '60.00', 'sleep_hours': 8, 'notes': 'Slept well, feeling good', 'created_at': '2024-03-22T12:24:25.000Z'}, {'entry_id': 26, 'user_id': 5, 'entry_date': '2024-03-22T00:00:00.000Z', 'mood': 'Innostunut', 'weight': '23.00', 'sleep_hours': 8, 'notes': 'Nukuin hyvin, viikonloppu alkaa', 'created_at': '2024-03-22T12:53:07.000Z'}]</msg>
+<arg>${entries}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-11T11:22:40.653090" elapsed="0.001127"/>
+</kw>
+<doc>Get diary entries</doc>
+<status status="PASS" start="2024-04-11T11:22:40.440747" elapsed="0.213470"/>
+</test>
+<status status="PASS" start="2024-04-11T11:22:39.523380" elapsed="1.133415"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Restful Healthdiary">Restful Healthdiary</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-04-11T11:22:39.738498" level="WARN">Error in file 'C:\Users\jerep\AMK\HyTe\hyte-projekti24\testaus\apitesti\restful_healthdiary_keywords.resource' on line 10: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>
