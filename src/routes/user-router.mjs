@@ -6,6 +6,7 @@ import {
   postUser,
   putUser,
   deleteUser,
+  putUserInfo,
 } from '../controllers/user-controller.mjs';
 import {authenticateToken} from '../middlewares/authentication.mjs';
 import {validationErrorHandler} from '../middlewares/error-handler.mjs';
@@ -257,5 +258,12 @@ userRouter
   validationErrorHandler,
   deleteUser,
 );
+
+userRouter
+  .route('/info')
+  .get()
+  .put(putUserInfo)
+  .post();
+
 
 export default userRouter;

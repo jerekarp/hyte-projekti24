@@ -5,6 +5,7 @@ import {
   listAllUsers,
   selectUserById,
   updateUserById,
+  insertStudentInfo,
 } from '../models/user-model.mjs';
 import {customError} from '../middlewares/error-handler.mjs';
 
@@ -108,5 +109,32 @@ const deleteUser = async (req, res, next) => {
   return res.json(result);
 };
 
+const putUserInfo = async (req, res) => {
+  const {
+    user_id,
+    first_name,
+    surname,
+    student_number,
+    weight,
+    height,
+    age,
+    gender,
+    stress_level
+  } = req.body;
 
-export {getUsers, getUserById, postUser, putUser, deleteUser};
+  if (!user_id || !first_name || !surname) {
+    return res.status(400).json({error: 'required information is missing.'});
+  }
+  try {
+    const result = await insertStudentInfo(user_id, first_name, surname, student_number, weight, height, age, gender, stress_level);
+
+    if (result.error) {
+      return res.status(500).json({error: result.error});
+    }
+    res.status(201).json({message: 'Student information added successfully', student_id: result.student_id});
+  } catch (error) {
+    res.status(500).json({error: 'Internal server error'});
+  }
+};
+
+export {getUsers, getUserById, postUser, putUser, deleteUser, putUserInfo};

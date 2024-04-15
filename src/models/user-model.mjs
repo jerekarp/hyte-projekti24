@@ -144,6 +144,32 @@ const selectUserByEmail = async (email) => {
   }
 };
 
+const insertStudentInfo = async (userId, first_name, surname, student_number, weight, height, age, gender, stress_level) => {
+  const sql = `INSERT INTO student_info
+              (user_id, first_name, surname, student_number, weight, height, age, gender, stress_level)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const params = [
+    userId,
+    first_name,
+    surname,
+    student_number,
+    weight,
+    height,
+    age,
+    gender,
+    stress_level
+  ];
+  try {
+    const result = await promisePool.query(sql, params);
+    const insertedId = result[0].insertId; // Oletetaan, että käytät MySQL ja Node.js:n mysql2-kirjastoa
+    return { student_id: insertedId };
+  } catch (e) {
+    console.error('error', e.message);
+    return { error: e.message };
+  }
+};
+
+
 export {
   listAllUsers,
   selectUserById,
@@ -151,5 +177,6 @@ export {
   updateUserById,
   deleteUserById,
   selectUserByUsername,
-  selectUserByEmail
+  selectUserByEmail,
+  insertStudentInfo
 };
