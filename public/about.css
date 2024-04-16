@@ -96,13 +96,15 @@ input, select, textarea {
 /* Sivuston perusrunko, 12 column grid */
 
 body {
-    background-image: url(images/diarytausta.webp);
+    /* background-image: url(images/diarytausta.webp);
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; */
+    background: linear-gradient(to bottom, #044465, #0A8ECC, #1EB9CF, #BEF6E0);
 
     font-family: Arial, sans-serif;
     margin: 0;
+    margin-top: 130px;
     padding: 0;
     -webkit-text-size-adjust: none;
 }
@@ -130,7 +132,7 @@ main {
     margin-top: 100px;
     width: 80%;
     border-radius: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 
 .container {
@@ -139,7 +141,7 @@ main {
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 20px;
     max-width: 1200px;
-    margin: 10px
+    margin: 10px;
 }
 
 .col {
@@ -200,7 +202,7 @@ button {
 .modal {
   display: none; /* Piilotetaan modal oletusarvoisesti */
   position: fixed; /* Pysyy paikoillaan sivun vierityksen aikana */
-  z-index: 1; /* Sijoitetaan modal sisällön päälle */
+  z-index: 2000; /* Sijoitetaan modal sisällön päälle */
   left: 0;
   top: 0;
   width: 100%; /* Leveys */
@@ -219,7 +221,7 @@ button {
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  margin-top: 200px;
+  margin-top: 100px;
   margin-bottom: 200px;
   padding: 20px;
   border: 1px solid #888;
@@ -261,6 +263,17 @@ button {
 
 } */
 
+#zenbot-image {
+  max-width: 130px; /* Aseta maksimileveydeksi 100% */
+  height: auto; /* Korkeus automaattisesti */
+  position: absolute;
+  top: 80px; /* Kiinnitä yläreunaan */
+  left: 50%; /* Keskitä vaakasuunnassa */
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+
 #chat-output {
   height: 300px;
   overflow-y: auto;
@@ -275,6 +288,7 @@ button {
 }
 
 #chatbutton {
+  margin-top: 20px;
   width: 80px;
   height: 34px;
   background-color: #0A8ECC;
@@ -320,18 +334,7 @@ button {
     grid-column: span 4;
 } */
 
-/* Footer */
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
 
 /* Responsiivisuus */
 
@@ -340,7 +343,7 @@ footer {
   main {
     width: 80%;
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 140px;
   }
   .container {
       margin: auto;
@@ -354,4 +357,124 @@ footer {
       grid-column: span 12; /* Overrides any existing span settings */
   }
 
+}
+
+/* Footer */
+
+/* Footer */
+
+.footer {
+  position: relative;
+  max-width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 5s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 5s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
 }

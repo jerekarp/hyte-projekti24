@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var modal = document.getElementById("myModal2");
   var btn = document.getElementById("avaaNappi2");
-  var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementsByClassName("close2")[0];
   modal.style.display = "none";
 
   btn.addEventListener('click', function() {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var modal = document.getElementById("myModal3");
   var btn = document.getElementById("avaaNappi3");
-  var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementsByClassName("close3")[0];
   modal.style.display = "none";
 
   btn.addEventListener('click', function() {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var modal = document.getElementById("myModal4");
   var btn = document.getElementById("avaaNappi4");
-  var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementsByClassName("close4")[0];
   modal.style.display = "none";
 
   btn.addEventListener('click', function() {

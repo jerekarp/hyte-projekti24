@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -9,8 +8,6 @@
     <title>Info</title>
 </head>
 <body>
-
-
   <nav class="navbar">
     <div class="navbar-menu">
         <a href="home.html" class="nav-link">Etusivu</a>
@@ -22,46 +19,106 @@
     <a href="index.html" class="nav-link nav-link-right">Kirjaudu ulos</a>
   </nav>
 
-      <main>
-        <p style="text-align: center; color: black; font-size: large;"><strong>Info</strong></p>
-        <div class="container">
-            <div class="col col-1">
-              <h3>Opiskeluterveydenhuollon yhteystiedot:</h3>
-              <img id="nurse" src="images/terkkari.webp" alt="Terveydenhuollon ammattilainen">
-              <div id="nursecard">
-                <h4>Tiina Terkkari</h4>
-                <p>tiina.terkkari@zenbeat.com</p>
-                <p>0400 123 456 78</p>
-              </div>
-            </div>
+  <main>
+    <div class="container">
+      <!-- Zenbot Chat ensimmäisenä -->
+      <div class="col col-4">
+          <img src="images/Zenbot.png" alt="Zenbot" id="zenbot-image">
+          <h3>Zenbot Chat</h3>
+          <div id="chat-output"></div>
+          <input type="text" id="chat-input" placeholder="Kirjoita viesti..." autofocus>
+          <button id="chatbutton" onclick="sendMessage(document.getElementById('chat-input').value)">Lähetä</button>
+      </div>
 
-            <div class="col col-2">
-              <h3>Kriisipäivystys:</h3>
-              <div id="kriisipäivystys">
-              <h4>Tukea ja apua:</h4><a href="https://mieli.fi/tukea-ja-apua/">mieli.fi</a>
-              <p>09 2525 0111</p>
-            </div>
-            </div>
-
-            <div class="col col-3">
-              <button id="avaaNappi">Sovelluksen käyttöohjeet</button>
-              <!-- <div class="instructions">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui praesentium quidem dolores aut, excepturi eius consequatur minima quos, sequi tempora expedita rem aperiam nulla earum sed inventore repellat vel delectus?</p>
-              </div> -->
-            </div>
-
-            <div class="col col-4">
-                <h3>Zenbot Chat</h3>
-                <div id="chat-output"></div>
-                <input type="text" id="chat-input" placeholder="Kirjoita viesti..." autofocus>
-                <button id="chatbutton" onclick="sendMessage()">Lähetä</button>
-            </div>
-
+<<<<<<< HEAD
             </div>
           </div>
       </main>
     <footer>
         <!-- Alatunniste ja footer-elementit sijoitetaan tänne -->
     </footer>
+=======
+      <!-- Opiskeluterveydenhuollon yhteystiedot seuraavana -->
+      <div class="col col-1">
+        <h3>Opiskeluterveydenhuollon yhteystiedot:</h3>
+        <img id="nurse" src="images/terkkari.webp" alt="Terveydenhuollon ammattilainen">
+        <div id="nursecard">
+          <h4>Tiina Terkkari</h4>
+          <p>tiina.terkkari@zenbeat.com</p>
+          <p>0400 123 456 78</p>
+        </div>
+      </div>
+
+      <!-- Kriisipäivystys -->
+      <div class="col col-2">
+        <h3>Kriisipäivystys:</h3>
+        <div id="kriisipäivystys">
+        <h4>Tukea ja apua:</h4><a href="https://mieli.fi/tukea-ja-apua/">mieli.fi</a>
+        <p>09 2525 0111</p>
+      </div>
+      </div>
+
+      <!-- Sovelluksen käyttöohjeet -->
+      <div class="col col-3">
+        <button id="avaaNappi">Sovelluksen käyttöohjeet</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+      <li class="menu__item"><a class="menu__link" href="etusivu.html">Etusivu</a></li>
+      <li class="menu__item"><a class="menu__link" href="diary.html">Päiväkirja</a></li>
+      <li class="menu__item"><a class="menu__link" href="data.html">Data</a></li>
+      <li class="menu__item"><a class="menu__link" href="about.html">Info</a></li>
+      <li class="menu__item"><a class="menu__link" href="tools.html">Työkalut</a></li>
+
+    </ul>
+    <p>&copy;2024 ZenBeat</p>
+  </footer>
+
+
+  <div id="myModal" class="modal">
+    <!-- Modal sisältö -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Ohjeet sovelluksen käyttöön:</h2>
+      <h4>Etusivu:</h4>
+      <p>Etusivulta näät sovelluksen kokonaiskuvan, sieltä voit jatkaa matkaasi Päiväkirja, Data, Info tai työkalut sivuille.</p>
+      <p>Etusivun alaosasta pääset tarkastelemaan viimeisimpiä päiväkirjamerkintöjäsi ja mittaustuloksia.</p>
+      <h4>Päiväkirja:</h4>
+      <p>Päiväkirjasivulla kirjaamaan omat päiväkirjasivusi, sivulla täytetään lomake joka tarjoaa kattavan kokonaisuuden hyvinvointisi seuraamiseen.</p>
+      <p>Päiväkirjamekintää täyttäessäsi, sinun täytyy vain valita päivämäärä jonka ajalle haluat kirjauksen tehdä, täyttää tiedot ja painaa "Tallenna".</p>
+      <h4>Data:</h4>
+      <p>Data sivulla pääset tarkastelemaan diagrammia, josta näät menneet mittauksesi, riippuen siitä kuinka monta pittausta olet suorittanut KubiosHRV sovelluksen kautta.</p>
+      <p>Sivun alaosasta näät keskimääräiset mittaustuloksesi.</p>
+      <h4>Työkalut:</h4>
+      <p>Työkalut sivulla pääset perehtymään erilaisiin stressiä lievittäviin harjoituksiin, perehdy ja kokeile, näin löydät itsellesi sopivimmat työkalut stressittömämpään elämään.</p>
+    </div>
+  </div>
+  <script src="about.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+>>>>>>> roni
 </body>
 </html>
