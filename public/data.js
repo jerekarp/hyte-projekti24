@@ -3,104 +3,108 @@ import { fetchData } from './fetch.js';
 
 // TODO: Käyttäjälle vaihtoehto suodattaa dataa (esim. viikottain, kuukausittain, kalenteri???)
 document.addEventListener('DOMContentLoaded', function() {
-    const data = {
+  const data = {
       labels: [], // Tyhjä taulukko alustetaan, nimet päivitetään myöhemmin
       datasets: []
-    };
+  };
 
-    const config = {
+  const config = {
       type: 'bar', // bar, line etc
       data: data,
       options: {
-        scales: {
-          y: {
-            beginAtZero: true
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
           }
-        }
       }
-    };
+  };
 
-    const myChart = new Chart(document.getElementById('myChart'), config);
-    const chartSelection = document.getElementById('chartSelection');
-    const maxDataElement = document.getElementById('max-data'); // Lisää maksimiarvot tähän elementtiin
+  const myChart = new Chart(document.getElementById('myChart'), config);
+  const chartSelection = document.getElementById('chartSelection');
+  const maxDataElement = document.getElementById('max-data'); // Lisää maksimiarvot tähän elementtiin
 
-    chartSelection.addEventListener('change', function() {
+  chartSelection.addEventListener('change', function() {
       const selectedValue = chartSelection.value;
       updateChartWithData(selectedValue);
-    });
+  });
 
-    async function updateChartWithData(selectedValue) {
+  async function updateChartWithData(selectedValue) {
       try {
-        const token = localStorage.getItem("token");
-        const url = 'http://127.0.0.1:3000/api/kubios/filtered-data';
-        const options = {
-          method: "GET",
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        };
+          const token = localStorage.getItem("token");
+          const url = 'http://127.0.0.1:3000/api/kubios/filtered-data';
+          const options = {
+              method: "GET",
+              headers: {
+                  Authorization: "Bearer " + token,
+              },
+          };
 
-        const responseData = await fetchData(url, options);
-        console.log(responseData)
+          const responseData = await fetchData(url, options);
+          console.log(responseData)
 
-        if (responseData.status === 'ok' && responseData.filteredData && responseData.maxValues) {
-            let filteredData = responseData.filteredData;
-            let maxValues = responseData.maxValues;
-          
-            // Päivitetään maksimiarvot max-data-elementtiin
-            maxDataElement.innerHTML = '';
-            Object.keys(maxValues).forEach(param => {
-                let value = maxValues[param];
-                // Tarkistetaan, onko parametri stress_index ja pyöristetään se yhden desimaalin tarkkuuteen
-                if (param === 'stress_index') {
-                  value = Math.round(value * 10) / 10; // Pyöristetään yhden desimaalin tarkkuuteen
-                } else {
-                  value = Math.round(value); // Pyöristetään muut parametrit kokonaislukuun
-                }
-                const p = document.createElement('p');
-                p.textContent = `${getUserFriendlyName(param)}: ${value}`;
-                maxDataElement.appendChild(p);
-            });
+          if (responseData.status === 'ok' && responseData.filteredData && responseData.maxValues) {
+              let filteredData = responseData.filteredData;
+              let maxValues = responseData.maxValues;
 
-          let selectedLabel = '';
-          if (selectedValue === 'all') { // Lisätään 'all' vaihtoehto
-            selectedLabel = 'Kaikki data';
-            // Päivitetään kaavion data kaikille valituille arvoille
-            myChart.data.labels = filteredData.map(entry => formatDate(entry.measured_timestamp));
-            myChart.data.datasets = Object.keys(filteredData[0]).filter(key => key !== 'measured_timestamp' && key !== 'rmssd_ms').map((key, index) => {
-              return {
-                label: getUserFriendlyName(key),
-                data: filteredData.map(entry => entry[key]),
-                backgroundColor: getBackgroundColor(index),
-                borderColor: getBorderColor(index), 
-                borderWidth: 1
-              };
-            });
+              // Päivitetään maksimiarvot max-data-elementtiin
+              maxDataElement.innerHTML = '';
+              Object.keys(maxValues).forEach(param => {
+                  let value = maxValues[param];
+                  // Tarkistetaan, onko parametri stress_index ja pyöristetään se yhden desimaalin tarkkuuteen
+                  if (param === 'stress_index') {
+                      value = Math.round(value * 10) / 10; // Pyöristetään yhden desimaalin tarkkuuteen
+                  } else {
+                      value = Math.round(value); // Pyöristetään muut parametrit kokonaislukuun
+                  }
+                  const p = document.createElement('p');
+                  p.textContent = `${getUserFriendlyName(param)}: ${value}`;
+                  maxDataElement.appendChild(p);
+              });
+
+              let selectedLabel = '';
+              let chartType = 'bar';
+              if (selectedValue === 'all') { // Lisätään 'all' vaihtoehto
+                  selectedLabel = 'Kaikki data';
+                  chartType = 'bar';
+              } else {
+                  // Muutetaan labeli ja päivitetään kaavion data valitun arvon mukaan
+                  selectedLabel = getUserFriendlyName(selectedValue)
+                  chartType = 'line';
+              }
+
+              myChart.config.type = chartType; // Vaihdetaan kaaviotyyppi
+              myChart.data.labels = filteredData.map(entry => formatDate(entry.measured_timestamp));
+              myChart.data.datasets = (selectedValue === 'all') ?
+                  Object.keys(filteredData[0]).filter(key => key !== 'measured_timestamp' && key !== 'rmssd_ms').map((key, index) => {
+                      return {
+                          label: getUserFriendlyName(key),
+                          data: filteredData.map(entry => entry[key]),
+                          backgroundColor: getBackgroundColor(index),
+                          borderColor: getBorderColor(index),
+                          borderWidth: 1
+                      };
+                  }) :
+                  [{
+                      label: selectedLabel,
+                      data: filteredData.map(entry => entry[selectedValue]),
+                      backgroundColor: getColor(selectedValue),
+                      borderColor: getColor(selectedValue),
+                      borderWidth: 1
+                  }];
+
+              myChart.update();
           } else {
-            // Muutetaan labeli ja päivitetään kaavion data valitun arvon mukaan
-            selectedLabel = getUserFriendlyName(selectedValue)
-    
-            myChart.data.labels = filteredData.map(entry => formatDate(entry.measured_timestamp));
-            myChart.data.datasets = [{
-              label: selectedLabel,
-              data: filteredData.map(entry => entry[selectedValue]),
-              backgroundColor: getColor(selectedValue), 
-              borderColor: getColor(selectedValue), 
-              borderWidth: 1
-            }];
+              console.error('Failed to fetch or parse data');
           }
-
-          myChart.update();
-        } else {
-          console.error('Failed to fetch or parse data');
-        }
       } catch (error) {
-        console.error('Error occurred while fetching data:', error);
+          console.error('Error occurred while fetching data:', error);
       }
-    }
+  }
 
-    updateChartWithData('all'); // Oletusarvoisesti näytetään kaikki data
+  updateChartWithData('all'); // Oletusarvoisesti näytetään kaikki data
 });
+
 
 // Apufunktio käyttäjäystävällisen nimen saamiseksi parametrille
 function getUserFriendlyName(param) {
