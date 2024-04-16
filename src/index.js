@@ -8,6 +8,7 @@ import entryRouter from './routes/entry-router.mjs';
 import cors from 'cors';
 import logger from './middlewares/logger.mjs';
 import authRouter from './routes/auth-router.mjs';
+import chatgptMiddleware from './middlewares/chatgpt.mjs';
 import kubiosRouter from './routes/kubios-router.mjs';
 import {errorHandler, notFoundHandler} from './middlewares/error-handler.mjs';
 const hostname = '127.0.0.1';
@@ -43,6 +44,9 @@ app.use('/api/entries', entryRouter);
 
 // Users resource (/api/users)
 app.use('/api/users', userRouter);
+
+// Käytetään chatgptMiddlewarea
+app.use('/api/chat', chatgptMiddleware);
 
 // User authentication
 app.use('/api/auth', authRouter);
