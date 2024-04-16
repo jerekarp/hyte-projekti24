@@ -261,9 +261,19 @@ userRouter
 
 userRouter
   .route('/info')
-  .get()
-  .put(putUserInfo)
-  .post();
-
+  .put(
+    authenticateToken,
+    body('user_id', 'User ID must be provided and be an integer').isInt(),
+    body('first_name', 'First name is required').not().isEmpty(),
+    body('surname', 'Surname is required').not().isEmpty(),
+    body('student_number', 'Student number is required').not().isEmpty(),
+    body('weight', 'Weight must be a valid number').isFloat(),
+    body('height', 'Height must be a valid number').isFloat(),
+    body('age', 'Age must be a valid integer').isInt(),
+    body('gender', 'Gender is required').not().isEmpty(),
+    body('stress_level', 'Stress level must be a valid integer').optional().isInt(),
+    validationErrorHandler,
+    putUserInfo
+  );
 
 export default userRouter;
