@@ -128,10 +128,9 @@ main {
     margin: auto;
     padding: 20px;
     margin-top: 100px;
-    background-color: #04456560;
     width: 80%;
     border-radius: 20px;
-    box-shadow: 0 3px 10px white;
+    margin-bottom: 100px;
 }
 
 .container {
@@ -190,16 +189,106 @@ a {
     grid-column: span 12;
 }
 
+button {
+  background-color: transparent;
+  font-size:larger;
+  border: none;
+  font-weight: bolder;
+}
+
+/* Modalin taustan tyyli */
+.modal {
+  display: none; /* Piilotetaan modal oletusarvoisesti */
+  position: fixed; /* Pysyy paikoillaan sivun vierityksen aikana */
+  z-index: 1; /* Sijoitetaan modal sisällön päälle */
+  left: 0;
+  top: 0;
+  width: 100%; /* Leveys */
+  height: 100%; /* Korkeus */
+  overflow: auto; /* Mahdollistaa vierityksen, jos tarpeen */
+
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+
+  display: flex; /* Lisätty keskittämiseen */
+  align-items: center; /* Vertikaalinen keskitys */
+  justify-content: center; /* Horisontaalinen keskitys */
+}
+
+/* Modalin sisällön tyyli */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Säädä leveyttä tarpeen mukaan */
+  border-radius: 20px; /* Pyöristetyt kulmat */
+}
+
+/* Sulje-napin tyyli */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 .instructions {
   display: inline-block
 
 }
 
-/* .col-4 {
-    grid-column: span 4;
+.col-4 {
+    grid-column: span 12;
+
+    border-radius: 20px;
+    box-shadow: 0 3px 10px #044465;
 }
 
-.col-5 {
+/* chatbotin tyylittely */
+
+/* .chat-container {
+
+} */
+
+#chat-output {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#chat-input {
+  width: calc(100% - 90px);
+  padding: 10px;
+}
+
+#chatbutton {
+  width: 80px;
+  height: 34px;
+  background-color: #0A8ECC;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chatbutton:hover {
+  background-color: #044465;
+}
+
+/* .col-5 {
     grid-column: span 4;
 }
 
@@ -242,4 +331,27 @@ footer {
   color: white;
   padding: 20px;
   text-align: center;
+}
+
+/* Responsiivisuus */
+
+@media only screen and (max-width: 800px) {
+
+  main {
+    width: 80%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .container {
+      margin: auto;
+      display: flex;
+      flex-direction: column; /* Stack children vertically */
+      justify-content: center;
+  }
+
+  .col {
+      width: 95%; /* Each column takes full width */
+      grid-column: span 12; /* Overrides any existing span settings */
+  }
+
 }

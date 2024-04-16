@@ -23,7 +23,7 @@
   </nav>
 
       <main>
-        <p style="text-align: center; color: white; font-size: large;"><strong>Info</strong></p>
+        <p style="text-align: center; color: black; font-size: large;"><strong>Info</strong></p>
         <div class="container">
             <div class="col col-1">
               <h3>Opiskeluterveydenhuollon yhteystiedot:</h3>
@@ -44,44 +44,24 @@
             </div>
 
             <div class="col col-3">
-              <h3>Sovelluksen käyttöohjeet:</h3>
-              <div class="instructions">
+              <button id="avaaNappi">Sovelluksen käyttöohjeet</button>
+              <!-- <div class="instructions">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui praesentium quidem dolores aut, excepturi eius consequatur minima quos, sequi tempora expedita rem aperiam nulla earum sed inventore repellat vel delectus?</p>
-              </div>
+              </div> -->
+            </div>
 
+            <div class="col col-4">
+                <h3>Zenbot Chat</h3>
+                <div id="chat-output"></div>
+                <input type="text" id="chat-input" placeholder="Kirjoita viesti..." autofocus>
+                <button id="chatbutton" onclick="sendMessage()">Lähetä</button>
             </div>
-            <!-- <div class="col col-4">
-              <p>Col 4</p>
-            </div>
-            <div class="col col-5">
-              <p>Col 5</p>
-            </div>
-            <div class="col col-6">
-              <p>Col 6</p>
-            </div>
-            <div class="col col-7">
-              <p>Col 7</p>
-            </div>
-            <div class="col col-8">
-              <p>Col 8</p>
-            </div>
-            <div class="col col-9">
-              <p>Col 9</p>
-            </div>
-            <div class="col col-10">
-              <p>Col 10</p>
-            </div>
-            <div class="col col-11">
-              <p>Col 11</p>
-            </div>
-            <div class="col col-12">
-              <p>Col 12</p> -->
+
             </div>
           </div>
       </main>
     <footer>
         <!-- Alatunniste ja footer-elementit sijoitetaan tänne -->
     </footer>
-    <script type="module" src="about.js"></script>
 </body>
 </html>
