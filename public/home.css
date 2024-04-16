@@ -259,6 +259,10 @@ footer {
 
 
 @media screen and (max-width: 1080px) {
+
+  main {
+    margin-top: 70px;
+  }
   .col {
     grid-column: span 12; /* Asettaa kaikki .col-elementit viemään koko rivin leveyden pienillä näytöillä */
   }
