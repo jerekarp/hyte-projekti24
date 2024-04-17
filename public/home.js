@@ -53,7 +53,6 @@ document.getElementById('studentForm').addEventListener('submit', addStudentInfo
 
 function addStudentInfo(evt) {
   evt.preventDefault();
-  console.log(evt);
 
   const url = 'http://127.0.0.1:3000/api/users/info'
   let token = localStorage.getItem('token');
@@ -69,7 +68,7 @@ function addStudentInfo(evt) {
   const stress_level = document.getElementById('stress').value;
 
   const options = {
-    method: 'PUT',
+    method: 'POST',
     headers: {
       Authorization: 'Bearer ' + token,
       'Content-type': 'application/json'
@@ -86,7 +85,6 @@ function addStudentInfo(evt) {
       stress_level: stress_level
     }),
   };
-  console.log("Request body:", options.body);
 
   fetchData(url, options).then((data) =>{
     console.log(data);

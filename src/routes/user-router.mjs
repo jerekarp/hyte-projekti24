@@ -261,7 +261,7 @@ userRouter
 
 userRouter
   .route('/info')
-  .put(
+  .post(
     authenticateToken,
     body('user_id', 'User ID must be provided and be an integer').isInt(),
     body('first_name', 'First name is required').not().isEmpty(),
