@@ -1,3 +1,5 @@
+import { fetchData } from './fetch.js';
+
 // fetch("https://type.fit/api/quotes")
 //   .then(function(response) {
 //     return response.json();
@@ -24,33 +26,33 @@
   // });
 
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById('myModal');
-    var openBtn = document.getElementById('openModal');
-    var closeBtn = document.getElementsByClassName('close')[0];
+document.addEventListener('DOMContentLoaded', function() {
+  let modal = document.getElementById('myModal');
+  let openBtn = document.getElementById('openModal');
+  let closeBtn = document.getElementsByClassName('close')[0];
 
-    // Avaa modal
-    openBtn.addEventListener('click', function() {
-        modal.style.display = "flex";
-    });
+  // Avaa modal
+  openBtn.addEventListener('click', function() {
+      modal.style.display = "flex";
+  });
 
-    // Sulje modal rististä
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = "none";
-    });
+  // Sulje modal rististä
+  closeBtn.addEventListener('click', function() {
+      modal.style.display = "none";
+  });
 
-    // Sulje modal klikkaamalla sen ulkopuolelle
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    });
+  // Sulje modal klikkaamalla sen ulkopuolelle
+  window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  });
 });
 
 document.getElementById('studentForm').addEventListener('submit', addStudentInfo);
 
 function addStudentInfo(evt) {
-  // evt.preventDefault();
+  evt.preventDefault();
   console.log(evt);
 
   const url = 'http://127.0.0.1:3000/api/users/info'
@@ -91,48 +93,6 @@ function addStudentInfo(evt) {
   });
 
 }
-
-// // Funktio joka luo merkinnän
-// function createEntry(evt) {
-//   evt.preventDefault();
-
-//   console.log(evt);
-
-//   const url = `http://127.0.0.1:3000/api/entries/`;
-//   let token = localStorage.getItem('token');
-
-//   const newEntryDate = document.getElementById('setDate').value;
-//   const newMood = document.getElementById('setMood').value;
-//   const newWeight = document.getElementById('setWeight').value;
-//   const newSleep = document.getElementById('setSleep').value;
-//   const newEntry = document.getElementById('setEntry').value;
-
-//   const options = {
-//       method: 'POST',
-//       headers: {
-//           Authorization: 'Bearer ' + token,
-//           'Content-type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//           entry_date: newEntryDate,
-//           mood: newMood,
-//           weight: newWeight,
-//           sleep_hours: newSleep,
-//           notes: newEntry}),
-//   };
-
-//   fetchData(url, options).then((data) => {
-//       console.log(data);
-//       alert('Merkinnän lisäys onnistunut!');
-//       document.getElementById('setDate').value = '';
-//       document.getElementById('setMood').value = '';
-//       document.getElementById('setWeight').value = '';
-//       document.getElementById('setSleep').value = '';
-//       document.getElementById('setEntry').value = '';
-//       getEntryById();
-//   });
-// }
-
 
 
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
