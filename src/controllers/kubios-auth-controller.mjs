@@ -122,7 +122,6 @@ const syncWithLocalUser = async (kubiosUser) => {
   } else {
     userId = result.user_id;
   }
-  console.log('syncWithLocalUser userId', userId);
   return userId;
 };
 
@@ -142,7 +141,6 @@ const postLogin = async (req, res, next) => {
     const kubiosIdToken = await kubiosLogin(username, password);
     const kubiosUser = await kubiosUserInfo(kubiosIdToken);
     const localUserId = await syncWithLocalUser(kubiosUser);
-    console.log("localuserId", localUserId)
     // Include kubiosIdToken in the auth token used in this app
     // NOTE: What is the expiration time of the Kubios token?
     const token = jwt.sign(
