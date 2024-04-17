@@ -96,13 +96,15 @@ input, select, textarea {
 /* Sivuston perusrunko, 12 column grid */
 
 body {
-    background-image: url(images/diarytausta.webp);
+    /* background-image: url(images/diarytausta.webp);
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; */
+    background: linear-gradient(to bottom, #044465, #0A8ECC, #1EB9CF, #BEF6E0);
 
     font-family: Arial, sans-serif;
     margin: 0;
+    margin-top: 130px;
     padding: 0;
     -webkit-text-size-adjust: none;
 }
@@ -128,10 +130,9 @@ main {
     margin: auto;
     padding: 20px;
     margin-top: 100px;
-    background-color: #04456560;
     width: 80%;
     border-radius: 20px;
-    box-shadow: 0 3px 10px white;
+    margin-bottom: 150px;
 }
 
 .container {
@@ -140,7 +141,7 @@ main {
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 20px;
     max-width: 1200px;
-    margin: 10px
+    margin: 10px;
 }
 
 .col {
@@ -190,16 +191,118 @@ a {
     grid-column: span 12;
 }
 
+button {
+  background-color: transparent;
+  font-size:larger;
+  border: none;
+  font-weight: bolder;
+}
+
+/* Modalin taustan tyyli */
+.modal {
+  display: none; /* Piilotetaan modal oletusarvoisesti */
+  position: fixed; /* Pysyy paikoillaan sivun vierityksen aikana */
+  z-index: 2000; /* Sijoitetaan modal sisällön päälle */
+  left: 0;
+  top: 0;
+  width: 100%; /* Leveys */
+  height: 100%; /* Korkeus */
+  overflow: auto; /* Mahdollistaa vierityksen, jos tarpeen */
+
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+
+  display: flex; /* Lisätty keskittämiseen */
+  align-items: center; /* Vertikaalinen keskitys */
+  justify-content: center; /* Horisontaalinen keskitys */
+}
+
+/* Modalin sisällön tyyli */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 200px;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Säädä leveyttä tarpeen mukaan */
+  border-radius: 20px; /* Pyöristetyt kulmat */
+}
+
+/* Sulje-napin tyyli */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 .instructions {
   display: inline-block
 
 }
 
-/* .col-4 {
-    grid-column: span 4;
+.col-4 {
+    grid-column: span 12;
+
+    border-radius: 20px;
+    box-shadow: 0 3px 10px #044465;
 }
 
-.col-5 {
+/* chatbotin tyylittely */
+
+/* .chat-container {
+
+} */
+
+#zenbot-image {
+  max-width: 130px; /* Aseta maksimileveydeksi 100% */
+  height: auto; /* Korkeus automaattisesti */
+  position: absolute;
+  top: 80px; /* Kiinnitä yläreunaan */
+  left: 50%; /* Keskitä vaakasuunnassa */
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+
+#chat-output {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#chat-input {
+  width: calc(100% - 90px);
+  padding: 10px;
+}
+
+#chatbutton {
+  margin-top: 20px;
+  width: 80px;
+  height: 34px;
+  background-color: #0A8ECC;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chatbutton:hover {
+  background-color: #044465;
+}
+
+/* .col-5 {
     grid-column: span 4;
 }
 
@@ -231,15 +334,147 @@ a {
     grid-column: span 4;
 } */
 
+
+
+/* Responsiivisuus */
+
+@media only screen and (max-width: 800px) {
+
+  main {
+    width: 80%;
+    margin-top: 100px;
+    margin-bottom: 140px;
+  }
+  .container {
+      margin: auto;
+      display: flex;
+      flex-direction: column; /* Stack children vertically */
+      justify-content: center;
+  }
+
+  .col {
+      width: 95%; /* Each column takes full width */
+      grid-column: span 12; /* Overrides any existing span settings */
+  }
+
+}
+
 /* Footer */
 
-footer {
-  position: fixed;
-  bottom: 0;
+/* Footer */
+
+.footer {
+  position: relative;
+  max-width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.wave {
+  position: absolute;
+  top: -100px;
   left: 0;
   width: 100%;
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
+  height: 100px;
+  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 5s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 5s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
 }

@@ -42,12 +42,14 @@
     "chartjs": "^0.3.24",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
-    "express": "^4.18.3",
+    "express": "^4.19.2",
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.1",
     "node-fetch": "^3.3.2",
+    "openai": "^4.36.0",
     "react-router-dom": "^6.22.0",
+    "readline-sync": "^1.4.10",
     "uuid": "^9.0.1",
     "validator": "^13.11.0"
   }

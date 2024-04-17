@@ -247,7 +247,7 @@ button:hover {
 
 /* Footer */
 
-footer {
+/* footer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -261,6 +261,10 @@ footer {
 
 
 @media screen and (max-width: 1080px) {
+
+  main {
+    margin-top: 70px;
+  }
   .col {
     grid-column: span 12; /* Asettaa kaikki .col-elementit viemään koko rivin leveyden pienillä näytöillä */
   }
@@ -274,7 +278,7 @@ footer {
 
 .footer {
   position: relative;
-  width: 100%;
+  max-width: 100%;
   background: #3586ff;
   min-height: 100px;
   padding: 20px 50px;

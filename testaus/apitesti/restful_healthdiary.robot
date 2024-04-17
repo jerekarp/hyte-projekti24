@@ -1,9 +1,10 @@
+*** Settings ***
+Library         RequestsLibrary
+Library         Collections
+Resource        restful_healthdiary_keywords.resource
 
-*** Settings ****
-Library    RequestsLibrary
-Library    Collections
-Resource   restful_healthdiary_keywords.resource
-Suite Setup    Authenticate as Admin
+Suite Setup     Authenticate as Admin
+
 
 *** Test Cases ***
 Login test
@@ -12,7 +13,6 @@ Login test
     Check Response Status Code Should Be 200    ${response}
     Log    Authentication successful
 
-
 Fetch Diary Entries
     [Documentation]    Get diary entries
     ${headers}=    Create Dictionary    Authorization=Bearer ${token}
@@ -20,4 +20,3 @@ Fetch Diary Entries
     Check Response Status Code Should Be 200    ${response}
     ${entries}=    Set Variable    ${response.json()}
     Log    ${entries}
-
