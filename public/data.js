@@ -180,6 +180,39 @@ window.onclick = function(event) {
   }
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  // Haetaan kaikki show-more-iconit
+  let showMoreIcons = document.querySelectorAll(".show-more-icon");
+
+  // Käydään läpi jokainen show-more-icon
+  showMoreIcons.forEach(function(icon) {
+    // Lisätään klikkaustapahtumankäsittelijä
+    icon.addEventListener("click", function() {
+      // Etsitään oikea info-content-div käyttäen querySelector-metodia
+      let content = icon.closest(".data-info").querySelector(".info-content");
+
+      // Toggle-info-sisältö
+      if (content) {
+        // Vaihdetaan info-contentin display-arvo näkyväksi, jos se on piilotettu
+        if (content.style.display === "none") {
+          content.style.display = "block";
+        } else {
+          // Piilotetaan info-content, jos se on näkyvissä
+          content.style.display = "none";
+        }
+      } else {
+        console.error("Info-content-div not found!");
+      }
+    });
+  });
+});
+
+
+
+
+
+
+
 
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 

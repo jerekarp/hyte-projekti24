@@ -27,7 +27,17 @@
         <div id="modal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
-            <p>KISSAT ON PARHAITA</p>
+            
+           <h3>Vinkkejä datan tarkasteluun</h3>
+           <br>
+           <p>- Voit piillottaa haluamasi datan klikkaamalla kyseisen parametrin nimeä yläreunasta (esim. Stressi-indeksi).
+            <br>
+            - Piilotetun datan saa takaisin näkyviin klikkaamalla sitä uudestaan.
+            <br>
+            - Voit tarkastella halutun datapalkin tarkka aavoa laittamalla hiiren kursosin palkin päälle.
+            <br>
+            - Voit vaihtaa datakuvaajaa yksittäisiin parametrin viivadiagrammeihin kuvaajan alapalkista klikkaamalla "Vaihda datanäkymää".
+           </p>
           </div>
         </div>
         <div class="container">
@@ -63,50 +73,108 @@
             </div>
             <div class="col col-3">
               <div class="data-info-container">
-                <p id="readiness">Readiness (0-100%):</p>
-                <p> 
-                  Prosenttiluku kuvastaa yksilön fysiologista valmiutta ja palautumista. 
-                  Korkeampi prosenttiluku viittaa parempaan palautumiseen ja suurempaan valmiuteen fyysiseen suoritukseen.
-                  <br><br>
-                  <span style="color: orange;">HYVIN MATALA</span> - huomattavasti normaalia alhaisempi (vain 2-3% tuloksistasi on täällä)
-                  <br>
-                  <span style="color: rgb(207, 207, 15);">MATALA</span> - matalampi kuin normaalisti (noin 14% tuloksistasi)
-                  <br>
-                  <span style="color: rgb(16, 159, 255);">NORMAALI</span> - sinun normaalitaso (noin 68% tuloksistasi)
-                  <br>
-                  <span style="color: rgb(7, 7, 166);">KORKEA</span> - korkeampi kuin normaalisti (noin 16% tuloksistasi)
-
-                </p>
+                <div class="data-info" id="readiness">
+                  <div class="info-header">
+                    <h2 id="readiness">Readiness</h2>
+                    <div class="show-more-icon"></div>
+                  </div>
+                  <div class="info-content">
+                    <p> 
+                      Readiness ilmaistaan prosentteina. 
+                      <br>
+                      Prosenttiluku kuvastaa yksilön fysiologista
+                      <br>
+                      valmiutta ja palautumista.Korkeampi prosenttiluku
+                      <br>
+                      viittaa parempaan palautumiseen sekä suurempaan 
+                      <br>
+                      valmiuteen fyysiseen suoritukseen.
+                      <br><br>
+                      <span style="color: orange;">HYVIN MATALA</span> - huomattavasti normaalia alhaisempi
+                      <br>
+                      (vain 2-3% tuloksistasi on täällä)
+                      <br>
+                      <br>
+                      <span style="color: rgb(207, 207, 15);">MATALA</span> - matalampi kuin normaalisti
+                      <br>
+                      (noin 14% tuloksistasi)
+                      <br>
+                      <br>
+                      <span style="color: rgb(16, 159, 255);">NORMAALI</span> - sinun normaalitaso 
+                      <br>
+                      (noin 68% tuloksistasi)
+                      <br>
+                      <br>
+                      <span style="color: rgb(7, 7, 166);">KORKEA</span> - korkeampi kuin normaalisti
+                      <br>
+                      (noin 16% tuloksistasi)
+                    </p>
+                  </div>
+                </div>
+                <div class="data-info" id="stress_index">
+                  <div class="info-header">
+                    <h2 id="stress_index">Stressi-indeksi</h2>
+                    <div class="show-more-icon"></div>
+                  </div>
+                  <div class="info-content">
+                    <p> 
+                      Mittari, joka kuvastaa yksilön stressitasoa.
+                      <br>
+                      Korkeampi arvo viittaa suurempaan stressitasoon.
+                      <br>
+                      Tämä arvo perustuu sydämen sykevälivaihtelun (HRV)
+                      <br>
+                      analyysiin. Tyypillisesti stressi-indeksi on välillä 5-15.
+                    </p>
+                  </div>
+                </div>
+                <div class="data-info" id="respiratory_rate">
+                  <div class="info-header">
+                    <h2 id="respiratory_rate">Hengitysnopeus</h2>
+                    <div class="show-more-icon"></div>
+                  </div>
+                  <div class="info-content">
+                    <p> 
+                      Hengitysnopeus on tärkeä fysiologinen parametri ja
+                      välttämätön luotettavien spektristen HRV-parametrien
+                      <br>
+                      arvioinnissa. Se kuvaa, että kuinka monta kertaa
+                      <br>
+                      henkilö hengittää minuutissa. Levossa hengitysnopeus
+                      <br>
+                      on tyypillisesti 9-24 hengitystä per minuutti.
+                      <br>
+                      Tämä voi vaihdella riippuen mm. yksilön fyysisestä
+                      <br>
+                      tilasta ja sen hetkisestä aktiviteetista.
+                    </p>
+                  </div>
+                </div>
+                <div class="data-info" id="mean_hr_bpm">
+                  <div class="info-header">
+                    <h2 id="mean_hr_bpm">Keskimääräinen syke</h2>
+                    <div class="show-more-icon"></div>
+                  </div>
+                  <div class="info-content">
+                    <p>
+                      Mittari, joka kuvastaa sydämen lyöntitiheyttä minuutissa. 
+                      <br>
+                      Arvo vaihtelee yksilöllisesti, riippuen mm. fyysisestä
+                      <br>
+                      tilasta ja aktiviteetista. Matala leposyke on yleensä
+                      <br>
+                      yhdistetty vahvaan ja terveeseen sydämmeen.
+                      <br>
+                      Urheilijoiden tavanomainen leposyke on 40-60 BPM, 
+                      <br>
+                      normaalisti muilla ihmisillä 51-77 BPM.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col col-4">
-                <div class="data-info-container">
-                  <p id="stress_index">Stressi-indeksi (tyypillisesti välillä 5-15):</p>
-                  <p> 
-                    Mittari, joka kuvastaa yksilön stressitasoa. Korkeampi arvo viittaa suurempaan stressitasoon.
-                    Tämä arvo perustuu sydämen sykevälivaihtelun (HRV) analyysiin. 
-                  </p>
-                </div>
-            </div>
-            <div class="col col-5">
-                <div class="data-info-container">
-                  <p id="respiratory_rate">Hengitysnopeus:</p>
-                  <p> 
-                    Hengitysnopeus: Tärkeä fysiologinen parametri ja välttämätön luotettavien spektristen HRV-parametrien arvioinnissa.
-                    Kuvaa kuinka monta kertaa henkilö hengittää minuutissa. Levossa tyypillisesti 9 ja 24 hengitystä per minuutti.
-                    Tämä voi vaihdella huomattavasti riippuen yksilön fyysisestä tilasta aktiviteetista.
-                  </p>
-                </div>
-            </div>
-            <div class="col col-6">
-                <div class="data-info-container">
-                  <p id="mean_hr_bpm">Keskimääräinen syke (BPM):</p>
-                  <p>
-                    Mittari, joka kuvastaa sydämen lyöntitiheyttä minuutissa. Arvo vaihtelee yksilöllisesti, riippuen mm. fyysisestä tilasta ja aktiviteetista.
-                    Matala leposyke on yleensä yhdistetty vahvaan ja terveeseen sydämmeen. Urheilijoiden tavanomainen leposyke on 40-60 BPM, normaalisti muilla ihmisillä 51-77 BPM.
-                  </p>
-                </div>
-            </div>
+            
+            
 
             <!-- <div class="col col-4">
             </div>
