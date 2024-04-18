@@ -1,7 +1,7 @@
 import { fetchData } from './fetch.js';
 
 
-//
+// API: https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373
 fetch("https://type.fit/api/quotes")
 .then(function(response) {
     return response.json();
@@ -68,37 +68,40 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
 async function fetchStudentInfo() {
+  // console.log('Fetching student info...');
   const token = localStorage.getItem('token');
-  const userId = localStorage.getItem('user_id')
+  const userId = localStorage.getItem('user_id');
+  // console.log('User ID from localStorage:', userId); // Tulosta userId konsoliin
+  // console.log('Token from localStorage:', token); // Tulosta token konsoliin
   const url = `http://127.0.0.1:3000/api/users/info/${userId}`;
   try {
     const response = await fetch(url, {
-      method: 'GET', // GET on oletusmetodi, mutta hyvä määritellä se selvästi
+      method: 'GET',
       headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-type': 'application/json'
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
       }
     });
-
+    // console.log('Response status:', response.status, response.statusText); // Tulosta vastauksen tilakoodi ja teksti
     if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
+      throw new Error('Network response was not ok: ' + response.statusText);
     }
 
-    const data = await response.json(); // Parsi JSON-vastaus
-    console.log(data); // Tulosta data konsoliin ennen datan palauttamista
+    const data = await response.json();
+    // console.log('Response data:', data); // Tulosta vastausdata konsoliin
 
-    // Tarkistetaan, onko käyttäjän tietoja löytynyt
     if (!data.found) {
       console.log("No student information found, opening modal...");
       document.getElementById('myModal').style.display = 'flex';
+    } else {
+      console.log("Student information found:", data);
     }
 
-    return data; // Palauta data sovelluksen muille osille
+    return data;
   } catch (error) {
     console.error('Error fetching student info:', error);
-    return null; // Tai palauta virheen kuvaus
+    return null; // Palautetaan null, jos kutsussa tapahtuu virhe
   }
 }
 

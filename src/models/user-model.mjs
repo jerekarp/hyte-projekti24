@@ -146,16 +146,18 @@ const selectUserByEmail = async (email) => {
 
 const checkStudentInfo = async (userId) => {
   const sql = `
-    SELECT EXISTS (
-      SELECT 1
-      FROM student_info
-      WHERE user_id = ?
-    ) AS exists_flag
+    SELECT * FROM student_info
+    WHERE user_id = ?
   `;
   const params = [userId];
   try {
     const [rows] = await promisePool.query(sql, params);
-    return rows[0].exists_flag;  // Palauttaa boolean arvon, joka kertoo onko tietueita vai ei
+    // Tarkistetaan, onko palautettu tietueita
+    if (rows.length === 0) {
+      return false;  // Ei tietueita, palauttaa false
+    } else {
+      return rows[0];  // Tietueita löytyi, palauttaa löydetyn tietueen tiedot
+    }
   } catch (e) {
     console.error('error', e.message);
     return {error: e.message};
@@ -202,7 +204,7 @@ const updateStudentInfo = async (userId, first_name, surname, student_number, we
     height,
     age,
     gender,
-    userId 
+    userId
   ];
 
   try {

@@ -116,13 +116,18 @@ const getStudentInfo = async (req, res) => {
   console.log("Checking information for user_id:", user_id);
 
   try {
-    const exists = await checkStudentInfo(user_id);
-    if (!exists) {
+    const studentInfo = await checkStudentInfo(user_id);
+    if (!studentInfo) {
       console.log("No user found with user_id:", user_id);
+      // Vaihdetaan 404 tilakoodi johonkin muuhun, esim. 200
       return res.status(200).json({ message: 'No student information found for this user_id', found: false });
     }
     console.log("User found with user_id:", user_id);
-    res.status(200).json({ message: 'Student information exists for this user_id', found: true });
+    res.status(200).json({
+      message: 'Student information exists for this user_id',
+      found: true,
+      studentInfo
+    });
   } catch (error) {
     console.error("Internal server error:", error);
     res.status(500).json({ error: 'Internal server error' });
