@@ -159,12 +159,37 @@ function formatDate(timestamp) {
 }
 
 
+// Modaali Info 
+let modal = document.getElementById("modal");
+let icon = document.getElementById("info-icon");
+let close = document.getElementsByClassName("close")[0];
+
+// Näytetään modaalinen ikkuna kun klikkaat kuvaketta
+icon.addEventListener("click", function() {
+  modal.style.display = "block";
+});
+
+// Piilotetaan modaalinen ikkuna kun klikkaat sulkemispainiketta
+close.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 
 function logOut(evt) {
     evt.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
     window.location.href = "index.html";
 }
+
+
 
   
