@@ -32,24 +32,24 @@
                 <label class="form-label" id="day-label" for="entry_date">Merkintäpäivämäärä:</label>
                 <input class="form-input" type="date" name="entry_date" />
                 <!-- tunnetila-->
-                <label class="form-label" id="mood-label" for="notes">Tunnetila:</label>
-                <input class="form-input" type="text" name="notes" />
+                <label class="form-label" id="mood-label" for="mood">Tunnetila:</label>
+                <input class="form-input" type="text" name="mood" id="mood" value="" />
                 <div id="mood-options">
-                  <button type="button" class="mood-option-button" data-mood="happy">😊 Iloinen</button>
-                  <button type="button" class="mood-option-button" data-mood="energetic">🥳 Energinen</button>
-                  <button type="button" class="mood-option-button" data-mood="calm">😌 Rauhallinen</button>
-                  <button type="button" class="mood-option-button" data-mood="excited">🤩 Innostunut</button>
-                  <button type="button" class="mood-option-button" data-mood="silly"> 😜 Leikkisä</button>
-                  <button type="button" class="mood-option-button" data-mood="tired">😴 Väsynyt</button>
-                  <button type="button" class="mood-option-button" data-mood="mood-swings">😵 Mielialan vaiheteluita</button>
-                  <button type="button" class="mood-option-button" data-mood="sad">😢 Surullinen</button>
-                  <button type="button" class="mood-option-button" data-mood="irritated">😠	Ärtyisä</button>
-                  <button type="button" class="mood-option-button" data-mood="anxious">😨 Ahdistunut</button>
-                  <button type="button" class="mood-option-button" data-mood="low-energy"> 😔 Matala energiataso</button>
+                  <button type="button" class="mood-option-button" data-mood="Iloinen">😊 Iloinen</button>
+                  <button type="button" class="mood-option-button" data-mood="Energinen">🥳 Energinen</button>
+                  <button type="button" class="mood-option-button" data-mood="Rauhallinen">😌 Rauhallinen</button>
+                  <button type="button" class="mood-option-button" data-mood="Innostunut">🤩 Innostunut</button>
+                  <button type="button" class="mood-option-button" data-mood="Leikkisä"> 😜 Leikkisä</button>
+                  <button type="button" class="mood-option-button" data-mood="Väsynyt">😴 Väsynyt</button>
+                  <button type="button" class="mood-option-button" data-mood="Mielialan vaiheteluita">😵 Mielialan vaiheteluita</button>
+                  <button type="button" class="mood-option-button" data-mood="Surullinen">😢 Surullinen</button>
+                  <button type="button" class="mood-option-button" data-mood="Ärtyisä">😠	Ärtyisä</button>
+                  <button type="button" class="mood-option-button" data-mood="Ahdistunut">😨 Ahdistunut</button>
+                  <button type="button" class="mood-option-button" data-mood="Matala energiataso"> 😔 Matala energiataso</button>
                 </div>
                 <!-- stressi -->
                 <label class="form-label" id="stress-label" for="stress_level">Arvioi stressin määrä asteikolla 0 (ei stressiä) - 10 (maksimaalinen stressi):</label>
-                <input type="range" id="stress_level" name="stress_level" min="0" max="100" class="stress-slider">
+                <input type="range" id="stress_level" name="stress_level" min="0" max="10" class="stress-slider">
                 <div id="slider-marks"></div>
                 <!-- uni -->
                 <label class="form-label" id="sleep-label" for="sleep_hours">Kuinka monta tuntia nukuit viime yönä?</label>
@@ -135,40 +135,9 @@
             </div> -->
           </div>
       </main>
-
-      <footer class="footer">
-        <div class="waves">
-          <div class="wave" id="wave1"></div>
-          <div class="wave" id="wave2"></div>
-          <div class="wave" id="wave3"></div>
-          <div class="wave" id="wave4"></div>
-        </div>
-        <ul class="social-icon">
-          <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a></li>
-          <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a></li>
-          <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a></li>
-          <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a></li>
-        </ul>
-        <ul class="menu">
-          <li class="menu__item"><a class="menu__link" href="etusivu.html">Etusivu</a></li>
-          <li class="menu__item"><a class="menu__link" href="diary.html">Päiväkirja</a></li>
-          <li class="menu__item"><a class="menu__link" href="data.html">Data</a></li>
-          <li class="menu__item"><a class="menu__link" href="about.html">Info</a></li>
-          <li class="menu__item"><a class="menu__link" href="tools.html">Työkalut</a></li>
-
-        </ul>
-        <p>&copy;2024 ZenBeat</p>
-      </footer>
-      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <footer>
+        <!-- Alatunniste ja footer-elementit sijoitetaan tänne -->
+    </footer>
     <script src="diary.js"></script>
 </body>
 </html>
