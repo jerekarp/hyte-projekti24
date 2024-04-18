@@ -6,6 +6,7 @@ import {
   postUser,
   putUser,
   deleteUser,
+  getStudentInfo,
   putUserInfo,
 } from '../controllers/user-controller.mjs';
 import {authenticateToken} from '../middlewares/authentication.mjs';
@@ -271,9 +272,18 @@ userRouter
     body('height', 'Height must be a valid number').isFloat(),
     body('age', 'Age must be a valid integer').isInt(),
     body('gender', 'Gender is required').not().isEmpty(),
-    body('stress_level', 'Stress level must be a valid integer').optional().isInt(),
     validationErrorHandler,
     putUserInfo
   );
+
+  userRouter
+  .route('/info/:user_id')
+  .get(
+    authenticateToken,
+    param('user_id', 'User ID must be provided and be an integer').isInt(),
+    validationErrorHandler,
+    getStudentInfo
+  )
+
 
 export default userRouter;

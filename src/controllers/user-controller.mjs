@@ -5,6 +5,7 @@ import {
   listAllUsers,
   selectUserById,
   updateUserById,
+  checkStudentInfo,
   insertStudentInfo,
 } from '../models/user-model.mjs';
 import {customError} from '../middlewares/error-handler.mjs';
@@ -109,12 +110,32 @@ const deleteUser = async (req, res, next) => {
   return res.json(result);
 };
 
+const getStudentInfo = async (req, res) => {
+  const user_id = parseInt(req.params.user_id);
+  console.log("Checking information for user_id:", user_id);
+
+  try {
+    const exists = await checkStudentInfo(user_id);
+    if (!exists) {
+      console.log("No user found with user_id:", user_id);
+      return res.status(200).json({ message: 'No student information found for this user_id', found: false });
+    }
+    console.log("User found with user_id:", user_id);
+    res.status(200).json({ message: 'Student information exists for this user_id', found: true });
+  } catch (error) {
+    console.error("Internal server error:", error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+
 const putUserInfo = async (req, res) => {
-  const { user_id, first_name, surname, student_number, weight, height, age, gender, stress_level } = req.body;
+  const { user_id, first_name, surname, student_number, weight, height, age, gender } = req.body;
   console.log("Received data:", req.body);
 
   try {
-    const result = await insertStudentInfo(user_id, first_name, surname, student_number, weight, height, age, gender, stress_level);
+    const result = await insertStudentInfo(user_id, first_name, surname, student_number, weight, height, age, gender);
     console.log("Database operation result:", result);
 
     if (result.error) {
@@ -130,4 +151,5 @@ const putUserInfo = async (req, res) => {
 
 
 
-export {getUsers, getUserById, postUser, putUser, deleteUser, putUserInfo};
+
+export {getUsers, getUserById, postUser, putUser, deleteUser, getStudentInfo, putUserInfo};
