@@ -6,6 +6,7 @@ import {
   postEntry,
   putEntry,
   deleteEntry,
+  getEntryByDay
 } from '../controllers/entry-controller.mjs';
 import {authenticateToken} from '../middlewares/authentication.mjs';
 import {validationErrorHandler} from '../middlewares/error-handler.mjs';
@@ -100,7 +101,7 @@ entryRouter
   .post(
     authenticateToken,
     body('entry_date').isDate(),
-    body('mood').optional().trim().isLength({min: 3, max: 20}).isString(),
+    // body('mood').optional().trim().isLength({min: 3, max: 200}).isString(),
     body('weight').optional().isFloat({min: 30, max: 200}),
     body('sleep_hours').optional().isInt({min: 0, max: 24}),
     body('notes').optional().isString().isLength({min: 3, max: 300}),
@@ -227,6 +228,7 @@ entryRouter
     validationErrorHandler,
     getEntryById,
   )
+
   .put(
     authenticateToken,
     param('id', 'must be integer').isInt(),
@@ -246,5 +248,12 @@ entryRouter
     validationErrorHandler,
     deleteEntry,
   );
+
+entryRouter
+  .route('/date/:date')
+  .get(
+    authenticateToken,
+    getEntryByDay,
+);
 
 export default entryRouter;
