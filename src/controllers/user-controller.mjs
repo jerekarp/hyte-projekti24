@@ -150,7 +150,7 @@ const postStudentInfo = async (req, res) => {
 };
 
 const putStudentInfo = async (req, res) => {
-  const userId = req.params.user_id;  // Ota user_id URL-parametreista
+  const userId = req.params.user_id;
   const { first_name, surname, student_number, weight, height, age, gender } = req.body;
   console.log("Received data:", req.body);
 
@@ -163,7 +163,6 @@ const putStudentInfo = async (req, res) => {
       return res.status(500).json({ error: result.error });
     }
     if (result.affectedRows === 0) {
-      // Jos ei rivejä päivitetty, annetaan tieto siitä asiakkaalle
       return res.status(404).json({ message: 'No records updated. Check the user ID.' });
     }
     res.status(200).json({ message: 'Student information updated successfully' });
