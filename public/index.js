@@ -61,6 +61,7 @@ loginButton.addEventListener('click', async (evt) => {
         // Kirjautuminen onnistui, lisätään token ja ohjataan etusivulle
         // TODO: Visuaalinen ilmoitus onnistuneesta kirjautumisesta
         localStorage.setItem('token', data.token);
+        localStorage.setItem('user_id', data.user_id);
         setTimeout(function () {
           window.location.href = 'home.html';
         }, 1000);

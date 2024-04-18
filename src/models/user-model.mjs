@@ -144,6 +144,78 @@ const selectUserByEmail = async (email) => {
   }
 };
 
+const checkStudentInfo = async (userId) => {
+  const sql = `
+    SELECT EXISTS (
+      SELECT 1
+      FROM student_info
+      WHERE user_id = ?
+    ) AS exists_flag
+  `;
+  const params = [userId];
+  try {
+    const [rows] = await promisePool.query(sql, params);
+    return rows[0].exists_flag;  // Palauttaa boolean arvon, joka kertoo onko tietueita vai ei
+  } catch (e) {
+    console.error('error', e.message);
+    return {error: e.message};
+  }
+}
+
+
+
+
+const insertStudentInfo = async (userId, first_name, surname, student_number, weight, height, age, gender) => {
+  const sql = `INSERT INTO student_info
+              (user_id, first_name, surname, student_number, weight, height, age, gender)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+  const params = [
+    userId,
+    first_name,
+    surname,
+    student_number,
+    weight,
+    height,
+    age,
+    gender,
+  ];
+  try {
+    const result = await promisePool.query(sql, params);
+    const insertedId = result[0].insertId;
+    return { student_id: insertedId };
+  } catch (e) {
+    console.error('error', e.message);
+    return { error: e.message };
+  }
+};
+
+
+const updateStudentInfo = async (userId, first_name, surname, student_number, weight, height, age, gender) => {
+  const sql = `UPDATE student_info
+              SET first_name = ?, surname = ?, student_number = ?, weight = ?, height = ?, age = ?, gender = ?
+              WHERE user_id = ?`;
+  const params = [
+    first_name,
+    surname,
+    student_number,
+    weight,
+    height,
+    age,
+    gender,
+    userId 
+  ];
+
+  try {
+    const result = await promisePool.query(sql, params);
+    const affectedRows = result[0].affectedRows;
+    return { affectedRows };
+  } catch (e) {
+    console.error('error', e.message);
+    return { error: e.message };
+  }
+};
+
+
 export {
   listAllUsers,
   selectUserById,
@@ -151,5 +223,8 @@ export {
   updateUserById,
   deleteUserById,
   selectUserByUsername,
-  selectUserByEmail
+  selectUserByEmail,
+  checkStudentInfo,
+  insertStudentInfo,
+  updateStudentInfo
 };
