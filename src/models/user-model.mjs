@@ -190,6 +190,30 @@ const insertStudentInfo = async (userId, first_name, surname, student_number, we
 };
 
 
+const updateStudentInfo = async (userId, first_name, surname, student_number, weight, height, age, gender) => {
+  const sql = `UPDATE student_info
+              SET first_name = ?, surname = ?, student_number = ?, weight = ?, height = ?, age = ?, gender = ?
+              WHERE user_id = ?`;
+  const params = [
+    first_name,
+    surname,
+    student_number,
+    weight,
+    height,
+    age,
+    gender,
+    userId 
+  ];
+
+  try {
+    const result = await promisePool.query(sql, params);
+    const affectedRows = result[0].affectedRows;
+    return { affectedRows };
+  } catch (e) {
+    console.error('error', e.message);
+    return { error: e.message };
+  }
+};
 
 
 export {
@@ -201,5 +225,6 @@ export {
   selectUserByUsername,
   selectUserByEmail,
   checkStudentInfo,
-  insertStudentInfo
+  insertStudentInfo,
+  updateStudentInfo
 };

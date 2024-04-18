@@ -7,6 +7,7 @@ import {
   updateUserById,
   checkStudentInfo,
   insertStudentInfo,
+  updateStudentInfo,
 } from '../models/user-model.mjs';
 import {customError} from '../middlewares/error-handler.mjs';
 
@@ -129,8 +130,7 @@ const getStudentInfo = async (req, res) => {
 };
 
 
-
-const putUserInfo = async (req, res) => {
+const postStudentInfo = async (req, res) => {
   const { user_id, first_name, surname, student_number, weight, height, age, gender } = req.body;
   console.log("Received data:", req.body);
 
@@ -149,7 +149,31 @@ const putUserInfo = async (req, res) => {
   }
 };
 
+const putStudentInfo = async (req, res) => {
+  const userId = req.params.user_id;  // Ota user_id URL-parametreista
+  const { first_name, surname, student_number, weight, height, age, gender } = req.body;
+  console.log("Received data:", req.body);
+
+  try {
+    const result = await updateStudentInfo(userId, first_name, surname, student_number, weight, height, age, gender);
+    console.log("Database operation result:", result);
+
+    if (result.error) {
+      console.error("Database error:", result.error);
+      return res.status(500).json({ error: result.error });
+    }
+    if (result.affectedRows === 0) {
+      // Jos ei rivejä päivitetty, annetaan tieto siitä asiakkaalle
+      return res.status(404).json({ message: 'No records updated. Check the user ID.' });
+    }
+    res.status(200).json({ message: 'Student information updated successfully' });
+  } catch (error) {
+    console.error("Internal server error:", error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 
 
-export {getUsers, getUserById, postUser, putUser, deleteUser, getStudentInfo, putUserInfo};
+
+export {getUsers, getUserById, postUser, putUser, deleteUser, getStudentInfo, putStudentInfo, postStudentInfo};

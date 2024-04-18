@@ -7,7 +7,8 @@ import {
   putUser,
   deleteUser,
   getStudentInfo,
-  putUserInfo,
+  putStudentInfo,
+  postStudentInfo
 } from '../controllers/user-controller.mjs';
 import {authenticateToken} from '../middlewares/authentication.mjs';
 import {validationErrorHandler} from '../middlewares/error-handler.mjs';
@@ -273,7 +274,7 @@ userRouter
     body('age', 'Age must be a valid integer').isInt(),
     body('gender', 'Gender is required').not().isEmpty(),
     validationErrorHandler,
-    putUserInfo
+    postStudentInfo
   );
 
   userRouter
@@ -283,6 +284,12 @@ userRouter
     param('user_id', 'User ID must be provided and be an integer').isInt(),
     validationErrorHandler,
     getStudentInfo
+  )
+  .put(
+    authenticateToken,
+    param('user_id', 'User ID must be provided and be an integer').isInt(),
+    validationErrorHandler,
+    putStudentInfo
   )
 
 

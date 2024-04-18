@@ -49,6 +49,10 @@
 
 }
 
+.nav-link:last-child {
+  margin-left: 10px;
+}
+
 /* Navigointipalkin hoverit */
 
 .nav-link:hover {
