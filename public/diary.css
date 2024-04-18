@@ -260,18 +260,16 @@ main {
   width: 25px; /* Custom thumb width */
   height: 25px; /* Custom thumb height */
   border-radius: 50%; /* Circular thumb */
-  background: #ffffff; /* Thumb color */
+  background: #046398; /* Thumb color */
   cursor: pointer; /* Cursor changes to pointer when hovering over the thumb */
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
 
 .stress-slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #046398; /* Thumb color */
   cursor: pointer;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .stress-slider:focus,
@@ -334,6 +332,11 @@ main {
   letter-spacing: 2px;;
   background-color:  #056398;
   color: rgb(255, 255, 255);
+}
+
+.moodSelected {
+  background-color: #BCC1C6;
+  color: rgb(0, 0, 0);
 }
 
 .mood-option-button:hover {
@@ -646,3 +649,5 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+

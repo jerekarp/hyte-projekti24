@@ -41,6 +41,7 @@ app.use('/items', itemRouter);
 // bind base url (/api/entries resource) for all entry routes to entryRouter
 app.use('/api/entries', entryRouter);
 
+
 // Users resource (/api/users)
 app.use('/api/users', userRouter);
 

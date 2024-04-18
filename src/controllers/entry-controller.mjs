@@ -5,6 +5,7 @@ import {
     deleteEntryById,
     updateEntryById,
     listAllEntriesByUserId,
+    listAllEntriesByDay
   } from '../models/entry-model.mjs';
 
   const getEntries = async (req, res, next) => {
@@ -42,6 +43,23 @@ import {
     }
   };
 
+  const getEntryByDay = async (req, res, next) => {
+    console.log("testi")
+    // Authentication: Check if user is authenticated
+    if (!req.user) {
+      return res.sendStatus(401); // Unauthorized
+    }
+    // Retrieve entry by id
+    // console.log(req)
+    const date = await listAllEntriesByDay(req.user.user_id, req.params.date);
+    if (date) {
+      res.json(date);
+    } else {
+      next(customError('Entry not found', 404));
+    }
+  };
+
+
   const postEntry = async (req, res, next) => {
     const userId = req.user.user_id;
     const result = await addEntry(req.body, userId);
@@ -71,4 +89,4 @@ import {
     return res.json(result);
   };
 
-export {getEntries, getEntryById, postEntry, putEntry, deleteEntry};
+export {getEntries, getEntryById, postEntry, putEntry, deleteEntry, getEntryByDay};
