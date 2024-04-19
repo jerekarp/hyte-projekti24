@@ -365,6 +365,7 @@ button:hover {
 }
 
 /* Esitietolomake-modalin tyylittely */
+
 .modal {
   display: none; /* Piilotetaan modal oletusarvoisesti */
   position: fixed; /* Pysyy paikallaan sivua vieritettäessä */
@@ -373,39 +374,69 @@ button:hover {
   width: 100%; /* Koko leveys */
   height: 100%; /* Koko korkeus */
   background-color: rgba(0,0,0,0.4); /* Musta tausta läpinäkyvyydellä */
-  z-index: 999;
+  z-index: 2000;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* Keskitetään vertikaalisesti */
-  padding: 20px;
-  border: 1px solid #888;
-  width: auto; /* Säätää leveyden automaattisesti sisällön mukaan */
-  display: inline-block;
+  background-color: #fff;
+  padding: 40px;
   border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
-.form-field {
-  margin-bottom: 10px; /* Asettaa kenttien väliin pientä tilaa */
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content select {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+.submit-button {
+  background-color: #044465; /* Sininen väri */
+  color: #fff; /* Valkoinen teksti */
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submit-button:hover {
+  background-color: #4189d6; /* Vaaleampi sininen väri hover-tilassa */
+}
+
+.submit-button:focus {
+  outline: none; /* Poistetaan focus-kehykset napista */
+}
 
 .close {
   color: #aaa;
-  float: right;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+  color: #333;
 }
+
 
 @keyframes animateWaves {
   0% {
