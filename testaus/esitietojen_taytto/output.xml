@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.10.0 on win32)" generated="2024-04-19T19:58:05.650957" rpa="false" schemaversion="5">
+<suite id="s1" name="Esitiedot" source="C:\Users\Jere\hyte24\hyte-projekti24\testaus\esitietojen_taytto\esitiedot.robot">
+<test id="s1-t1" name="Kirjautuminen sisään ja uuden käyttäjän esitieto-lomakkeen täyttäminen" line="18">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-04-19T19:58:07.074151" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Jere\\hyte24\\hyte-projekti24\\testaus\\esitietojen_taytto\\browser\\traces\\0a6c19ed-3847-4ae8-81cf-c285a21a9add"}</msg>
+<msg time="2024-04-19T19:58:07.362380" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Jere\\hyte24\\hyte-projekti24\\testaus\\esitietojen_taytto\\browser\\traces\\0a6c19ed-3847-4ae8-81cf-c285a21a9add"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=false</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-04-19T19:58:07.073154" elapsed="0.289226"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2024-04-19T19:58:07.363378" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 800,
+    "height": 600
+  }
+}</msg>
+<msg time="2024-04-19T19:58:07.382328" level="INFO">Successfully created context. </msg>
+<msg time="2024-04-19T19:58:07.382328" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 800, 'height': 600}}</msg>
+<arg>viewport={'width': 800, 'height': 600}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2024-04-19T19:58:07.362380" elapsed="0.019948"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2024-04-19T19:58:08.332299" level="INFO">Successfully initialized new page object and opened url: https://zenbeat.northeurope.cloudapp.azure.com/</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-04-19T19:58:07.383325" elapsed="0.949970"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-19T19:58:08.335290" level="INFO">Fills the text 'jerep.karppinen@gmail.com' in the given field.</msg>
+<arg>//input[@id = 'email']</arg>
+<arg>${EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:08.334292" elapsed="0.059840"/>
+</kw>
+<kw name="Fill Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$PASSWORD</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Fills the given secret from ``variable_name`` into the
+text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:08.396127" elapsed="0.025931"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-04-19T19:58:08.425049" level="INFO">Clicks the element '//input[@type='submit']'.</msg>
+<arg>//input[@type='submit']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:08.424053" elapsed="0.831775"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-19T19:58:09.256825" level="INFO">Fills the text 'Robot' in the given field.</msg>
+<arg>//input[@id='firstname']</arg>
+<arg>${FIRSTNAME}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:09.256825" elapsed="1.912886"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-19T19:58:11.171705" level="INFO">Fills the text 'Framework' in the given field.</msg>
+<arg>//input[@id='lastname']</arg>
+<arg>${LASTNAME}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:11.170708" elapsed="0.012965"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-19T19:58:11.185668" level="INFO">Fills the text '123456' in the given field.</msg>
+<arg>//input[@id='studentnumber']</arg>
+<arg>${STUDENTNUMBER}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:11.184671" elapsed="0.011967"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-19T19:58:11.197636" level="INFO">Fills the text '70' in the given field.</msg>
+<arg>//input[@id='weight']</arg>
+<arg>${WEIGHT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:11.197636" elapsed="0.013963"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-19T19:58:11.213593" level="INFO">Fills the text '180' in the given field.</msg>
+<arg>//input[@id='height']</arg>
+<arg>${HEIGHT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:11.212595" elapsed="0.016955"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-19T19:58:11.230547" level="INFO">Fills the text '20' in the given field.</msg>
+<arg>//input[@id='age']</arg>
+<arg>${AGE}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:11.229550" elapsed="0.015957"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-04-19T19:58:11.246506" level="INFO">Clicks the element '//select[@id='gender']'.</msg>
+<arg>//select[@id='gender']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:11.245507" elapsed="0.066821"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-04-19T19:58:11.313325" level="INFO">Clicks the element '//input[@class='submit-button']'.</msg>
+<arg>//input[@class='submit-button']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-19T19:58:11.312328" elapsed="0.035904"/>
+</kw>
+<doc>Kirjaudutaan sisään sovellukseen Kubios-tunnuksella. Uudelle käyttäjälle (ei tietoa databasessa) aukee heti esitietojen täyttö lomake. Täytetään tiedot ja lähetetään tiedot.</doc>
+<tag>positive auth</tag>
+<status status="PASS" start="2024-04-19T19:58:07.072156" elapsed="4.276076"/>
+</test>
+<status status="PASS" start="2024-04-19T19:58:05.652951" elapsed="5.700270"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">positive auth</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Esitiedot">Esitiedot</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

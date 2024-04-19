@@ -1,0 +1,77 @@
+{"level":30,"time":"2024-04-19T16:58:06.545Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Listening on 61560"}
+(node:17208) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":"2024-04-19T16:58:07.070Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:07.070Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:07.075Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2024-04-19T16:58:07.360Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Adding browser to stack: chromium, version: 123.0.6312.4"}
+{"level":30,"time":"2024-04-19T16:58:07.360Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method newBrowser"}
+{"level":30,"time":"2024-04-19T16:58:07.360Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2024-04-19T16:58:07.365Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method newContext"}
+{"level":30,"time":"2024-04-19T16:58:07.365Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2024-04-19T16:58:07.365Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Trace file: "}
+{"level":30,"time":"2024-04-19T16:58:07.379Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changed active context"}
+{"level":30,"time":"2024-04-19T16:58:07.380Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method newContext"}
+{"level":30,"time":"2024-04-19T16:58:07.387Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method newPage"}
+{"level":30,"time":"2024-04-19T16:58:07.388Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2024-04-19T16:58:07.633Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Video path: undefined"}
+{"level":30,"time":"2024-04-19T16:58:07.633Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changed active page"}
+{"level":30,"time":"2024-04-19T16:58:08.330Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method newPage"}
+{"level":30,"time":"2024-04-19T16:58:08.338Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:08.338Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id = 'email'] in page."}
+{"level":30,"time":"2024-04-19T16:58:08.393Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:08.398Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:08.398Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id='password'] in page."}
+{"level":30,"time":"2024-04-19T16:58:08.420Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:08.428Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method click"}
+{"level":30,"time":"2024-04-19T16:58:08.428Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@type='submit'] in page."}
+{"level":30,"time":"2024-04-19T16:58:09.255Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method click"}
+{"level":30,"time":"2024-04-19T16:58:09.258Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:09.258Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id='firstname'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.168Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.173Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.173Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id='lastname'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.182Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.187Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.187Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id='studentnumber'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.196Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.199Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.199Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id='weight'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.210Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.214Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.215Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id='height'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.228Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.232Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.232Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@id='age'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.243Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-19T16:58:11.247Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method click"}
+{"level":30,"time":"2024-04-19T16:58:11.247Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //select[@id='gender'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.311Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method click"}
+{"level":30,"time":"2024-04-19T16:58:11.314Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method click"}
+{"level":30,"time":"2024-04-19T16:58:11.314Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Strict mode is enabled, find Locator with //input[@class='submit-button'] in page."}
+{"level":30,"time":"2024-04-19T16:58:11.347Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method click"}
+{"level":30,"time":"2024-04-19T16:58:11.357Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.361Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.363Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.365Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.367Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changed active context"}
+{"level":30,"time":"2024-04-19T16:58:11.368Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changing current active page: page=9a130141-91cb-4e15-bebe-9c86155d0e19"}
+{"level":30,"time":"2024-04-19T16:58:11.368Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changed active page"}
+{"level":30,"time":"2024-04-19T16:58:11.371Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.372Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.374Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2024-04-19T16:58:11.375Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2024-04-19T16:58:11.377Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2024-04-19T16:58:11.377Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2024-04-19T16:58:11.380Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changing current active page: page=9a130141-91cb-4e15-bebe-9c86155d0e19"}
+{"level":30,"time":"2024-04-19T16:58:11.380Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changed active page"}
+{"level":30,"time":"2024-04-19T16:58:11.383Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.384Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-19T16:58:11.385Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changed active context"}
+{"level":30,"time":"2024-04-19T16:58:11.386Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changing current active page: page=9a130141-91cb-4e15-bebe-9c86155d0e19"}
+{"level":30,"time":"2024-04-19T16:58:11.386Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Changed active page"}
+{"level":30,"time":"2024-04-19T16:58:11.388Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method closeContext"}
+{"level":30,"time":"2024-04-19T16:58:11.401Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Removed page=5ad2c5db-2695-41d8-8aa0-e6564962801d from context=647dba9f-64dc-41c8-8f00-150ac5e2d785 page stack"}
+{"level":30,"time":"2024-04-19T16:58:11.424Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method closeContext"}
+{"level":30,"time":"2024-04-19T16:58:11.498Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2024-04-19T16:58:11.727Z","pid":17208,"hostname":"DESKTOP-6FEELHD","msg":"End of node method closeAllBrowsers"}
