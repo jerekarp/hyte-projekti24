@@ -21,7 +21,8 @@ fetch("https://type.fit/api/quotes")
         }
     }
 
-    document.getElementById("quote").innerHTML = randomQuote + "<br><em>" + author + "</em>";
+    document.getElementById("quote").innerHTML = "<em>" + randomQuote + "</em>" + "<br>- " + author;
+
 })
 .catch(function(error) {
     console.log("Virhe haettaessa lainausta:", error);
@@ -246,6 +247,95 @@ function updateStudentInfo (evt) {
     alert("Tietojen lisääminen epäonnistui: " + error.message);
   });
 }
+
+// Apufunktio käyttäjäystävällisen nimen saamiseksi parametrille
+function getUserFriendlyName(param) {
+  switch(param) {
+    case 'measured_timestamp':
+      return 'Mittausajankohta'
+    case 'stress_index':
+      return 'Stressi-indeksi';
+    case 'respiratory_rate':
+      return 'Hengitysnopeus ( breaths/min )';
+    case 'mean_hr_bpm':
+      return 'Keskimääräinen syke ( bpm )';
+    case 'readiness':
+      return 'Readiness ( % )';
+    default:
+      return param;
+  }
+}
+
+// Funktio muokkaa aikaleiman muotoon dd.mm.yyyy hh:mm
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  const hours = String(date.getHours()).padStart(2, '0'); // Lisätään tarvittaessa johtava nolla
+  const minutes = String(date.getMinutes()).padStart(2, '0'); // Lisätään tarvittaessa johtava nolla
+  const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${hours}:${minutes}`;
+  return formattedDate;
+}
+
+async function latestMeasurementData() {
+  const token = localStorage.getItem('token');
+
+  try {
+    const token = localStorage.getItem("token");
+    const url = 'http://127.0.0.1:3000/api/kubios/filtered-data';
+    const options = {
+        method: "GET",
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+    };
+
+    const responseData = await fetchData(url, options);
+
+    // Tarkistetaan, että responseData sisältää filteredData-taulukon
+    if (!responseData || !responseData.filteredData || !Array.isArray(responseData.filteredData)) {
+      throw new Error('Virheellinen vastausdata');
+    }
+
+    // Otetaan filteredData-taulukon ensimmäinen elementti, joka on viimeisin mittaustulos
+    const latestData = responseData.filteredData[responseData.filteredData.length - 1];
+
+
+    // Etsitään <ul>-elementti, johon lisätään mittaustiedot
+    const listElement = document.getElementById('latest-data');
+    // Tyhjennetään lista
+    listElement.innerHTML = '';
+
+    // Lisätään jokainen mittaustieto omalle rivilleen listassa
+    for (const key in latestData) {
+      const listItem = document.createElement('li');
+      const friendlyName = getUserFriendlyName(key);
+      let value;
+
+      // Jos avain on 'measured_timestamp', käytetään formatDate-funktiota muuttaaksesi aikaleiman muotoon
+      if (key === 'measured_timestamp') {
+        value = formatDate(latestData[key]);
+      } else {
+        // Pyöristetään datan parametrien arvot
+        if (key === 'stress_index') {
+          value = Math.round(latestData[key] * 10) / 10; // Pyöristetään yhden desimaalin tarkkuuteen
+        } else {
+          value = Math.round(latestData[key]); // Pyöristetään muut parametrit kokonaislukuun
+        }
+      }
+
+      listItem.textContent = `${friendlyName}: ${value}`;
+      listElement.appendChild(listItem);
+    }
+
+
+  } catch (error) {
+    console.error('Virhe haettaessa mittaustietoja:', error);
+    return null;
+  }
+}
+
+
+latestMeasurementData();
+
 
 
 

@@ -159,6 +159,12 @@ main {
   box-shadow: 0 3px 10px white;
 }
 
+/* Viimeisin mittaustulos tyylittely */
+
+#latest-data {
+  list-style-type: none;
+}
+
 
 .boksi {
   padding: 20px;
