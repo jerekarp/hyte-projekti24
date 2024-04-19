@@ -237,7 +237,7 @@ function updateStudentInfo (evt) {
     console.log(data);
     if (data && !data.error) {
       alert("Tiedot päivitetty onnistuneesti!");
-      document.getElementById('myModal').style.display = 'none';
+      closeEditModal();
     } else {
       alert("Tietojen päivittäminen epäonnistui: " + (data.error || "Tuntematon virhe"));
     }
