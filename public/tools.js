@@ -95,5 +95,6 @@ document.querySelector(".nav-link.nav-link-right").addEventListener("click", log
 function logOut(evt) {
     evt.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user_id")
     window.location.href = "index.html";
 }
