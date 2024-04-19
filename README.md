@@ -32,6 +32,13 @@ Nodejs + Express sovellus.
 
 ---
 
+**UC_4 Sovelluksen käyttäjän esitietojen täyttäminen**
+
+- [Esitietojen täyttö Report](https://jerekarp.github.io/esitiedot-report.html)
+- [Esitietojen täyttö Log](https://jerekarp.github.io/esitiedot-log.html)
+
+---
+
 **UC_6 HRV-datan tarkastelu**
 
 - [Data Analysis Report](https://jerekarp.github.io/data_analysis_report.html)
