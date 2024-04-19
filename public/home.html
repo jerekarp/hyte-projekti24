@@ -19,114 +19,156 @@
         <a href="about.html" class="nav-link">Info</a>
         <a href="tools.html" class="nav-link">Työkalut</a>
     </div>
-    <!-- <a href="#" onclick="document.getElementById('myModal').style.display='block'" class="nav-link nav-link-right">Omat tiedot</a> -->
     <a href="index.html" class="nav-link nav-link-right">Kirjaudu ulos</a>
   </nav>
   <div id="banner"><div class="user">Tervetuloa ZenBeatiin <span id="name">NIMI TÄHÄN</span>!</div>
     <div id="minikuva"></div>
   </div>
 
-      <main>
+  <main>
 
-        <div class="container">
-          <a href="diary.html" class="col col-1">
-            <h3>Päiväkirja</h3>
-            <div class="boksi">
-              <p>Lisää uusia merkintöjä, palaa vanhojen merkintöjen pariin ja seuraa hyvinvointisi kehitystä ajan myötä.
-                Täällä saat arvokasta tietoa itsestäsi, mikä auttaa sinua tunnistamaan toimintatapojasi ja tekemään tarvittavia muutoksia arjessasi.</p>
-            </div>
-          </a>
-          <a href="data.html" class="col col-2">
-            <h3>Data</h3>
-            <div class="boksi">
-              <p>Täällä pääset käsiksi kattaviin analyysitietoihin, jotka kertovat stressitasoistasi ja yleisestä hyvinvoinnistasi
-                ajan myötä.Tämä sivu on suunniteltu tarjoamaan sivulle työkalut terveytesi aktiiviseen seurantaan ja hallintaan.
-              </p>
-            </div>
-          </a>
-          <a href="about.html" class="col col-3">
-            <h3>Info</h3>
-            <div class="boksi">
-              <p>Täällä pääset keskustelemaan tekoälypohjaisen chat-robotin Zenbotin kanssa.
-                Lisäksi täältä löydät yhteystiedot opiskeluterveydenhuoltoon sekä kriisipäivystykseen.
-                Sivuston käyttöohjeet sijaitsevat myös täällä.
-              </p>
-            </div>
-          </a>
-          <a href="tools.html" class="col col-4">
-            <h3>Työkalut</h3>
-            <div class="boksi">
-              <p>Tämä sivu on omistettu stressinhallinalle ja hyvinvoinnin edistämiselle.
-                Tällä sivulla tarjoamme joukon tehokkaita stressinhallintatyökaluja.
-                Nämä resurssit ovat suunniteltu auttamaan sinua kehittämään taitoja stressin itsehoitoon ja parantamaan elämänlaatuasi.
-              </p>
-            </div>
-          </a>
+    <div class="container">
+      <a href="diary.html" class="col col-1">
+        <h3>Päiväkirja</h3>
+        <div class="boksi">
+          <p>Lisää uusia merkintöjä, palaa vanhojen merkintöjen pariin ja seuraa hyvinvointisi kehitystä ajan myötä.
+            Täällä saat arvokasta tietoa itsestäsi, mikä auttaa sinua tunnistamaan toimintatapojasi ja tekemään tarvittavia muutoksia arjessasi.</p>
         </div>
-        <div class="container">
-          <a href="diary.html" class="col col-5">
-            <h4>Viimeisin päiväkirjamerkintä:</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Culpa maxime quam hic perferendis vero reprehenderit sit quia consequuntur debitis,
-            odio labore quis rerum maiores, exercitationem quo tempora sunt. Velit, quo?</p>
-          </a>
-          <a href="data.html" class="col col-6">
-            <h4>Viimeisin mittaustulos:</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Culpa maxime quam hic perferendis vero reprehenderit sit quia consequuntur debitis,
-            odio labore quis rerum maiores, exercitationem quo tempora sunt. Velit, quo?</p>
-          </a>
+      </a>
+      <a href="data.html" class="col col-2">
+        <h3>Data</h3>
+        <div class="boksi">
+          <p>Täällä pääset käsiksi kattaviin analyysitietoihin, jotka kertovat stressitasoistasi ja yleisestä hyvinvoinnistasi
+            ajan myötä.Tämä sivu on suunniteltu tarjoamaan sivulle työkalut terveytesi aktiiviseen seurantaan ja hallintaan.
+          </p>
         </div>
-        <div class="container">
-          <div class="col col-7">
-            <p id="quote"></p>
-          </div>
+      </a>
+      <a href="about.html" class="col col-3">
+        <h3>Info</h3>
+        <div class="boksi">
+          <p>Täällä pääset keskustelemaan tekoälypohjaisen chat-robotin Zenbotin kanssa.
+            Lisäksi täältä löydät yhteystiedot opiskeluterveydenhuoltoon sekä kriisipäivystykseen.
+            Sivuston käyttöohjeet sijaitsevat myös täällä.
+          </p>
         </div>
-
-        <!-- Esitietolomakkeen modal -->
-        <div id="myModal" class="modal">
-          <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Tervetuloa ZenBeatiin! Kerro meille lisää itsestäsi niin pääsemme aloittamaan hyvinvointimatkasi!</p>
-              <form id="studentForm">
-                  <div class="form-field">
-                      <label for="firstname">Etunimi:</label>
-                      <input type="text" id="firstname" name="firstname" required>
-                  </div>
-                  <div class="form-field">
-                      <label for="lastname">Sukunimi:</label>
-                      <input type="text" id="lastname" name="lastname" required>
-                  </div>
-                  <div class="form-field">
-                      <label for="studentnumber">Opiskelijanumero:</label>
-                      <input type="text" id="studentnumber" name="studentnumber" required>
-                  </div>
-                  <div class="form-field">
-                      <label for="weight">Paino (kg):</label>
-                      <input type="number" id="weight" name="weight">
-                  </div>
-                  <div class="form-field">
-                      <label for="height">Pituus (cm):</label>
-                      <input type="number" id="height" name="height">
-                  </div>
-                  <div class="form-field">
-                      <label for="age">Ikä:</label>
-                      <input type="number" id="age" name="age" required>
-                  </div>
-                  <div class="form-field">
-                      <label for="gender">Sukupuoli:</label>
-                      <select id="gender" name="gender">
-                          <option value="male">Mies</option>
-                          <option value="female">Nainen</option>
-                          <option value="other">Muu</option>
-                      </select>
-                  </div>
-                  <input type="submit" value="Lähetä">
-              </form>
-          </div>
+      </a>
+      <a href="tools.html" class="col col-4">
+        <h3>Työkalut</h3>
+        <div class="boksi">
+          <p>Tämä sivu on omistettu stressinhallinalle ja hyvinvoinnin edistämiselle.
+            Tällä sivulla tarjoamme joukon tehokkaita stressinhallintatyökaluja.
+            Nämä resurssit ovat suunniteltu auttamaan sinua kehittämään taitoja stressin itsehoitoon ja parantamaan elämänlaatuasi.
+          </p>
+        </div>
+      </a>
+    </div>
+    <div class="container">
+      <a href="diary.html" class="col col-5">
+        <h4>Viimeisin päiväkirjamerkintä:</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Culpa maxime quam hic perferendis vero reprehenderit sit quia consequuntur debitis,
+        odio labore quis rerum maiores, exercitationem quo tempora sunt. Velit, quo?</p>
+      </a>
+      <a href="data.html" class="col col-6">
+        <h4>Viimeisin mittaustulos:</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Culpa maxime quam hic perferendis vero reprehenderit sit quia consequuntur debitis,
+        odio labore quis rerum maiores, exercitationem quo tempora sunt. Velit, quo?</p>
+      </a>
+    </div>
+    <div class="container">
+      <div class="col col-7">
+        <p id="quote"></p>
       </div>
+    </div>
 
-      </main>
+    <!-- Esitietolomakkeen modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Tervetuloa ZenBeatiin! Kerro meille lisää itsestäsi niin pääsemme aloittamaan hyvinvointimatkasi!</p>
+          <form id="studentForm">
+              <div class="form-field">
+                  <label for="firstname">Etunimi:</label>
+                  <input type="text" id="firstname" name="firstname" required>
+              </div>
+              <div class="form-field">
+                  <label for="lastname">Sukunimi:</label>
+                  <input type="text" id="lastname" name="lastname" required>
+              </div>
+              <div class="form-field">
+                  <label for="studentnumber">Opiskelijanumero:</label>
+                  <input type="text" id="studentnumber" name="studentnumber" required>
+              </div>
+              <div class="form-field">
+                  <label for="weight">Paino (kg):</label>
+                  <input type="number" id="weight" name="weight">
+              </div>
+              <div class="form-field">
+                  <label for="height">Pituus (cm):</label>
+                  <input type="number" id="height" name="height">
+              </div>
+              <div class="form-field">
+                  <label for="age">Ikä:</label>
+                  <input type="number" id="age" name="age" required>
+              </div>
+              <div class="form-field">
+                  <label for="gender">Sukupuoli:</label>
+                  <select id="gender" name="gender">
+                      <option value="male">Mies</option>
+                      <option value="female">Nainen</option>
+                      <option value="other">Muu</option>
+                  </select>
+              </div>
+              <input type="submit" value="Lähetä">
+          </form>
+      </div>
+    </div>
+    <button id="openEditModalBtn">Muokkaa tietoja</button>
+      <!-- Muokkauslomakkeen modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+          <span class="close" id="closeEditModal">&times;</span>
+          <p>Muokkaa tietojasi:</p>
+          <form id="editStudentForm">
+              <div class="form-field">
+                  <label for="editFirstname">Etunimi:</label>
+                  <input type="text" id="editFirstname" name="firstname" required>
+              </div>
+              <div class="form-field">
+                  <label for="editLastname">Sukunimi:</label>
+                  <input type="text" id="editLastname" name="lastname" required>
+              </div>
+              <div class="form-field">
+                  <label for="editStudentnumber">Opiskelijanumero:</label>
+                  <input type="text" id="editStudentnumber" name="studentnumber" required>
+              </div>
+              <div class="form-field">
+                  <label for="editWeight">Paino (kg):</label>
+                  <input type="number" id="editWeight" name="weight">
+              </div>
+              <div class="form-field">
+                  <label for="editHeight">Pituus (cm):</label>
+                  <input type="number" id="editHeight" name="height">
+              </div>
+              <div class="form-field">
+                  <label for="editAge">Ikä:</label>
+                  <input type="number" id="editAge" name="age" required>
+              </div>
+              <div class="form-field">
+                  <label for="editGender">Sukupuoli:</label>
+                  <select id="editGender" name="gender">
+                      <option value="male">Mies</option>
+                      <option value="female">Nainen</option>
+                      <option value="other">Muu</option>
+                  </select>
+              </div>
+              <input type="button" id="updateInfo" value="Päivitä tiedot">
+          </form>
+      </div>
+    </div>
+
+  </main>
 
       <footer class="footer">
         <div class="waves">
