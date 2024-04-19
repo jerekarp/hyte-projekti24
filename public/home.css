@@ -159,6 +159,12 @@ main {
   box-shadow: 0 3px 10px white;
 }
 
+/* Viimeisin mittaustulos tyylittely */
+
+#latest-data {
+  list-style-type: none;
+}
+
 
 .boksi {
   padding: 20px;
@@ -374,8 +380,7 @@ button:hover {
   width: 100%; /* Koko leveys */
   height: 100%; /* Koko korkeus */
   background-color: rgba(0,0,0,0.4); /* Musta tausta läpinäkyvyydellä */
-  z-index: 2000;
-  display: flex;
+  z-index: 999;
   justify-content: center;
   align-items: center;
 }
