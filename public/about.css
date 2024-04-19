@@ -96,18 +96,23 @@ input, select, textarea {
 /* Sivuston perusrunko, 12 column grid */
 
 body {
-    /* background-image: url(images/diarytausta.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed; */
-    background: linear-gradient(to bottom, #044465, #0A8ECC, #1EB9CF, #BEF6E0);
+  /* background: linear-gradient(to bottom, #044465, #1EB9CF, #0A8ECC, #BEF6E0); */
+  /* background-image: url(images/beach.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed; */
+  background: linear-gradient(to bottom, #044465, #0A8ECC, #1EB9CF, #BEF6E0);
 
-    font-family: Arial, sans-serif;
-    margin: 0;
-    margin-top: 130px;
-    padding: 0;
-    -webkit-text-size-adjust: none;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: none;
 }
+
 
 header {
     background-color: #333;
@@ -132,7 +137,7 @@ main {
     margin-top: 100px;
     width: 80%;
     border-radius: 20px;
-    margin-bottom: 150px;
+    margin-bottom: 300px;
 }
 
 .container {
@@ -478,3 +483,4 @@ button {
     background-positon-x: 0px;
   }
 }
+
