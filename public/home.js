@@ -45,15 +45,10 @@ fetch("https://type.fit/api/quotes")
   // });
 
 
+// Esitietolomakkeen modalin toiminnot
 document.addEventListener('DOMContentLoaded', function() {
   let modal = document.getElementById('myModal');
-  let openBtn = document.getElementById('openModal');
   let closeBtn = document.getElementsByClassName('close')[0];
-
-  // Avaa modal
-  openBtn.addEventListener('click', function() {
-      modal.style.display = "flex";
-  });
 
   // Sulje modal rististä
   closeBtn.addEventListener('click', function() {
@@ -68,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Tarkistetaan backendistä löytyykö opiskelijan tietoja vai ei
+// jos ei löydy, avataan modal automaattisesti
 async function fetchStudentInfo() {
   // console.log('Fetching student info...');
   const token = localStorage.getItem('token');
@@ -111,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+// Funktio esitietojen tallentamiseen
 document.getElementById('studentForm').addEventListener('submit', addStudentInfo);
 
 function addStudentInfo(evt) {
@@ -161,6 +158,96 @@ function addStudentInfo(evt) {
   });
 }
 
+// Modalin avaaminen ja käyttäjän tietojen hakeminen
+document.getElementById('openEditModalBtn').addEventListener('click', async function() {
+  try {
+    const response = await fetchStudentInfo();
+    if (response && response.found) {
+      populateEditModal(response.studentInfo);
+      openEditModal();
+    } else {
+      console.log('No student information found or fetched data is invalid.');
+    }
+  } catch (error) {
+    console.error('Failed to fetch student information:', error);
+  }
+});
+
+// Täytetään editModal fetchStudentInfossa saaduilla tiedoilla
+function populateEditModal(studentInfo) {
+  if (studentInfo) {
+    document.getElementById('editFirstname').value = studentInfo.first_name || '';
+    document.getElementById('editLastname').value = studentInfo.surname || '';
+    document.getElementById('editStudentnumber').value = studentInfo.student_number || '';
+    document.getElementById('editWeight').value = studentInfo.weight || '';
+    document.getElementById('editHeight').value = studentInfo.height || '';
+    document.getElementById('editAge').value = studentInfo.age || '';
+    document.getElementById('editGender').value = studentInfo.gender || '';
+  }
+}
+
+function openEditModal() {
+  document.getElementById('editModal').style.display = 'flex';
+}
+
+function closeEditModal() {
+  document.getElementById('editModal').style.display = 'none';
+}
+
+// Lisätään kuuntelijat sulje-napille
+document.getElementById('closeEditModal').addEventListener('click', closeEditModal);
+
+// Kuuntelija päivitä-painikkeelle
+document.getElementById('updateInfo').addEventListener('click', updateStudentInfo);
+
+
+// Lähetetään tietojen päivityspyyntö backendiin
+function updateStudentInfo (evt) {
+  evt.preventDefault();
+  let token = localStorage.getItem('token');
+  const userId = localStorage.getItem('user_id');
+  const url = `http://127.0.0.1:3000/api/users/info/${userId}`;
+
+  const newFirst_name = document.getElementById('editFirstname').value;
+  const newLastname = document.getElementById('editLastname').value;
+  const newStudentnumber = document.getElementById('editStudentnumber').value;
+  const newWeight = document.getElementById('editWeight').value;
+  const newHeight = document.getElementById('editHeight').value;
+  const newAge = document.getElementById('editAge').value;
+  const newGender = document.getElementById('editGender').value;
+
+  const options = {
+    method: 'PUT',
+    headers: {
+      Authorization: 'Bearer ' + token,
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      first_name: newFirst_name,
+      surname: newLastname,
+      student_number: newStudentnumber,
+      weight: newWeight,
+      height: newHeight,
+      age: newAge,
+      gender: newGender
+    }),
+  };
+
+  fetchData(url, options).then((data) => {
+    console.log(data);
+    if (data && !data.error) {
+      alert("Tiedot päivitetty onnistuneesti!");
+      document.getElementById('myModal').style.display = 'none';
+    } else {
+      alert("Tietojen päivittäminen epäonnistui: " + (data.error || "Tuntematon virhe"));
+    }
+  }).catch((error) => {
+    console.error('Error adding student info:', error);
+    alert("Tietojen lisääminen epäonnistui: " + error.message);
+  });
+}
+
+
 
 
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
@@ -168,6 +255,7 @@ document.querySelector(".nav-link.nav-link-right").addEventListener("click", log
 function logOut(evt) {
     evt.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user_id")
     window.location.href = "index.html";
 }
 
