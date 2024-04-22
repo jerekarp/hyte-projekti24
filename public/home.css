@@ -380,7 +380,7 @@ button:hover {
   width: 100%; /* Koko leveys */
   height: 100%; /* Koko korkeus */
   background-color: rgba(0,0,0,0.4); /* Musta tausta läpinäkyvyydellä */
-  z-index: 999;
+  z-index: 2000;
   justify-content: center;
   align-items: center;
 }
@@ -404,7 +404,7 @@ button:hover {
   box-sizing: border-box;
 }
 
-.submit-button {
+.submit-button, #updateInfo {
   background-color: #044465; /* Sininen väri */
   color: #fff; /* Valkoinen teksti */
   border: none;
@@ -419,11 +419,11 @@ button:hover {
   margin-right: auto;
 }
 
-.submit-button:hover {
+.submit-button:hover, #updateInfo:hover  {
   background-color: #4189d6; /* Vaaleampi sininen väri hover-tilassa */
 }
 
-.submit-button:focus {
+.submit-button:focus, #updateInfo:focus {
   outline: none; /* Poistetaan focus-kehykset napista */
 }
 
