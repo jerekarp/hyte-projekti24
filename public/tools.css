@@ -122,7 +122,7 @@ main {
   padding: 20px;
   margin-top: 100px;
   width: 80%;
-  margin-bottom: 700px;
+  margin-bottom: 200px;
 }
 
 .container {
@@ -203,7 +203,7 @@ button {
 }
 
 /* Modalin sisällön tyyli */
-.modal-content {
+.modal-content1, .modal-content2, .modal-content3, .modal-content4 {
   background-color: #fefefe;
   margin: auto;
   margin-top: 100px;
@@ -219,6 +219,41 @@ button {
   align-items: center; /* Keskitä sisältö pystysuunnassa */
 }
 
+/* modaleiden yksilöllinen tyylittely */
+
+.modal-content1 {
+  background-color: #b2cd9dc7;
+}
+
+#myModal1 {
+  background-image: url(images/breathing.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.modal-content2 {
+  background-color: #edf5f59f ;
+}
+
+#myModal2 {
+  background-image: url(images/relaxing.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.modal-content3 {
+  background-color: #754160c4;
+}
+
+#myModal3 {
+  color: white;
+  background-image: url(images/japanforest.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 /* Sulje-napin tyyli */
 .close, .close2, .close3, .close4 {

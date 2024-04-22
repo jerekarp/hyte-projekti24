@@ -137,7 +137,7 @@ main {
     margin-top: 100px;
     width: 80%;
     border-radius: 20px;
-    margin-bottom: 300px;
+    margin-bottom: 150px;
 }
 
 .container {
@@ -272,7 +272,7 @@ button {
   max-width: 130px; /* Aseta maksimileveydeksi 100% */
   height: auto; /* Korkeus automaattisesti */
   position: absolute;
-  top: 80px; /* Kiinnitä yläreunaan */
+  top: 55px; /* Kiinnitä yläreunaan */
   left: 50%; /* Keskitä vaakasuunnassa */
   transform: translateX(-50%);
   z-index: 1;
