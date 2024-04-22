@@ -337,15 +337,43 @@ async function latestMeasurementData() {
 latestMeasurementData();
 
 
+// Funktio, joka näyttää sivustolla kirjautuneen käyttäjän käyttäjänimen
+async function showUserName() {
+  let username = localStorage.getItem('name');
+  console.log("moi", username)
+  showGreeting(username);
 
+}
 
+showUserName();
 
+// Näytetään tervehdys käyttäjälle vuorokauden ajan mukaan
+async function showGreeting(username) {
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  let greeting;
+
+  if (currentHour >= 5 && currentHour < 12) {
+    greeting = "Hyvää huomenta";
+  } else if (currentHour >= 12 && currentHour < 18) {
+    greeting = "Hyvää päivää";
+  } else {
+    greeting = "Hyvää iltaa";
+  }
+
+  const notification = document.querySelector("#name");
+  notification.innerHTML = `${greeting}, arvoisa ZenBeatin käyttäjä <strong>${username}</strong>!`;
+
+}
+
+// Kirjautuminen ulos navbarin kirjaudu ulos painikkeesta
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 
 function logOut(evt) {
     evt.preventDefault();
     localStorage.removeItem("token");
-    localStorage.removeItem("user_id")
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("name");
     window.location.href = "index.html";
 }
 
