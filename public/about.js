@@ -61,12 +61,13 @@ const sendMessage = async (message) => {
   }
 }
 
-
+// Kirjautuminen ulos navbarin kirjaudu ulos painikkeesta
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 
 function logOut(evt) {
     evt.preventDefault();
     localStorage.removeItem("token");
-    localStorage.removeItem("user_id")
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("name");
     window.location.href = "index.html";
 }

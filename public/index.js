@@ -62,6 +62,7 @@ loginButton.addEventListener('click', async (evt) => {
         // TODO: Visuaalinen ilmoitus onnistuneesta kirjautumisesta
         localStorage.setItem('token', data.token);
         localStorage.setItem('user_id', data.user_id);
+        localStorage.setItem('name', data.user.given_name);
         setTimeout(function () {
           window.location.href = 'home.html';
         }, 1000);
