@@ -49,6 +49,30 @@
 
 }
 
+/* Muokkaa napin tyylittely */
+
+#openEditModalBtn {
+  display: flex;
+  margin-left: auto;
+  margin-right: 20px;
+  white-space: nowrap; /* Estä tekstiä menemästä riville */
+  align-items: center;
+  justify-content: flex-end;
+
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0 7px;
+  font: inherit;
+}
+
+#openEditModalBtn:hover {
+  background-color: #0A8ECC;
+  border-radius: 5px;
+}
+
+
+
 .nav-link:last-child {
   margin-left: 10px;
 }
@@ -103,7 +127,8 @@ body {
     padding: 0;
     margin: 0;
     -webkit-text-size-adjust: none;
-    background-color: #044465;
+    /* background-color: #044465; */
+    background: linear-gradient(to bottom, #044465, #0A8ECC, #BEF6E0);
 }
 
 header {
@@ -148,7 +173,8 @@ main {
     #1EB9CF,
     #0A8ECC
   ); */
-  background-image: url(images/stats.png);
+  /* background-image: url(images/stats.png); */
+  background: none;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 20px;
@@ -156,7 +182,7 @@ main {
   text-align: center;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 3px 10px white;
+  /* box-shadow: 0 3px 10px white; */
 }
 
 /* Viimeisin mittaustulos tyylittely */
@@ -173,23 +199,17 @@ main {
 }
 
 
-button {
-  border-radius: 20px;
-  background-color: white;
-  padding: 5px;
-  box-shadow: 0 3px 10px #044465;
-}
-
 .col {
   color: black;
   background-color: rgb(245, 245, 245, 0.9);
   border: 1px solid #ccc;
   box-shadow: 0 3px 10px #044465;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
   padding: 10px;
   justify-content: space-between;
+  box-shadow: 0 3px 10px #044465;
 }
 
 .col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover, .col-5:hover, .col-6:hover {

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.5 on darwin)" generated="2024-04-22T14:24:24.882004" rpa="false" schemaversion="5">
+<suite id="s1" name="Tools" source="/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/tools/tools.robot">
+<test id="s1-t1" name="Oikea tunnus ja salasana" line="12">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-04-22T14:24:26.190310" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/tools/browser/traces/7ecdec88-8d66-4dd4-86ea-581c528962c0"}</msg>
+<msg time="2024-04-22T14:24:26.543514" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/ronitimonen/Desktop/Koulu/HYTE24/Projekti/ZenBeat/hyte-projekti24/testaus/tools/browser/traces/7ecdec88-8d66-4dd4-86ea-581c528962c0"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=false</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-04-22T14:24:26.189542" elapsed="0.354338"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2024-04-22T14:24:26.546184" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 800,
+    "height": 600
+  }
+}</msg>
+<msg time="2024-04-22T14:24:26.556742" level="INFO">Successfully created context. </msg>
+<msg time="2024-04-22T14:24:26.556808" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 800, 'height': 600}}</msg>
+<arg>viewport={'width': 800, 'height': 600}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2024-04-22T14:24:26.544360" elapsed="0.012513"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2024-04-22T14:24:27.116766" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-04-22T14:24:26.557046" elapsed="0.559840"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T14:24:27.117417" level="INFO">Fills the text 'roni.timonen@metropolia.fi' in the given field.</msg>
+<arg>//input[@id = 'email']</arg>
+<arg>${EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T14:24:27.117097" elapsed="0.026800"/>
+</kw>
+<kw name="Fill Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$PASSWORD</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Fills the given secret from ``variable_name`` into the
+text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T14:24:27.144073" elapsed="0.051996"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//input[@type='submit']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T14:24:27.196293" elapsed="0.922064"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>css=.navbar-menu &gt; a[href='tools.html']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T14:24:28.118662" elapsed="2.366174"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T14:24:32.486224" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T14:24:30.485047" elapsed="2.001332"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>css=#avaaNappi1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T14:24:32.486704" elapsed="0.044991"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T14:24:36.532656" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T14:24:32.531969" elapsed="4.001020"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>css=.close</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T14:24:36.533580" elapsed="0.051487"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T14:24:40.586652" level="INFO">Slept 4 seconds.</msg>
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T14:24:36.585388" elapsed="4.001641"/>
+</kw>
+<doc>Testaa kirjautumisen oikealla tunnuksella ja salasanalla</doc>
+<tag>positive auth</tag>
+<status status="PASS" start="2024-04-22T14:24:26.188558" elapsed="14.399228"/>
+</test>
+<status status="PASS" start="2024-04-22T14:24:24.882541" elapsed="15.713997"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">positive auth</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tools">Tools</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

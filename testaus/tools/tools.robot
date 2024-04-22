@@ -25,5 +25,6 @@ Oikea tunnus ja salasana
     Sleep    2s
     Click    css=#avaaNappi1
     Sleep    4s
-    Click    css:.modal-content .close
+    Click    css=.close
     Sleep    4s
+
