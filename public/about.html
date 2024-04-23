@@ -23,10 +23,13 @@
     <div class="container">
       <!-- Zenbot Chat ensimmäisenä -->
       <div class="col col-4">
+        <img id="info-icon" src="images/info.png">
           <img src="images/Zenbot.png" alt="Zenbot" id="zenbot-image">
           <h3>Zenbot Chat</h3>
           <div id="chat-output"></div>
           <input type="text" id="chat-input" placeholder="Kirjoita viesti..." autofocus>
+          <!-- loadinscreen animaatio -->
+          <div id="loader" class="loader" style="display: none;"></div>
           <button id="chatbutton" onclick="sendMessage(document.getElementById('chat-input').value)">Lähetä</button>
       </div>
 
@@ -51,12 +54,25 @@
       </div>
 
       <!-- Sovelluksen käyttöohjeet -->
-      <div class="col col-3">
-        <button id="avaaNappi">Sovelluksen käyttöohjeet</button>
-      </div>
+      <div class="col col-3" id="avaaNappi">Sovelluksen käyttöohjeet</div>
     </div>
   </main>
 
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close1">&times;</span>
+
+     <h3>ZenBotin käyttö</h3>
+
+      <p>ZenBot on ChatGPT:n chattibotti jonka tarkoituksena on tarjota sinulle vastauksia kysymyksiisi stressistä.</p>
+      <p>Voit kysyä ZenBotilta mitä vaan, esimerkiksi stressioireista, stressin itsehoitomenetelmistä, tai keskustella muuten vaan.</p>
+      <br>
+      <p>Kokeile ZenBottia syöttämällä tekstiä viestikenttään.</p>
+
+
+    </div>
+  </div>
 
   <div id="myModal" class="modal">
     <!-- Modal sisältö -->
@@ -64,16 +80,16 @@
       <span class="close">&times;</span>
       <h2>Ohjeet sovelluksen käyttöön:</h2>
       <h4>Etusivu:</h4>
-      <p>Etusivulta näät sovelluksen kokonaiskuvan, sieltä voit jatkaa matkaasi Päiväkirja, Data, Info tai työkalut sivuille.</p>
+      <p>Etusivulta näet sovelluksen kokonaiskuvan, sieltä voit jatkaa matkaasi Päiväkirja, Data, Info tai Työkalut sivuille.</p>
       <p>Etusivun alaosasta pääset tarkastelemaan viimeisimpiä päiväkirjamerkintöjäsi ja mittaustuloksia.</p>
       <h4>Päiväkirja:</h4>
-      <p>Päiväkirjasivulla kirjaamaan omat päiväkirjasivusi, sivulla täytetään lomake joka tarjoaa kattavan kokonaisuuden hyvinvointisi seuraamiseen.</p>
+      <p>Päiväkirjasivulla pääset kirjaamaan omat päiväkirjamerkintäsi, sivulla täytetään lomake joka tarjoaa kattavan kokonaisuuden hyvinvointisi seuraamiseen.</p>
       <p>Päiväkirjamekintää täyttäessäsi, sinun täytyy vain valita päivämäärä jonka ajalle haluat kirjauksen tehdä, täyttää tiedot ja painaa "Tallenna".</p>
       <h4>Data:</h4>
-      <p>Data sivulla pääset tarkastelemaan diagrammia, josta näät menneet mittauksesi, riippuen siitä kuinka monta pittausta olet suorittanut KubiosHRV sovelluksen kautta.</p>
-      <p>Sivun alaosasta näät keskimääräiset mittaustuloksesi.</p>
+      <p>Datasivulla pääset tarkastelemaan diagrammia, josta näet menneet mittauksesi, riippuen siitä kuinka monta mittausta olet suorittanut KubiosHRV sovelluksen kautta.</p>
+      <p>Sivun alaosasta näet keskimääräiset mittaustuloksesi.</p>
       <h4>Työkalut:</h4>
-      <p>Työkalut sivulla pääset perehtymään erilaisiin stressiä lievittäviin harjoituksiin, perehdy ja kokeile, näin löydät itsellesi sopivimmat työkalut stressittömämpään elämään.</p>
+      <p>Työkalut sivulla pääset perehtymään erilaisiin stressiä lievittäviin harjoituksiin, perehdy, kokeile ja löydä itsellesi sopivimmat työkalut stressittömämpään elämään.</p>
     </div>
   </div>
   <footer class="footer">
