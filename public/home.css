@@ -363,28 +363,28 @@ button:hover {
 }
 
 .wave#wave1 {
-  z-index: 1000;
+  z-index: 999;
   opacity: 1;
   bottom: 0;
   animation: animateWaves 5s linear infinite;
 }
 
 .wave#wave2 {
-  z-index: 999;
+  z-index: 998;
   opacity: 0.5;
   bottom: 10px;
   animation: animate 5s linear infinite !important;
 }
 
 .wave#wave3 {
-  z-index: 1000;
+  z-index: 999;
   opacity: 0.2;
   bottom: 15px;
   animation: animateWaves 4s linear infinite;
 }
 
 .wave#wave4 {
-  z-index: 999;
+  z-index: 998;
   opacity: 0.7;
   bottom: 20px;
   animation: animate 4s linear infinite;
@@ -400,7 +400,7 @@ button:hover {
   width: 100%; /* Koko leveys */
   height: 100%; /* Koko korkeus */
   background-color: rgba(0,0,0,0.4); /* Musta tausta läpinäkyvyydellä */
-  z-index: 2000;
+  z-index: 1000;
   justify-content: center;
   align-items: center;
 }
