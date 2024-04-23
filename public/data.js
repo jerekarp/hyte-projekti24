@@ -159,7 +159,7 @@ function formatDate(timestamp) {
 }
 
 
-// Modaali Info 
+// Modaali Info
 let modal = document.getElementById("modal");
 let icon = document.getElementById("info-icon");
 let close = document.getElementsByClassName("close")[0];
@@ -208,21 +208,16 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
-
-
-
-
-
+// Kirjautuminen ulos navbarin kirjaudu ulos painikkeesta
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 
 function logOut(evt) {
     evt.preventDefault();
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
+    localStorage.removeItem("name");
     window.location.href = "index.html";
 }
 
 
 
-  
