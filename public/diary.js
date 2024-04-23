@@ -73,23 +73,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// POST entries formi
 
-const createEntry = document.querySelector('.createEntry')
+document.addEventListener('DOMContentLoaded', function() {
+    // Aseta nykyinen päivä oletusarvoksi
+    let currentDate = new Date();
+    let currentMonth = { value: currentDate.getMonth() };
+    let currentYear = { value: currentDate.getFullYear() };
+    generateCalendar(currentMonth.value, currentYear.value);
+
+    // Hae päiväkirjamerkinnät heti sivun latauksen yhteydessä
+    getDiaryEntries(currentYear.value, currentMonth.value, currentDate.getDate());
+});
+
+// POST entries formi
+const createEntry = document.querySelector('.createEntry');
 
 createEntry.addEventListener('click', async (evt) => {
-  evt.preventDefault();
+    evt.preventDefault();
 
-  const url = 'http://127.0.0.1:3000/api/entries';
-  let token = localStorage.getItem('token');
+    const url = 'http://127.0.0.1:3000/api/entries';
+    let token = localStorage.getItem('token');
 
-  const form = document.querySelector('.create_diary_form');
+    const form = document.querySelector('.create_diary_form');
 
-  // Check if the form is valid
-  if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-  }
+    // Check if the form is valid
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
 
     const data = {
         entry_date: form.querySelector('input[name=entry_date]').value,
@@ -100,37 +111,33 @@ createEntry.addEventListener('click', async (evt) => {
         notes: form.querySelector('textarea[name=notes]').value,
     };
 
-
     const options = {
-      method: 'POST',
-      headers: {
-          Authorization: 'Bearer: ' + token,
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-  };
+        method: 'POST',
+        headers: {
+            Authorization: 'Bearer: ' + token,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
 
-
-  fetchData(url, options).then((data) => {
-    form.querySelector('input[name=entry_date]').value = '';
-    form.querySelector('input[name=mood]').value = '';
-    moodInput.value = '';
-    selectedMoods = [];
-    form.querySelector('input[name=stress_level').value = '';
-    form.querySelector('input[name=weight]').value = '';
-    form.querySelector('input[name=sleep_hours]').value = '';
-    form.querySelector('textarea[name=notes]').value = '';
+    fetchData(url, options).then((data) => {
+        form.querySelector('input[name=entry_date]').value = '';
+        form.querySelector('input[name=mood]').value = '';
+        moodInput.value = '';
+        selectedMoods = [];
+        form.querySelector('input[name=stress_level').value = '';
+        form.querySelector('input[name=weight]').value = '';
+        form.querySelector('input[name=sleep_hours]').value = '';
+        form.querySelector('textarea[name=notes]').value = '';
 
         // Remove 'moodSelected' class from all mood buttons
         const moodButtons = document.querySelectorAll('.mood-option-button');
         moodButtons.forEach(button => button.classList.remove('moodSelected'));
-
-})
-})
+    });
+});
 
 
 // KALENTERI
-
 const isLeapYear = (year) => {
   return (
     (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
@@ -176,7 +183,6 @@ month_picker.onclick = () => {
 
 
 // HAE DATAA KALENTERISTA
-
 async function getDiaryEntries(year, month, day) {
   const date = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
   const url = `http://127.0.0.1:3000/api/entries/date/${date}`;
@@ -197,42 +203,40 @@ async function getDiaryEntries(year, month, day) {
 
 async function showDiaryEntries(entries) {
   const container = document.getElementById('entriesTable');
-  container.innerHTML = '';  // Clear previous entries
+  container.innerHTML = '';  // Tyhjennä edelliset merkinnät
 
-  // Luodaan taulukko
+  // Luo taulukko, jos merkintöjä on
   if (entries.length > 0) {
-  const table = document.createElement('table');
-  table.style.width = '100%';
-  table.border = '1';
+    const table = document.createElement('table');
+    table.style.width = '100%';
+    table.border = '1';
 
-  // Luo taulukon otsikko
-  const header = table.createTHead();
-  const headerRow = header.insertRow();
-  const headers = ['Päivämäärä', 'Tunnetilaa', 'Sterssimäärä', 'Paino', 'Nukutut tunnit', 'Muistinpanot'];
+    // Luo taulukon otsikko
+    const header = table.createTHead();
+    const headerRow = header.insertRow();
+    const headers = ['Päivämäärä', 'Tunnetila', 'Stressimäärä', 'Paino', 'Nukutut tunnit', 'Muistiinpanot'];
 
-  headers.forEach(text => {
-      const headerCell = document.createElement('th');
-      headerCell.textContent = text;
-      headerRow.appendChild(headerCell);
-  });
+    headers.forEach(text => {
+        const headerCell = document.createElement('th');
+        headerCell.textContent = text;
+        headerRow.appendChild(headerCell);
+    });
 
-  // Luo taulukon runko ja lisää merkinnät
-  const tbody = table.createTBody();
-  entries.forEach(entry => {
-      const row = tbody.insertRow();
-      row.insertCell().textContent = entry.entry_date;
-      row.insertCell().textContent = entry.mood;
-      row.insertCell().textContent = entry.stress_level;
-      row.insertCell().textContent = entry.weight;
-      row.insertCell().textContent = entry.sleep_hours;
-      row.insertCell().textContent = entry.notes;
-  });
+    // Luo taulukon runko ja lisää merkinnät
+    const tbody = table.createTBody();
+    entries.forEach(entry => {
+        const row = tbody.insertRow();
+        row.insertCell().textContent = formatDate(entry.entry_date); // Käytä formatDate-funktiota päivämäärän formatointiin
+        row.insertCell().textContent = entry.mood;
+        row.insertCell().textContent = entry.stress_level;
+        row.insertCell().textContent = entry.weight;
+        row.insertCell().textContent = entry.sleep_hours;
+        row.insertCell().textContent = entry.notes;
+    });
 
-  container.appendChild(table);
-
-
-  container.style.display = 'block';
-} else {
+    container.appendChild(table);
+    container.style.display = 'block';
+  } else {
       // Näytä viesti, jos merkintöjä ei ole
       const noEntriesMessage = document.createElement('p');
       noEntriesMessage.textContent = 'Tällä päivällä ei ole tehty päiväkirjamerkintöjä. Voit tarkastella toista päivämäärää, jolle merkintöjä on kirjattu.';
@@ -240,11 +244,9 @@ async function showDiaryEntries(entries) {
       noEntriesMessage.style.marginTop = '20px';
       container.appendChild(noEntriesMessage);
       container.style.display = 'block';  // Tee viesti näkyväksi
+  }
 
-}
-
-  // Päivämerkintä merkki kalenterissa
-
+  // Merkitse päiväkalenterissa tehdyt merkinnät
   const calendarDays = document.querySelectorAll('.day');
 
   entries.forEach(entry => {
@@ -254,7 +256,7 @@ async function showDiaryEntries(entries) {
     // Etsi kalenterista päivä, jolla on sama päivämäärä kuin merkinnässä
     calendarDays.forEach(day => {
       if (parseInt(day.innerHTML) === dayNum && !day.querySelector('.entry-icon')) {
-        // Luo kuva-ikoni
+        // Luo merkintäikoni
         const icon = document.createElement('img');
         icon.classList.add('entry-icon');
         icon.src = '/images/period.png';
@@ -335,8 +337,6 @@ function updateCalendarDayStyles(calendarElement, selectedDate) {
   });
 }
 
-
-
 let month_list = calendar.querySelector('.month-list');
 month_names.forEach((e, index) => {
   let month = document.createElement('div');
@@ -408,3 +408,8 @@ setInterval(() => {
   todayShowTime.textContent = formateTimer;
 }, 1000);
 
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+  return formattedDate;
+}
