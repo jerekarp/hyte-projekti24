@@ -42,7 +42,6 @@ const getUserData = async (req, res, next) => {
 
 /**
 * Get user info from Kubios API example
-* TODO: Implement error handling
 * @async
 * @param {Request} req Request object including Kubios id token
 * @param {Response} res
@@ -93,23 +92,47 @@ const getFilteredData = async (req, res, next) => {
     const oneMonthAgo = new Date();
     oneMonthAgo.setMonth(currentDate.getMonth() - 1);
 
-    const formattedDate = oneMonthAgo.toISOString();
-
     // Haetaan Kubioksesta viimeisen 30 päivän HRV-data
-    const response = await fetch(baseUrl + '/result/self?from=' + formattedDate, {
+    let response = await fetch(baseUrl + '/result/self?from=' + oneMonthAgo.toISOString(), {
       method: 'GET',
       headers: headers,
     });
+
+    let responseData = await response.json();
+
+    // Jos mittaustuloksia ei löytynyt, ahetaan uudestaan viimeisen 3kk ajalta
+    if (!response.ok || responseData.results.length === 0) {
+      const threeMonthsAgo = new Date();
+      threeMonthsAgo.setMonth(currentDate.getMonth() - 3);
+
+      response = await fetch(baseUrl + '/result/self?from=' + threeMonthsAgo.toISOString(), {
+        method: 'GET',
+        headers: headers,
+      });
+
+      responseData = await response.json();
+
+      // Jos ei vieläkään löydy mittaustuloksia, rajataan hakua puoleen vuoteen (6kk)
+      if (!response.ok || responseData.results.length === 0) {
+        const sixMonthsAgo = new Date();
+        sixMonthsAgo.setMonth(currentDate.getMonth() - 6);
+
+        response = await fetch(baseUrl + '/result/self?from=' + sixMonthsAgo.toISOString(), {
+          method: 'GET',
+          headers: headers,
+        });
+
+        responseData = await response.json();
+      }
+    }
 
     if (!response.ok) {
       throw new Error('Failed to fetch data from Kubios API');
     }
 
-    const data = await response.json();
-
     // Otetaan vain päivän viimeinen mittaus
     const filteredData = {};
-    data.results.forEach(result => {
+    responseData.results.forEach(result => {
       const date = new Date(result.measured_timestamp).toLocaleDateString();
       filteredData[date] = result;
     });
@@ -134,6 +157,7 @@ const getFilteredData = async (req, res, next) => {
     return res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
+
 
 /**
  * Apufunktio, joka palauttaa filtteröidyn datan korkeimmat arvot
