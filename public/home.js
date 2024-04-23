@@ -49,7 +49,7 @@ fetch("https://type.fit/api/quotes")
 // Esitietolomakkeen modalin toiminnot
 document.addEventListener('DOMContentLoaded', function() {
   let modal = document.getElementById('myModal');
-  let closeBtn = document.getElementsByClassName('close')[0];
+  let closeBtn = document.getElementById('closeInfoModal');
 
   // Sulje modal rististä
   closeBtn.addEventListener('click', function() {
