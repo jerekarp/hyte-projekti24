@@ -189,6 +189,7 @@ main {
 
 #latest-data {
   list-style-type: none;
+  padding: 0;
 }
 
 
@@ -213,7 +214,7 @@ main {
 }
 
 .col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover, .col-5:hover, .col-6:hover {
-  border: 3px solid #044565c4;
+  border: 2px solid #044565c4;
   box-shadow: 0 0 10px #044565c4;
   cursor: pointer;
 }
