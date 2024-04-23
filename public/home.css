@@ -397,6 +397,8 @@ button:hover {
   position: fixed; /* Pysyy paikallaan sivua vieritettäessä */
   left: 0;
   top: 0;
+  padding: 40px;
+  padding-top: 20px;
   width: 100%; /* Koko leveys */
   height: 100%; /* Koko korkeus */
   background-color: rgba(0,0,0,0.4); /* Musta tausta läpinäkyvyydellä */
@@ -406,10 +408,23 @@ button:hover {
 }
 
 .modal-content {
+  width: 500px;  /* Määritä sopiva leveys */
+  max-width: 100%; /* Varmista, että modal ei ylitä näytön leveyttä */
+  height: auto;  /* Korkeus mukautuu sisällön mukaan */
+  min-height: 300px; /* Määritä minimikorkeus */
   background-color: #fff;
   padding: 40px;
+  padding-top: 20px;
   border-radius: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Asettaa sisältöelementit pystysuunnassa */
+  justify-content: space-between; /* Jakaa tilan tasaisesti elementtien välille */
+  position: relative;
+}
+
+#welcome {
+  margin-bottom: 20px;
 }
 
 .modal-content input[type="text"],
@@ -452,8 +467,8 @@ button:hover {
   font-size: 24px;
   font-weight: bold;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   cursor: pointer;
 }
 
