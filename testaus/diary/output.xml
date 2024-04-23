@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.3 on darwin)" generated="2024-04-22T20:43:46.419397" rpa="false" schemaversion="5">
+<suite id="s1" name="Diary" source="/Library/hyte/hyte-projekti24/testaus/diary/diary.robot">
+<test id="s1-t1" name="Kirjaudutaan sisään ja navigoidaan sovelluksen Diary-sivulle" line="12">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-04-22T20:43:50.966011" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Library/hyte/hyte-projekti24/testaus/diary/browser/traces/17842b78-0496-449a-af1d-a4821cc60fb2"}</msg>
+<msg time="2024-04-22T20:43:54.000643" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Library/hyte/hyte-projekti24/testaus/diary/browser/traces/17842b78-0496-449a-af1d-a4821cc60fb2"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=false</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-04-22T20:43:50.963569" elapsed="3.037339"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2024-04-22T20:43:54.002926" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1400,
+    "height": 1080
+  }
+}</msg>
+<msg time="2024-04-22T20:43:54.225313" level="INFO">Successfully created context. </msg>
+<msg time="2024-04-22T20:43:54.225396" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1400, 'height': 1080}}</msg>
+<arg>viewport={'width': 1400, 'height': 1080}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2024-04-22T20:43:54.001407" elapsed="0.224116"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2024-04-22T20:43:56.857150" level="INFO">Successfully initialized new page object and opened url: http://127.0.0.1:3000/</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-04-22T20:43:54.225862" elapsed="2.631567"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T20:43:56.864635" level="INFO">Fills the text 'fjoralbb@metropolia.fi' in the given field.</msg>
+<arg>//input[@id = 'email']</arg>
+<arg>${EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:43:56.863009" elapsed="0.103851"/>
+</kw>
+<kw name="Fill Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$PASSWORD</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Fills the given secret from ``variable_name`` into the
+text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:43:56.968765" elapsed="0.048377"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-04-22T20:43:57.018974" level="INFO">Clicks the element '//input[@type='submit']'.</msg>
+<arg>//input[@type='submit']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:43:57.017882" elapsed="0.971450"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-04-22T20:43:57.992255" level="INFO">Clicks the element 'css=.navbar-menu &gt; a[href='diary.html']'.</msg>
+<arg>css=.navbar-menu &gt; a[href='diary.html']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:43:57.990725" elapsed="2.695252"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:02.687971" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:00.686716" elapsed="2.001422"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-22T20:44:02.689250" level="INFO">${entry_date} = 2024-04-15</msg>
+<var>${entry_date}</var>
+<arg>2024-04-15</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-22T20:44:02.688763" elapsed="0.000542"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T20:44:02.690220" level="INFO">Fills the text '2024-04-15' in the given field.</msg>
+<arg>//input[@name= "entry_date"]</arg>
+<arg>${entry_date}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:02.689614" elapsed="0.035755"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:04.727680" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:02.725786" elapsed="2.005809"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-22T20:44:04.732803" level="INFO">${mood} = Iloinen</msg>
+<var>${mood}</var>
+<arg>Iloinen</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-22T20:44:04.732231" elapsed="0.000666"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T20:44:04.734501" level="INFO">Fills the text 'Iloinen' in the given field.</msg>
+<arg>//input[@name= "mood"]</arg>
+<arg>${mood}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:04.733452" elapsed="0.029137"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:06.763976" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:04.763035" elapsed="2.001112"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-04-22T20:44:06.765380" level="INFO">Clicks the element '//Button[@data-mood= "Energinen"]'.</msg>
+<arg>//Button[@data-mood= "Energinen"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:06.764581" elapsed="0.056766"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:08.827853" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:06.827053" elapsed="2.000951"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-22T20:44:08.828666" level="INFO">${stress_level} = 10</msg>
+<var>${stress_level}</var>
+<arg>10</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-22T20:44:08.828360" elapsed="0.000356"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T20:44:08.829793" level="INFO">Fills the text '10' in the given field.</msg>
+<arg>//input[@name="stress_level"]</arg>
+<arg>${stress_level}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:08.829057" elapsed="0.025650"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:10.855780" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:08.855243" elapsed="2.000775"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-22T20:44:10.857786" level="INFO">${sleep_hours} = 8</msg>
+<var>${sleep_hours}</var>
+<arg>8</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-22T20:44:10.857415" elapsed="0.000437"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T20:44:10.859245" level="INFO">Fills the text '8' in the given field.</msg>
+<arg>//input[@name= "sleep_hours" ]</arg>
+<arg>${sleep_hours}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:10.858197" elapsed="0.026133"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:12.887082" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:10.885166" elapsed="2.002156"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-22T20:44:12.888618" level="INFO">${weight} = 66</msg>
+<var>${weight}</var>
+<arg>66</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-22T20:44:12.888104" elapsed="0.000606"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T20:44:12.890598" level="INFO">Fills the text '66' in the given field.</msg>
+<arg>//input[@name="weight"]</arg>
+<arg>${weight}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:12.889369" elapsed="0.032855"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:14.923329" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:12.922672" elapsed="2.000857"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-22T20:44:14.924624" level="INFO">${notes} = moimoi</msg>
+<var>${notes}</var>
+<arg>moimoi</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-22T20:44:14.924280" elapsed="0.000414"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-04-22T20:44:14.925780" level="INFO">Fills the text 'moimoi' in the given field.</msg>
+<arg>//textarea[@name="notes"]</arg>
+<arg>${notes}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:14.925023" elapsed="0.030711"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2024-04-22T20:44:14.963016" level="INFO">Clicks the element '//input[@type='submit']'.</msg>
+<arg>//input[@type='submit']</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-04-22T20:44:14.956311" elapsed="0.099193"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-04-22T20:44:17.057215" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-04-22T20:44:15.056188" elapsed="2.001344"/>
+</kw>
+<doc>Kirjaudutaan sisään ja navigoidaan Diary-sivulle</doc>
+<tag>login</tag>
+<status status="PASS" start="2024-04-22T20:43:50.958731" elapsed="26.100175"/>
+</test>
+<status status="PASS" start="2024-04-22T20:43:46.460567" elapsed="30.609996"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">login</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Diary">Diary</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
