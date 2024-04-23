@@ -400,7 +400,7 @@ button:hover {
   width: 100%; /* Koko leveys */
   height: 100%; /* Koko korkeus */
   background-color: rgba(0,0,0,0.4); /* Musta tausta läpinäkyvyydellä */
-  z-index: 1000;
+  z-index: 2000;
   justify-content: center;
   align-items: center;
 }
