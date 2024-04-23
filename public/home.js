@@ -189,10 +189,20 @@ function populateEditModal(studentInfo) {
 
 function openEditModal() {
   document.getElementById('editModal').style.display = 'flex';
+  window.addEventListener('click', windowOnClick);
 }
 
 function closeEditModal() {
   document.getElementById('editModal').style.display = 'none';
+  window.removeEventListener('click', windowOnClick);
+}
+
+function windowOnClick(event) {
+  const editModal = document.getElementById('editModal');
+  // Tarkistetaan, onko klikattu elementtiä ulkopuolelta
+  if (event.target === editModal) {
+    closeEditModal();
+  }
 }
 
 // Lisätään kuuntelijat sulje-napille

@@ -1,0 +1,62 @@
+{"level":30,"time":"2024-04-22T11:24:25.102Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Listening on 50195"}
+(node:27022) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":"2024-04-22T11:24:26.186Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:26.187Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:26.191Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2024-04-22T11:24:26.541Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Adding browser to stack: chromium, version: 121.0.6167.57"}
+{"level":30,"time":"2024-04-22T11:24:26.542Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method newBrowser"}
+{"level":30,"time":"2024-04-22T11:24:26.542Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2024-04-22T11:24:26.547Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method newContext"}
+{"level":30,"time":"2024-04-22T11:24:26.547Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2024-04-22T11:24:26.547Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Trace file: "}
+{"level":30,"time":"2024-04-22T11:24:26.555Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changed active context"}
+{"level":30,"time":"2024-04-22T11:24:26.555Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method newContext"}
+{"level":30,"time":"2024-04-22T11:24:26.558Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method newPage"}
+{"level":30,"time":"2024-04-22T11:24:26.558Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2024-04-22T11:24:26.890Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Video path: undefined"}
+{"level":30,"time":"2024-04-22T11:24:26.890Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changed active page"}
+{"level":30,"time":"2024-04-22T11:24:27.115Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method newPage"}
+{"level":30,"time":"2024-04-22T11:24:27.118Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-22T11:24:27.118Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Strict mode is enabled, find Locator with //input[@id = 'email'] in page."}
+{"level":30,"time":"2024-04-22T11:24:27.143Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-22T11:24:27.144Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method fillText"}
+{"level":30,"time":"2024-04-22T11:24:27.145Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Strict mode is enabled, find Locator with //input[@id='password'] in page."}
+{"level":30,"time":"2024-04-22T11:24:27.195Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method fillText"}
+{"level":30,"time":"2024-04-22T11:24:27.197Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method click"}
+{"level":30,"time":"2024-04-22T11:24:27.197Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Strict mode is enabled, find Locator with //input[@type='submit'] in page."}
+{"level":30,"time":"2024-04-22T11:24:28.117Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method click"}
+{"level":30,"time":"2024-04-22T11:24:28.120Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method click"}
+{"level":30,"time":"2024-04-22T11:24:28.120Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Strict mode is enabled, find Locator with css=.navbar-menu > a[href='tools.html'] in page."}
+{"level":30,"time":"2024-04-22T11:24:30.483Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method click"}
+{"level":30,"time":"2024-04-22T11:24:32.489Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method click"}
+{"level":30,"time":"2024-04-22T11:24:32.489Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Strict mode is enabled, find Locator with css=#avaaNappi1 in page."}
+{"level":30,"time":"2024-04-22T11:24:32.530Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method click"}
+{"level":30,"time":"2024-04-22T11:24:36.538Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method click"}
+{"level":30,"time":"2024-04-22T11:24:36.538Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Strict mode is enabled, find Locator with css=.close in page."}
+{"level":30,"time":"2024-04-22T11:24:36.583Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method click"}
+{"level":30,"time":"2024-04-22T11:24:40.601Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.603Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.606Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.608Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.610Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changed active context"}
+{"level":30,"time":"2024-04-22T11:24:40.610Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changing current active page: page=ba8a5791-7eb0-48db-93ec-46abec4ce3a9"}
+{"level":30,"time":"2024-04-22T11:24:40.610Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changed active page"}
+{"level":30,"time":"2024-04-22T11:24:40.616Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.618Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.619Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2024-04-22T11:24:40.620Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2024-04-22T11:24:40.622Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2024-04-22T11:24:40.622Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2024-04-22T11:24:40.624Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changing current active page: page=ba8a5791-7eb0-48db-93ec-46abec4ce3a9"}
+{"level":30,"time":"2024-04-22T11:24:40.624Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changed active page"}
+{"level":30,"time":"2024-04-22T11:24:40.627Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.629Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-04-22T11:24:40.630Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changed active context"}
+{"level":30,"time":"2024-04-22T11:24:40.630Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changing current active page: page=ba8a5791-7eb0-48db-93ec-46abec4ce3a9"}
+{"level":30,"time":"2024-04-22T11:24:40.630Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Changed active page"}
+{"level":30,"time":"2024-04-22T11:24:40.635Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method closeContext"}
+{"level":30,"time":"2024-04-22T11:24:40.643Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Removed page=9e0fb165-09cd-4560-b1b2-118eb12f0d49 from context=662d0659-b308-47ca-8f79-a9b60f1229f3 page stack"}
+{"level":30,"time":"2024-04-22T11:24:40.679Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method closeContext"}
+{"level":30,"time":"2024-04-22T11:24:40.698Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2024-04-22T11:24:40.749Z","pid":27022,"hostname":"Roni-MacBook-Air.local","msg":"End of node method closeAllBrowsers"}

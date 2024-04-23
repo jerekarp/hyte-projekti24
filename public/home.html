@@ -19,6 +19,7 @@
         <a href="about.html" class="nav-link">Info</a>
         <a href="tools.html" class="nav-link">Työkalut</a>
     </div>
+    <button id="openEditModalBtn">Omat tiedot</button>
     <a href="index.html" class="nav-link nav-link-right">Kirjaudu ulos</a>
   </nav>
   <div id="banner"><div class="user"><span id="name">NIMI TÄHÄN</span></div>
@@ -83,6 +84,7 @@
       </div>
     </div>
 
+      <!-- Esitietolomakkeen modal -->
         <div id="myModal" class="modal">
           <div class="modal-content">
               <span class="close">&times;</span>
@@ -126,12 +128,12 @@
           </div>
       </div>
     </div>
-    <button id="openEditModalBtn">Muokkaa tietoja</button>
+
       <!-- Muokkauslomakkeen modal -->
     <div id="editModal" class="modal">
       <div class="modal-content">
           <span class="close" id="closeEditModal">&times;</span>
-          <p>Muokkaa tietojasi:</p>
+          <p><strong>Muokkaa tietojasi:</strong></p>
           <form id="editStudentForm">
               <div class="form-field">
                   <label for="editFirstname">Etunimi:</label>

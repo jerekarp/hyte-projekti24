@@ -137,7 +137,7 @@ main {
     margin-top: 100px;
     width: 80%;
     border-radius: 20px;
-    margin-bottom: 300px;
+    margin-bottom: 150px;
 }
 
 .container {
@@ -194,6 +194,12 @@ a {
 
 .col-3 {
     grid-column: span 12;
+}
+
+.col-3:hover {
+  border: 2px solid #044565c4;
+  box-shadow: 0 0 5px #044565c4;
+  cursor: pointer;
 }
 
 button {
@@ -272,7 +278,7 @@ button {
   max-width: 130px; /* Aseta maksimileveydeksi 100% */
   height: auto; /* Korkeus automaattisesti */
   position: absolute;
-  top: 80px; /* Kiinnitä yläreunaan */
+  top: 55px; /* Kiinnitä yläreunaan */
   left: 50%; /* Keskitä vaakasuunnassa */
   transform: translateX(-50%);
   z-index: 1;
