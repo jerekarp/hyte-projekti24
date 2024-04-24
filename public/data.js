@@ -22,7 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const myChart = new Chart(document.getElementById('myChart'), config);
   const chartSelection = document.getElementById('chartSelection');
-  const maxDataElement = document.getElementById('max-data'); // Lisää maksimiarvot tähän elementtiin
+  const maxDataElement = document.getElementById('max-data');
+
+  const idealValues = {
+    stress_index: 0, // Pienin lukema
+    respiratory_rate: Number.MAX_SAFE_INTEGER, // Suurin mahdollinen luku, alustettu suurimmaksi arvoksi
+    mean_hr_bpm: Number.MAX_SAFE_INTEGER, // Suurin mahdollinen luku, alustettu suurimmaksi arvoksi
+    readiness: 0 // Pienin lukema
+  };
 
   chartSelection.addEventListener('change', function() {
       const selectedValue = chartSelection.value;
