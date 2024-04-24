@@ -371,9 +371,14 @@ async function showGreeting(username) {
     greeting = "Hyvää iltaa";
   }
 
-  const notification = document.querySelector("#name");
-  notification.innerHTML = `${greeting}, arvoisa ZenBeatin käyttäjä <strong>${username}</strong>!`;
+  const notification = document.querySelector(".user");
+  notification.innerHTML = `${greeting} <strong>${username}</strong>!`;
 
+  notification.classList.add("show-notification");
+
+  setTimeout(() => {
+    notification.classList.remove("show-notification");
+  }, 5000);
 }
 
 // Kirjautuminen ulos navbarin kirjaudu ulos painikkeesta

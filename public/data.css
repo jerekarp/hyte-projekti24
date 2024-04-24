@@ -235,6 +235,7 @@ select {
 #info-icon {
   width: 25px;
   height: 25px;
+  float: right;
 }
 
 /* INFO MODAL */
@@ -263,14 +264,15 @@ select {
   max-height: 400px;
   border-radius: 20px;
   box-shadow: 0 3px 10px #044465;
+  padding: 20px;
 }
 
 .close {
   color: #aaa;
   position: absolute;
   top: 10px;
-  right: 10px;
-  font-size: 40px;
+  right: 20px;
+  font-size: 35px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -344,6 +346,14 @@ select {
   background-image: url('images/show-more.png');
   cursor: pointer;
   margin-left: 200px;
+}
+
+.info-content {
+  display: none;
+}
+
+.info-content.expanded {
+  display: block;
 }
 
 
