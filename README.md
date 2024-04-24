@@ -18,6 +18,8 @@ Nodejs + Express sovellus.
 
 ### Automaatiotestaukset
 
+---
+
 **UC_2 Kirjautuminen sovellukseen**
 
 - [Login Report](https://jerekarp.github.io/)
@@ -57,3 +59,12 @@ Nodejs + Express sovellus.
 
 - [LogOut Report](https://jerekarp.github.io/logout_report.html)
 - [LogOut Log](https://jerekarp.github.io/logout_log.html)
+
+---
+
+
+### Credits
+
+Kirjautumissivun HTML5 pohja: https://html5up.net/highlights
+Highlights by HTML5 UP
+html5up.net | **@ajlkn**
