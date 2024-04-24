@@ -150,9 +150,11 @@ main {
   background-color: rgba(4, 68, 101, 0.85);
 }
 
+
 .col-2 {
   grid-column: span 12;
   background-color: transparent;
+  margin: 0 auto;
 }
 
 .col-3 {
@@ -291,9 +293,10 @@ select {
   text-align: center;
   background-color: rgba(4, 68, 101, 0.85);
   color: white;
-  padding: 2px;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 3px 10px #044465;
+  width: 700px;
 }
 
 #max-data-container p {
@@ -310,6 +313,7 @@ select {
   padding: 20px;
   padding-top: 5px;
   height: auto;
+  width: 700px;
 }  
 
 .data-info {
@@ -505,4 +509,9 @@ h3 {
   100% {
     background-positon-x: 0px;
   }
+}
+
+/* Media Query Puhelimet */
+@media screen and (max-width: 600px) {
+
 }

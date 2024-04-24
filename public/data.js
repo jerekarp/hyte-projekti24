@@ -1,35 +1,70 @@
 import { fetchData } from './fetch.js';
 
-
-// TODO: Käyttäjälle vaihtoehto suodattaa dataa (esim. viikottain, kuukausittain, kalenteri???)
+// Chart.JS
 document.addEventListener('DOMContentLoaded', function() {
   const data = {
       labels: [], // Tyhjä taulukko alustetaan, nimet päivitetään myöhemmin
       datasets: []
   };
 
+
   const config = {
-      type: 'bar', // bar, line etc
-      data: data,
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  };
+    type: 'bar',
+    data: data,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            tooltip: {
+                intersect: false
+            },
+            legend: {
+                display: true,
+                onClick: function(e, legendItem) {
+                    const index = legendItem.datasetIndex;
+                    const ci = this.chart;
+                    const meta = ci.getDatasetMeta(index);
+                    meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+                    ci.update();
+                },
+                onHover: function(e, legendItem) {
+                    e.native.target.style.cursor = 'pointer';
+                },
+                onLeave: function(e, legendItem) {
+                    e.native.target.style.cursor = 'default';
+                }
+            },
+            title: {
+                display: true,
+                text: 'Kubios HRV'
+            }
+        },
+        interaction: {
+            mode: 'index'
+        },
+        onHover: function(e) {
+            const points = this.getElementsAtEventForMode(
+                e,
+                'index', { axis: 'x', intersect: true },
+                false
+            );
+
+            if (points.length) e.native.target.style.cursor = 'pointer';
+            else e.native.target.style.cursor = 'default';
+        }
+    }
+};
+
+
+
+
 
   const myChart = new Chart(document.getElementById('myChart'), config);
   const chartSelection = document.getElementById('chartSelection');
   const maxDataElement = document.getElementById('max-data');
-
-  const idealValues = {
-    stress_index: 0, // Pienin lukema
-    respiratory_rate: Number.MAX_SAFE_INTEGER, // Suurin mahdollinen luku, alustettu suurimmaksi arvoksi
-    mean_hr_bpm: Number.MAX_SAFE_INTEGER, // Suurin mahdollinen luku, alustettu suurimmaksi arvoksi
-    readiness: 0 // Pienin lukema
-  };
 
   chartSelection.addEventListener('change', function() {
       const selectedValue = chartSelection.value;
@@ -111,6 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateChartWithData('all'); // Oletusarvoisesti näytetään kaikki data
 });
+
+
+
 
 
 // Apufunktio käyttäjäystävällisen nimen saamiseksi parametrille
