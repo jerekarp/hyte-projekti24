@@ -117,7 +117,7 @@
   background-size: contain; /* Varmistetaan, että kuva mahtuu kokonaan alueelle ja säilyttää mittasuhteensa */
   background-repeat: no-repeat; /* Estetään kuvan toistuminen */
   z-index: 2;
-  transition: right 0.5s ease-in-out, transform 0.5s ease-in-out; /* Lisää sujuva siirtymä 'right' ja 'transform'-ominaisuuksille */
+  transition: right 3.0s ease-in-out, transform 2.0s ease-in-out; /* Lisää sujuva siirtymä 'right' ja 'transform'-ominaisuuksille */
 }
 
 /* Sivuston perusrunko, 12 column grid */
@@ -213,9 +213,9 @@ main {
   box-shadow: 0 3px 10px #044465;
 }
 
-.col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover, .col-5:hover, .col-6:hover {
+.col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover, .col-5:hover {
   border: 2px solid #044565c4;
-  box-shadow: 0 0 10px #044565c4;
+  box-shadow: 0 0 5px #044565c4;
   cursor: pointer;
 }
 
