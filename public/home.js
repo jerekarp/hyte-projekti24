@@ -371,20 +371,30 @@ async function showGreeting(username) {
     greeting = "Hyvää iltaa";
   }
 
-  const notification = document.querySelector("#name");
-  notification.innerHTML = `${greeting}, arvoisa ZenBeatin käyttäjä <strong>${username}</strong>!`;
+  const notification = document.querySelector(".user");
+  notification.innerHTML = `${greeting} <strong>${username}</strong>!`;
 
+  notification.classList.add("show-notification");
+
+  setTimeout(() => {
+    notification.classList.remove("show-notification");
+  }, 5000);
 }
 
 // Kirjautuminen ulos navbarin kirjaudu ulos painikkeesta
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 
 function logOut(evt) {
-    evt.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("name");
-    window.location.href = "index.html";
-}
+  evt.preventDefault()
+  // Kysy käyttäjältä vahvistusta
+  if (window.confirm("Haluatko varmasti kirjautua ulos?")) {
+      // Jos käyttäjä vahvistaa, poista käyttäjätiedot selaimen localStoragesta
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      localStorage.removeItem("name");
 
+      // Ohjaa käyttäjä takaisin etusivulle
+      window.location.href = "index.html";
+  }
+}
 

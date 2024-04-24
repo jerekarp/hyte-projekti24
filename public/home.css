@@ -158,11 +158,19 @@ main {
   transform: translate(-50%, -50%);
   color: white;
   font-size: x-large;
-  background-color: rgba(10, 142, 204, 0.8);
+  background-color: rgba(10, 142, 204, 0.9);
   box-shadow: 0 3px 10px white;
   border-radius: 10px;
-  padding: 7px;
+  font-size: 40px;
+  margin-top: 170px;
+  padding: 12px;
+  display: none; /* Piilotetaan aluksi */
 }
+
+.show-notification {
+  display: block !important;
+}
+
 
 /* Sivujen esittely laatikoiden tyylittely */
 .container {
@@ -213,8 +221,9 @@ main {
   box-shadow: 0 3px 10px #044465;
 }
 
-.col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover, .col-5:hover {
+.col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover {
   border: 2px solid #044565c4;
+  background-color: rgb(245, 245, 245, 0.8);
   box-shadow: 0 0 5px #044565c4;
   cursor: pointer;
 }
@@ -466,11 +475,11 @@ button:hover {
 
 .close {
   color: #aaa;
-  font-size: 24px;
-  font-weight: bold;
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 20px;
+  font-size: 35px;
+  font-weight: bold;
   cursor: pointer;
 }
 
