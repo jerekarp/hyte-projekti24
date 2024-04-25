@@ -8,55 +8,65 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
 
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        plugins: {
-            tooltip: {
-                intersect: false
-            },
-            legend: {
-                display: true,
-                onClick: function(e, legendItem) {
-                    const index = legendItem.datasetIndex;
-                    const ci = this.chart;
-                    const meta = ci.getDatasetMeta(index);
-                    meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-                    ci.update();
-                },
-                onHover: function(e, legendItem) {
-                    e.native.target.style.cursor = 'pointer';
-                },
-                onLeave: function(e, legendItem) {
-                    e.native.target.style.cursor = 'default';
-                }
-            },
-            title: {
-                display: true,
-                text: 'Kubios HRV'
-            }
-        },
-        interaction: {
-            mode: 'index'
-        },
-        onHover: function(e) {
-            const points = this.getElementsAtEventForMode(
-                e,
-                'index', { axis: 'x', intersect: true },
-                false
-            );
+  const isMobileDevice = window.matchMedia("(max-width: 768px)").matches; // Tässä käytetään esimerkiksi maksimileveyttä 768px määrittelemään mobiililaite
 
-            if (points.length) e.native.target.style.cursor = 'pointer';
-            else e.native.target.style.cursor = 'default';
-        }
-    }
-};
+  const config = {
+      type: 'bar',
+      data: data,
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              },
+              x: {
+                  display: !isMobileDevice // Piilottaa x-akselin mobiililaitteilla
+              }
+          },
+          plugins: {
+              tooltip: {
+                  intersect: false
+              },
+              legend: {
+                  display: !isMobileDevice,
+                  onClick: function(e, legendItem) {
+                      const index = legendItem.datasetIndex;
+                      const ci = this.chart;
+                      const meta = ci.getDatasetMeta(index);
+                      meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+                      ci.update();
+                  },
+                  onHover: function(e, legendItem) {
+                      e.native.target.style.cursor = 'pointer';
+                  },
+                  onLeave: function(e, legendItem) {
+                      e.native.target.style.cursor = 'default';
+                  }
+              },
+              title: {
+                  display: true,
+                  text: 'Kubios HRV'
+              }
+          },
+          interaction: {
+              mode: 'index'
+          },
+          onHover: function(e) {
+              const points = this.getElementsAtEventForMode(
+                  e,
+                  'index', { axis: 'x', intersect: true },
+                  false
+              );
+
+              if (points.length) e.native.target.style.cursor = 'pointer';
+              else e.native.target.style.cursor = 'default';
+          }
+      }
+  };
+
+
+
+
+
 
 
 

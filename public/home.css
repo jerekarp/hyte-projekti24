@@ -49,6 +49,7 @@
 
 }
 
+
 /* Muokkaa napin tyylittely */
 
 #openEditModalBtn {
@@ -70,8 +71,6 @@
   background-color: #0A8ECC;
   border-radius: 5px;
 }
-
-
 
 .nav-link:last-child {
   margin-left: 10px;
@@ -95,7 +94,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-attachment: fixed;
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
   box-shadow: 0 3px 10px white;
   position: relative;
   z-index: 1;
@@ -103,8 +102,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
+
 
 #minikuva {
   background-image: url(images/buddha.png);
@@ -284,19 +283,6 @@ button:hover {
 
 .col-12 {
     grid-column: span 4;
-}
-
-@media screen and (max-width: 1080px) {
-
-  main {
-    margin-top: 70px;
-  }
-  .col {
-    grid-column: span 12; /* Asettaa kaikki .col-elementit viemään koko rivin leveyden pienillä näytöillä */
-  }
-  #banneri {
-    display: none;
-  }
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
@@ -507,3 +493,153 @@ button:hover {
   }
 }
 
+/* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
+@media screen and (max-width: 399px) {
+  #banner {
+    height: 140px;
+    margin-bottom: 40px;
+  }
+
+  .user {
+    font-size: 22px;
+  }
+
+  .col {
+    grid-column: span 12;
+  }
+
+  #minikuva {
+    display: none;
+  }
+
+  .wave#wave1,
+  .wave#wave2,
+  .wave#wave3,
+  .wave#wave4 {
+    display: none;
+  }
+  
+}
+
+/* Media Query Mobiililaitteet, Normaali leveyskoko 400-600px */
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  #banner {
+    height: 170px;
+    margin-bottom: 40px;
+  }
+
+  .user {
+    font-size: 22px;
+  }
+
+  main {
+    margin-top: 70px;
+  }
+
+  .col {
+    grid-column: span 12;
+  }
+
+  #minikuva {
+    display: none;
+  }
+
+  .topnav a:not(.icon) {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive #myLinks {
+    display: block;
+    position: absolute;
+    background-color: #333;
+    width: 100%;
+    top: 50px;
+    z-index: 99;
+  }
+  
+}
+
+/* Tabletit */
+@media screen and (min-width: 601px) and (max-width: 700px) {
+  #banner {
+    height: 260px;
+  }
+
+
+  #minikuva {
+    top: 145px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+}
+
+
+@media screen and (min-width: 701px) and (max-width: 800px) {
+  #banner {
+    height: 300px;
+  }
+
+  
+  #minikuva {
+    top: 185px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+}
+
+@media screen and (min-width: 801px) and (max-width: 900px) {
+  #banner {
+    height: 330px;
+  }
+
+  #minikuva {
+    top: 215px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+}
+
+@media screen and (min-width: 901px) and (max-width: 1100px) {
+  #banner {
+    height: 380px;
+  }
+
+  #minikuva {
+    top: 265px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+}

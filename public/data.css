@@ -513,5 +513,56 @@ h3 {
 
 /* Media Query Puhelimet */
 @media screen and (max-width: 600px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    text-align: center;
+    background-color: rgba(4, 68, 101, 0.85);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #044465;
+    width: 300px;
+    margin: 0 auto; 
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    color: white;
+    background-color: white;
+    box-shadow: 0 3px 10px white;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 5px;
+    width: 300px;
+    margin: 0 auto; 
+  }  
+
+  .data-info {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; /* Lisää viiva */
+    padding-bottom: 20px; /* Lisää tilaa viivan ja seuraavan boksin välille */
+  }
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    background-image: url('images/show-more.png');
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    color: black;
+    font-weight: normal;
+    width: 280px;
 
 }
+
+
+}
+
+
