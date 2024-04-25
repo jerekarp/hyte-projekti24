@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.4 on darwin)" generated="2024-04-25T17:55:37.635045" rpa="false" schemaversion="5">
+<suite id="s1" name="Muokkaa Merkinta" source="/Users/juliusvalkeinen/Desktop/Metropolia/HyTe/5Projekti/hyte-projekti24/testaus/back/muokkaa_merkinta/muokkaa_merkinta.robot">
+<kw name="Authenticate as Admin" owner="muokkaa_merkinta_keywords" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-25T17:55:37.704599" level="INFO">${body} = {'username': 'juliusev@metropolia.fi', 'password': '+1Uojej111'}</msg>
+<var>${body}</var>
+<arg>username=juliusev@metropolia.fi</arg>
+<arg>password=+1Uojej111</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-25T17:55:37.704470" elapsed="0.000146"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-25T17:55:38.504034" level="INFO">POST Request : url=http://127.0.0.1:3000/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '64', 'Content-Type': 'application/json'} 
+ body=b'{"username": "juliusev@metropolia.fi", "password": "+1Uojej111"}' 
+ </msg>
+<msg time="2024-04-25T17:55:38.504232" level="INFO">POST Response : url=http://127.0.0.1:3000/api/auth/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1802', 'ETag': 'W/"70a-gK2SoBpC+U8o3CpEyUBqjjcMkLA"', 'Date': 'Thu, 25 Apr 2024 14:55:38 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Logged in successfully with Kubios","user":{"email":"juliusev@metropolia.fi","family_name":"Valkeinen","given_name":"Julius","sub":"40b43f97-3f49-443f-9069-b5e9d82ba41d"},"user_id":2,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVHWkxialUyYlhCNVJVOXBjSFZ4T0dSRlVEQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzSW1Gc1p5STZJbEpUTWpVMkluMC5leUpoZEY5b1lYTm9Jam9pWTBNM2IwRkRaeTFEYTJwRVoyNWpjVVZwVWxCVFp5SXNJbk4xWWlJNklqUXdZalF6WmprM0xUTm1ORGt0TkRRelppMDVNRFk1TFdJMVpUbGtPREppWVRReFpDSXNJbVZ0WVdsc1gzWmxjbWxtYVdWa0lqcDBjblZsTENKcGMzTWlPaUpvZEhSd2N6cGNMMXd2WTI5bmJtbDBieTFwWkhBdVpYVXRkMlZ6ZEMweExtRnRZWHB2Ym1GM2N5NWpiMjFjTDJWMUxYZGxjM1F0TVY5MVVXMUJaelExZUhraUxDSmpiMmR1YVhSdk9uVnpaWEp1WVcxbElqb2lOREJpTkRObU9UY3RNMlkwT1MwME5ETm1MVGt3TmprdFlqVmxPV1E0TW1KaE5ERmtJaXdpWjJsMlpXNWZibUZ0WlNJNklrcDFiR2wxY3lJc0ltRjFaQ0k2SWpjME5UY3hjR1JvZFdNM2RuWmhhelIwYkRRMWRYUnpPSFU0SWl3aVpYWmxiblJmYVdRaU9pSmtORE15TVdabE1pMDRaalJtTFRSbFlqRXRPVFF5WkMweE1UVmhZbVZpWVRRMU5XWWlMQ0owYjJ0bGJsOTFjMlVpT2lKcFpDSXNJbUYxZEdoZmRHbHRaU0k2TVRjeE5EQTFOamt6T0N3aVpYaHdJam94TnpFME1EWXdOVE00TENKcFlYUWlPakUzTVRRd05UWTVNemdzSW1aaGJXbHNlVjl1WVcxbElqb2lWbUZzYTJWcGJtVnVJaXdpWlcxaGFXd2lPaUpxZFd4cGRYTmxka0J0WlhSeWIzQnZiR2xoTG1acEluMC5rdzR1VXJVYnVmTWNqaW9yMnJOR0hyMVRIcHEteE1MRmFMTlMyc012NFpTcUIwYV83UmJ0bkZDejJtdU8zOTlUaER4cXFwTC0yelJIeGlKZ3FOcjBfem1hSVdiRUc4U2hvdmtoSk94T0xYQTJ1Nk03NjlHdjd0Y05maHA1U2JobUhEc1RTT1IyaDlUMmdWb0dRSXJUUjF5cmVqWmRSYmt6MzNSRjFMQ0JWS1F1WmZvcVFKOUJTTm1uRlBiRGlkNTNnekRWZGFaVkRzbWcwS2M4Y01kOWxlTzNUZzk2X3JDdnRTcFMxc041X0NOSUZwLWxHZjRkUGhtRVdrV2lINFktWDB2NzB2cFhueEx2WUJYN3BmbUUtUVd5c2g0MFF3Q3c3OXduVG9HU3Z1UkxSYllBdDFBVmIxVFlDT3R6UDdJRkdKajNXTEp0R2VfZEtQdml0MWZuQ1EiLCJpYXQiOjE3MTQwNTY5MzgsImV4cCI6MTcxNDA2MDUzOH0.Gbq8H6eukhzUsoB9yfPMdaV-P_0BBrD0ENF3mGGF73M"} 
+ </msg>
+<msg time="2024-04-25T17:55:38.504500" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=http://127.0.0.1:3000/api/auth/login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-25T17:55:37.704675" elapsed="0.799865"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-25T17:55:38.505760" level="INFO">{'message': 'Logged in successfully with Kubios', 'user': {'email': 'juliusev@metropolia.fi', 'family_name': 'Valkeinen', 'given_name': 'Julius', 'sub': '40b43f97-3f49-443f-9069-b5e9d82ba41d'}, 'user_id': 2, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVHWkxialUyYlhCNVJVOXBjSFZ4T0dSRlVEQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzSW1Gc1p5STZJbEpUTWpVMkluMC5leUpoZEY5b1lYTm9Jam9pWTBNM2IwRkRaeTFEYTJwRVoyNWpjVVZwVWxCVFp5SXNJbk4xWWlJNklqUXdZalF6WmprM0xUTm1ORGt0TkRRelppMDVNRFk1TFdJMVpUbGtPREppWVRReFpDSXNJbVZ0WVdsc1gzWmxjbWxtYVdWa0lqcDBjblZsTENKcGMzTWlPaUpvZEhSd2N6cGNMMXd2WTI5bmJtbDBieTFwWkhBdVpYVXRkMlZ6ZEMweExtRnRZWHB2Ym1GM2N5NWpiMjFjTDJWMUxYZGxjM1F0TVY5MVVXMUJaelExZUhraUxDSmpiMmR1YVhSdk9uVnpaWEp1WVcxbElqb2lOREJpTkRObU9UY3RNMlkwT1MwME5ETm1MVGt3TmprdFlqVmxPV1E0TW1KaE5ERmtJaXdpWjJsMlpXNWZibUZ0WlNJNklrcDFiR2wxY3lJc0ltRjFaQ0k2SWpjME5UY3hjR1JvZFdNM2RuWmhhelIwYkRRMWRYUnpPSFU0SWl3aVpYWmxiblJmYVdRaU9pSmtORE15TVdabE1pMDRaalJtTFRSbFlqRXRPVFF5WkMweE1UVmhZbVZpWVRRMU5XWWlMQ0owYjJ0bGJsOTFjMlVpT2lKcFpDSXNJbUYxZEdoZmRHbHRaU0k2TVRjeE5EQTFOamt6T0N3aVpYaHdJam94TnpFME1EWXdOVE00TENKcFlYUWlPakUzTVRRd05UWTVNemdzSW1aaGJXbHNlVjl1WVcxbElqb2lWbUZzYTJWcGJtVnVJaXdpWlcxaGFXd2lPaUpxZFd4cGRYTmxka0J0WlhSeWIzQnZiR2xoTG1acEluMC5rdzR1VXJVYnVmTWNqaW9yMnJOR0hyMVRIcHEteE1MRmFMTlMyc012NFpTcUIwYV83UmJ0bkZDejJtdU8zOTlUaER4cXFwTC0yelJIeGlKZ3FOcjBfem1hSVdiRUc4U2hvdmtoSk94T0xYQTJ1Nk03NjlHdjd0Y05maHA1U2JobUhEc1RTT1IyaDlUMmdWb0dRSXJUUjF5cmVqWmRSYmt6MzNSRjFMQ0JWS1F1WmZvcVFKOUJTTm1uRlBiRGlkNTNnekRWZGFaVkRzbWcwS2M4Y01kOWxlTzNUZzk2X3JDdnRTcFMxc041X0NOSUZwLWxHZjRkUGhtRVdrV2lINFktWDB2NzB2cFhueEx2WUJYN3BmbUUtUVd5c2g0MFF3Q3c3OXduVG9HU3Z1UkxSYllBdDFBVmIxVFlDT3R6UDdJRkdKajNXTEp0R2VfZEtQdml0MWZuQ1EiLCJpYXQiOjE3MTQwNTY5MzgsImV4cCI6MTcxNDA2MDUzOH0.Gbq8H6eukhzUsoB9yfPMdaV-P_0BBrD0ENF3mGGF73M'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.504890" elapsed="0.000945"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-25T17:55:38.506423" level="INFO">${TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVHWkxialUyYlhCNVJVOXBjSFZ4T0dSRlVEQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzSW1Gc1p5STZJbEpUTWpVMkluMC5...</msg>
+<var>${TOKEN}</var>
+<arg>${response.json()}[token]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.505963" elapsed="0.000486"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-25T17:55:38.506963" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVHWkxialUyYlhCNVJVOXBjSFZ4T0dSRlVEQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzSW1Gc1p5STZJbEpUTWpVMkluMC5leUpoZEY5b1lYTm9Jam9pWTBNM2IwRkRaeTFEYTJwRVoyNWpjVVZwVWxCVFp5SXNJbk4xWWlJNklqUXdZalF6WmprM0xUTm1ORGt0TkRRelppMDVNRFk1TFdJMVpUbGtPREppWVRReFpDSXNJbVZ0WVdsc1gzWmxjbWxtYVdWa0lqcDBjblZsTENKcGMzTWlPaUpvZEhSd2N6cGNMMXd2WTI5bmJtbDBieTFwWkhBdVpYVXRkMlZ6ZEMweExtRnRZWHB2Ym1GM2N5NWpiMjFjTDJWMUxYZGxjM1F0TVY5MVVXMUJaelExZUhraUxDSmpiMmR1YVhSdk9uVnpaWEp1WVcxbElqb2lOREJpTkRObU9UY3RNMlkwT1MwME5ETm1MVGt3TmprdFlqVmxPV1E0TW1KaE5ERmtJaXdpWjJsMlpXNWZibUZ0WlNJNklrcDFiR2wxY3lJc0ltRjFaQ0k2SWpjME5UY3hjR1JvZFdNM2RuWmhhelIwYkRRMWRYUnpPSFU0SWl3aVpYWmxiblJmYVdRaU9pSmtORE15TVdabE1pMDRaalJtTFRSbFlqRXRPVFF5WkMweE1UVmhZbVZpWVRRMU5XWWlMQ0owYjJ0bGJsOTFjMlVpT2lKcFpDSXNJbUYxZEdoZmRHbHRaU0k2TVRjeE5EQTFOamt6T0N3aVpYaHdJam94TnpFME1EWXdOVE00TENKcFlYUWlPakUzTVRRd05UWTVNemdzSW1aaGJXbHNlVjl1WVcxbElqb2lWbUZzYTJWcGJtVnVJaXdpWlcxaGFXd2lPaUpxZFd4cGRYTmxka0J0WlhSeWIzQnZiR2xoTG1acEluMC5rdzR1VXJVYnVmTWNqaW9yMnJOR0hyMVRIcHEteE1MRmFMTlMyc012NFpTcUIwYV83UmJ0bkZDejJtdU8zOTlUaER4cXFwTC0yelJIeGlKZ3FOcjBfem1hSVdiRUc4U2hvdmtoSk94T0xYQTJ1Nk03NjlHdjd0Y05maHA1U2JobUhEc1RTT1IyaDlUMmdWb0dRSXJUUjF5cmVqWmRSYmt6MzNSRjFMQ0JWS1F1WmZvcVFKOUJTTm1uRlBiRGlkNTNnekRWZGFaVkRzbWcwS2M4Y01kOWxlTzNUZzk2X3JDdnRTcFMxc041X0NOSUZwLWxHZjRkUGhtRVdrV2lINFktWDB2NzB2cFhueEx2WUJYN3BmbUUtUVd5c2g0MFF3Q3c3OXduVG9HU3Z1UkxSYllBdDFBVmIxVFlDT3R6UDdJRkdKajNXTEp0R2VfZEtQdml0MWZuQ1EiLCJpYXQiOjE3MTQwNTY5MzgsImV4cCI6MTcxNDA2MDUzOH0.Gbq8H6eukhzUsoB9yfPMdaV-P_0BBrD0ENF3mGGF73M</msg>
+<arg>${TOKEN}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.506554" elapsed="0.000471"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-04-25T17:55:38.507562" level="INFO">${TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVHWkxialUyYlhCNVJVOXBjSFZ4T0dSRlVEQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzSW1Gc1p5STZJbEpUTWpVMkluMC5...</msg>
+<arg>${TOKEN}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.507367" elapsed="0.000233"/>
+</kw>
+<status status="PASS" start="2024-04-25T17:55:37.704223" elapsed="0.803445"/>
+</kw>
+<test id="s1-t1" name="Update Diary Entry" line="18">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-25T17:55:38.508560" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVHWkxialUyYlhCNVJVOXBjSFZ4T0dSRlVEQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzS...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.508272" elapsed="0.000316"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-25T17:55:38.508951" level="INFO">${body} = {'entry_date': '2023-04-01', 'mood': 'happy', 'weight': '70', 'sleep_hours': '8', 'notes': 'Updated entry'}</msg>
+<var>${body}</var>
+<arg>entry_date=2023-04-01</arg>
+<arg>mood=happy</arg>
+<arg>weight=70</arg>
+<arg>sleep_hours=8</arg>
+<arg>notes=Updated entry</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.508757" elapsed="0.000215"/>
+</kw>
+<kw name="PUT" owner="RequestsLibrary">
+<msg time="2024-04-25T17:55:38.516134" level="INFO">PUT Request : url=http://127.0.0.1:3000/api/entries/1 
+ path_url=/api/entries/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVHWkxialUyYlhCNVJVOXBjSFZ4T0dSRlVEQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzSW1Gc1p5STZJbEpUTWpVMkluMC5leUpoZEY5b1lYTm9Jam9pWTBNM2IwRkRaeTFEYTJwRVoyNWpjVVZwVWxCVFp5SXNJbk4xWWlJNklqUXdZalF6WmprM0xUTm1ORGt0TkRRelppMDVNRFk1TFdJMVpUbGtPREppWVRReFpDSXNJbVZ0WVdsc1gzWmxjbWxtYVdWa0lqcDBjblZsTENKcGMzTWlPaUpvZEhSd2N6cGNMMXd2WTI5bmJtbDBieTFwWkhBdVpYVXRkMlZ6ZEMweExtRnRZWHB2Ym1GM2N5NWpiMjFjTDJWMUxYZGxjM1F0TVY5MVVXMUJaelExZUhraUxDSmpiMmR1YVhSdk9uVnpaWEp1WVcxbElqb2lOREJpTkRObU9UY3RNMlkwT1MwME5ETm1MVGt3TmprdFlqVmxPV1E0TW1KaE5ERmtJaXdpWjJsMlpXNWZibUZ0WlNJNklrcDFiR2wxY3lJc0ltRjFaQ0k2SWpjME5UY3hjR1JvZFdNM2RuWmhhelIwYkRRMWRYUnpPSFU0SWl3aVpYWmxiblJmYVdRaU9pSmtORE15TVdabE1pMDRaalJtTFRSbFlqRXRPVFF5WkMweE1UVmhZbVZpWVRRMU5XWWlMQ0owYjJ0bGJsOTFjMlVpT2lKcFpDSXNJbUYxZEdoZmRHbHRaU0k2TVRjeE5EQTFOamt6T0N3aVpYaHdJam94TnpFME1EWXdOVE00TENKcFlYUWlPakUzTVRRd05UWTVNemdzSW1aaGJXbHNlVjl1WVcxbElqb2lWbUZzYTJWcGJtVnVJaXdpWlcxaGFXd2lPaUpxZFd4cGRYTmxka0J0WlhSeWIzQnZiR2xoTG1acEluMC5rdzR1VXJVYnVmTWNqaW9yMnJOR0hyMVRIcHEteE1MRmFMTlMyc012NFpTcUIwYV83UmJ0bkZDejJtdU8zOTlUaER4cXFwTC0yelJIeGlKZ3FOcjBfem1hSVdiRUc4U2hvdmtoSk94T0xYQTJ1Nk03NjlHdjd0Y05maHA1U2JobUhEc1RTT1IyaDlUMmdWb0dRSXJUUjF5cmVqWmRSYmt6MzNSRjFMQ0JWS1F1WmZvcVFKOUJTTm1uRlBiRGlkNTNnekRWZGFaVkRzbWcwS2M4Y01kOWxlTzNUZzk2X3JDdnRTcFMxc041X0NOSUZwLWxHZjRkUGhtRVdrV2lINFktWDB2NzB2cFhueEx2WUJYN3BmbUUtUVd5c2g0MFF3Q3c3OXduVG9HU3Z1UkxSYllBdDFBVmIxVFlDT3R6UDdJRkdKajNXTEp0R2VfZEtQdml0MWZuQ1EiLCJpYXQiOjE3MTQwNTY5MzgsImV4cCI6MTcxNDA2MDUzOH0.Gbq8H6eukhzUsoB9yfPMdaV-P_0BBrD0ENF3mGGF73M', 'Content-Length': '107', 'Content-Type': 'application/json'} 
+ body=b'{"entry_date": "2023-04-01", "mood": "happy", "weight": "70", "sleep_hours": "8", "notes": "Updated entry"}' 
+ </msg>
+<msg time="2024-04-25T17:55:38.516228" level="INFO">PUT Response : url=http://127.0.0.1:3000/api/entries/1 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '47', 'ETag': 'W/"2f-1WFAIBVvrsOXxOewVI5CW/IFkj4"', 'Date': 'Thu, 25 Apr 2024 14:55:38 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Entry data updated","entry_id":"1"} 
+ </msg>
+<msg time="2024-04-25T17:55:38.516323" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>http://127.0.0.1:3000/api/entries/1</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a PUT request.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.509106" elapsed="0.007236"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.516538" elapsed="0.000242"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-25T17:55:38.517001" level="INFO">&lt;Response [201]&gt;</msg>
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.516903" elapsed="0.000128"/>
+</kw>
+<kw name="Convert To Dictionary" owner="Collections">
+<msg time="2024-04-25T17:55:38.517550" level="INFO">${result} = {'message': 'Entry data updated', 'entry_id': '1'}</msg>
+<var>${result}</var>
+<arg>${response.json()}</arg>
+<doc>Converts the given ``item`` to a Python ``dict`` type.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.517130" elapsed="0.000437"/>
+</kw>
+<doc>Updates a diary entry and verifies the update was successful.</doc>
+<status status="PASS" start="2024-04-25T17:55:38.507775" elapsed="0.009913"/>
+</test>
+<doc>Test Case for updating a diary entry.</doc>
+<status status="PASS" start="2024-04-25T17:55:37.635549" elapsed="0.882587"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Muokkaa Merkinta">Muokkaa Merkinta</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
