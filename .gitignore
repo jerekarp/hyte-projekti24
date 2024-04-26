@@ -9,3 +9,4 @@ testaus/diary/output.xml
 testaus/playwright-log.txt
 testaus/ronin_testit/
 testaus/apitesti/restful_healthdiary_keywords.resource
+testaus/tools/login_variables.resource

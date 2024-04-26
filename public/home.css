@@ -49,6 +49,9 @@
 
 }
 
+.mobile-navbar {
+  display: none;
+}
 
 /* Muokkaa napin tyylittely */
 
@@ -518,7 +521,7 @@ button:hover {
   .wave#wave4 {
     display: none;
   }
-  
+
 }
 
 /* Media Query Mobiililaitteet, Normaali leveyskoko 400-600px */
@@ -561,8 +564,43 @@ button:hover {
     top: 50px;
     z-index: 99;
   }
-  
+
+  .navbar {
+    display: none;
+  }
+  .mobile-navbar {
+    color: white;
+    width: auto;
+    height: 100%;
+    left: 20px;
+    right: 20px;
+    margin-top: 20px;
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 25px;
+  }
+
+  .bi {
+    color: white;
+    margin: 30px;
+
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  #openEditModalBtn {
+    display: none;
+  }
 }
+
 
 /* Tabletit */
 @media screen and (min-width: 601px) and (max-width: 700px) {
@@ -591,7 +629,7 @@ button:hover {
     height: 300px;
   }
 
-  
+
   #minikuva {
     top: 185px;
   }
@@ -643,3 +681,5 @@ button:hover {
   }
 
 }
+
+/* Navigaatiopalkin mobiilinäkymä */
