@@ -126,6 +126,13 @@ function addStudentInfo(evt) {
   const height = document.getElementById('height').value;
   const age = document.getElementById('age').value;
   const gender = document.getElementById('gender').value;
+  const form = document.getElementById('studentForm');
+
+  // Check if the form is valid
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
   const options = {
     method: 'POST',
@@ -226,6 +233,14 @@ function updateStudentInfo (evt) {
   const newHeight = document.getElementById('editHeight').value;
   const newAge = document.getElementById('editAge').value;
   const newGender = document.getElementById('editGender').value;
+
+  const form = document.getElementById('editStudentForm');
+
+  // Check if the form is valid
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
   const options = {
     method: 'PUT',
