@@ -381,6 +381,18 @@ async function showGreeting(username) {
   }, 5000);
 }
 
+// Navigaatiopalkin mobiilinäkymä
+
+document.getElementById('openEditModalBtn').addEventListener('click', function() {
+  var mobileNav = document.getElementById('mobileNavbar');
+  if (mobileNav.style.display === 'none') {
+      mobileNav.style.display = 'flex';
+  } else {
+      mobileNav.style.display = 'none';
+  }
+});
+
+
 // Kirjautuminen ulos navbarin kirjaudu ulos painikkeesta
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 

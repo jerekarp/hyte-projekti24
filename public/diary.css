@@ -123,7 +123,6 @@ nav {
   text-align: center;
 }
 
-
 main {
     padding: 20px;
     margin-top: 100px;
@@ -135,7 +134,7 @@ main {
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 10px;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
 
     border-radius: 20px;
 }
@@ -152,7 +151,7 @@ main {
 }
 
 .col-2 {
-    grid-column: span 6;
+  grid-column: span 6;
 }
 
 .col-1 h3, .col-2 h3 {
@@ -355,12 +354,13 @@ main {
 
 .calendar {
   margin-top: 2.5rem;
+  margin-left: 0.8rem;
   height: 33rem;
-  width: 80%;
+  width: 85%;
   background-color: white;
   border-radius: 26px;
   overflow: hidden;
-  padding: 35px 50px 0px 50px;
+  padding: 35px 30px 0px 30px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -579,6 +579,9 @@ main {
   animation: showtime 1s forwards;
 }
 
+
+
+
 @keyframes to-top {
   0% {
     transform: translateY(0);
@@ -661,7 +664,6 @@ main {
 
   .col-2 {
       order: -1; /* Siirtää kalenterin yläpuolelle */
-
   }
 
   .col-1, .col-2 {
@@ -796,4 +798,128 @@ main {
   width: 35px;
   height: 35px;
 }
+
+#updateFormContainer {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Dim the background */
+  z-index: 1050; /* Make sure it sits on top of other content */
+}
+
+#formContainer {
+  background-color: #fff; /* Käytä puhtaan valkoista tai sivuston teeman mukaista vaaleaa sävyä */
+  margin: 5% auto; /* Muuta marginaalia tarvittaessa */
+  padding: 20px;
+  border: none; /* Poista jos sivustollasi ei yleensä käytetä reunuksia */
+  border-radius: 10px; /* Sovella pyöristettyjä kulmia jos ne ovat osa sivustosi tyyliä */
+  width: 30%; /* Voit säätää leveyttä paremman responsiivisuuden saavuttamiseksi */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Käytä kevyempää varjostusta jos se sopii yhteen sivustosi kanssa */
+}
+
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  display: block; /* Asettaa elementit allekkain */
+  width: calc(100% - 40px); /* Vähentää paddingin verran leveydestä */
+  padding: 10px; /* Antaa hieman tyhjää tilaa sisäpuolelle */
+  margin: 10px 0; /* Luo tilaa elementtien välille */
+  border: 1px solid #ccc; /* Kevyt reunus yhdenmukaisuuden vuoksi */
+  border-radius: 26px; /* Pyöristetyt kulmat teemasi mukaan */
+  box-sizing: border-box; /* Sisältää paddingin ja borderin leveyteen */
+}
+
+#formContainer button {
+  display: block; /* Asettaa buttonin omalle rivilleen */
+  width: auto; /* Säätää buttonin leveyttä automaattisesti */
+  padding: 10px 15px;
+  margin: 10px 0; /* Luo tilaa ylä- ja alapuolelle */
+  background-color: #076398; /* Teemasi mukainen väri */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#updateEntryForm {
+  display: flex;
+  justify-content: flex-start; /* Pack flex items from the start */
+  flex-wrap: wrap; /* Tämä varmistaa, että elementit menevät seuraavalle riville tarvittaessa */
+  align-items: center; /* Tämä varmistaa, että painikkeet ovat keskitettyjä vertikaalisesti */
+}
+
+
+/* Voit myös asettaa enimmäisleveyden painikkeille, jos ne ovat liian leveitä */
+#updateEntryForm button {
+  padding: 10px 15px; /* Säädä padding arvoja tarpeen mukaan */
+  margin-left: 5px;
+}
+
+
+button:hover {
+  background-color: #055481; /* Tummennettu versio teemaväristäsi hover-efektinä */
+}
+
+#notification {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;  /* Alkutila piilotettu */
+  transition: opacity 0.5s ease-in-out;
+  font-size: 20px;
+  text-align: center;
+  min-width: 300px;
+}
+
+#notification.success {
+  background-color: #3CB371;
+}
+
+#notification.error {
+  background-color: #eb4034;
+}
+
+* Grid-säännöt taulukon sarakkeille */
+table {
+  table-layout: fixed; /* Varmistaa, että kaikki sarakkeet pysyvät samanlevyisinä */
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background-color: whitesmoke;
+}
+
+th {
+  background-color: #044465;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 14px; /* säädä fonttikokoa tarvittaessa */
+  max-width: 120px; /* Säädä leveyttä tarpeen mukaan */
+}
+
+td {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 14px; /* Säädä fonttikokoa tarvittaessa */
+  max-width: 120px; /* Säädä leveyttä tarpeen mukaan */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  min-width: 0; /* Firefox vaatii tämän, jotta hyphenation toimii */
+  overflow: auto; /* Sallii vierityksen, kun teksti ei mahdu */
+  word-wrap: break-word; /* Katkaisee sanat sopivasti */
+}
+
 

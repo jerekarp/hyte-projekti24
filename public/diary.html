@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="diary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <title>Päiväkirja</title>
 </head>
 <body>
@@ -102,7 +104,13 @@
                 </div>
                 <div class="month-list"></div>
               </div>
-              <div id="entriesTable"></div>
+              <table id="entriesTable"></table>
+              <div id="updateFormContainer" style="display:none;">
+                <div id="formContainer">
+                  <!-- Form will be dynamically inserted here -->
+                </div>
+              </div>
+              <div id="notification"></div>
             </div>
             <!-- <div class="col col-3">
               <p>Col 3</p>
@@ -168,5 +176,11 @@
         <p>&copy;2024 ZenBeat</p>
       </footer>
     <script type="module" src="diary.js"></script>
+
 </body>
 </html>
+
+
+
+
+
