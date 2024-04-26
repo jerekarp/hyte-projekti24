@@ -1,35 +1,80 @@
 import { fetchData } from './fetch.js';
 
-
-// TODO: Käyttäjälle vaihtoehto suodattaa dataa (esim. viikottain, kuukausittain, kalenteri???)
+// Chart.JS
 document.addEventListener('DOMContentLoaded', function() {
   const data = {
       labels: [], // Tyhjä taulukko alustetaan, nimet päivitetään myöhemmin
       datasets: []
   };
 
+
+  const isMobileDevice = window.matchMedia("(max-width: 768px)").matches; // Tässä käytetään esimerkiksi maksimileveyttä 768px määrittelemään mobiililaite
+
   const config = {
-      type: 'bar', // bar, line etc
+      type: 'bar',
       data: data,
       options: {
           scales: {
               y: {
                   beginAtZero: true
+              },
+              x: {
+                  display: !isMobileDevice // Piilottaa x-akselin mobiililaitteilla
               }
+          },
+          plugins: {
+              tooltip: {
+                  intersect: false
+              },
+              legend: {
+                  display: !isMobileDevice,
+                  onClick: function(e, legendItem) {
+                      const index = legendItem.datasetIndex;
+                      const ci = this.chart;
+                      const meta = ci.getDatasetMeta(index);
+                      meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+                      ci.update();
+                  },
+                  onHover: function(e, legendItem) {
+                      e.native.target.style.cursor = 'pointer';
+                  },
+                  onLeave: function(e, legendItem) {
+                      e.native.target.style.cursor = 'default';
+                  }
+              },
+              title: {
+                  display: true,
+                  text: 'Kubios HRV'
+              }
+          },
+          interaction: {
+              mode: 'index'
+          },
+          onHover: function(e) {
+              const points = this.getElementsAtEventForMode(
+                  e,
+                  'index', { axis: 'x', intersect: true },
+                  false
+              );
+
+              if (points.length) e.native.target.style.cursor = 'pointer';
+              else e.native.target.style.cursor = 'default';
           }
       }
   };
 
+
+
+
+
+
+
+
+
+
   const myChart = new Chart(document.getElementById('myChart'), config);
   const chartSelection = document.getElementById('chartSelection');
   const maxDataElement = document.getElementById('max-data');
-
-  const idealValues = {
-    stress_index: 0, // Pienin lukema
-    respiratory_rate: Number.MAX_SAFE_INTEGER, // Suurin mahdollinen luku, alustettu suurimmaksi arvoksi
-    mean_hr_bpm: Number.MAX_SAFE_INTEGER, // Suurin mahdollinen luku, alustettu suurimmaksi arvoksi
-    readiness: 0 // Pienin lukema
-  };
 
   chartSelection.addEventListener('change', function() {
       const selectedValue = chartSelection.value;
@@ -113,6 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
 // Apufunktio käyttäjäystävällisen nimen saamiseksi parametrille
 function getUserFriendlyName(param) {
   switch(param) {
@@ -188,25 +236,15 @@ window.onclick = function(event) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Haetaan kaikki show-more-iconit
   let showMoreIcons = document.querySelectorAll(".show-more-icon");
 
-  // Käydään läpi jokainen show-more-icon
   showMoreIcons.forEach(function(icon) {
-    // Lisätään klikkaustapahtumankäsittelijä
     icon.addEventListener("click", function() {
-      // Etsitään oikea info-content-div käyttäen querySelector-metodia
       let content = icon.closest(".data-info").querySelector(".info-content");
 
-      // Toggle-info-sisältö
       if (content) {
-        // Vaihdetaan info-contentin display-arvo näkyväksi, jos se on piilotettu
-        if (content.style.display === "none") {
-          content.style.display = "block";
-        } else {
-          // Piilotetaan info-content, jos se on näkyvissä
-          content.style.display = "none";
-        }
+        // Lisätään tai poistetaan CSS-luokka 'expanded' tarvittaessa
+        content.classList.toggle("expanded");
       } else {
         console.error("Info-content-div not found!");
       }
@@ -219,12 +257,19 @@ document.addEventListener("DOMContentLoaded", function() {
 document.querySelector(".nav-link.nav-link-right").addEventListener("click", logOut);
 
 function logOut(evt) {
-    evt.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("name");
-    window.location.href = "index.html";
+  evt.preventDefault()
+  // Kysy käyttäjältä vahvistusta
+  if (window.confirm("Haluatko varmasti kirjautua ulos?")) {
+      // Jos käyttäjä vahvistaa, poista käyttäjätiedot selaimen localStoragesta
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      localStorage.removeItem("name");
+
+      // Ohjaa käyttäjä takaisin etusivulle
+      window.location.href = "index.html";
+  }
 }
+
 
 
 

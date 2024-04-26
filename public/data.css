@@ -150,9 +150,11 @@ main {
   background-color: rgba(4, 68, 101, 0.85);
 }
 
+
 .col-2 {
   grid-column: span 12;
   background-color: transparent;
+  margin: 0 auto;
 }
 
 .col-3 {
@@ -235,6 +237,7 @@ select {
 #info-icon {
   width: 25px;
   height: 25px;
+  float: right;
 }
 
 /* INFO MODAL */
@@ -263,14 +266,15 @@ select {
   max-height: 400px;
   border-radius: 20px;
   box-shadow: 0 3px 10px #044465;
+  padding: 20px;
 }
 
 .close {
   color: #aaa;
   position: absolute;
   top: 10px;
-  right: 10px;
-  font-size: 40px;
+  right: 20px;
+  font-size: 35px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -289,9 +293,10 @@ select {
   text-align: center;
   background-color: rgba(4, 68, 101, 0.85);
   color: white;
-  padding: 2px;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 3px 10px #044465;
+  width: 700px;
 }
 
 #max-data-container p {
@@ -308,6 +313,7 @@ select {
   padding: 20px;
   padding-top: 5px;
   height: auto;
+  width: 700px;
 }  
 
 .data-info {
@@ -344,6 +350,14 @@ select {
   background-image: url('images/show-more.png');
   cursor: pointer;
   margin-left: 200px;
+}
+
+.info-content {
+  display: none;
+}
+
+.info-content.expanded {
+  display: block;
 }
 
 
@@ -496,3 +510,59 @@ h3 {
     background-positon-x: 0px;
   }
 }
+
+/* Media Query Puhelimet */
+@media screen and (max-width: 600px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    text-align: center;
+    background-color: rgba(4, 68, 101, 0.85);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #044465;
+    width: 300px;
+    margin: 0 auto; 
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    color: white;
+    background-color: white;
+    box-shadow: 0 3px 10px white;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 5px;
+    width: 300px;
+    margin: 0 auto; 
+  }  
+
+  .data-info {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; /* Lisää viiva */
+    padding-bottom: 20px; /* Lisää tilaa viivan ja seuraavan boksin välille */
+  }
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    background-image: url('images/show-more.png');
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    color: black;
+    font-weight: normal;
+    width: 280px;
+
+}
+
+
+}
+
+

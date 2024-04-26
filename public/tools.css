@@ -143,8 +143,8 @@ main {
 }
 
 #avaaNappi1:hover, #avaaNappi2:hover, #avaaNappi3:hover, #avaaNappi4:hover {
-  border: 2px solid #044565c4;
   box-shadow: 0 0 5px #044565c4;
+  background-color: rgb(245, 245, 245, 0.8);
   cursor: pointer;
 }
 
@@ -258,15 +258,15 @@ main {
 
 /* Sulje-napin tyyli */
 .close, .close2, .close3, .close4 {
+  color: #aaa;
   position: absolute;
   top: 10px;
   right: 20px;
-  cursor: pointer;
-  color: #aaa;
-  float: inline-end;
-  font-size: 28px;
+  font-size: 35px;
   font-weight: bold;
+  cursor: pointer;
 }
+
 
 .close:hover, .close2:hover, .close3:hover, .close4:hover,
 .close:focus, .close2:focus, .close3:focus, .close4:focus {
@@ -274,6 +274,7 @@ main {
   text-decoration: none;
   cursor: pointer;
 }
+
 
 #exercisevideo {
   display: block;
