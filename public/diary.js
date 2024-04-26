@@ -618,9 +618,15 @@ function formatDate(dateStr) {
 }
 
 function logOut(evt) {
-  evt.preventDefault();
-  localStorage.removeItem("token");
-  localStorage.removeItem("user_id");
-  localStorage.removeItem("name");
-  window.location.href = "index.html";
+  evt.preventDefault()
+  // Kysy käyttäjältä vahvistusta
+  if (window.confirm("Haluatko varmasti kirjautua ulos?")) {
+      // Jos käyttäjä vahvistaa, poista käyttäjätiedot selaimen localStoragesta
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      localStorage.removeItem("name");
+
+      // Ohjaa käyttäjä takaisin etusivulle
+      window.location.href = "index.html";
+  }
 }
