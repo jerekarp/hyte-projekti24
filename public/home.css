@@ -271,6 +271,9 @@ button:hover {
 
 .col-7 {
     grid-column: span 12;
+    max-width: 600px;
+    margin: 0 auto;
+
 }
 
 .col-8 {
