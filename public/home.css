@@ -230,7 +230,7 @@ main {
 
 .col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover {
   border: 2px solid #044565c4;
-  background-color: rgb(245, 245, 245, 0.8);
+  background-color: rgb(245, 245, 245, 0.7);
   box-shadow: 0 0 5px #044565c4;
   cursor: pointer;
 }
@@ -273,7 +273,6 @@ button:hover {
     grid-column: span 12;
     max-width: 600px;
     margin: 0 auto;
-
 }
 
 .col-8 {

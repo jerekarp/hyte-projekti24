@@ -428,28 +428,13 @@ async function latestDiaryEntry() {
 }
 
 
-
-
-
-
-
-
-latestDiaryEntry();
-latestMeasurementData();
-
-
-
-
-
 // Funktio, joka näyttää sivustolla kirjautuneen käyttäjän käyttäjänimen
 async function showUserName() {
   let username = localStorage.getItem('name');
-  console.log("moi", username)
   showGreeting(username);
 
 }
 
-showUserName();
 
 // Näytetään tervehdys käyttäjälle vuorokauden ajan mukaan
 async function showGreeting(username) {
@@ -504,3 +489,6 @@ function logOut(evt) {
   }
 }
 
+latestDiaryEntry();
+latestMeasurementData();
+showUserName();
