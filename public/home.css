@@ -202,6 +202,11 @@ main {
   padding: 0;
 }
 
+/* Viimeisin päiväkirjamerkintä tyylittely  */
+#latest-entry {
+  list-style-type: none;
+}
+
 
 .boksi {
   padding: 20px;

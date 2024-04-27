@@ -304,7 +304,6 @@ async function latestMeasurementData() {
   const token = localStorage.getItem('token');
 
   try {
-    const token = localStorage.getItem("token");
     const url = 'http://127.0.0.1:3000/api/kubios/filtered-data';
     const options = {
         method: "GET",
@@ -322,7 +321,6 @@ async function latestMeasurementData() {
 
     // Otetaan filteredData-taulukon ensimmäinen elementti, joka on viimeisin mittaustulos
     const latestData = responseData.filteredData[responseData.filteredData.length - 1];
-
 
     // Etsitään <ul>-elementti, johon lisätään mittaustiedot
     const listElement = document.getElementById('latest-data');
@@ -347,10 +345,16 @@ async function latestMeasurementData() {
         }
       }
 
-      listItem.textContent = `${friendlyName}: ${value}`;
+      // Luo span elementti arvolle ja aseta sille väri
+      const valueSpan = document.createElement('span');
+      valueSpan.textContent = value;
+      valueSpan.style.color = '#044464';
+
+      // Yhdistä kentän nimi ja arvo span-elementtiin
+      listItem.textContent = `${friendlyName}: `;
+      listItem.appendChild(valueSpan);
       listElement.appendChild(listItem);
     }
-
 
   } catch (error) {
     console.error('Virhe haettaessa mittaustietoja:', error);
@@ -359,7 +363,82 @@ async function latestMeasurementData() {
 }
 
 
+async function latestDiaryEntry() {
+  const url = `http://127.0.0.1:3000/api/entries`;
+  const token = localStorage.getItem('token');
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  fetchData(url, options).then((data) => {
+    // Haetaan kaikista merkinnöistä viimeisin
+    const latestEntry = data.reduce((latest, current) => {
+      const latestDate = new Date(latest.entry_date);
+      const currentDate = new Date(current.entry_date);
+      return currentDate > latestDate ? current : latest;
+    });
+
+    const list = document.getElementById('latest-entry');
+
+    // Tyhjennetään vanha merkintä
+    list.innerHTML = '';
+
+    // Määritetään kenttien nimet
+    const keyDisplayNames = {
+      entry_date: 'Päivämäärä',
+      mood: 'Tunnetila',
+      sleep_hours: 'Nukutut tunnit',
+      stress_level: 'Stressin määrä',
+      weight: 'Paino',
+      notes: 'Merkintä'
+    };
+
+    // Luodaan uusi elementti listan kaikille jäsenille
+    Object.keys(keyDisplayNames).forEach(key => {
+      if (latestEntry[key] !== undefined) {
+        let value = latestEntry[key];
+        // Päivämäärän formatointi
+        if (key === 'entry_date') {
+          const date = new Date(value);
+          value = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
+        }
+        // Lisätään painon perään "kg"
+        if (key === 'weight') {
+          value = `${value}kg`;
+        }
+
+        const item = document.createElement('li');
+        // Lisätään värit merkinnän tiedoille
+        const valueSpan = document.createElement('span');
+        valueSpan.textContent = value;
+        valueSpan.style.color = '#044464';
+
+        item.textContent = `${keyDisplayNames[key]}: `;
+        item.appendChild(valueSpan);
+
+        list.appendChild(item);
+      }
+    });
+  });
+}
+
+
+
+
+
+
+
+
+latestDiaryEntry();
 latestMeasurementData();
+
+
+
 
 
 // Funktio, joka näyttää sivustolla kirjautuneen käyttäjän käyttäjänimen
