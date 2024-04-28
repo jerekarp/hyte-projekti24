@@ -146,12 +146,12 @@ main {
 
 /* Määritä erikokoiset sarakkeet */
 .col-1 {
-    grid-column: span 6;
+    grid-column: 1 / span 6;
 
 }
 
 .col-2 {
-  grid-column: span 6;
+  grid-column: 7 / span 6;
 }
 
 .col-1 h3, .col-2 h3 {
@@ -161,7 +161,12 @@ main {
   font-weight: 600;
 }
 
-.col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+.col-3 {
+  visibility: hidden;
+  grid-column: span 6;
+}
+
+.col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     grid-column: span 4;
     visibility: hidden;
 }
@@ -890,36 +895,24 @@ button:hover {
   background-color: #eb4034;
 }
 
-* Grid-säännöt taulukon sarakkeille */
+/* Grid-säännöt taulukon sarakkeille */
 table {
-  table-layout: fixed; /* Varmistaa, että kaikki sarakkeet pysyvät samanlevyisinä */
-  width: 100%;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  background-color: whitesmoke;
+  margin-top: 2.5rem;
+  margin-left: 0.8rem;
+  width: 95%;
+  background-color: white;
+  border-radius: 26px;
+  overflow: hidden;
+  padding: 35px 30px 0px 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-th {
-  background-color: #044465;
+th, td {
   text-align: left;
   padding: 10px 12px;
-  font-size: 14px; /* säädä fonttikokoa tarvittaessa */
-  max-width: 120px; /* Säädä leveyttä tarpeen mukaan */
-}
-
-td {
-  text-align: left;
-  padding: 10px 12px;
-  font-size: 14px; /* Säädä fonttikokoa tarvittaessa */
-  max-width: 120px; /* Säädä leveyttä tarpeen mukaan */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
+  font-size: 14px;
   hyphens: auto;
-  min-width: 0; /* Firefox vaatii tämän, jotta hyphenation toimii */
-  overflow: auto; /* Sallii vierityksen, kun teksti ei mahdu */
-  word-wrap: break-word; /* Katkaisee sanat sopivasti */
+  word-wrap: break-word;
 }
 
 
