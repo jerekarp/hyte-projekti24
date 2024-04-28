@@ -15,3 +15,5 @@ testaus/back/muokkaa_merkinta/muokkaa_merkinta_keywords.resource
 =======
 testaus/tools/login_variables.resource
 >>>>>>> roni
+testaus/back/openai/openai.resource
+testaus/back/poista_merkinta/poista_merkinta_keywords.resource
