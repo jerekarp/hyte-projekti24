@@ -32,10 +32,10 @@
               <form class="create_diary_form">
                 <!--merkintäpäivämäärä-->
                 <label class="form-label" id="day-label" for="entry_date">Merkintäpäivämäärä:</label>
-                <input class="form-input" type="date" name="entry_date" />
+                <input class="form-input" type="date" name="entry_date" required/>
                 <!-- tunnetila-->
                 <label class="form-label" id="mood-label" for="mood">Tunnetila:</label>
-                <input class="form-input" type="text" name="mood" id="mood" value="" />
+                <input class="form-input" type="text" name="mood" id="mood" value="" required/>
                 <div id="mood-options">
                   <button type="button" class="mood-option-button" data-mood="Iloinen">😊 Iloinen</button>
                   <button type="button" class="mood-option-button" data-mood="Energinen">🥳 Energinen</button>
@@ -51,16 +51,16 @@
                 </div>
                 <!-- stressi -->
                 <label class="form-label" id="stress-label" for="stress_level">Arvioi stressin määrä asteikolla 0 (ei stressiä) - 10 (maksimaalinen stressi):</label>
-                <input type="range" id="stress_level" name="stress_level" min="0" max="10" class="stress-slider">
+                <input type="range" id="stress_level" name="stress_level" min="0" max="10" class="stress-slider" required>
                 <div id="slider-marks"></div>
                 <!-- uni -->
                 <label class="form-label" id="sleep-label" for="sleep_hours">Kuinka monta tuntia nukuit viime yönä?</label>
                 <input class="form-input" type="number" name="sleep_hours" />
                 <!-- muistinpanot & paino -->
                 <label class="form-label" id="weight-label" for="weight">Paino:</label>
-                <input class="form-input" type="number" name="weight" />
+                <input class="form-input" type="number" name="weight" required/>
                 <label class="form-label" id="note-label" for="notes">Muistinpanot:</label>
-                <textarea id="notes" name="notes" rows="5" cols="50"></textarea>
+                <textarea id="notes" name="notes" required rows="5" cols="50"></textarea>
                 <input name="submit" type="submit" value="Tallenna" class="createEntry" />
               </form>
             </div>
@@ -112,8 +112,12 @@
               </div>
               <div id="notification"></div>
             </div>
-            <!-- <div class="col col-3">
-              <p>Col 3</p>
+            <div class="col col-3">
+              <div id="updateFormContainer" style="display:none;">
+                <div id="formContainer">
+                  <!-- Form will be dynamically inserted here -->
+                </div>
+              </div>
             </div>
             <div class="col col-4">
               <p>Col 4</p>

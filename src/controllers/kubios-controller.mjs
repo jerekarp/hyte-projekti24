@@ -97,12 +97,25 @@ const getFilteredData = async (req, res, next) => {
 
     const responseData = await response.json();
 
-    // Otetaan vain päivän viimeisin mittaus
-    const filteredData = {};
+    // Otetaan vain vuoden 2024 mittaukset, jos niitä on saatavilla
+    let filteredData = {};
     responseData.results.forEach(result => {
-      const date = new Date(result.measured_timestamp).toLocaleDateString();
-      filteredData[date] = result;
+      const date = new Date(result.measured_timestamp);
+      const year = date.getFullYear();
+      if (year === 2024) {
+        const formattedDate = date.toLocaleDateString();
+        filteredData[formattedDate] = result;
+      }
     });
+
+    // Jos 2024 vuoden mittauksia ei löydy, käytetään vanhempia vuosia
+    if (Object.keys(filteredData).length === 0) {
+      responseData.results.forEach(result => {
+        const date = new Date(result.measured_timestamp);
+        const formattedDate = date.toLocaleDateString();
+        filteredData[formattedDate] = result;
+      });
+    }
 
     // Otetaan vain viimeisimmät 15 mittausta
     const lastFifteenMeasurements = Object.values(filteredData).slice(-15);
@@ -126,6 +139,7 @@ const getFilteredData = async (req, res, next) => {
     return res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
+
 
 
 
