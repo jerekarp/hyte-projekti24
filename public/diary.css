@@ -890,7 +890,7 @@ button:hover {
   background-color: #eb4034;
 }
 
-* Grid-säännöt taulukon sarakkeille */
+/* Grid-säännöt taulukon sarakkeille */
 table {
   table-layout: fixed; /* Varmistaa, että kaikki sarakkeet pysyvät samanlevyisinä */
   width: 100%;
