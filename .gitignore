@@ -9,9 +9,8 @@ testaus/output.xml
 testaus/diary/output.xml
 testaus/playwright-log.txt
 testaus/ronin_testit/
+testaus/back/openai/openai.resource
 testaus/apitesti/restful_healthdiary_keywords.resource
-<<<<<<< HEAD
 testaus/back/muokkaa_merkinta/muokkaa_merkinta_keywords.resource
-=======
 testaus/tools/login_variables.resource
->>>>>>> roni
+testaus/back/poista_merkinta/poista_merkinta_keywords.resource
