@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let moveToRight = true; // Alustetaan oletustila, ensimmäinen liike on oikealle
 
   // Alustetaan transform-ominaisuus, jotta ensimmäinen siirtymä sisältää pyörimisen
-  minikuva.style.transformOrigin = '50% 23%'; // Asettaa pyörähdyksen keskipisteen noin kolmasosaan kuvan yläreunasta
+  minikuva.style.transformOrigin = '50% 23%'; // Asettaa pyörähdyksen keskipisteen
   minikuva.style.transform = 'rotateZ(0deg)'; // Alustaa pyörimisen, alkaa nollasta
 
   banner.addEventListener('mouseenter', function() {
