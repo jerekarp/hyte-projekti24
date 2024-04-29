@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!response.ok) throw new Error('Network response was not ok');
         const result = await response.json();
         console.log("Received entry data:", result);
-        addEntryToTable(result);
+        addEntryToTable(data);
         form.reset();
         document.querySelectorAll('.mood-option-button').forEach(button => button.classList.remove('moodSelected'));
         alert('Entry added successfully!');
@@ -261,7 +261,7 @@ function closeUpdateForm(evt) {
 }
 
 
-// Muokkaa lomakke
+// Muokkaa lomake
 async function updateEntryById(evt) {
   evt.preventDefault();
   const updateButton = evt.target.closest('.updateButton');
@@ -269,69 +269,90 @@ async function updateEntryById(evt) {
   const url = `http://127.0.0.1:3000/api/entries/${id}`;
   let token = localStorage.getItem('token');
 
-  openUpdateForm();
+  // Hae olemassa olevat tiedot
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
+    const data = await response.json();
 
-  const formContainer = document.getElementById('formContainer');
-  formContainer.innerHTML = '';  // Clear previous form if it exists
+    // Tarkista, että data saatiin ja se sisältää tarvittavat tiedot
+    if (response.ok && data) {
+      openUpdateForm();
 
-  const form = document.createElement('form');
-  form.setAttribute('id', 'updateEntryForm');
+      const formContainer = document.getElementById('formContainer');
+      formContainer.innerHTML = '';  // Clear previous form if it exists
 
-  function addInputField(parent, fieldId, type, placeholder) {
-    const input = document.createElement('input');
-    input.type = type;
-    input.id = fieldId;
-    input.placeholder = placeholder;
-    parent.appendChild(input);
+      const form = document.createElement('form');
+      form.setAttribute('id', 'updateEntryForm');
+
+      function addInputField(parent, fieldId, type, placeholder, value) {
+        const input = document.createElement('input');
+        input.type = type;
+        input.id = fieldId;
+        input.placeholder = placeholder;
+        input.value = value || ''; // Aseta arvo, jos se on saatavilla
+        parent.appendChild(input);
+      }
+
+      // Lisää kentät lomakkeeseen ja aseta arvot, jos ne ovat saatavilla
+      addInputField(form, 'updateEntryDate', 'date', 'Entry Date', data.entry_date);
+      addInputField(form, 'updateMood', 'text', 'Tunnetila', data.mood);
+      addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä', data.stress_level);
+      addInputField(form, 'updateWeight', 'number', 'Paino', data.weight);
+      addInputField(form, 'updateSleepHours', 'number', 'Nukutut tunnit', data.sleep_hours);
+      addInputField(form, 'updateNotes', 'text', 'Muistinpanot', data.notes);
+
+      const submitButton = document.createElement('button');
+      submitButton.type = 'submit';
+      submitButton.textContent = 'Päivitä merkintä';
+      form.appendChild(submitButton);
+      formContainer.appendChild(form);
+
+      // Luo sulje-painike
+      const closeButton = document.createElement('button');
+      closeButton.type = 'button';  // Varmistetaan, ettei se lähetä lomaketta
+      closeButton.textContent = 'Sulje';  // Teksti painikkeessa
+      closeButton.onclick = function(evt) { closeUpdateForm(evt); }; // Lisää argumentti funktiokutsuun
+      form.appendChild(closeButton);  // Lisää sulje-painike lomakkeeseen
+
+      formContainer.appendChild(form);
+    } else {
+      throw new Error('Failed to fetch entry data');
+    }
+  } catch (error) {
+    alert('Error fetching entry data: ' + error.message);
+    console.error('Error fetching entry data:', error);
   }
 
-  // Add fields to form
-  addInputField(form, 'updateEntryDate', 'date', 'Entry Date');
-  addInputField(form, 'updateMood', 'text', 'Tunnetila');
-  addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä');
-  addInputField(form, 'updateWeight', 'number', 'Paino');
-  addInputField(form, 'updateSleepHours', 'number', 'Nukutut tunnit');
-  addInputField(form, 'updateNotes', 'text', 'Muistinpanot');
-
-
-  const submitButton = document.createElement('button');
-  submitButton.type = 'submit';
-  submitButton.textContent = 'Lisää uusi päiväkirjamerkintä';
-  form.appendChild(submitButton);
-  formContainer.appendChild(form);
-
-  // Luo sulje-painike
-  const closeButton = document.createElement('button');
-  closeButton.type = 'button';  // Varmistetaan, ettei se lähetä lomaketta
-  closeButton.textContent = 'Sulje';  // Teksti painikkeessa
-  closeButton.onclick = function(evt) { closeUpdateForm(evt); }; // Lisää argumentti funktiokutsuun
-  form.appendChild(closeButton);  // Lisää sulje-painike lomakkeeseen
-
-  formContainer.appendChild(form);
-
+  // Lisää muokkaustapahtuma lomakkeelle
+  const form = document.getElementById('updateEntryForm');
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const entryDate = document.getElementById("updateEntryDate").value;
-    const mood = document.getElementById("updateMood").value;
-    const StressLevel = document.getElementById("updateStressLevel").value;
-    const weight = document.getElementById("updateWeight").value;
-    const sleepHours = document.getElementById("updateSleepHours").value;
-    const notes = document.getElementById("updateNotes").value;
+    const entryDate = document.getElementById('updateEntryDate').value;
+    const mood = document.getElementById('updateMood').value;
+    const stressLevel = document.getElementById('updateStressLevel').value;
+    const weight = document.getElementById('updateWeight').value;
+    const sleepHours = document.getElementById('updateSleepHours').value;
+    const notes = document.getElementById('updateNotes').value;
 
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
     const options = {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       },
       body: JSON.stringify({
         entry_date: entryDate,
         mood: mood,
-        stress_level: StressLevel,
+        stress_level: stressLevel,
         weight: weight,
         sleep_hours: sleepHours,
         notes: notes,
@@ -341,16 +362,16 @@ async function updateEntryById(evt) {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      if (data.message === "Entry data updated") {
-        updateTableRow(id, entryDate, mood, StressLevel, weight, sleepHours, notes);
-        showNotification('Päiväkirjamerkintä muokattu onnistuneesti', 'success'); // Custom function to show notifications
+      if (response.ok && data.message === 'Entry data updated') {
+        updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, notes);
+        showNotification('Päiväkirjamerkintä muokattu onnistuneesti', 'success');
         form.reset();
       } else {
-        alert("Update failed: " + data.message);
+        throw new Error('Update failed: ' + data.message);
       }
     } catch (error) {
-      alert("Error updating entry: " + error.message);
-      console.error("Error updating entry:", error);
+      alert('Error updating entry: ' + error.message);
+      console.error('Error updating entry:', error);
     }
   });
 }
@@ -390,7 +411,7 @@ function initializeTable() {
   if (!table.tHead) {
       const thead = table.createTHead();
       const headerRow = thead.insertRow();
-      const headers = ['Päivämäärä', 'Tunnetila', 'Stressinmäärä', 'Paino', 'Nukutut tunnit', 'Muistiinpanot', 'Poista', 'Muokka'];
+      const headers = ['Päivämäärä', 'Tunnetila', 'Stressinmäärä', 'Paino', 'Nukutut tunnit', 'Merkinnät', 'Muokka', 'Poista'];
       headers.forEach(text => {
           const headerCell = headerRow.insertCell();
           headerCell.textContent = text;
@@ -408,9 +429,6 @@ function addEntryToTable(entry) {
   const row = tbody.insertRow();
   row.id = `row-${entry.entry_id}`;
 
-  // Ensure entry.notes is defined, or use an empty string as a fallback
-  const notes = entry.notes || '';
-  const notesClass = notes.length > 10 ? 'notes scrollable' : 'notes';
 
   row.innerHTML = `
       <td>${formatDate(entry.entry_date)}</td>
@@ -418,15 +436,26 @@ function addEntryToTable(entry) {
       <td>${entry.stress_level}</td>
       <td>${entry.weight}</td>
       <td>${entry.sleep_hours}</td>
-      <td class="${notesClass}">${notes}</td>
+      <td><button class="infoButton" data-id="${entry.entry_id}">Merkinnät</button></td>
+      <td><button class="updateButton" data-id="${entry.entry_id}"><i class="fa fa-edit"></i></button></td>
       <td><button class="deleteButton" data-id="${entry.entry_id}"><i class="fa fa-trash"></i></button></td>
-      <td><button class="updateButton" data-id="${entry.entry_id}"><i class="fa fa-check"></i></button></td>
   `;
 
+  row.querySelector('.infoButton').addEventListener('click', function() {
+    showModal(entry.notes);
+});
   // Add event listeners
   row.querySelector('.deleteButton').addEventListener('click', deleteEntryById);
   row.querySelector('.updateButton').addEventListener('click', updateEntryById);
 }
+
+function showModal(notes) {
+  const modal = document.getElementById('entryModal');
+  const modalContent = modal.querySelector('.modal-content');
+  modalContent.textContent = notes;  // Näytetään vain muistiinpanot
+  modal.style.display = 'block';
+}
+
 
 
 async function showDiaryEntries(entries) {
