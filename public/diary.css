@@ -135,7 +135,6 @@ main {
     grid-gap: 10px;
     max-width: 1200px;
     margin: 0 auto;
-
     border-radius: 20px;
 }
 
@@ -890,7 +889,7 @@ button:hover {
   background-color: #eb4034;
 }
 
-* Grid-säännöt taulukon sarakkeille */
+
 table {
   table-layout: fixed; /* Varmistaa, että kaikki sarakkeet pysyvät samanlevyisinä */
   width: 100%;
