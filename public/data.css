@@ -361,22 +361,22 @@ select {
 }
 
 
-#readiness {
+#readinessHeader {
   font-weight: bold;
   color: rgba(75, 192, 192, 1); 
 }
 
-#stress_index {
+#stress_indexHeader {
   font-weight: bold;
   color: rgba(255, 99, 132, 1); 
 }
 
-#respiratory_rate {
+#respiratory_rateHeader {
   font-weight: bold;
   color: rgba(54, 162, 235, 1);
 }
 
-#mean_hr_bpm {
+#mean_hr_bpmHeader {
   font-weight: bold;
   color: rgba(255, 206, 86, 1);
 }

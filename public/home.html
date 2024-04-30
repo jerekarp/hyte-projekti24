@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <title>Etusivu</title>
 </head>
-<body>
-
 
   <nav class="navbar">
     <div class="navbar-menu">
@@ -93,6 +89,7 @@
           </ul>
         </a>
 
+        </ul>
       </div>
       <!-- href="data.html"  -->
       <div class="col col-6">
@@ -113,91 +110,88 @@
       <!-- Esitietolomakkeen modal -->
         <div id="myModal" class="modal">
           <div class="modal-content">
-              <span class="close" id="closeInfoModal">&times;</span>
-              <p id="welcome"><strong>Tervetuloa ZenBeatiin! Kerro meille lisää itsestäsi niin pääsemme aloittamaan hyvinvointimatkasi!</strong></p>
-              <form id="studentForm">
-                  <div class="form-field">
-                      <!-- <label for="firstname">Etunimi:</label> -->
-                      <input type="text" id="firstname" name="firstname" required placeholder="Etunimi:">
-                  </div>
-                  <div class="form-field">
-                      <!-- <label for="lastname">Sukunimi:</label> -->
-                      <input type="text" id="lastname" name="lastname" required placeholder="Sukunimi:">
-                  </div>
-                  <div class="form-field">
-                      <!-- <label for="studentnumber">Opiskelijanumero:</label> -->
-                      <input type="text" id="studentnumber" name="studentnumber" required placeholder="Opiskelijanumero:">
-                  </div>
-                  <div class="form-field">
-                      <!-- <label for="weight">Paino (kg):</label> -->
-                      <input type="number" id="weight" name="weight" placeholder="Paino:">
-                  </div>
-                  <div class="form-field">
-                      <!-- <label for="height">Pituus (cm):</label> -->
-                      <input type="number" id="height" name="height" placeholder="Pituus:">
-                  </div>
-                  <div class="form-field">
-                      <!-- <label for="age">Ikä:</label> -->
-                      <input type="number" id="age" name="age" required placeholder="Ikä:">
-                  </div>
-                  <div class="form-field">
-                      <!-- <label for="gender">Sukupuoli:</label> -->
-                      <select id="gender" name="gender">
-                          <option value="NULL">Sukupuoli:</option>
-                          <option value="male">Mies</option>
-                          <option value="female">Nainen</option>
-                          <option value="other">Muu</option>
-                      </select>
-                  </div>
-                  <input class="submit-button" type="submit" value="Lähetä">
-              </form>
+            <span class="close" id="closeInfoModal">&times;</span>
+            <p id="welcome"><strong>Tervetuloa ZenBeatiin! Kerro meille lisää itsestäsi niin pääsemme aloittamaan hyvinvointimatkasi!</strong></p>
+            <form id="studentForm">
+              <div class="form-field">
+                <!-- <label for="firstname">Etunimi:</label> -->
+                <input type="text" id="firstname" name="firstname" required placeholder="Etunimi:">
+              </div>
+              <div class="form-field">
+                <!-- <label for="lastname">Sukunimi:</label> -->
+                <input type="text" id="lastname" name="lastname" required placeholder="Sukunimi:">
+              </div>
+              <div class="form-field">
+                <!-- <label for="studentnumber">Opiskelijanumero:</label> -->
+                <input type="text" id="studentnumber" name="studentnumber" required placeholder="Opiskelijanumero:">
+              </div>
+              <div class="form-field">
+                <!-- <label for="weight">Paino (kg):</label> -->
+                <input type="number" id="weight" name="weight" placeholder="Paino:">
+              </div>
+              <div class="form-field">
+                <!-- <label for="height">Pituus (cm):</label> -->
+                <input type="number" id="height" name="height" placeholder="Pituus:">
+              </div>
+              <div class="form-field">
+                <!-- <label for="age">Ikä:</label> -->
+                <input type="number" id="age" name="age" required placeholder="Ikä:">
+              </div>
+              <div class="form-field">
+                <!-- <label for="gender">Sukupuoli:</label> -->
+                <select id="gender" name="gender">
+                    <option value="NULL">Sukupuoli:</option>
+                    <option value="male">Mies</option>
+                    <option value="female">Nainen</option>
+                    <option value="other">Muu</option>
+                </select>
+              </div>
+              <input class="submit-button" type="submit" value="Lähetä">
+            </form>
           </div>
-      </div>
-    </div>
-
+        </div>
       <!-- Muokkauslomakkeen modal -->
     <div id="editModal" class="modal">
       <div class="modal-content">
-          <span class="close" id="closeEditModal">&times;</span>
-          <p><strong>Muokkaa tietojasi:</strong></p>
-          <form id="editStudentForm">
-              <div class="form-field">
-                  <label for="editFirstname">Etunimi:</label>
-                  <input type="text" id="editFirstname" name="firstname" required>
-              </div>
-              <div class="form-field">
-                  <label for="editLastname">Sukunimi:</label>
-                  <input type="text" id="editLastname" name="lastname" required>
-              </div>
-              <div class="form-field">
-                  <label for="editStudentnumber">Opiskelijanumero:</label>
-                  <input type="text" id="editStudentnumber" name="studentnumber" required>
-              </div>
-              <div class="form-field">
-                  <label for="editWeight">Paino (kg):</label>
-                  <input type="number" id="editWeight" name="weight">
-              </div>
-              <div class="form-field">
-                  <label for="editHeight">Pituus (cm):</label>
-                  <input type="number" id="editHeight" name="height">
-              </div>
-              <div class="form-field">
-                  <label for="editAge">Ikä:</label>
-                  <input type="number" id="editAge" name="age" required>
-              </div>
-              <div class="form-field">
-                  <label for="editGender">Sukupuoli:</label>
-                  <select id="editGender" name="gender">
-                      <option value="male">Mies</option>
-                      <option value="female">Nainen</option>
-                      <option value="other">Muu</option>
-                  </select>
-              </div>
-              <input type="button" id="updateInfo" value="Päivitä tiedot">
-          </form>
+        <span class="close" id="closeEditModal">&times;</span>
+        <p><strong>Muokkaa tietojasi:</strong></p>
+        <form id="editStudentForm">
+          <div class="form-field">
+            <label for="editFirstname">Etunimi:</label>
+            <input type="text" id="editFirstname" name="firstname" required>
+          </div>
+          <div class="form-field">
+            <label for="editLastname">Sukunimi:</label>
+            <input type="text" id="editLastname" name="lastname" required>
+          </div>
+          <div class="form-field">
+            <label for="editStudentnumber">Opiskelijanumero:</label>
+            <input type="text" id="editStudentnumber" name="studentnumber" required>
+          </div>
+          <div class="form-field">
+            <label for="editWeight">Paino (kg):</label>
+            <input type="number" id="editWeight" name="weight">
+          </div>
+          <div class="form-field">
+            <label for="editHeight">Pituus (cm):</label>
+            <input type="number" id="editHeight" name="height">
+          </div>
+          <div class="form-field">
+            <label for="editAge">Ikä:</label>
+            <input type="number" id="editAge" name="age" required>
+          </div>
+          <div class="form-field">
+            <label for="editGender">Sukupuoli:</label>
+            <select id="editGender" name="gender">
+              <option value="male">Mies</option>
+              <option value="female">Nainen</option>
+              <option value="other">Muu</option>
+            </select>
+          </div>
+          <input type="button" id="updateInfo" value="Päivitä tiedot">
+        </form>
       </div>
     </div>
-
   </main>
 
       <footer class="footer">
@@ -209,16 +203,16 @@
         </div>
         <ul class="social-icon">
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-facebook"></ion-icon>
             </a></li>
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
             </a></li>
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
             </a></li>
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-instagram"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
             </a></li>
         </ul>
         <ul class="menu">
@@ -227,7 +221,6 @@
           <li class="menu__item"><a class="menu__link" href="data.html">Data</a></li>
           <li class="menu__item"><a class="menu__link" href="about.html">Info</a></li>
           <li class="menu__item"><a class="menu__link" href="tools.html">Työkalut</a></li>
-
         </ul>
         <p>&copy;2024 ZenBeat</p>
       </footer>
