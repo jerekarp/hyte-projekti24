@@ -276,7 +276,7 @@ main {
 }
 
 
-#exercisevideo {
+.exercisevideo {
   display: block;
   margin-top: 20px; /* Lisätty marginaali yläpuolelle */
 }
