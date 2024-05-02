@@ -28,22 +28,28 @@ fetch("https://type.fit/api/quotes")
     console.log("Virhe haettaessa lainausta:", error);
 });
 
-  // document.addEventListener('DOMContentLoaded', function() {
-  //   const banner = document.getElementById('banner');
-  //   const minikuva = document.getElementById('minikuva');
-  //   let moveToRight = true; // Alustetaan oletustila, ensimmäinen liike on oikealle
+document.addEventListener('DOMContentLoaded', function() {
+  const banner = document.getElementById('banner');
+  const minikuva = document.getElementById('minikuva');
+  let moveToRight = true; // Alustetaan oletustila, ensimmäinen liike on oikealle
 
-  //   banner.addEventListener('mouseenter', function() {
-  //     if (moveToRight) {
-  //       minikuva.style.right = '10%'; // Siirtää kuvan oikeaan reunaan
-  //       minikuva.style.transform = 'rotateY(1080deg)'; // Käynnistää nopean pyörinnän y-akselin ympäri myötäpäivään
-  //     } else {
-  //       minikuva.style.right = '85%'; // Siirtää kuvan vasempaan reunaan
-  //       minikuva.style.transform = 'rotateY(-1080deg)'; // Käynnistää nopean pyörinnän y-akselin ympäri vastapäivään
-  //     }
-  //     moveToRight = !moveToRight; // Vaihtaa suuntaa seuraavaa hiiren siirtämistä varten
-  //   });
-  // });
+  // Alustetaan transform-ominaisuus, jotta ensimmäinen siirtymä sisältää pyörimisen
+  minikuva.style.transformOrigin = '50% 23%'; // Asettaa pyörähdyksen keskipisteen
+  minikuva.style.transform = 'rotateZ(0deg)'; // Alustaa pyörimisen, alkaa nollasta
+
+  banner.addEventListener('mouseenter', function() {
+    if (moveToRight) {
+      minikuva.style.right = '10%'; // Siirtää kuvan oikeaan reunaan
+      minikuva.style.transform = 'rotateZ(1080deg)'; // Käynnistää nopean pyörinnän z-akselin ympäri myötäpäivään
+    } else {
+      minikuva.style.right = '85%'; // Siirtää kuvan vasempaan reunaan
+      minikuva.style.transform = 'rotateZ(-1080deg)'; // Käynnistää nopean pyörinnän z-akselin ympäri vastapäivään
+    }
+    moveToRight = !moveToRight; // Vaihtaa suuntaa seuraavaa hiiren siirtämistä varten
+  });
+});
+
+
 
 
 // Esitietolomakkeen modalin toiminnot
@@ -126,6 +132,13 @@ function addStudentInfo(evt) {
   const height = document.getElementById('height').value;
   const age = document.getElementById('age').value;
   const gender = document.getElementById('gender').value;
+  const form = document.getElementById('studentForm');
+
+  // Check if the form is valid
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
   const options = {
     method: 'POST',
@@ -227,6 +240,14 @@ function updateStudentInfo (evt) {
   const newAge = document.getElementById('editAge').value;
   const newGender = document.getElementById('editGender').value;
 
+  const form = document.getElementById('editStudentForm');
+
+  // Check if the form is valid
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
   const options = {
     method: 'PUT',
     headers: {
@@ -289,7 +310,6 @@ async function latestMeasurementData() {
   const token = localStorage.getItem('token');
 
   try {
-    const token = localStorage.getItem("token");
     const url = 'http://127.0.0.1:3000/api/kubios/filtered-data';
     const options = {
         method: "GET",
@@ -307,7 +327,6 @@ async function latestMeasurementData() {
 
     // Otetaan filteredData-taulukon ensimmäinen elementti, joka on viimeisin mittaustulos
     const latestData = responseData.filteredData[responseData.filteredData.length - 1];
-
 
     // Etsitään <ul>-elementti, johon lisätään mittaustiedot
     const listElement = document.getElementById('latest-data');
@@ -332,10 +351,16 @@ async function latestMeasurementData() {
         }
       }
 
-      listItem.textContent = `${friendlyName}: ${value}`;
+      // Luo span elementti arvolle ja aseta sille väri
+      const valueSpan = document.createElement('span');
+      valueSpan.textContent = value;
+      valueSpan.style.color = '#044464';
+
+      // Yhdistä kentän nimi ja arvo span-elementtiin
+      listItem.textContent = `${friendlyName}: `;
+      listItem.appendChild(valueSpan);
       listElement.appendChild(listItem);
     }
-
 
   } catch (error) {
     console.error('Virhe haettaessa mittaustietoja:', error);
@@ -344,18 +369,78 @@ async function latestMeasurementData() {
 }
 
 
-latestMeasurementData();
+async function latestDiaryEntry() {
+  const url = `http://127.0.0.1:3000/api/entries`;
+  const token = localStorage.getItem('token');
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  fetchData(url, options).then((data) => {
+    // Haetaan kaikista merkinnöistä viimeisin
+    const latestEntry = data.reduce((latest, current) => {
+      const latestDate = new Date(latest.entry_date);
+      const currentDate = new Date(current.entry_date);
+      return currentDate > latestDate ? current : latest;
+    });
+
+    const list = document.getElementById('latest-entry');
+
+    // Tyhjennetään vanha merkintä
+    list.innerHTML = '';
+
+    // Määritetään kenttien nimet
+    const keyDisplayNames = {
+      entry_date: 'Päivämäärä',
+      mood: 'Tunnetila',
+      sleep_hours: 'Nukutut tunnit',
+      stress_level: 'Stressin määrä',
+      weight: 'Paino',
+      notes: 'Merkintä'
+    };
+
+    // Luodaan uusi elementti listan kaikille jäsenille
+    Object.keys(keyDisplayNames).forEach(key => {
+      if (latestEntry[key] !== undefined) {
+        let value = latestEntry[key];
+        // Päivämäärän formatointi
+        if (key === 'entry_date') {
+          const date = new Date(value);
+          value = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
+        }
+        // Lisätään painon perään "kg"
+        if (key === 'weight') {
+          value = `${value}kg`;
+        }
+
+        const item = document.createElement('li');
+        // Lisätään värit merkinnän tiedoille
+        const valueSpan = document.createElement('span');
+        valueSpan.textContent = value;
+        valueSpan.style.color = '#044464';
+
+        item.textContent = `${keyDisplayNames[key]}: `;
+        item.appendChild(valueSpan);
+
+        list.appendChild(item);
+      }
+    });
+  });
+}
 
 
 // Funktio, joka näyttää sivustolla kirjautuneen käyttäjän käyttäjänimen
 async function showUserName() {
   let username = localStorage.getItem('name');
-  console.log("moi", username)
   showGreeting(username);
 
 }
 
-showUserName();
 
 // Näytetään tervehdys käyttäjälle vuorokauden ajan mukaan
 async function showGreeting(username) {
@@ -410,3 +495,6 @@ function logOut(evt) {
   }
 }
 
+latestDiaryEntry();
+latestMeasurementData();
+showUserName();

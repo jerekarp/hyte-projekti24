@@ -202,6 +202,11 @@ main {
   padding: 0;
 }
 
+/* Viimeisin päiväkirjamerkintä tyylittely  */
+#latest-entry {
+  list-style-type: none;
+}
+
 
 .boksi {
   padding: 20px;
@@ -223,9 +228,9 @@ main {
   box-shadow: 0 3px 10px #044465;
 }
 
-.col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover {
+.col-1:hover, .col-2:hover, .col-3:hover, .col-4:hover, .col-5:hover, .col-6:hover {
   border: 2px solid #044565c4;
-  background-color: rgb(245, 245, 245, 0.8);
+  background-color: rgb(245, 245, 245, 0.7);
   box-shadow: 0 0 5px #044565c4;
   cursor: pointer;
 }
@@ -266,6 +271,8 @@ button:hover {
 
 .col-7 {
     grid-column: span 12;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .col-8 {

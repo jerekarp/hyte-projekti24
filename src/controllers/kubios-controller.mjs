@@ -85,65 +85,47 @@ const getFilteredData = async (req, res, next) => {
     headers.append('User-Agent', process.env.KUBIOS_USER_AGENT);
     headers.append('Authorization', kubiosIdToken);
 
-    // Nykyinen päivämäärä
-    const currentDate = new Date();
-
-    // Vähennetään yksi kuukausi nykyisestä päivämäärästä
-    const oneMonthAgo = new Date();
-    oneMonthAgo.setMonth(currentDate.getMonth() - 1);
-
-    // Haetaan Kubioksesta viimeisen 30 päivän HRV-data
-    let response = await fetch(baseUrl + '/result/self?from=' + oneMonthAgo.toISOString(), {
+    // Haetaan kaikki HRV-data Kubioksesta
+    const response = await fetch(baseUrl + '/result/self?from=2022-01-01T00%3A00%3A00%2B00%3A00', {
       method: 'GET',
       headers: headers,
     });
-
-    let responseData = await response.json();
-
-    // Jos mittaustuloksia ei löytynyt, ahetaan uudestaan viimeisen 3kk ajalta
-    if (!response.ok || responseData.results.length === 0) {
-      const threeMonthsAgo = new Date();
-      threeMonthsAgo.setMonth(currentDate.getMonth() - 3);
-
-      response = await fetch(baseUrl + '/result/self?from=' + threeMonthsAgo.toISOString(), {
-        method: 'GET',
-        headers: headers,
-      });
-
-      responseData = await response.json();
-
-      // Jos ei vieläkään löydy mittaustuloksia, rajataan hakua puoleen vuoteen (6kk)
-      if (!response.ok || responseData.results.length === 0) {
-        const sixMonthsAgo = new Date();
-        sixMonthsAgo.setMonth(currentDate.getMonth() - 6);
-
-        response = await fetch(baseUrl + '/result/self?from=' + sixMonthsAgo.toISOString(), {
-          method: 'GET',
-          headers: headers,
-        });
-
-        responseData = await response.json();
-      }
-    }
 
     if (!response.ok) {
       throw new Error('Failed to fetch data from Kubios API');
     }
 
-    // Otetaan vain päivän viimeinen mittaus
-    const filteredData = {};
+    const responseData = await response.json();
+
+    // Otetaan vain vuoden 2024 mittaukset, jos niitä on saatavilla
+    let filteredData = {};
     responseData.results.forEach(result => {
-      const date = new Date(result.measured_timestamp).toLocaleDateString();
-      filteredData[date] = result;
+      const date = new Date(result.measured_timestamp);
+      const year = date.getFullYear();
+      if (year === 2024) {
+        const formattedDate = date.toLocaleDateString();
+        filteredData[formattedDate] = result;
+      }
     });
 
+    // Jos 2024 vuoden mittauksia ei löydy, käytetään vanhempia vuosia
+    if (Object.keys(filteredData).length === 0) {
+      responseData.results.forEach(result => {
+        const date = new Date(result.measured_timestamp);
+        const formattedDate = date.toLocaleDateString();
+        filteredData[formattedDate] = result;
+      });
+    }
+
+    // Otetaan vain viimeisimmät 15 mittausta
+    const lastFifteenMeasurements = Object.values(filteredData).slice(-15);
+
     // Muunnetaan objektista taulukoksi
-    const filteredDataArray = Object.values(filteredData).map(result => ({
+    const filteredDataArray = lastFifteenMeasurements.map(result => ({
       measured_timestamp: result.measured_timestamp,
       stress_index: result.result.stress_index,
       respiratory_rate: result.result.respiratory_rate,
       mean_hr_bpm: result.result.mean_hr_bpm,
-      //rmssd_ms: result.result.rmssd_ms,
       readiness: result.result.readiness,
     }));
 
@@ -159,6 +141,9 @@ const getFilteredData = async (req, res, next) => {
 };
 
 
+
+
+
 /**
  * Apufunktio, joka palauttaa filtteröidyn datan korkeimmat arvot
  * @param {Array} filteredData Filtteröity data
@@ -166,7 +151,7 @@ const getFilteredData = async (req, res, next) => {
  */
 const getMaxValues = (filteredData) => {
   const maxValues = {};
-  
+
   filteredData.forEach(entry => {
     Object.keys(entry).forEach(param => {
       // Jos parametri on numero ja suurempi kuin tallennettu maksimiarvo, päivitetään uusi maksimiarvo

@@ -6,18 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Stressi merkintä
   const marksContainer = document.getElementById('slider-marks');
-  const marks = ['0', '2', '4', '6', '8', '10']; // Define your scale marks here
+  const marks = ['0', '2', '4', '6', '8', '10'];
 
   marks.forEach(mark => {
       const span = document.createElement('span');
       span.textContent = mark;
       marksContainer.appendChild(span);
 
-      // Optional: Make the marks clickable to set the slider value
       span.addEventListener('click', function() {
           const slider = document.getElementById('stress_level');
           slider.value = mark;
-          // Trigger the input event if you have an event listener for the slider
           slider.dispatchEvent(new Event('input'));
       });
   });
@@ -108,11 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const response = await fetch(url, options);
         if (!response.ok) throw new Error('Network response was not ok');
         const result = await response.json();
-        console.log("Received entry data:", result);
         addEntryToTable(result);
         form.reset();
         document.querySelectorAll('.mood-option-button').forEach(button => button.classList.remove('moodSelected'));
         alert('Entry added successfully!');
+         // Päivitetään kalenterinäkymä heti uuden merkinnän lisäämisen jälkeen
+        const newEntryDate = new Date(data.entry_date);
+        getDiaryEntries(newEntryDate.getFullYear(), newEntryDate.getMonth(), newEntryDate.getDate());
     } catch (error) {
         console.error('Error adding entry:', error);
         alert(`Error adding entry: ${error.message || error}`);
@@ -121,8 +121,359 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// HAE DATAA KALENTERISTA
+async function getDiaryEntries(year, month, day) {
+  const date = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  const url = `http://127.0.0.1:3000/api/entries/date/${date}` /*`/api/entries/date/${date}`;*/
+  const token = localStorage.getItem('token');
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  fetchData(url, options).then((data) => {
+    showDiaryEntries(data);
+  });
+}
+
+function showNotification(message, type) {
+  let notification = document.getElementById('notification');
+  if (!notification) {
+    notification = document.createElement('div');
+    notification.id = 'notification';
+    document.body.appendChild(notification);
+  }
+  notification.textContent = message;
+  notification.className = type;
+
+  notification.style.opacity = '1';
+
+  // Ajastin ilmoituksen piilottamiseen
+  setTimeout(() => {
+    notification.style.opacity = '0';
+    setTimeout(() => {
+      notification.remove();
+    }, 500);
+  }, 3000);
+}
+
+// POISTA merkkintä
+async function deleteEntryById(evt) {
+  evt.preventDefault();
+  const button = evt.target.closest('#deleteButton');
+  const id = button.getAttribute('data-id');
+  const url = `http://127.0.0.1:3000/api/entries/${id}`;
+  let token = localStorage.getItem('token');
 
 
+  const options = {
+      method: 'DELETE',
+      headers: {
+          Authorization: 'Bearer: ' + token
+      }
+  };
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error('HTTP error, status = ' + response.status);
+    }
+    button.closest('tr').remove();
+    showNotification('Päiväkirjamerkintä poistettu!', 'success');
+  } catch (error) {
+    console.error("Error deleting entry:", error);
+    showNotification('Virhe poistettaessa merkintää.', 'error');
+  }
+}
+
+// avaa lomakke
+function openUpdateForm() {
+  const openForm = document.getElementById('updateFormContainer');
+  if (openForm) {
+    openForm.style.display = 'block';
+  }
+}
+
+// sulje lomakke
+function closeUpdateForm() {
+  const formContainer = document.getElementById('updateFormContainer');
+  formContainer.style.display = 'none'; // Piilota lomake asettamalla display-arvo 'none'
+}
+
+
+
+// Muokkaa lomake
+async function updateEntryById(evt) {
+  evt.preventDefault();
+  const updateButton = evt.target.closest('#updateButton');
+  const id = updateButton.getAttribute('data-id');
+  const url = `http://127.0.0.1:3000/api/entries/${id}`;
+  let token = localStorage.getItem('token');
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
+    const data = await response.json();
+
+    // Tarkista, että data saatiin ja se sisältää tarvittavat tiedot
+    if (response.ok && data) {
+      openUpdateForm();
+
+      const formContainer = document.getElementById('formContainer');
+      formContainer.innerHTML = '';
+
+      const form = document.createElement('form');
+      form.setAttribute('id', 'updateEntryForm');
+
+      function addInputField(parent, fieldId, type, placeholder, value) {
+        const input = document.createElement('input');
+        input.type = type;
+        input.id = fieldId;
+        input.placeholder = placeholder;
+        input.value = value || '';
+        parent.appendChild(input);
+      }
+
+      addInputField(form, 'updateEntryDate', 'date', 'Entry Date', data.entry_date);
+      addInputField(form, 'updateMood', 'text', 'Tunnetila', data.mood);
+      addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä', data.stress_level);
+      addInputField(form, 'updateWeight', 'number', 'Paino', data.weight);
+      addInputField(form, 'updateSleepHours', 'number', 'Nukutut tunnit', data.sleep_hours);
+      addInputField(form, 'updateNotes', 'text', 'Muistinpanot', data.notes);
+
+      // Päivitettyn formin lähetä nappi
+      const submitButton = document.createElement('button');
+      submitButton.type = 'submit';
+      submitButton.textContent = 'Päivitä merkintä';
+      form.appendChild(submitButton);
+      formContainer.appendChild(form);
+
+      // Sulje nappi
+      const closeButton = document.createElement('button');
+      closeButton.type = 'button';
+      closeButton.textContent = 'Sulje';
+      closeButton.onclick = function(evt) { closeUpdateForm(evt); };
+      form.appendChild(closeButton);
+
+      formContainer.appendChild(form);
+    } else {
+      throw new Error('Failed to fetch entry data');
+    }
+  } catch (error) {
+    alert('Error fetching entry data: ' + error.message);
+    console.error('Error fetching entry data:', error);
+  }
+
+  // Lisää muokkaustapahtuma lomakkeelle
+  const form = document.getElementById('updateEntryForm');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const entryDate = document.getElementById('updateEntryDate').value;
+    const mood = document.getElementById('updateMood').value;
+    const stressLevel = document.getElementById('updateStressLevel').value;
+    const weight = document.getElementById('updateWeight').value;
+    const sleepHours = document.getElementById('updateSleepHours').value;
+    const notes = document.getElementById('updateNotes').value;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify({
+        entry_date: entryDate,
+        mood: mood,
+        stress_level: stressLevel,
+        weight: weight,
+        sleep_hours: sleepHours,
+        notes: notes,
+      }),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);  // Lokitetaan vastaus selvyyden vuoksi
+
+      if (response.ok && data.message === 'Entry data updated') {
+        updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, notes);
+        showNotification('Päiväkirjamerkintä muokattu onnistuneesti', 'success');
+        form.reset();
+        closeUpdateForm();
+      } else {
+        throw new Error('Update failed: ' + data.message);
+      }
+    } catch (error) {
+      alert('Error updating entry: ' + error.message);
+      console.error('Error updating entry:', error);
+    }
+  });
+}
+
+// Päivitetyn tiedon uusi rivi taulussa
+function updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, notes) {
+  const row = document.getElementById(`row-${id}`);
+  if (!row) {
+    console.error('Failed to find the row for id', id);
+    return;
+  }
+  row.cells[0].textContent = entryDate;
+  row.cells[1].textContent = mood;
+  row.cells[2].textContent = stressLevel;
+  row.cells[3].textContent = weight;
+  row.cells[4].textContent = sleepHours;
+
+  // varmitetaan että notes nappi ei häviä
+  const notesButton = row.cells[5].querySelector('#notesButton');
+  if (notesButton) {
+    notesButton.setAttribute('data-id', id);
+    notesButton.addEventListener('click', function() {
+      showModal(notes);
+    });
+  }
+
+}
+
+
+// TABLE AND SHOW TABLE
+
+// Tehdän taulu
+function initializeTable() {
+  let container = document.getElementById('entriesTable');
+  let table;
+
+  if (container.tagName !== 'TABLE') {
+      table = document.createElement('table');
+      container.appendChild(table);
+  } else {
+      table = container;
+  }
+
+  if (!table.tHead) {
+      const thead = table.createTHead();
+      const headerRow = thead.insertRow();
+
+      const icons = [
+        'date.png',
+        'mood.png',
+        'stress.png',
+        'weight.png',
+        'sleep.png',
+        'notes.png',
+      ];
+
+      icons.forEach(iconPath => {
+          const headerCell = headerRow.insertCell();
+          const img = document.createElement('img');
+          img.src = `/images/${iconPath}`; // Make sure path is correct
+          img.alt = iconPath.split('-')[0]; // Alt text as first part of the file name
+          img.classList.add('tableIcons');
+          headerCell.appendChild(img);
+      });
+  }
+
+  if (!table.tBodies.length) {
+      table.createTBody();
+  }
+}
+
+
+// Lisätään taulu
+function addEntryToTable(entry) {
+  const table = document.getElementById('entriesTable');
+  const tbody = table.tBodies[0];
+
+  const row = tbody.insertRow();
+  row.id = `row-${entry.entry_id}`;
+
+
+  row.innerHTML = `
+      <td>${formatDate(entry.entry_date)}</td>
+      <td>${entry.mood}</td>
+      <td>${entry.stress_level}</td>
+      <td>${entry.weight}</td>
+      <td>${entry.sleep_hours}</td>
+      <td><button class="tableButtons" id="notesButton" data-id="${entry.entry_id}"><i class="fa fa-ellipsis-v"></i></button></td>
+      <td><button class="tableButtons" id="updateButton" data-id="${entry.entry_id}"><i class="fa fa-edit"></i></button></td>
+      <td><button class="tableButtons" id="deleteButton" data-id="${entry.entry_id}"><i class="fa fa-trash"></i></button></td>
+  `;
+
+  row.querySelector('#notesButton').addEventListener('click', function() {
+    showModal(entry.notes);
+  });
+  row.querySelector('#deleteButton').addEventListener('click', deleteEntryById);
+  row.querySelector('#updateButton').addEventListener('click', updateEntryById);
+}
+
+// Moduuli muistinpamoille
+function showModal(notes) {
+  const modal = document.getElementById('entryModal');
+  const modalText = modal.querySelector('#modalText');
+  modalText.textContent = notes;
+  modal.style.display = 'block';
+
+  // Lisää sulku-toiminnallisuus
+  const closeButton = modal.querySelector('.closeButton');
+  closeButton.onclick = function() {
+  modal.style.display = 'none';
+  }
+
+  /*Sulje modaalissa klikkaamalla sen ulkopuolelle
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  } */
+}
+
+// Näytetään merkinnät
+async function showDiaryEntries(entries) {
+  initializeTable();
+  const table = document.querySelector('#entriesTable');
+  const tbody = table.tBodies[0];
+  tbody.innerHTML = '';
+
+  // Jos merkintöjä ei ole
+  if (entries.length === 0) {
+      const noEntriesMessage = document.createElement('tr');
+      noEntriesMessage.innerHTML = `<td colspan="8">Tällä päivällä ei ole tehty päiväkirjamerkintöjä. Voit tarkastella toista päivämäärää, jolle merkintöjä on kirjattu.</td>`;
+      tbody.appendChild(noEntriesMessage);
+      return;
+  }
+
+  entries.forEach(entry => addEntryToTable(entry, tbody));
+
+  // Jos päivälle löyty merkintä: lisätään merkki kalenterin
+  markCalendarDays(entries);
+}
+
+function markCalendarDays(entries) {
+  const calendarDays = document.querySelectorAll('.day');
+
+  entries.forEach(entry => {
+      const entryDate = new Date(entry.entry_date);
+      const dayNum = entryDate.getDate();
+
+      calendarDays.forEach(day => {
+          if (parseInt(day.textContent) === dayNum) {
+              day.classList.add('dayMarked');
+          }
+      });
+  });
+}
 // KALENTERI
 const isLeapYear = (year) => {
   return (
@@ -167,309 +518,6 @@ month_picker.onclick = () => {
   dateFormate.classList.add('hideTime');
 };
 
-
-// HAE DATAA KALENTERISTA
-async function getDiaryEntries(year, month, day) {
-  const date = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-  const url = `http://127.0.0.1:3000/api/entries/date/${date}` /*`/api/entries/date/${date}`;*/
-  const token = localStorage.getItem('token');
-
-  const options = {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  };
-
-  fetchData(url, options).then((data) => {
-    showDiaryEntries(data);
-  });
-}
-
-function showNotification(message, type) {
-  // Etsi olemassa oleva ilmoitus tai luo uusi
-  let notification = document.getElementById('notification');
-  if (!notification) {
-    notification = document.createElement('div');
-    notification.id = 'notification';
-    document.body.appendChild(notification);
-  }
-
-  // Aseta viesti ja tyyppi
-  notification.textContent = message;
-  notification.className = type; // Aseta luokka tyyppiin perustuen
-
-  // Näytä ilmoitus asettamalla opacity välittömästi 1:ksi
-  notification.style.opacity = '1';
-
-  // Aseta ajastin ilmoituksen piilottamiseen
-  setTimeout(() => {
-    notification.style.opacity = '0';
-    // Odota opacity-transitionin päättymistä ennen poistoa
-    setTimeout(() => {
-      notification.remove(); // Poista ilmoitus DOM:sta
-    }, 500); // Odotusaika vastaa CSS transition kestoa
-  }, 3000); // Ilmoitus näkyy 3 sekuntia
-}
-
-
-
-async function deleteEntryById(evt) {
-  evt.preventDefault(); // Prevent default form submission behavior
-  const button = evt.target.closest('.deleteButton');
-  const id = button.getAttribute('data-id');
-  const url = `http://127.0.0.1:3000/api/entries/${id}`;
-  let token = localStorage.getItem('token');
-
-
-  const options = {
-      method: 'DELETE',
-      headers: {
-          Authorization: 'Bearer: ' + token
-      }
-  };
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error('HTTP error, status = ' + response.status);
-    }
-    button.closest('tr').remove(); // Remove the row from the table
-    showNotification('Päiväkirjamerkintä poistettu!', 'success'); // Success notification
-  } catch (error) {
-    console.error("Error deleting entry:", error);
-    showNotification('Virhe poistettaessa merkintää.', 'error'); // Error notification
-  }
-}
-
-// popUp lomakkee
-function openUpdateForm() {
-  const openForm = document.getElementById('updateFormContainer');
-  if (openForm) {
-    openForm.style.display = 'block';
-  }
-}
-
-function closeUpdateForm(evt) {
-  if (evt) {
-    evt.stopPropagation();
-  }
-  const closeForm = document.getElementById('updateFormContainer');
-  if (closeForm) {
-    closeForm.style.display = 'none';
-  }
-}
-
-
-// Muokkaa lomakke
-async function updateEntryById(evt) {
-  evt.preventDefault();
-  const updateButton = evt.target.closest('.updateButton');
-  const id = updateButton.getAttribute('data-id');
-  const url = `http://127.0.0.1:3000/api/entries/${id}`;
-  let token = localStorage.getItem('token');
-
-  openUpdateForm();
-
-  const formContainer = document.getElementById('formContainer');
-  formContainer.innerHTML = '';  // Clear previous form if it exists
-
-  const form = document.createElement('form');
-  form.setAttribute('id', 'updateEntryForm');
-
-  function addInputField(parent, fieldId, type, placeholder) {
-    const input = document.createElement('input');
-    input.type = type;
-    input.id = fieldId;
-    input.placeholder = placeholder;
-    parent.appendChild(input);
-  }
-
-  // Add fields to form
-  addInputField(form, 'updateEntryDate', 'date', 'Entry Date');
-  addInputField(form, 'updateMood', 'text', 'Tunnetila');
-  addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä');
-  addInputField(form, 'updateWeight', 'number', 'Paino');
-  addInputField(form, 'updateSleepHours', 'number', 'Nukutut tunnit');
-  addInputField(form, 'updateNotes', 'text', 'Muistinpanot');
-
-
-  const submitButton = document.createElement('button');
-  submitButton.type = 'submit';
-  submitButton.textContent = 'Lisää uusi päiväkirjamerkintä';
-  form.appendChild(submitButton);
-  formContainer.appendChild(form);
-
-  // Luo sulje-painike
-  const closeButton = document.createElement('button');
-  closeButton.type = 'button';  // Varmistetaan, ettei se lähetä lomaketta
-  closeButton.textContent = 'Sulje';  // Teksti painikkeessa
-  closeButton.onclick = function(evt) { closeUpdateForm(evt); }; // Lisää argumentti funktiokutsuun
-  form.appendChild(closeButton);  // Lisää sulje-painike lomakkeeseen
-
-  formContainer.appendChild(form);
-
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const entryDate = document.getElementById("updateEntryDate").value;
-    const mood = document.getElementById("updateMood").value;
-    const StressLevel = document.getElementById("updateStressLevel").value;
-    const weight = document.getElementById("updateWeight").value;
-    const sleepHours = document.getElementById("updateSleepHours").value;
-    const notes = document.getElementById("updateNotes").value;
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-    const options = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        entry_date: entryDate,
-        mood: mood,
-        stress_level: StressLevel,
-        weight: weight,
-        sleep_hours: sleepHours,
-        notes: notes,
-      }),
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-      if (data.message === "Entry data updated") {
-        updateTableRow(id, entryDate, mood, StressLevel, weight, sleepHours, notes);
-        showNotification('Päiväkirjamerkintä muokattu onnistuneesti', 'success'); // Custom function to show notifications
-        form.reset();
-      } else {
-        alert("Update failed: " + data.message);
-      }
-    } catch (error) {
-      alert("Error updating entry: " + error.message);
-      console.error("Error updating entry:", error);
-    }
-  });
-}
-
-function updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, notes) {
-  // Assuming each row in your table has an id `row-<entryId>`
-  const row = document.getElementById(`row-${id}`);
-  if (!row) {
-    console.error('Failed to find the row for id', id);
-    return;
-  }
-
-  // Update each cell directly
-  row.cells[0].textContent = entryDate;
-  row.cells[1].textContent = mood;
-  row.cells[2].textContent = stressLevel;
-  row.cells[3].textContent = weight;
-  row.cells[4].textContent = sleepHours;
-  row.cells[5].textContent = notes;
-}
-
-
-// TABLE AND SHOW TABLE
-
-function initializeTable() {
-  let container = document.getElementById('entriesTable');
-  let table;
-
-  // Check if the container is a table or needs a table to be added
-  if (container.tagName !== 'TABLE') {
-      table = document.createElement('table'); // Create a new table element
-      container.appendChild(table); // Append it to the div
-  } else {
-      table = container; // Use the existing table
-  }
-
-  if (!table.tHead) {
-      const thead = table.createTHead();
-      const headerRow = thead.insertRow();
-      const headers = ['Päivämäärä', 'Tunnetila', 'Stressinmäärä', 'Paino', 'Nukutut tunnit', 'Muistiinpanot', 'Poista', 'Muokka'];
-      headers.forEach(text => {
-          const headerCell = headerRow.insertCell();
-          headerCell.textContent = text;
-      });
-  }
-  if (!table.tBodies.length) {
-      table.createTBody();
-  }
-}
-
-function addEntryToTable(entry) {
-  const table = document.getElementById('entriesTable');
-  const tbody = table.tBodies[0]; // Ensure this is correctly referencing your table's tbody
-
-  const row = tbody.insertRow();
-  row.id = `row-${entry.entry_id}`;
-
-  // Ensure entry.notes is defined, or use an empty string as a fallback
-  const notes = entry.notes || '';
-  const notesClass = notes.length > 10 ? 'notes scrollable' : 'notes';
-
-  row.innerHTML = `
-      <td>${formatDate(entry.entry_date)}</td>
-      <td>${entry.mood}</td>
-      <td>${entry.stress_level}</td>
-      <td>${entry.weight}</td>
-      <td>${entry.sleep_hours}</td>
-      <td class="${notesClass}">${notes}</td>
-      <td><button class="deleteButton" data-id="${entry.entry_id}"><i class="fa fa-trash"></i></button></td>
-      <td><button class="updateButton" data-id="${entry.entry_id}"><i class="fa fa-check"></i></button></td>
-  `;
-
-  // Add event listeners
-  row.querySelector('.deleteButton').addEventListener('click', deleteEntryById);
-  row.querySelector('.updateButton').addEventListener('click', updateEntryById);
-}
-
-
-async function showDiaryEntries(entries) {
-  initializeTable();
-  const table = document.querySelector('#entriesTable'); // Adjust this selector based on your HTML structure
-  const tbody = table.tBodies[0];
-  tbody.innerHTML = '';  // Clear previous entries
-
-  if (entries.length === 0) {
-      const noEntriesMessage = document.createElement('tr');
-      noEntriesMessage.innerHTML = `<td colspan="8">Tällä päivällä ei ole tehty päiväkirjamerkintöjä. Voit tarkastella toista päivämäärää, jolle merkintöjä on kirjattu.</td>`;
-      tbody.appendChild(noEntriesMessage);
-      return;
-  }
-
-  entries.forEach(entry => addEntryToTable(entry, tbody));
-
-  // Mark the calendar days after entries have been loaded
-  markCalendarDays(entries);
-}
-
-function markCalendarDays(entries) {
-  const calendarDays = document.querySelectorAll('.day');
-
-  entries.forEach(entry => {
-      const entryDate = new Date(entry.entry_date);
-      const dayNum = entryDate.getDate();
-
-      // Mark the calendar day corresponding to the entry date
-      calendarDays.forEach(day => {
-          if (parseInt(day.textContent) === dayNum && !day.querySelector('.entry-icon')) {
-              const icon = document.createElement('img');
-              icon.classList.add('entry-icon');
-              icon.src = '/images/period.png'; // Ensure the path to the image is correct
-              day.appendChild(icon);
-          }
-      });
-  });
-}
-
-
-
-
 // Kalenteri näkymä
 
 const generateCalendar = (month, year) => {
@@ -492,7 +540,7 @@ const generateCalendar = (month, year) => {
   ];
 
   let currentDate = new Date();
-  let selectedDate = new Date(currentDate.getTime());  // Kopioi nykyinen päivämäärä, alustettavaksi valinnan mukaan
+  let selectedDate = new Date(currentDate.getTime());
 
   month_picker.innerHTML = month_names[month];
   calendar_header_year.innerHTML = year;
@@ -508,34 +556,30 @@ const generateCalendar = (month, year) => {
       day.innerHTML = dayNum;
       day.classList.add('day');
       day.addEventListener('click', () => {
-        // Päivitä selectedDate, kun käyttäjä klikkaa päivää
         selectedDate.setDate(dayNum);
         selectedDate.setMonth(month);
         selectedDate.setYear(year);
-        updateCalendarDayStyles(calendar_days, selectedDate);  // Päivitä visuaalinen esitys
+        updateCalendarDayStyles(calendar_days, selectedDate);
         getDiaryEntries(year, month, dayNum);
       });
 
-     // Aseta current-date luokka vain jos päivä vastaa alkuperäistä currentDatea
       if (dayNum === currentDate.getDate() && year === currentDate.getFullYear() && month === currentDate.getMonth()) {
         day.classList.add('current-date');
       }
 
-      // Hae päiväkirjamerkinnät heti kun päivä luodaan
       getDiaryEntries(year, month, dayNum);
     }
     calendar_days.appendChild(day);
   }
 };
 
-// Apufunktio kalenteripäivien tyylien päivittämiseksi
 function updateCalendarDayStyles(calendarElement, selectedDate) {
   let days = calendarElement.querySelectorAll('.day');
   days.forEach(day => {
-    day.classList.remove('current-date');  // Poista vanha valinta
+    day.classList.remove('current-date');
     let dayNumber = parseInt(day.textContent);
     if (dayNumber === selectedDate.getDate() && selectedDate.getMonth() === new Date().getMonth() && selectedDate.getFullYear() === new Date().getFullYear()) {
-      day.classList.add('current-date');  // Lisää current-date luokka uudelle valitulle päivälle
+      day.classList.add('current-date');
     }
   });
 }
@@ -597,7 +641,6 @@ setInterval(() => {
   const option = {
     hour: 'numeric',
     minute: 'numeric',
-    second: 'numeric',
     timeZone: 'Europe/Helsinki'
   };
   const formateTimer = new Intl.DateTimeFormat('fi-FI', option).format(timer);
