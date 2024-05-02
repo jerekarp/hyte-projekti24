@@ -22,6 +22,7 @@ Log In
     Set Suite Variable    ${TOKEN}    ${response.json()['token']}
     Log    ${TOKEN}
 
+
 Log Out
     ${response}=       GET    ${BASE_URL}/logout    headers=${headers}
     Log    ${response}
