@@ -16,3 +16,5 @@ testaus/tools/login_variables.resource
 testaus/back/openai/openai.resource
 testaus/back/poista_merkinta/poista_merkinta_keywords.resource
 testaus/back/poista_merkinta/poista_merkinta_keywords.resource
+testaus/tools/login_variables.resource
+testaus/back/lisaa_merkinta/lisaa_merkinta_keywords.resource

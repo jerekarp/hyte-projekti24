@@ -9,7 +9,7 @@ Suite Setup       Authenticate as Admin
 Add Diary Entry
     [Documentation]    Adds a new diary entry and verifies that the addition was successful.
     ${headers}=        Create Dictionary    Authorization=Bearer ${TOKEN}
-    ${body}=           Create Dictionary    entry_date=2023-04-01    mood=Iloinen    weight=74    sleep_hours=7    notes=Uusi päiväkirjamerkintä
+    ${body}=           Create Dictionary    entry_date=2023-04-01    mood=Iloinen    weight=74    sleep_hours=7    notes=Uusi merkinta
     ${response}=       POST    http://127.0.0.1:3000/api/entries    headers=${headers}    json=${body}
     Status Should Be    201    ${response}
     Log    ${response}

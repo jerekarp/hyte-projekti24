@@ -576,6 +576,8 @@ button:hover {
     display: none;
   }
   .mobile-navbar {
+    display: flex;
+    justify-content: center;
     color: white;
     width: auto;
     height: 100%;
@@ -596,7 +598,6 @@ button:hover {
   .bi {
     color: white;
     margin: 30px;
-
   }
 
   .nav-link {
