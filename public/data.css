@@ -248,6 +248,10 @@ label[for="dataAmount"] {
   font-weight: bold;
 }
 
+label[for="dataAmount2"] {
+  font-weight: bold;
+}
+
 
 input[type="number"] {
   background-color: #ffffff;
