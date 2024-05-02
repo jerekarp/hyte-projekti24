@@ -219,9 +219,44 @@ main {
 }
 
 /* Selectori datan vaihtoon */
+
 #chartSelection {
   font-size: 16px;
+  font-weight: bold;
+  cursor: pointer; /* Vaihda hiiren kohdistimen tyyppi osoittimeksi */
 }
+
+#chartSelection:hover {
+  /* Tämä osa määrittää ulkoasun, kun hiiri on elementin päällä */
+  background-color: rgb(221, 221, 221); /* Esimerkiksi taustavärin muuttaminen */
+}
+
+#chartSelection:active {
+  /* Tämä osa määrittää ulkoasun, kun elementtiä klikataan */
+  transform: translateY(2px); /* Esimerkiksi siirtää elementtiä alaspäin hiiren klikkauksen aikana */
+}
+
+#chartSelection:focus {
+  /* Tämä osa määrittää ulkoasun, kun elementtiin keskitytään */
+  outline: none; /* Poista oletuskeskityskehys */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Esimerkiksi lisää varjo keskittyessä */
+}
+
+
+label[for="dataAmount"] {
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+
+input[type="number"] {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 16px;
+  width: 2.7em;
+  margin-left: 2px;
+}
+
 
 select {
   padding: 0.2em  0.5em 0.2em 2em;
@@ -511,8 +546,14 @@ h3 {
   }
 }
 
+
+/* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
+@media screen and (max-width: 399px) {
+ 
+}
+
 /* Media Query Puhelimet */
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 400px) and (max-width: 600px) {
   /* MAX data laatikko */
   #max-data-container {
     text-align: center;
@@ -559,10 +600,27 @@ h3 {
     color: black;
     font-weight: normal;
     width: 280px;
+  }
 
 }
 
 
+/* Tabletit */
+@media screen and (min-width: 601px) and (max-width: 700px) {
+
 }
 
 
+@media screen and (min-width: 701px) and (max-width: 800px) {
+
+}
+
+
+@media screen and (min-width: 801px) and (max-width: 900px) {
+
+}
+
+
+@media screen and (min-width: 901px) and (max-width: 1100px) {
+
+}
