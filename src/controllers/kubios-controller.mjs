@@ -81,6 +81,8 @@ const getUserInfo = async (req, res, next) => {
 const getFilteredData = async (req, res, next) => {
   try {
     const { kubiosIdToken } = req.user;
+    const { count } = req.query; // Lisätään count-parametrin käsittely
+
     const headers = new Headers();
     headers.append('User-Agent', process.env.KUBIOS_USER_AGENT);
     headers.append('Authorization', kubiosIdToken);
@@ -97,7 +99,6 @@ const getFilteredData = async (req, res, next) => {
 
     const responseData = await response.json();
 
-    // Otetaan vain vuoden 2024 mittaukset, jos niitä on saatavilla
     let filteredData = {};
     responseData.results.forEach(result => {
       const date = new Date(result.measured_timestamp);
@@ -108,7 +109,6 @@ const getFilteredData = async (req, res, next) => {
       }
     });
 
-    // Jos 2024 vuoden mittauksia ei löydy, käytetään vanhempia vuosia
     if (Object.keys(filteredData).length === 0) {
       responseData.results.forEach(result => {
         const date = new Date(result.measured_timestamp);
@@ -117,11 +117,10 @@ const getFilteredData = async (req, res, next) => {
       });
     }
 
-    // Otetaan vain viimeisimmät 15 mittausta
-    const lastFifteenMeasurements = Object.values(filteredData).slice(-15);
+    // Otetaan vain haluttu määrä mittauksia
+    const lastMeasurements = Object.values(filteredData).slice(-count);
 
-    // Muunnetaan objektista taulukoksi
-    const filteredDataArray = lastFifteenMeasurements.map(result => ({
+    const filteredDataArray = lastMeasurements.map(result => ({
       measured_timestamp: result.measured_timestamp,
       stress_index: result.result.stress_index,
       respiratory_rate: result.result.respiratory_rate,
@@ -129,16 +128,18 @@ const getFilteredData = async (req, res, next) => {
       readiness: result.result.readiness,
     }));
 
-    // Haetaan korkeimmat arvot
     const maxValues = getMaxValues(filteredDataArray);
 
-    return res.json({ status: 'ok', filteredData: filteredDataArray, maxValues });
+    // Palautetaan JSON-vastaus, jossa on filteredDataArrayn pituus
+    return res.json({ status: 'ok', dataCount: filteredDataArray.length, filteredData: filteredDataArray, maxValues });
   } catch (error) {
-    // Käsittely virheitä, jos niitä tapahtuu
     console.error('Error occurred:', error);
     return res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
+
+
+
 
 
 

@@ -1,163 +1,165 @@
 import { fetchData } from './fetch.js';
 
-// Chart.JS
 document.addEventListener('DOMContentLoaded', function() {
   const data = {
-      labels: [], // Tyhjä taulukko alustetaan, nimet päivitetään myöhemmin
-      datasets: []
+    labels: [], // Tyhjä taulukko alustetaan, nimet päivitetään myöhemmin
+    datasets: []
   };
 
-
-  const isMobileDevice = window.matchMedia("(max-width: 768px)").matches; // Tässä käytetään esimerkiksi maksimileveyttä 768px määrittelemään mobiililaite
+  const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
 
   const config = {
-      type: 'bar',
-      data: data,
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              },
-              x: {
-                  display: !isMobileDevice // Piilottaa x-akselin mobiililaitteilla
-              }
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        },
+        x: {
+          display: !isMobileDevice
+        }
+      },
+      plugins: {
+        tooltip: {
+          intersect: false
+        },
+        legend: {
+          display: !isMobileDevice,
+          onClick: function(e, legendItem) {
+            const index = legendItem.datasetIndex;
+            const ci = this.chart;
+            const meta = ci.getDatasetMeta(index);
+            meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
+            ci.update();
           },
-          plugins: {
-              tooltip: {
-                  intersect: false
-              },
-              legend: {
-                  display: !isMobileDevice,
-                  onClick: function(e, legendItem) {
-                      const index = legendItem.datasetIndex;
-                      const ci = this.chart;
-                      const meta = ci.getDatasetMeta(index);
-                      meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
-                      ci.update();
-                  },
-                  onHover: function(e, legendItem) {
-                      e.native.target.style.cursor = 'pointer';
-                  },
-                  onLeave: function(e, legendItem) {
-                      e.native.target.style.cursor = 'default';
-                  }
-              },
-              title: {
-                  display: true,
-                  text: 'Kubios HRV'
-              }
+          onHover: function(e, legendItem) {
+            e.native.target.style.cursor = 'pointer';
           },
-          interaction: {
-              mode: 'index'
-          },
-          onHover: function(e) {
-              const points = this.getElementsAtEventForMode(
-                  e,
-                  'index', { axis: 'x', intersect: true },
-                  false
-              );
-
-              if (points.length) e.native.target.style.cursor = 'pointer';
-              else e.native.target.style.cursor = 'default';
+          onLeave: function(e, legendItem) {
+            e.native.target.style.cursor = 'default';
           }
+        },
+        title: {
+          display: true,
+          text: 'Kubios HRV'
+        }
+      },
+      interaction: {
+        mode: 'index'
+      },
+      onHover: function(e) {
+        const points = this.getElementsAtEventForMode(
+          e,
+          'index', { axis: 'x', intersect: true },
+          false
+        );
+
+        if (points.length) e.native.target.style.cursor = 'pointer';
+        else e.native.target.style.cursor = 'default';
       }
+    }
   };
-
-
-
-
-
-
-
-
-
 
   const myChart = new Chart(document.getElementById('myChart'), config);
   const chartSelection = document.getElementById('chartSelection');
   const maxDataElement = document.getElementById('max-data');
+  const dataAmountInput = document.getElementById('dataAmount');
 
-  chartSelection.addEventListener('change', function() {
-      const selectedValue = chartSelection.value;
-      updateChartWithData(selectedValue);
+  dataAmountInput.addEventListener('keyup', function() {
+    updateChartWithData(chartSelection.value, dataAmountInput.value);
   });
 
-  async function updateChartWithData(selectedValue) {
-      try {
-          const token = localStorage.getItem("token");
-          const url = 'http://127.0.0.1:3000/api/kubios/filtered-data';
-          const options = {
-              method: "GET",
-              headers: {
-                  Authorization: "Bearer " + token,
-              },
-          };
+  dataAmountInput.addEventListener('change', function() {
+    updateChartWithData(chartSelection.value, dataAmountInput.value);
+  });
 
-          const responseData = await fetchData(url, options);
-          console.log(responseData)
+  chartSelection.addEventListener('change', function() {
+    updateChartWithData(chartSelection.value, dataAmountInput.value);
+  });
+  
 
-          if (responseData.status === 'ok' && responseData.filteredData && responseData.maxValues) {
-              let filteredData = responseData.filteredData;
-              let maxValues = responseData.maxValues;
+  async function updateChartWithData(selectedValue, dataAmount) {
+    try {
 
-              // Päivitetään maksimiarvot max-data-elementtiin
-              maxDataElement.innerHTML = '';
-              Object.keys(maxValues).forEach(param => {
-                  let value = maxValues[param];
-                  // Tarkistetaan, onko parametri stress_index ja pyöristetään se yhden desimaalin tarkkuuteen
-                  if (param === 'stress_index') {
-                      value = Math.round(value * 10) / 10; // Pyöristetään yhden desimaalin tarkkuuteen
-                  } else {
-                      value = Math.round(value); // Pyöristetään muut parametrit kokonaislukuun
-                  }
-                  const p = document.createElement('p');
-                  p.textContent = `${getUserFriendlyName(param)}: ${value}`;
-                  maxDataElement.appendChild(p);
-              });
-
-              let selectedLabel = '';
-              let chartType = 'bar';
-              if (selectedValue === 'all') { // Lisätään 'all' vaihtoehto
-                  selectedLabel = 'Kaikki data';
-                  chartType = 'bar';
-              } else {
-                  // Muutetaan labeli ja päivitetään kaavion data valitun arvon mukaan
-                  selectedLabel = getUserFriendlyName(selectedValue)
-                  chartType = 'line';
-              }
-
-              myChart.config.type = chartType; // Vaihdetaan kaaviotyyppi
-              myChart.data.labels = filteredData.map(entry => formatDate(entry.measured_timestamp));
-              myChart.data.datasets = (selectedValue === 'all') ?
-                  Object.keys(filteredData[0]).filter(key => key !== 'measured_timestamp' && key !== 'rmssd_ms').map((key, index) => {
-                      return {
-                          label: getUserFriendlyName(key),
-                          data: filteredData.map(entry => entry[key]),
-                          backgroundColor: getBackgroundColor(index),
-                          borderColor: getBorderColor(index),
-                          borderWidth: 1
-                      };
-                  }) :
-                  [{
-                      label: selectedLabel,
-                      data: filteredData.map(entry => entry[selectedValue]),
-                      backgroundColor: getColor(selectedValue),
-                      borderColor: getColor(selectedValue),
-                      borderWidth: 1
-                  }];
-
-              myChart.update();
-          } else {
-              console.error('Failed to fetch or parse data');
-          }
-      } catch (error) {
-          console.error('Error occurred while fetching data:', error);
+      // Tarkistetaan, onko selectedValue tyhjä, ja asetetaan se 'all'-arvoksi tarvittaessa
+      if (!selectedValue) {
+        selectedValue = 'all';
       }
+      const token = localStorage.getItem("token");
+      const url = 'http://127.0.0.1:3000/api/kubios/filtered-data?count=' + dataAmount;
+      const options = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      };
+      
+
+      const responseData = await fetchData(url, options);
+      console.log(responseData)
+
+      if (responseData.status === 'ok' && responseData.filteredData && responseData.maxValues) {
+        let filteredData = responseData.filteredData;
+        let maxValues = responseData.maxValues;
+
+        
+
+        maxDataElement.innerHTML = '';
+        Object.keys(maxValues).forEach(param => {
+          let value = maxValues[param];
+          if (param === 'stress_index') {
+            value = Math.round(value * 10) / 10;
+          } else {
+            value = Math.round(value);
+          }
+          const p = document.createElement('p');
+          p.textContent = `${getUserFriendlyName(param)}: ${value}`;
+          maxDataElement.appendChild(p);
+        });
+
+        let selectedLabel = '';
+        let chartType = 'bar';
+        if (selectedValue === 'all') {
+          selectedLabel = 'Kaikki data';
+          chartType = 'bar';
+        } else {
+          selectedLabel = getUserFriendlyName(selectedValue)
+          chartType = 'line';
+        }
+
+        myChart.config.type = chartType;
+        myChart.data.labels = filteredData.map(entry => formatDate(entry.measured_timestamp));
+        myChart.data.datasets = (selectedValue === 'all') ?
+          Object.keys(filteredData[0]).filter(key => key !== 'measured_timestamp' && key !== 'rmssd_ms').map((key, index) => {
+            return {
+              label: getUserFriendlyName(key),
+              data: filteredData.map(entry => entry[key]),
+              backgroundColor: getBackgroundColor(index),
+              borderColor: getBorderColor(index),
+              borderWidth: 1
+            };
+          }) :
+          [{
+            label: selectedLabel,
+            data: filteredData.map(entry => entry[selectedValue]),
+            backgroundColor: getColor(selectedValue),
+            borderColor: getColor(selectedValue),
+            borderWidth: 1
+          }];
+
+        myChart.update(); // Päivitetään kaavio
+        dataAmountInput.value = responseData.dataCount;
+      } else {
+        console.error('Failed to fetch or parse data');
+      }
+    } catch (error) {
+      console.error('Error occurred while fetching data:', error);
+    }
   }
 
-  updateChartWithData('all'); // Oletusarvoisesti näytetään kaikki data
+  updateChartWithData('all', 15);
 });
-
-
 
 
 
@@ -167,7 +169,7 @@ function getUserFriendlyName(param) {
     case 'stress_index':
       return 'Stressi-indeksi';
     case 'respiratory_rate':
-      return 'Hengitysnopeus ( breaths/min )';
+      return 'Hengitystaajuus ( breaths/min )';
     case 'mean_hr_bpm':
       return 'Keskimääräinen syke ( bpm )';
     case 'readiness':
