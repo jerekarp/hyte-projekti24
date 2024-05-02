@@ -261,8 +261,51 @@ userRouter
   deleteUser,
 );
 
+// /users/info endpoint
+
 userRouter
   .route('/info')
+// add basic information about the user
+/**
+ * @api {post} users Add information about the user
+ * @apiVersion 1.0.0
+ * @apiName AddUserInformation
+ * @apiGroup Users
+ * @apiPermission token
+ * @apiHeader {String} Authorization Bearer token.
+ * @apiHeader {String} Content-Type application/json.
+ *
+ * @apiParam {Number} user_id
+ * @apiParam {String} first_name
+ * @apiParam {String} surname
+ * @apiParam {Number} student_number
+ * @apiParam {Number} weight
+ * @apiParam {Number} height
+ * @apiParam {Number} age
+ * @apiParam {String} gender
+ *
+ * @apiSuccess {String} message Confirmation message.
+ *
+ * @apiParamExample {json} Request-Example:
+ *     {
+ *       "first_name": "test",
+ *       "surname": "testinen",
+ *       "student_number": 123456,
+ *       "weight": 70,
+ *       "height": 180,
+ *       "age": 20,
+ *       "gender": "male"
+ *     }
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *        "message": "Student infromation added succesfully",
+ *     }
+ *
+ * @apiUse InvalidTokenError
+ */
+
   .post(
     authenticateToken,
     body('user_id', 'User ID must be provided and be an integer').isInt(),
@@ -277,14 +320,101 @@ userRouter
     postStudentInfo
   );
 
+
   userRouter
   .route('/info/:user_id')
+  // check if the user has basic information in database
+  /**
+ * @api {get} users Check if the users information is found in database
+ * @apiVersion 1.0.0
+ * @apiName GetUserInformation
+ * @apiGroup Users
+ * @apiPermission token
+ * @apiHeader {String} Authorization Bearer token.
+ * @apiHeader {String} Content-Type application/json.
+ *
+ * @apiParam {Number} user_id
+ *
+ * @apiSuccess {String} message Confirmation message.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *      "message": "No student information found for this user_id",
+ *      "found": false
+ *     }
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+          "message": "Student information exists for this user_id",
+          "found": true,
+          "studentInfo": {
+              "user_id": 1,
+              "student_id": 1,
+              "first_name": "test",
+              "surname": "testinen",
+              "student_number": 123456,
+              "weight": 70,
+              "height": 180,
+              "age": 20,
+              "gender": "male",
+              "stress_level": null"
+            }
+          }
+
+ * @apiUse InvalidTokenError
+ */
+
   .get(
     authenticateToken,
     param('user_id', 'User ID must be provided and be an integer').isInt(),
     validationErrorHandler,
     getStudentInfo
   )
+
+// update basic information about the user
+/**
+ * @api {put} users Update users basic information
+ * @apiVersion 1.0.0
+ * @apiName UpdateUserInformation
+ * @apiGroup Users
+ * @apiPermission token
+ * @apiHeader {String} Authorization Bearer token.
+ * @apiHeader {String} Content-Type application/json.
+ *
+ * @apiParam {Number} user_id
+ * @apiParam {String} first_name
+ * @apiParam {String} surname
+ * @apiParam {Number} student_number
+ * @apiParam {Number} weight
+ * @apiParam {Number} height
+ * @apiParam {Number} age
+ * @apiParam {String} gender
+ *
+ * @apiSuccess {String} message Confirmation message.
+ * @apiSuccess {Number} user_id Id of the updated user.
+ *
+ * @apiParamExample {json} Request-Example:
+ *     {
+ *       "first_name": "test",
+ *       "surname": "testinen",
+ *       "student_number": 123456,
+ *       "weight": 70,
+ *       "height": 180,
+ *       "age": 20,
+ *       "gender": "male"
+ *     }
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+          "message": "Student information updated succesfully",
+        }
+
+ * @apiUse InvalidTokenError
+ */
+
   .put(
     authenticateToken,
     param('user_id', 'User ID must be provided and be an integer').isInt(),
