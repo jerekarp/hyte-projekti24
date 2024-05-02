@@ -12,11 +12,6 @@ const authRouter = express.Router();
  */
 
 /**
- * @apiDefine admin Admin users only.
- * Valid authentication token must be provided within request.
- */
-
-/**
  * @apiDefine token Logged in user access only
  * Valid authentication token must be provided within request.
  */
@@ -58,27 +53,31 @@ authRouter
    *
    * @apiParamExample {json} Request-Example:
    *    {
-   *      "username": "johnd",
-   *      "password": "examplepass"
+   *      "username": "jussi.esimerkki@gmail.com",
+   *      "password": "password,"
    *    }
    *
+   * @apiSuccess {String} message Confirmation message.
    * @apiSuccess {String} token Token for the user authentication.
    * @apiSuccess {Object} user User info.
+   * @apiSuccess {String} user.email Email of the user.
+   * @apiSuccess {String} user.family_name Family name of the user.
+   * @apiSuccess {String} user.given_name Given name of the user.
+   * @apiSuccess {String} user.sub Sub identifier of the user.
+   * @apiSuccess {Number} user_id Id of the user.
    *
    * @apiSuccessExample Success-Response:
    *    HTTP/1.1 200 OK
    *    {
-   *      "message": "Logged in successfully",
-   *      "token": "TOKEN-VALUE"
+   *      "message": "Logged in successfully with Kubios",
    *      "user": {
-   *        "user_id": 21,
-   *        "username": "johnd",
-   *        "email": "johnd@example.com",
-   *        "user_level": "regular"
-   *      }
-   *    }
-   *
-   * @apiUse UnauthorizedError
+   *          "email": "jussi.esimerkki@gmail.com",
+   *          "family_name": "Esimerkki",
+   *          "given_name": "Jussi",
+   *          "sub": "a6as5b1eac-2sb9-4430-a754-8221f9d0915c5"
+   *      },
+   *      "user_id": 1,
+   *      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXV9.eyJ1c2VyX2lkIjoxLCJrdWJpb3NJZFRva2VuIjoiZXlKcmFXUWlPaUpRVkVSUlVdfhgfg23kxialUyYlhCNVJVOXBjSFZ4T0663EQlBlWGxKTVdoMVdsUXdNVkpWZWtkWFVTdFJQU0lzSW1Gc1p5STZJbEpUTWpVMkluMC5leUpoZEY5b1lYTm9Jam9pU0VoamVWSnBOMHN0VTBwb1pEQTJhRUp1U0MwMFFTSXNJbk4xWWlJNkltRmhOV0l4WldGakxUSmhZamt0TkRRek1DMWhOemcwTFRneU1XWTVaREE1TURWak5TSXNJbVZ0WVdsc1gzWmxjbWxtYVdWa0lqcDBjblZsTENKcGMzTWlPaUpvZEhSd2N6cGNMMXd2WTI5bmJtbDBieTFwWkhBdVpYVXRkMlZ6ZEMweExtRnRZWHB2Ym1GM2N5NWpiMjFjTDJWMUxYZGxjM1F0TVY5MVVXMUJaelExZUhraUxDSmpiMmR1YVhSdk9uVnpaWEp1WVcxbElqb2lZV0UxWWpGbFlXTXRNbUZpT1MwME5ETXdMV0UzT0RRdE9ESXhaamxrTURrd05XTTFJaXdpWjJsMlpXNWZibUZ0WlNJNklrcGxjbVVpTENKaGRXUWlPaUkzTkRVM01YQmthSFZqTjNaMllXczBkR3cwTlhWMGN6aDFPQ0lzSW1WMlpXNTBYMmxrSWpvaVpEWTFNekJoTnpFdFltUmxPQzAwT0RJMUxUZ3dPVEl0TldWak1qTm1PVGRsTmpnd0lpd2lkRzlyWlc1ZmRYTmxJam9pYVdRaUxDSmhkWFJvWDNScGJXVWlPakUzTVRRMk5ERTRPVElzSW1WNGNDSTZNVGN4TkRZME5UUTVNaXdpYVdGMElqb3hOekUwTmpReE9Ea3lMQ0ptWVcxcGJIbGZibUZ0WlNJNklrdGhjbkJ3YVc1bGJpSXNJbVZ0WVdsc0lqb2lhbVZ5WlhBdWEyRnljSEJwYm1WdVFHZHRZV2xzTG1OdmJTSjkuU0UzZmVfd1ViU0g2enQ3dDdWaUlDTUgwQzBlOUEzc2hSdExXeDNBdW0wVUhNUDFiY2lRemc5TjNENkhfb1VWd2FVMG12NFZVNm5PNm9xc0cySUo1NDF5VzA5ZVFncnNjQWZlQ1BudEYyWEFwa1QwV0ZnQ1R1bTZ3ZzQwQTI2Tng4QWpwam5pUDQ1SG5JcGhqT0owaW1sbW9SSnRvWTBQUnQtOUdIdFVudi1NZUVJUVdkNGJoOHc4b29MRUtaMElXbFJLUGUySHlsQjhGSXRhTkpuYTZmcmFJYVNtVzdaQ0U0b0kzTHZmRkM5Mm5TRUUxUXQ5VU5oeGtGZ0hpSEpkOUVyc2NOLXc3cTRRM21uMS1pSU1ub19lejRZcUptbDdWbWRJYm5NQnpWb0EzT1dSVkhrTFE1Y3dmVWI2WnFFemYtZ3VSTm5oNlhTTmp6VUpaenZkd3dBIiwiaWF0IjoxNzE0NjQxODkyLCJleHAiOjE3MTQ2NDU0OTJ9.6VQ40I5
    */
   .post(
     '/login',
