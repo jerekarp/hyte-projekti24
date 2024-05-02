@@ -188,7 +188,6 @@ main {
 .form-input {
   padding: 15px;
   border-radius: 8px;
-  padding: 10px;
   border: none;
   box-shadow: 0 0 5px #04456587;
 }
@@ -641,38 +640,6 @@ main {
 }
 
 
-
-/* Responsiivisuus */
-
-@media only screen and (max-width: 900px) {
-  .container {
-      display: flex;
-      flex-direction: column;
-
-  }
-
-  main {
-    margin-top: 50px;
-    margin-bottom: 130px;
-  }
-
-  .container {
-    justify-content: center;
-  }
-
-  .col-2 {
-      order: -1; /* Siirtää kalenterin yläpuolelle */
-  }
-
-  .col-1, .col-2 {
-      width: 90%; /* Vie koko leveyden */
-      margin: auto;
-  }
-
-}
-
-/* footer  */
-
 /* Footer */
 
 .footer {
@@ -791,91 +758,116 @@ main {
   }
 }
 
-
+/* Merkintä ikoni */
 .entry-icon {
   width: 35px;
   height: 35px;
 }
 
-#updateFormContainer {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
+
+/* Muokka formi ja muistinpano moduuli */
+#updateFormContainer, .modal {
+  display: none;
+  position: fixed;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Dim the background */
-  z-index: 1050; /* Make sure it sits on top of other content */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
 }
 
-#formContainer {
-  background-color: #fff; /* Käytä puhtaan valkoista tai sivuston teeman mukaista vaaleaa sävyä */
-  margin: 5% auto; /* Muuta marginaalia tarvittaessa */
-  padding: 20px;
-  border: none; /* Poista jos sivustollasi ei yleensä käytetä reunuksia */
-  border-radius: 10px; /* Sovella pyöristettyjä kulmia jos ne ovat osa sivustosi tyyliä */
-  width: 30%; /* Voit säätää leveyttä paremman responsiivisuuden saavuttamiseksi */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Käytä kevyempää varjostusta jos se sopii yhteen sivustosi kanssa */
+#formContainer, .modalContent{
+  background-color: #fff;
+  color: #000;
+  margin: 20% auto;
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
+  width: 30%;
 }
 
 
 #formContainer input,
 #formContainer textarea,
 #formContainer select {
-  display: block; /* Asettaa elementit allekkain */
-  width: calc(100% - 40px); /* Vähentää paddingin verran leveydestä */
-  padding: 10px; /* Antaa hieman tyhjää tilaa sisäpuolelle */
-  margin: 10px 0; /* Luo tilaa elementtien välille */
-  border: 1px solid #ccc; /* Kevyt reunus yhdenmukaisuuden vuoksi */
-  border-radius: 26px; /* Pyöristetyt kulmat teemasi mukaan */
-  box-sizing: border-box; /* Sisältää paddingin ja borderin leveyteen */
+  display: block;
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 26px;
+  box-sizing: border-box;
+  font-size: 18px;
 }
 
 #formContainer button {
-  display: block; /* Asettaa buttonin omalle rivilleen */
-  width: auto; /* Säätää buttonin leveyttä automaattisesti */
+  display: block;
+  width: auto;
   padding: 10px 15px;
-  margin: 10px 0; /* Luo tilaa ylä- ja alapuolelle */
-  background-color: #076398; /* Teemasi mukainen väri */
+  margin: 10px 8px;
+  background-color: #046398;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 #updateEntryForm {
   display: flex;
-  justify-content: flex-start; /* Pack flex items from the start */
-  flex-wrap: wrap; /* Tämä varmistaa, että elementit menevät seuraavalle riville tarvittaessa */
-  align-items: center; /* Tämä varmistaa, että painikkeet ovat keskitettyjä vertikaalisesti */
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 
-/* Voit myös asettaa enimmäisleveyden painikkeille, jos ne ovat liian leveitä */
-#updateEntryForm button {
-  padding: 10px 15px; /* Säädä padding arvoja tarpeen mukaan */
-  margin-left: 5px;
+#modalText {
+  font-size: 18px;
+  line-height: 1.6;
 }
 
+.closeButton {
+  cursor: pointer;
+  float: right;
+  font-size: 23px;
+}
 
-button:hover {
-  background-color: #055481; /* Tummennettu versio teemaväristäsi hover-efektinä */
+.tableButtons {
+  font-size: 15px;
+
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tableButtons {
+  cursor: pointer;
+}
+
+.tableButtons:hover, .tableButtons:focus {
+  cursor: pointer;
+  color: #046398;
 }
 
 #notification {
   position: fixed;
-  top: 30px;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  padding: 10px 20px;
+  padding: 20px 30px;
   color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   opacity: 0;  /* Alkutila piilotettu */
   transition: opacity 0.5s ease-in-out;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
   min-width: 300px;
 }
@@ -920,4 +912,192 @@ td {
   word-wrap: break-word; /* Katkaisee sanat sopivasti */
 }
 
+.tableIcons {
+  height: 30px;
+  width: 30px;
+}
 
+.dayMarked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  background-color: #0b8fcc;
+  opacity: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+
+
+
+/* Responsiivisuus */
+
+/* Media Query Mobiililaitteet, Normaali leveyskoko 400-600px */
+@media screen and (min-width: 400px) and (max-width: 600px) {
+
+  .col-1, .col-2 {
+    grid-column: span 12;
+
+  }
+
+
+  .col-1 h3, .col-2 h3 {
+    margin: 20px 0;
+    font-size: 12px;
+  }
+
+  .create_diary_form {
+    margin: 2px;
+    padding: 10px; /* Smaller padding */
+    width: 70%; /* Utilizes full width for small devices */
+    box-shadow: none;
+  }
+
+  .createEntry {
+    font-size: 10px;
+    padding: 5px;
+    margin: auto;
+    background-color: #044465;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: auto;
+  }
+
+  .form-input, #notes  {
+    width: 90%;
+    padding: 5px;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .form-label {
+    font-size: 10px;
+  }
+
+  #slider-marks {
+    padding: 0; /* Remove padding to use the full width */
+  }
+
+  #slider-marks span {
+    font-size: 9px; /* Even smaller font size for very small devices */
+    min-width: 30px; /* Reduce minimum width to fit more items */
+  }
+
+  .stress-slider {
+    width: 100%; /* Use the full width available */
+  }
+
+  .mood-option-button {
+    font-size: 8px;
+    padding: 4px;
+    margin: 3px;
+    cursor: pointer;
+
+  }
+
+
+
+
+  .topnav a:not(.icon) {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive #myLinks {
+    display: block;
+    position: absolute;
+    background-color: #333;
+    width: 100%;
+    top: 50px;
+    z-index: 99;
+  }
+
+}
+
+/* Tabletit
+@media screen and (min-width: 601px) and (max-width: 700px) {
+  #banner {
+    height: 260px;
+  }
+
+
+  #minikuva {
+    top: 145px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+}
+
+
+@media screen and (min-width: 701px) and (max-width: 800px) {
+  #banner {
+    height: 300px;
+  }
+
+
+  #minikuva {
+    top: 185px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+}
+
+@media screen and (min-width: 801px) and (max-width: 900px) {
+  #banner {
+    height: 330px;
+  }
+
+  #minikuva {
+    top: 215px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+}
+
+@media screen and (min-width: 901px) and (max-width: 1100px) {
+  #banner {
+    height: 380px;
+  }
+
+  #minikuva {
+    top: 265px;
+  }
+
+  .col {
+    grid-column: span 6;
+  }
+
+  .col-7 {
+    grid-column: span 12;
+  }
+
+} */
