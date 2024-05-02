@@ -529,7 +529,41 @@ button:hover {
     display: none;
   }
 
+  .navbar {
+    display: none;
+  }
+  .mobile-navbar {
+    display: flex;
+    justify-content: cen;
+    color: white;
+    width: auto;
+    height: 100%;
+
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    height: 25px;
+  }
+
+  .bi {
+    color: white;
+    margin: 15px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  #openEditModalBtn {
+    margin-top: -5px;
+  }
 }
+
+
+
 
 /* Media Query Mobiililaitteet, Normaali leveyskoko 400-600px */
 @media screen and (min-width: 400px) and (max-width: 600px) {
@@ -597,7 +631,7 @@ button:hover {
 
   .bi {
     color: white;
-    margin: 30px;
+    margin: 15px;
   }
 
   .nav-link {
@@ -605,7 +639,7 @@ button:hover {
   }
 
   #openEditModalBtn {
-    display: none;
+    margin-top: -5px;
   }
 }
 
@@ -628,7 +662,41 @@ button:hover {
   .col-7 {
     grid-column: span 12;
   }
+  .navbar {
+    display: none;
+  }
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: auto;
+    height: 100%;
+    left: 20px;
+    right: 20px;
+    margin-top: 20px;
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 25px;
+  }
 
+  .bi {
+    color: white;
+    margin: 30px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  #openEditModalBtn {
+    margin-top: -5px;
+  }
 }
 
 
@@ -649,6 +717,8 @@ button:hover {
   .col-7 {
     grid-column: span 12;
   }
+
+
 
 }
 

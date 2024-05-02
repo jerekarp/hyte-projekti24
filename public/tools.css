@@ -432,3 +432,57 @@ main {
     background-positon-x: 0px;
   }
 }
+
+
+/* responsiivisuusa */
+
+/* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
+@media screen and (max-width: 399px) {
+ .container {
+  display: block;
+ }
+ .col {
+  margin: 10px;
+ }
+ .exercisevideo {
+  width: 90%;
+ }
+}
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  .container {
+    display: block;
+   }
+   .col {
+    margin: 10px;
+   }
+   .exercisevideo {
+    width: 90%;
+   }
+ }
+/* Tabletit */
+@media screen and (min-width: 601px) and (max-width: 700px) {
+  .exercisevideo {
+    width: 90%;
+   }
+}
+
+
+@media screen and (min-width: 701px) and (max-width: 800px) {
+  .exercisevideo {
+    width: 90%;
+   }
+}
+
+
+@media screen and (min-width: 801px) and (max-width: 900px) {
+  .exercisevideo {
+    width: 90%;
+   }
+}
+
+
+@media screen and (min-width: 901px) and (max-width: 1100px) {
+  .exercisevideo {
+    width: 90%;
+   }
+}
