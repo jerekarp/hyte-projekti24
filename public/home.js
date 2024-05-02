@@ -29,25 +29,34 @@ fetch("https://type.fit/api/quotes")
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  const banner = document.getElementById('banner');
   const minikuva = document.getElementById('minikuva');
-  let moveToRight = true; // Alustetaan oletustila, ensimmäinen liike on oikealle
+  let moveToRight = true;
+  let isMoving = false; // Tilamuuttuja, joka estää uuden liikkeen käynnistymisen
 
-  // Alustetaan transform-ominaisuus, jotta ensimmäinen siirtymä sisältää pyörimisen
-  minikuva.style.transformOrigin = '50% 23%'; // Asettaa pyörähdyksen keskipisteen
-  minikuva.style.transform = 'rotateZ(0deg)'; // Alustaa pyörimisen, alkaa nollasta
+  minikuva.style.transformOrigin = '50% 23%';
+  minikuva.style.transform = 'rotateZ(0deg)';
 
-  banner.addEventListener('mouseenter', function() {
-    if (moveToRight) {
-      minikuva.style.right = '10%'; // Siirtää kuvan oikeaan reunaan
-      minikuva.style.transform = 'rotateZ(1080deg)'; // Käynnistää nopean pyörinnän z-akselin ympäri myötäpäivään
-    } else {
-      minikuva.style.right = '85%'; // Siirtää kuvan vasempaan reunaan
-      minikuva.style.transform = 'rotateZ(-1080deg)'; // Käynnistää nopean pyörinnän z-akselin ympäri vastapäivään
+  minikuva.addEventListener('mouseenter', function() {
+    if (!isMoving) {
+      isMoving = true; // Asetetaan liikkeeseen
+
+      if (moveToRight) {
+        minikuva.style.right = '10%';
+        minikuva.style.transform = 'rotateZ(1080deg)';
+      } else {
+        minikuva.style.right = '85%';
+        minikuva.style.transform = 'rotateZ(-1080deg)';
+      }
+
+      moveToRight = !moveToRight;
+
+      setTimeout(() => {
+        isMoving = false;
+      }, 1500); // Odota hetki ennen kuin uusi liike sallitaan
     }
-    moveToRight = !moveToRight; // Vaihtaa suuntaa seuraavaa hiiren siirtämistä varten
   });
 });
+
 
 
 
