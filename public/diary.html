@@ -8,12 +8,11 @@
     <link rel="stylesheet" type="text/css" href="diary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <title>Päiväkirja</title>
 </head>
 <body>
 
-
+  <!-- Navbaari  -->
   <nav class="navbar">
     <div class="navbar-menu">
         <a href="home.html" class="nav-link">Etusivu</a>
@@ -24,15 +23,15 @@
     </div>
     <a href="index.html" class="nav-link nav-link-right">Kirjaudu ulos</a>
   </nav>
-
       <main>
         <div class="container">
+            <!-- Päiväkirjamerkintä lomakke -->
             <div class="col col-1">
               <h3>Kuinka päiväsi on sujunut tänään?</h3>
               <form class="create_diary_form">
                 <!--merkintäpäivämäärä-->
                 <label class="form-label" id="day-label" for="entry_date">Merkintäpäivämäärä:</label>
-                <input class="form-input" type="date" name="entry_date" />
+                <input class="form-input" type="date" name="entry_date" placeholder="Klikkaa hymiötä tai kirjoita"/>
                 <!-- tunnetila-->
                 <label class="form-label" id="mood-label" for="mood">Tunnetila:</label>
                 <input class="form-input" type="text" name="mood" id="mood" value="" />
@@ -64,6 +63,7 @@
                 <input name="submit" type="submit" value="Tallenna" class="createEntry" />
               </form>
             </div>
+            <!-- Kalenteri -->
             <div class="col col-2">
               <h3>Päiväkirjamerkinnät: </h3>
               <div class="calendar">
@@ -79,7 +79,6 @@
                     </span>
                   </div>
                 </div>
-
                 <div class="calendar-body">
                   <div class="calendar-week-days">
                     <div>Ma</div>
@@ -98,18 +97,27 @@
                 <div class="date-time-formate">
                   <div class="day-text-formate">TÄNÄÄN</div>
                   <div class="date-time-value">
-                    <div class="time-formate">01:41:20</div>
+                    <div class="time-formate">01:41</div>
                     <div class="date-formate">04 - huhtikuu - 2024</div>
                   </div>
                 </div>
                 <div class="month-list"></div>
               </div>
+              <!-- TAULU -->
               <table id="entriesTable"></table>
-              <div id="updateFormContainer" style="display:none;">
-                <div id="formContainer">
-                  <!-- Form will be dynamically inserted here -->
+              <!-- Muistinpano moduuli -->
+              <div id="entryModal" class="modal">
+                <div class="modalContent">
+                  <span class="closeButton"><i class="fa fa-times" aria-hidden="true"></i></span>
+                  <p id="modalText"></p>
                 </div>
               </div>
+              <!-- Päiväkirjamerkintöjen muokkaus -->
+              <div id="updateFormContainer" style="display:none;">
+                <div id="formContainer">
+                </div>
+              </div>
+              <!-- Muokattu/Poistettu ilmoitukset  -->
               <div id="notification"></div>
             </div>
             <!-- <div class="col col-3">
