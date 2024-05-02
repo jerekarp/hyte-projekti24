@@ -29,7 +29,6 @@ fetch("https://type.fit/api/quotes")
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  const banner = document.getElementById('banner');
   const minikuva = document.getElementById('minikuva');
   let moveToRight = true; // Alustetaan oletustila, ensimmäinen liike on oikealle
 
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
   minikuva.style.transformOrigin = '50% 23%'; // Asettaa pyörähdyksen keskipisteen
   minikuva.style.transform = 'rotateZ(0deg)'; // Alustaa pyörimisen, alkaa nollasta
 
-  banner.addEventListener('mouseenter', function() {
+  minikuva.addEventListener('mouseenter', function() {
     if (moveToRight) {
       minikuva.style.right = '10%'; // Siirtää kuvan oikeaan reunaan
       minikuva.style.transform = 'rotateZ(1080deg)'; // Käynnistää nopean pyörinnän z-akselin ympäri myötäpäivään
