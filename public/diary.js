@@ -232,21 +232,25 @@ async function updateEntryById(evt) {
       const form = document.createElement('form');
       form.setAttribute('id', 'updateEntryForm');
 
-      function addInputField(parent, fieldId, type, placeholder, value) {
+      function addInputField(parent, fieldId, type, placeholder, value, required) {
         const input = document.createElement('input');
         input.type = type;
         input.id = fieldId;
         input.placeholder = placeholder;
         input.value = value || '';
+        if (required) {
+            input.required = true;
+        }
         parent.appendChild(input);
       }
-
-      addInputField(form, 'updateEntryDate', 'date', 'Entry Date', data.entry_date);
-      addInputField(form, 'updateMood', 'text', 'Tunnetila', data.mood);
-      addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä', data.stress_level);
-      addInputField(form, 'updateWeight', 'number', 'Paino', data.weight);
-      addInputField(form, 'updateSleepHours', 'number', 'Nukutut tunnit', data.sleep_hours);
-      addInputField(form, 'updateNotes', 'text', 'Muistinpanot', data.notes);
+    
+      addInputField(form, 'updateEntryDate', 'date', 'Entry Date', data.entry_date, true);
+      addInputField(form, 'updateMood', 'text', 'Tunnetila', data.mood, true);
+      addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä', data.stress_level, true);
+      addInputField(form, 'updateWeight', 'number', 'Paino', data.weight, true);
+      addInputField(form, 'updateSleepHours', 'number', 'Nukutut tunnit', data.sleep_hours, true);
+      addInputField(form, 'updateNotes', 'text', 'Muistinpanot', data.notes, true);
+    
 
       // Päivitettyn formin lähetä nappi
       const submitButton = document.createElement('button');
