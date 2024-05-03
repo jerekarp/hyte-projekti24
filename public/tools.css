@@ -49,6 +49,10 @@
 
 }
 
+.mobile-navbar {
+  display: none;
+}
+
 /* Navigointipalkin hoverit */
 
 .nav-link:hover {
@@ -447,8 +451,42 @@ main {
  .exercisevideo {
   width: 90%;
  }
+
+ /* navigaatiopalkki */
+ .navbar {
+  display: none;
 }
-@media screen and (min-width: 400px) and (max-width: 600px) {
+.mobile-navbar {
+  display: flex;
+  justify-content: center;
+  color: white;
+  width: auto;
+  height: 100%;
+  left: 20px;
+  right: 20px;
+  margin-top: 20px;
+  background-color: rgba(4, 68, 101, 0.85);
+  box-shadow: 0 3px 10px white;
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  padding: 10px;
+  border-radius: 10px;
+  height: 25px;
+}
+
+.bi {
+  color: white;
+  margin: 30px;
+}
+
+.nav-link {
+  display: none;
+}
+}
+
+@media screen and (max-width: 455px) {
   .container {
     display: block;
    }
@@ -458,6 +496,86 @@ main {
    .exercisevideo {
     width: 90%;
    }
+
+   /* navigaatiopalkki */
+
+   .navbar {
+    display: none;
+  }
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: auto;
+    height: 100%;
+    left: 20px;
+    right: 20px;
+    margin-top: 20px;
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 25px;
+  }
+
+  .bi {
+    color: white;
+    margin: 15px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+ }
+
+@media screen and (min-width: 455px) and (max-width: 600px) {
+  .container {
+    display: block;
+   }
+   .col {
+    margin: 10px;
+   }
+   .exercisevideo {
+    width: 90%;
+   }
+
+   /* navigaatiopalkki */
+
+   .navbar {
+    display: none;
+  }
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: auto;
+    height: 100%;
+    left: 20px;
+    right: 20px;
+    margin-top: 20px;
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 25px;
+  }
+
+  .bi {
+    color: white;
+    margin: 30px;
+  }
+
+  .nav-link {
+    display: none;
+  }
  }
 /* Tabletit */
 @media screen and (min-width: 601px) and (max-width: 700px) {
