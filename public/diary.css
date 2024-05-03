@@ -442,7 +442,6 @@ main {
   cursor: pointer;
 }
 
-
 .year-change:hover {
   background-color: #056398;
   transition: all .2s ease-in-out;
@@ -580,8 +579,6 @@ main {
 .date-formate.showtime {
   animation: showtime 1s forwards;
 }
-
-
 
 
 @keyframes to-top {
@@ -793,7 +790,6 @@ main {
   width: 30%;
 }
 
-
 #formContainer input,
 #formContainer textarea,
 #formContainer select {
@@ -826,7 +822,6 @@ main {
   flex-wrap: wrap;
   align-items: center;
 }
-
 
 #modalText {
   font-size: 18px;
@@ -925,8 +920,6 @@ th, td {
 }
 
 
-
-
 /* Responsiivisuus */
 
 /* Media Query Mobiililaitteet, Normaali leveyskoko 400-600px */
@@ -991,9 +984,6 @@ th, td {
     cursor: pointer;
 
   }
-
-
-
 
   .topnav a:not(.icon) {
     display: none;

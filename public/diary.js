@@ -109,13 +109,13 @@ document.addEventListener('DOMContentLoaded', function() {
         addEntryToTable(result);
         form.reset();
         document.querySelectorAll('.mood-option-button').forEach(button => button.classList.remove('moodSelected'));
-        alert('Entry added successfully!');
+        alert('Päiväkirjamekrintä lisätty!');
          // Päivitetään kalenterinäkymä heti uuden merkinnän lisäämisen jälkeen
         const newEntryDate = new Date(data.entry_date);
         getDiaryEntries(newEntryDate.getFullYear(), newEntryDate.getMonth(), newEntryDate.getDate());
     } catch (error) {
         console.error('Error adding entry:', error);
-        alert(`Error adding entry: ${error.message || error}`);
+        alert(`Virhe merkinnän lisäämisessä, tarkista lomake: ${error.message || error}`);
     }
 
   });
@@ -202,8 +202,6 @@ function closeUpdateForm() {
   const formContainer = document.getElementById('updateFormContainer');
   formContainer.style.display = 'none'; // Piilota lomake asettamalla display-arvo 'none'
 }
-
-
 
 // Muokkaa lomake
 async function updateEntryById(evt) {
@@ -318,10 +316,10 @@ async function updateEntryById(evt) {
         form.reset();
         closeUpdateForm();
       } else {
-        throw new Error('Update failed: ' + data.message);
+        throw new Error('Virhe merkinnän muokkaamisessa, tarkista lomake: ' + data.message);
       }
     } catch (error) {
-      alert('Error updating entry: ' + error.message);
+      alert('' + error.message);
       console.error('Error updating entry:', error);
     }
   });
@@ -350,7 +348,6 @@ function updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, no
   }
 
 }
-
 
 // TABLE AND SHOW TABLE
 

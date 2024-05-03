@@ -15,7 +15,7 @@
   z-index: 2;
   padding: 10px;
   border-radius: 10px;
-  height: 
+  height:
   25px;
 }
 
@@ -168,51 +168,6 @@ main {
   margin: 0 auto;
 }
 
-/*.col-4 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-.col-5 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-.col-6 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-/* 
-.col-7 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-8 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-9 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-10 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-11 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-12 {
-    grid-column: span 4;
-    background-color: transparent;
-} */
 
 
 /* Datan kuvaajien container */
@@ -235,12 +190,12 @@ main {
 }
 
 #chartSelection:active {
-  transform: translateY(2px); 
+  transform: translateY(2px);
 }
 
 #chartSelection:focus {
-  outline: none; 
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 select {
@@ -350,7 +305,7 @@ input[type="number"] {
   padding-top: 5px;
   height: auto;
   width: 700px;
-}  
+}
 
 .data-info {
   margin-bottom: 20px;
@@ -377,8 +332,7 @@ input[type="number"] {
 
 .data-info.open .info-content {
   display: block;
-}  
-
+}
 
 /* Icon from https://www.flaticon.com/free-icons/more >More icons created by Google - Flaticon</a>*/
 .show-more-icon {
@@ -399,12 +353,12 @@ input[type="number"] {
 
 #readinessHeader {
   font-weight: bold;
-  color: rgba(75, 192, 192, 1); 
+  color: rgba(75, 192, 192, 1);
 }
 
 #stress_indexHeader {
   font-weight: bold;
-  color: rgba(255, 99, 132, 1); 
+  color: rgba(255, 99, 132, 1);
 }
 
 #respiratory_rateHeader {
@@ -549,6 +503,11 @@ h3 {
 
 /* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
 @media screen and (max-width: 399px) {
+
+}
+
+/* Media Query Puhelimet */
+@media screen and (min-width: 400px) and (max-width: 600px) {
   /* MAX data laatikko */
   #max-data-container {
     text-align: center;
@@ -557,8 +516,8 @@ h3 {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 3px 10px #044465;
-    width: 90%;
-    margin: 0 auto; 
+    width: 300px;
+    margin: 0 auto;
   }
 
   h1 {
@@ -566,8 +525,7 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0; 
-    font-size: 16px;
+    margin-left: 0;
   }
 
   /* DATAn info, selite koodit */
@@ -578,9 +536,9 @@ h3 {
     border-radius: 10px;
     padding: 20px;
     padding-top: 5px;
-    width: 90%;
-    margin: 0 auto; 
-  }  
+    width: 300px;
+    margin: 0 auto;
+  }
 
   .show-more-icon {
     width: 25px;
@@ -595,7 +553,7 @@ h3 {
   label[for="dataAmount"] {
     display: none;
   }
-  
+
   label[for="dataAmount2"] {
     display: none;
   }
@@ -607,7 +565,7 @@ h3 {
   .navbar {
     display: none;
   }
-  
+
   .mobile-navbar {
     display: flex;
     justify-content: center;
@@ -683,13 +641,13 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0; 
+    margin-left: 0;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 90%;
-  }  
+  }
 
   .show-more-icon {
     width: 25px;
@@ -704,7 +662,7 @@ h3 {
   label[for="dataAmount"] {
     display: none;
   }
-  
+
   label[for="dataAmount2"] {
     display: none;
   }
@@ -797,14 +755,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0; 
+    margin-left: 0;
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 380px;
-  }  
+  }
 
   .show-more-icon {
     width: 25px;
@@ -820,7 +778,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-  
+
   label[for="dataAmount2"] {
     font-size: 14px;
   }
@@ -843,14 +801,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0; 
+    margin-left: 0;
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 380px;
-  }  
+  }
 
   .show-more-icon {
     width: 25px;
@@ -866,7 +824,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-  
+
   label[for="dataAmount2"] {
     font-size: 14px;
   }
@@ -889,14 +847,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0; 
+    margin-left: 0;
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 380px;
-  }  
+  }
 
   .show-more-icon {
     width: 25px;
@@ -912,7 +870,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-  
+
   label[for="dataAmount2"] {
     font-size: 14px;
   }
@@ -935,14 +893,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0; 
+    margin-left: 0;
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 450px;
-  }  
+  }
 
   .show-more-icon {
     width: 25px;
@@ -958,7 +916,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-  
+
   label[for="dataAmount2"] {
     font-size: 14px;
   }

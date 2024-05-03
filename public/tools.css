@@ -92,12 +92,6 @@ input::-moz-focus-inner {
 /* Sivuston perusrunko, 12 column grid */
 
 body {
-  /* background: linear-gradient(to bottom, #044465, #1EB9CF, #0A8ECC, #BEF6E0); */
-  /* background-image: url(images/beach.webp);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed; */
   background: linear-gradient(to bottom, #044465, #0A8ECC, #1EB9CF, #BEF6E0);
 
   font-family: Arial, sans-serif;
@@ -183,27 +177,21 @@ main {
 
 /* Modalin taustan tyyli */
 .modal {
-  display: none; /* Piilotetaan modal oletusarvoisesti */
-  position: fixed; /* Pysyy paikoillaan sivun vierityksen aikana */
-  z-index: 2000; /* Sijoitetaan modal sisällön päälle */
+  display: none;
+  position: fixed;
+  z-index: 2000;
   left: 0;
   top: 0;
-  width: 100%; /* Leveys */
-  height: 100%; /* Korkeus */
-  overflow: auto; /* Mahdollistaa vierityksen, jos tarpeen */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
 
-  /* Taustakuvan tyylittely */
-  /* background-image: url(images/zentools.webp);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
-
-  display: flex; /* Lisätty keskittämiseen */
-  align-items: center; /* Vertikaalinen keskitys */
-  justify-content: center; /* Horisontaalinen keskitys */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Modalin sisällön tyyli */
@@ -214,14 +202,14 @@ main {
   margin-bottom: 200px;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Säädä leveyttä tarpeen mukaan */
-  border-radius: 20px; /* Pyöristetyt kulmat */
+  width: 80%;
+  border-radius: 20px;
   text-align: center;
 
   position: relative;
-  display: flex; /* Lisätty flexbox */
-  flex-direction: column; /* Aseta sisältö pystysuoraan */
-  align-items: center; /* Keskitä sisältö pystysuunnassa */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* modaleiden yksilöllinen tyylittely */
@@ -284,40 +272,6 @@ main {
   display: block;
   margin-top: 20px; /* Lisätty marginaali yläpuolelle */
 }
-
-
-
-/* .col-5 {
-    grid-column: span 4;
-}
-
-.col-6 {
-    grid-column: span 4;
-}
-
-.col-7 {
-    grid-column: span 4;
-}
-
-.col-8 {
-    grid-column: span 4;
-}
-
-.col-9 {
-    grid-column: span 4;
-}
-
-.col-10 {
-    grid-column: span 4;
-}
-
-.col-11 {
-    grid-column: span 4;
-}
-
-.col-12 {
-    grid-column: span 4;
-} */
 
 /* Footer */
 
