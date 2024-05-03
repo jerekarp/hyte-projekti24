@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
       isMoving = true; // Asetetaan liikkeeseen
 
       if (moveToRight) {
-        minikuva.style.right = '10%';
+        minikuva.style.right = '15%';
         minikuva.style.transform = 'rotateZ(1080deg)';
       } else {
         minikuva.style.right = '85%';
