@@ -18,6 +18,7 @@
   height: 25px;
 }
 
+
 .navbar-menu {
   display: flex;
   justify-content: center; /* Aseta linkit keskelle */
@@ -26,6 +27,7 @@
   padding: 0; /* Poista ylimääräinen sisäinen täyttö */
   height: 100%;
 }
+
 
 .nav-link {
   display: flex;
@@ -39,6 +41,7 @@
   padding: 0 7px;
 }
 
+
 .nav-link.nav-link-right {
   display: flex;
   margin-left: auto;
@@ -49,9 +52,11 @@
 
 }
 
+
 .mobile-navbar {
   display: none;
 }
+
 
 /* Muokkaa napin tyylittely */
 
@@ -62,7 +67,6 @@
   white-space: nowrap; /* Estä tekstiä menemästä riville */
   align-items: center;
   justify-content: flex-end;
-
   background: none;
   color: inherit;
   border: none;
@@ -74,6 +78,7 @@
   background-color: #0A8ECC;
   border-radius: 5px;
 }
+
 
 .nav-link:last-child {
   margin-left: 10px;
@@ -124,6 +129,7 @@
 
 /* Sivuston perusrunko, 12 column grid */
 
+
 body {
     font-family: Arial, sans-serif;
     padding: 0;
@@ -133,12 +139,14 @@ body {
     background: linear-gradient(to bottom, #044465, #0A8ECC, #BEF6E0);
 }
 
+
 header {
     background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;
 }
+
 
 nav {
     background-color: #333;
@@ -147,11 +155,13 @@ nav {
     text-align: center;
 }
 
+
 main {
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 200px;
 }
+
 
 .user {
   position: absolute;
@@ -168,6 +178,7 @@ main {
   padding: 12px;
   display: none; /* Piilotetaan aluksi */
 }
+
 
 .show-notification {
   display: block !important;
@@ -195,12 +206,13 @@ main {
   /* box-shadow: 0 3px 10px white; */
 }
 
-/* Viimeisin mittaustulos tyylittely */
 
+/* Viimeisin mittaustulos tyylittely */
 #latest-data {
   list-style-type: none;
   padding: 0;
 }
+
 
 /* Viimeisin päiväkirjamerkintä tyylittely  */
 #latest-entry {
@@ -244,6 +256,8 @@ a {
 button:hover {
   background-color: #BEF6E0;
 }
+
+
 /* Määritä erikokoiset sarakkeet */
 .col-1 {
     grid-column: span 3;

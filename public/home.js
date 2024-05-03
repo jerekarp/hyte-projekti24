@@ -1,6 +1,7 @@
 import { fetchData } from './fetch.js';
 
 
+// Haetaan motiovaatilainaus rajapinnasta
 // API: https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373
 fetch("https://type.fit/api/quotes")
 .then(function(response) {
@@ -28,6 +29,9 @@ fetch("https://type.fit/api/quotes")
     console.log("Virhe haettaessa lainausta:", error);
 });
 
+
+
+// #minikuva buddhan pyörimisen animaatio
 document.addEventListener('DOMContentLoaded', function() {
   const minikuva = document.getElementById('minikuva');
   let moveToRight = true;
@@ -59,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
 // Esitietolomakkeen modalin toiminnot
 document.addEventListener('DOMContentLoaded', function() {
   let modal = document.getElementById('myModal');
@@ -79,14 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
 // Tarkistetaan backendistä löytyykö opiskelijan tietoja vai ei
 // jos ei löydy, avataan modal automaattisesti
 async function fetchStudentInfo() {
-  // console.log('Fetching student info...');
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('user_id');
-  // console.log('User ID from localStorage:', userId); // Tulosta userId konsoliin
-  // console.log('Token from localStorage:', token); // Tulosta token konsoliin
   const url = `http://127.0.0.1:3000/api/users/info/${userId}`;
   try {
     const response = await fetch(url, {
@@ -96,13 +96,11 @@ async function fetchStudentInfo() {
         'Content-Type': 'application/json'
       }
     });
-    // console.log('Response status:', response.status, response.statusText); // Tulosta vastauksen tilakoodi ja teksti
     if (!response.ok) {
       throw new Error('Network response was not ok: ' + response.statusText);
     }
 
     const data = await response.json();
-    // console.log('Response data:', data); // Tulosta vastausdata konsoliin
 
     if (!data.found) {
       console.log("No student information found, opening modal...");
@@ -143,7 +141,6 @@ function addStudentInfo(evt) {
   const gender = document.getElementById('gender').value;
   const form = document.getElementById('studentForm');
 
-  // Check if the form is valid
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
@@ -176,7 +173,7 @@ function addStudentInfo(evt) {
       alert("Tietojen lisääminen epäonnistui: " + (data.error || "Tuntematon virhe"));
     }
   }).catch((error) => {
-    console.error('Error adding student info:', error);
+    console.error('Virhe lisätessä tietoja:', error);
     alert("Tietojen lisääminen epäonnistui: " + error.message);
   });
 }
@@ -189,10 +186,10 @@ document.getElementById('openEditModalBtn').addEventListener('click', async func
       populateEditModal(response.studentInfo);
       openEditModal();
     } else {
-      console.log('No student information found or fetched data is invalid.');
+      console.log('Tietojen haku epäonnistui');
     }
   } catch (error) {
-    console.error('Failed to fetch student information:', error);
+    console.error('Tietojen haku epäonnistui:', error);
   }
 });
 
@@ -221,7 +218,7 @@ function closeEditModal() {
 
 function windowOnClick(event) {
   const editModal = document.getElementById('editModal');
-  // Tarkistetaan, onko klikattu elementtiä ulkopuolelta
+  // Tarkistetaan, onko klikattu elementti ulkopuolella
   if (event.target === editModal) {
     closeEditModal();
   }
@@ -234,7 +231,8 @@ document.getElementById('closeEditModal').addEventListener('click', closeEditMod
 document.getElementById('updateInfo').addEventListener('click', updateStudentInfo);
 
 
-// Lähetetään tietojen päivityspyyntö backendiin
+// Funktio tietojen päivittämiseen
+// Lähettää backendiin päivityspyynnön
 function updateStudentInfo (evt) {
   evt.preventDefault();
   let token = localStorage.getItem('token');
@@ -251,7 +249,6 @@ function updateStudentInfo (evt) {
 
   const form = document.getElementById('editStudentForm');
 
-  // Check if the form is valid
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
@@ -377,7 +374,7 @@ async function latestMeasurementData() {
   }
 }
 
-
+// Funktio viimeisimmän päiväkirjamerkinnän hakuun
 async function latestDiaryEntry() {
   const url = `http://127.0.0.1:3000/api/entries`;
   const token = localStorage.getItem('token');
