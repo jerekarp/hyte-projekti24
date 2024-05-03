@@ -20,7 +20,6 @@ const getUserData = async (req, res, next) => {
 
   try {
     const response = await fetch(
-      // TODO: set the from date in request parameters
       baseUrl + '/result/self?from=2022-01-01T00%3A00%3A00%2B00%3A00',
       {
         method: 'GET',
@@ -139,12 +138,6 @@ const getFilteredData = async (req, res, next) => {
 };
 
 
-
-
-
-
-
-
 /**
  * Apufunktio, joka palauttaa filtteröidyn datan korkeimmat arvot
  * @param {Array} filteredData Filtteröity data
@@ -164,7 +157,6 @@ const getMaxValues = (filteredData) => {
 
   return maxValues;
 };
-
 
 
 export {getUserData, getUserInfo, getFilteredData};

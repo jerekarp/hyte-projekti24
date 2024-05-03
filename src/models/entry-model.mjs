@@ -1,4 +1,3 @@
-// Note: db functions are async and must be called with await from the controller
 import promisePool from '../utils/database.mjs';
 
 const listAllEntries = async () => {
@@ -29,9 +28,7 @@ const listAllEntriesByDay = async (id, date) => {
   try {
     const sql = 'SELECT * FROM diary WHERE user_id=? AND entry_date=?';
     const params = [id, date];
-    console.log(params)
     const [rows] = await promisePool.query(sql, params);
-    console.log('rows', rows);
     return rows;
   } catch (e) {
     console.error('error', e.message);

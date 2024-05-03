@@ -1,8 +1,6 @@
 import bcrypt from 'bcryptjs';
 import {
-  deleteUserById,
   insertUser,
-  listAllUsers,
   selectUserById,
   updateUserById,
   checkStudentInfo,
@@ -11,20 +9,6 @@ import {
 } from '../models/user-model.mjs';
 import {customError} from '../middlewares/error-handler.mjs';
 
-/**
- * Get all users
- * @param {Object} req - Request object
- * @param {Object} res - Response object
- * @param {function} next - next function
- */
-
-const getUsers = async (req, res, next) => {
-  const result = await listAllUsers();
-  if (result.error) {
-    return next(customError(result, result.error));
-  }
-  return res.json(result);
-};
 
 const getUserById = async (req, res, next) => {
   const result = await selectUserById(req.params.id);
@@ -94,26 +78,9 @@ const putUser = async (req, res, next) => {
 };
 
 
-const deleteUser = async (req, res, next) => {
-  // console.log('deleteUser', req.user, req.params.id);
-  // admin user can delete any user
-  // user authenticated by token can delete itself
-  if (
-    req.user.user_level !== 'admin' &&
-    req.user.user_id !== parseInt(req.params.id)
-  ) {
-    return next(customError('Unauthorized', 401));
-  }
-  const result = await deleteUserById(req.params.id);
-  if (result.error) {
-    return next(customError(result, result.error));
-  }
-  return res.json(result);
-};
-
 const getStudentInfo = async (req, res) => {
   const user_id = parseInt(req.params.user_id);
-  console.log("Checking information for user_id:", user_id);
+  // console.log("Checking information for user_id:", user_id);
 
   try {
     const studentInfo = await checkStudentInfo(user_id);
@@ -122,7 +89,7 @@ const getStudentInfo = async (req, res) => {
       // Vaihdetaan 404 tilakoodi johonkin muuhun, esim. 200
       return res.status(200).json({ message: 'No student information found for this user_id', found: false });
     }
-    console.log("User found with user_id:", user_id);
+    // console.log("User found with user_id:", user_id);
     res.status(200).json({
       message: 'Student information exists for this user_id',
       found: true,
@@ -137,11 +104,11 @@ const getStudentInfo = async (req, res) => {
 
 const postStudentInfo = async (req, res) => {
   const { user_id, first_name, surname, student_number, weight, height, age, gender } = req.body;
-  console.log("Received data:", req.body);
+  // console.log("Received data:", req.body);
 
   try {
     const result = await insertStudentInfo(user_id, first_name, surname, student_number, weight, height, age, gender);
-    console.log("Database operation result:", result);
+    // console.log("Database operation result:", result);
 
     if (result.error) {
       console.error("Database error:", result.error);
@@ -157,7 +124,7 @@ const postStudentInfo = async (req, res) => {
 const putStudentInfo = async (req, res) => {
   const userId = req.params.user_id;
   const { first_name, surname, student_number, weight, height, age, gender } = req.body;
-  console.log("Received data:", req.body);
+  // console.log("Received data:", req.body);
 
   try {
     const result = await updateStudentInfo(userId, first_name, surname, student_number, weight, height, age, gender);
@@ -180,4 +147,4 @@ const putStudentInfo = async (req, res) => {
 
 
 
-export {getUsers, getUserById, postUser, putUser, deleteUser, getStudentInfo, putStudentInfo, postStudentInfo};
+export {getUserById, postUser, putUser, getStudentInfo, putStudentInfo, postStudentInfo};
