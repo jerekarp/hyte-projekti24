@@ -163,51 +163,6 @@ main {
   margin: 0 auto;
 }
 
-/*.col-4 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-.col-5 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-.col-6 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-/* 
-.col-7 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-8 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-9 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-10 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-11 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-12 {
-    grid-column: span 4;
-    background-color: transparent;
-} */
 
 /* Data /*
 /* Datan kuvaajien container */
@@ -353,7 +308,7 @@ select {
   padding-top: 5px;
   height: auto;
   width: 700px;
-}  
+}
 
 .data-info {
   margin-bottom: 20px;
@@ -380,7 +335,7 @@ select {
 
 .data-info.open .info-content {
   display: block;
-}  
+}
 
 /* Icon from https://www.flaticon.com/free-icons/more >More icons created by Google - Flaticon</a>*/
 .show-more-icon {
@@ -402,12 +357,12 @@ select {
 
 #readinessHeader {
   font-weight: bold;
-  color: rgba(75, 192, 192, 1); 
+  color: rgba(75, 192, 192, 1);
 }
 
 #stress_indexHeader {
   font-weight: bold;
-  color: rgba(255, 99, 132, 1); 
+  color: rgba(255, 99, 132, 1);
 }
 
 #respiratory_rateHeader {
@@ -553,7 +508,7 @@ h3 {
 
 /* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
 @media screen and (max-width: 399px) {
- 
+
 }
 
 /* Media Query Puhelimet */
@@ -567,11 +522,11 @@ h3 {
     border-radius: 10px;
     box-shadow: 0 3px 10px #044465;
     width: 300px;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
 
   #max-data-container p {
-    margin-left: 0; 
+    margin-left: 0;
   }
 
   /* DATAn info, selite koodit */
@@ -583,8 +538,8 @@ h3 {
     padding: 20px;
     padding-top: 5px;
     width: 300px;
-    margin: 0 auto; 
-  }  
+    margin: 0 auto;
+  }
 
   .data-info {
     margin-bottom: 20px;

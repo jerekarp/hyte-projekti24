@@ -100,12 +100,6 @@ input, select, textarea {
 /* Sivuston perusrunko, 12 column grid */
 
 body {
-  /* background: linear-gradient(to bottom, #044465, #1EB9CF, #0A8ECC, #BEF6E0); */
-  /* background-image: url(images/beach.webp);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed; */
   background: linear-gradient(to bottom, #044465, #0A8ECC, #1EB9CF, #BEF6E0);
 
   font-family: Arial, sans-serif;
@@ -124,13 +118,6 @@ header {
     padding: 20px;
     text-align: center;
 }
-
-/* nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-} */
 
 
 
@@ -154,25 +141,21 @@ main {
 }
 
 .col {
-    /* background-color: transparent; */
     padding: 20px;
     background-color: #f4f4f4;
     border: 1px solid #ccc;
     border-radius: 20px;
     box-shadow: 0 3px 10px #044465;
-    /* visibility: hidden; */
 }
 
-/* Määritä erikokoiset sarakkeet */
+
+/* Info-sivun sisältö */
 .col-1 {
     grid-column: span 8;
-
-
 }
 
 #nursecard {
   display: inline-block;
-
 }
 
 #nurse{
@@ -180,7 +163,6 @@ main {
   margin-right: 20px;
   margin-top: 5px;
   border-radius: 30px;
-
 }
 
 .col-2 {
@@ -215,21 +197,21 @@ a {
 
 /* Modalin taustan tyyli */
 .modal {
-  display: none; /* Piilotetaan modal oletusarvoisesti */
-  position: fixed; /* Pysyy paikoillaan sivun vierityksen aikana */
-  z-index: 2000; /* Sijoitetaan modal sisällön päälle */
+  display: none;
+  position: fixed;
+  z-index: 2000;
   left: 0;
   top: 0;
-  width: 100%; /* Leveys */
-  height: 100%; /* Korkeus */
-  overflow: auto; /* Mahdollistaa vierityksen, jos tarpeen */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
 
-  display: flex; /* Lisätty keskittämiseen */
-  align-items: center; /* Vertikaalinen keskitys */
-  justify-content: center; /* Horisontaalinen keskitys */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Modalin sisällön tyyli */
@@ -281,10 +263,6 @@ a {
 
 /* chatbotin tyylittely */
 
-/* .chat-container {
-
-} */
-
 #zenbot-image {
   max-width: 130px; /* Aseta maksimileveydeksi 100% */
   height: auto; /* Korkeus automaattisesti */
@@ -310,9 +288,9 @@ a {
 }
 
 #chat-input {
-  width: calc(100% - 12px); /* Leveyden laskeminen vähentämällä reunuksen ja paddingin summa */
-  border: 1px solid #ccc; /* Reunus samanlainen kuin #chat-output:ssa */
-  padding: 5px; /* Sisennyksen määrittäminen */
+  width: calc(100% - 12px);
+  border: 1px solid #ccc;
+  padding: 5px;
   height: 1.5rem;
 }
 
@@ -332,43 +310,11 @@ a {
   background-color: #044465;
 }
 
-/* .col-5 {
-    grid-column: span 4;
-}
-
-.col-6 {
-    grid-column: span 4;
-}
-
-.col-7 {
-    grid-column: span 4;
-}
-
-.col-8 {
-    grid-column: span 4;
-}
-
-.col-9 {
-    grid-column: span 4;
-}
-
-.col-10 {
-    grid-column: span 4;
-}
-
-.col-11 {
-    grid-column: span 4;
-}
-
-.col-12 {
-    grid-column: span 4;
-} */
-
 
 
 /* Responsiivisuus */
 
-@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
 
   main {
     width: 80%;
@@ -378,16 +324,16 @@ a {
   .container {
       margin: auto;
       display: flex;
-      flex-direction: column; /* Stack children vertically */
+      flex-direction: column;
       justify-content: center;
   }
 
   .col {
-      width: 95%; /* Each column takes full width */
-      grid-column: span 12; /* Overrides any existing span settings */
+      width: 95%;
+      grid-column: span 12;
   }
 
-}
+} */
 
 /* Footer */
 
