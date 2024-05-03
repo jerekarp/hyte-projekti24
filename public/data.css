@@ -499,10 +499,149 @@ h3 {
   }
 }
 
+@media screen and (min-width: 200px) and (max-width: 349px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    text-align: center;
+    background-color: rgba(4, 68, 101, 0.85);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #044465;
+    width: 90%;
+    margin: 0 auto; 
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+    font-size: 12px;
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    color: white;
+    background-color: white;
+    box-shadow: 0 3px 10px white;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 5px;
+    width: 80%;
+    margin: 0 auto; 
+  }  
+
+  #readinessHeader {
+    font-size: 20px;
+  }
+  
+  #stress_indexHeader {
+    font-size: 20px;
+  }
+  
+  #respiratory_rateHeader {
+    font-size: 20px;
+  }
+  
+  #mean_hr_bpmHeader {
+    font-size: 20px;
+  }
+
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    width: 90%;
+  }
+
+  label[for="dataAmount"] {
+    display: none;
+  }
+  
+  label[for="dataAmount2"] {
+    display: none;
+  }
+
+  #chartSelection {
+    font-size: 12px;
+  }
+
+  .navbar {
+    display: none;
+  }
+  
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    height: 25px;
+  }
+
+
+  .bi {
+    color: white;
+    margin: 15px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .wave#wave1,
+  .wave#wave2,
+  .wave#wave3,
+  .wave#wave4 {
+    display: none;
+  }
+
+  /* INFO MODAL */
+  #modal {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 90%;
+    height: 550px;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 12px;
+  }
+
+  h3 {
+    margin-bottom: -15px;
+  }
+
+}
+
 
 
 /* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
-@media screen and (max-width: 399px) {
+@media screen and (min-width: 350px) and (max-width: 399px) {
   /* MAX data laatikko */
   #max-data-container {
     text-align: center;
