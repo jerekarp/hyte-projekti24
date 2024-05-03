@@ -15,7 +15,8 @@
   z-index: 2;
   padding: 10px;
   border-radius: 10px;
-  height: 25px;
+  height: 
+  25px;
 }
 
 .navbar-menu {
@@ -26,6 +27,11 @@
   padding: 0; /* Poista ylimääräinen sisäinen täyttö */
   height: 100%;
 }
+
+.mobile-navbar {
+  display: none;
+}
+
 
 .nav-link {
   display: flex;
@@ -64,10 +70,10 @@ blockquote, q {
 	quotes: none;
 }
 
-	blockquote:before, blockquote:after, q:before, q:after {
-		content: '';
-		content: none;
-	}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
 
 table {
 	border-collapse: collapse;
@@ -93,7 +99,6 @@ input, select, textarea {
 
 
 /* Sivuston perusrunko, 12 column grid */
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -141,6 +146,7 @@ main {
   padding: 20px;
 }
 
+
 /* Määritä erikokoiset sarakkeet */
 .col-1 {
   grid-column: span 12;
@@ -149,7 +155,6 @@ main {
   box-shadow: 0 3px 10px #044465;
   background-color: rgba(4, 68, 101, 0.85);
 }
-
 
 .col-2 {
   grid-column: span 12;
@@ -209,58 +214,34 @@ main {
     background-color: transparent;
 } */
 
-/* Data /*
-/* Datan kuvaajien container */
 
+/* Datan kuvaajien container */
 #chart-container {
   background-color: #ffffff;
   border: 1px solid black;
   padding: 15px;
 }
 
-/* Selectori datan vaihtoon */
 
+/* Selectori datan vaihtoon */
 #chartSelection {
   font-size: 16px;
   font-weight: bold;
-  cursor: pointer; /* Vaihda hiiren kohdistimen tyyppi osoittimeksi */
+  cursor: pointer;
 }
 
 #chartSelection:hover {
-  /* Tämä osa määrittää ulkoasun, kun hiiri on elementin päällä */
-  background-color: rgb(221, 221, 221); /* Esimerkiksi taustavärin muuttaminen */
+  background-color: #d8dce0;
 }
 
 #chartSelection:active {
-  /* Tämä osa määrittää ulkoasun, kun elementtiä klikataan */
-  transform: translateY(2px); /* Esimerkiksi siirtää elementtiä alaspäin hiiren klikkauksen aikana */
+  transform: translateY(2px); 
 }
 
 #chartSelection:focus {
-  /* Tämä osa määrittää ulkoasun, kun elementtiin keskitytään */
-  outline: none; /* Poista oletuskeskityskehys */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Esimerkiksi lisää varjo keskittyessä */
+  outline: none; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
 }
-
-
-label[for="dataAmount"] {
-  margin-left: 50px;
-  font-weight: bold;
-}
-
-label[for="dataAmount2"] {
-  font-weight: bold;
-}
-
-
-input[type="number"] {
-  background-color: #ffffff;
-  border: 1px solid black;
-  font-size: 16px;
-  width: 2.7em;
-  margin-left: 2px;
-}
-
 
 select {
   padding: 0.2em  0.5em 0.2em 2em;
@@ -272,12 +253,30 @@ select {
 	font-size: 1.5em;
 }
 
+label[for="dataAmount"] {
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+label[for="dataAmount2"] {
+  font-weight: bold;
+}
+
+input[type="number"] {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 16px;
+  width: 2.7em;
+  margin-left: 2px;
+}
+
 /* Icon from https://www.flaticon.com/free-icons/info >Info icons created by Freepik - Flaticon */
 #info-icon {
   width: 25px;
   height: 25px;
   float: right;
 }
+
 
 /* INFO MODAL */
 #modal {
@@ -318,14 +317,12 @@ select {
   cursor: pointer;
 }
 
-
-
-
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
 }
+
 
 /* MAX data laatikko */
 #max-data-container {
@@ -382,6 +379,7 @@ select {
   display: block;
 }  
 
+
 /* Icon from https://www.flaticon.com/free-icons/more >More icons created by Google - Flaticon</a>*/
 .show-more-icon {
   width: 25px;
@@ -398,7 +396,6 @@ select {
 .info-content.expanded {
   display: block;
 }
-
 
 #readinessHeader {
   font-weight: bold;
@@ -430,10 +427,8 @@ h3 {
 }
 
 
-
 /* Footer */
 /* Footer BY: https://www.codewithfaraz.com/content/271/create-an-animated-footer-with-html-and-css-source-code */
-
 .footer {
   position: relative;
   max-width: 100%;
@@ -551,13 +546,9 @@ h3 {
 }
 
 
+
 /* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
 @media screen and (max-width: 399px) {
- 
-}
-
-/* Media Query Puhelimet */
-@media screen and (min-width: 400px) and (max-width: 600px) {
   /* MAX data laatikko */
   #max-data-container {
     text-align: center;
@@ -566,12 +557,17 @@ h3 {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 3px 10px #044465;
-    width: 300px;
+    width: 90%;
     margin: 0 auto; 
+  }
+
+  h1 {
+    font-size: 22px;
   }
 
   #max-data-container p {
     margin-left: 0; 
+    font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
@@ -582,28 +578,208 @@ h3 {
     border-radius: 10px;
     padding: 20px;
     padding-top: 5px;
-    width: 300px;
+    width: 90%;
     margin: 0 auto; 
   }  
-
-  .data-info {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc; /* Lisää viiva */
-    padding-bottom: 20px; /* Lisää tilaa viivan ja seuraavan boksin välille */
-  }
 
   .show-more-icon {
     width: 25px;
     height: 25px;
-    background-image: url('images/show-more.png');
-    cursor: pointer;
     margin-left: 20px;
   }
 
   .info-content p {
-    color: black;
-    font-weight: normal;
+    width: 90%;
+  }
+
+  label[for="dataAmount"] {
+    display: none;
+  }
+  
+  label[for="dataAmount2"] {
+    display: none;
+  }
+
+  #chartSelection {
+    font-size: 12px;
+  }
+
+  .navbar {
+    display: none;
+  }
+  
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    height: 25px;
+  }
+
+
+  .bi {
+    color: white;
+    margin: 15px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .wave#wave1,
+  .wave#wave2,
+  .wave#wave3,
+  .wave#wave4 {
+    display: none;
+  }
+
+  /* INFO MODAL */
+  #modal {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 90%;
+    height: 550px;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  h3 {
+    margin-bottom: -15px;
+  }
+
+}
+
+
+/* Media Query Puhelimet */
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    width: 90%;
+  }  
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+  }
+
+  .info-content p {
     width: 280px;
+  }
+
+  label[for="dataAmount"] {
+    display: none;
+  }
+  
+  label[for="dataAmount2"] {
+    display: none;
+  }
+
+  #chartSelection {
+    font-size: 12px;
+  }
+
+  input[type="number"] {
+    background-color: #ffffff;
+    border: 1px solid black;
+    font-size: 15px;
+    height: 1.5em;
+    width: 2.7em;
+    margin-left: 4px;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: auto;
+    height: 100%;
+    left: 20px;
+    right: 20px;
+    margin-top: 20px;
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 25px;
+  }
+
+  .bi {
+    color: white;
+    margin: 15px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  /* INFO MODAL */
+  #modal {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 90%;
+    height: 500px;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  h3 {
+    margin-bottom: -15px;
   }
 
 }
@@ -611,20 +787,183 @@ h3 {
 
 /* Tabletit */
 @media screen and (min-width: 601px) and (max-width: 700px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    width: 90%;
+  }
 
+  h1 {
+    font-size: 22px;
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+    font-size: 16px;
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    width: 380px;
+  }  
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    width: 90%;
+  }
+
+  label[for="dataAmount"] {
+    font-size: 14px;
+    margin-left: 12px;
+  }
+  
+  label[for="dataAmount2"] {
+    font-size: 14px;
+  }
+
+  #chartSelection {
+    font-size: 14px;
+
+  }
 }
 
 
 @media screen and (min-width: 701px) and (max-width: 800px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+    font-size: 16px;
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    width: 380px;
+  }  
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    width: 90%;
+  }
+
+  label[for="dataAmount"] {
+    font-size: 14px;
+    margin-left: 12px;
+  }
+  
+  label[for="dataAmount2"] {
+    font-size: 14px;
+  }
+
+  #chartSelection {
+    font-size: 14px;
+  }
 
 }
 
 
 @media screen and (min-width: 801px) and (max-width: 900px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+    font-size: 16px;
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    width: 380px;
+  }  
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    width: 90%;
+  }
+
+  label[for="dataAmount"] {
+    font-size: 14px;
+    margin-left: 12px;
+  }
+  
+  label[for="dataAmount2"] {
+    font-size: 14px;
+  }
+
+  #chartSelection {
+    font-size: 14px;
+  }
 
 }
 
 
 @media screen and (min-width: 901px) and (max-width: 1100px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    width: 90%;
+  }
 
+  h1 {
+    font-size: 26px;
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+    font-size: 16px;
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    width: 450px;
+  }  
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    width: 90%;
+  }
+
+  label[for="dataAmount"] {
+    font-size: 14px;
+    margin-left: 12px;
+  }
+  
+  label[for="dataAmount2"] {
+    font-size: 14px;
+  }
+
+  #chartSelection {
+    font-size: 14px;
+  }
 }
