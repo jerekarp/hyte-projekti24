@@ -896,14 +896,14 @@ th {
   text-align: left;
   padding: 10px 12px;
   font-size: 14px; /* säädä fonttikokoa tarvittaessa */
-  max-width: 120px; /* Säädä leveyttä tarpeen mukaan */
+  max-width: 100%; /* Säädä leveyttä tarpeen mukaan */
 }
 
 td {
   text-align: left;
   padding: 10px 12px;
   font-size: 14px; /* Säädä fonttikokoa tarvittaessa */
-  max-width: 120px; /* Säädä leveyttä tarpeen mukaan */
+  max-width: 100%; /* Säädä leveyttä tarpeen mukaan */
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
@@ -936,169 +936,1031 @@ td {
 
 
 /* Responsiivisuus */
+@media screen and (max-width: 239px) {
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+}
+  .col-2 {
+    visibility: hidden;
+    margin: 0px;
+}
 
-/* Media Query Mobiililaitteet, Normaali leveyskoko 400-600px */
+.col-1 h3, .col-2 h3 {
+  font-size: 14px;
+  margin: 5px auto;
+}
+
+
+.container {
+  padding: 0px;
+}
+
+
+.create_diary_form {
+  max-width: 100%;
+  margin: auto;
+  gap: 10px;
+}
+
+.create_diary_form input,
+.create_diary_form textarea {
+  max-width: 100%; /* Ensures full width in grid column */
+  margin: 5px 0px;
+  padding: 10px;
+}
+
+.create_diary_form label {
+  font-size: 12px;
+}
+
+.createEntry {
+  padding: 8px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.stress-slider {
+  height: 3px;
+}
+
+
+.calendar {
+  width: 80%; /* Use the full width of the screen */
+  height: 50%;
+  border-radius: 16px;
+  padding: 0px; /* Adjust padding to be proportional on smaller screens */
+  margin-top: 20px; /* Reduce top margin */
+  margin-bottom: 10px;
+  margin-left: auto;
+  float: left;
+}
+
+.calendar-body {
+  padding: 0;
+}
+
+.calendar-header {
+  padding: 3px;
+  width: 100%;
+  font-size: 5px;
+}
+
+.calendar-days {
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.calendar-days div {
+  width: 17px;
+  height: 13px;
+  padding: 2px;
+}
+
+.time-formate, .date-formate {
+  font-size: 0.7rem;;
+}
+
+.date-time-formate {
+  height: 0rem;
+}
+
+.day-text-formate {
+  font-size: 1rem;
+  padding-right: 5%;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 2%;
+}
+
+
+#entriesTable {
+  width: 95%;
+
+}
+
+
+th, td {
+  padding: 8px 6px; /* Reduce padding */
+  font-size: 10px; /* Reduce font size */
+  padding: 5px;
+  overflow: none;
+}
+
+td button {
+  font-size: 3px;
+}
+
+.tableIcons {
+  height: 20px;
+  width: 20px;
+}
+
+#formContainer, .modalContent {
+  margin: 10% auto; /* Less margin to bring the form higher on the screen */
+  padding: 20px; /* Slightly less padding */
+  width: 80%; /* Increase width for better usability */
+}
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  width: calc(100% - 20px); /* Reduce padding to increase field size */
+  font-size: 16px; /* Slightly smaller font size for small devices */
+}
+
+#formContainer button {
+  padding: 10px 20px; /* Larger padding for easier clicking */
+  margin: 10px 0; /* Standardize margin for consistency */
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
+
+#updateEntryForm {
+  justify-content: space-around; /* Better spacing management */
+}
+
+.topnav a:not(.icon) {
+  display: none;
+}
+.topnav a.icon {
+  display: block;
+}
+.topnav.responsive {
+  position: relative;
+}
+.topnav.responsive #myLinks {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  width: 100%;
+  top: 50px;
+  z-index: 99;
+}
+
+.wave#wave1,
+.wave#wave2,
+.wave#wave3,
+.wave#wave4 {
+  display: none;
+}
+}
+
+/* Media Query Mobiililaitteet */
+@media screen and (min-width: 200px) and (max-width: 399px) {
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+}
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+}
+
+.col-1 h3, .col-2 h3 {
+  font-size: 14px;
+  margin: 5px auto;
+}
+
+
+.container {
+  padding: 0px;
+}
+
+
+.create_diary_form {
+  max-width: 100%;
+  margin: auto;
+  gap: 10px;
+}
+
+.create_diary_form input,
+.create_diary_form textarea {
+  max-width: 100%; /* Ensures full width in grid column */
+  margin: 5px 0px;
+  padding: 10px;
+}
+
+.create_diary_form label {
+  font-size: 12px;
+}
+
+.createEntry {
+  padding: 8px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.stress-slider {
+  height: 3px;
+}
+
+
+.calendar {
+  width: 100%; /* Use the full width of the screen */
+  height: 50%;
+  border-radius: 16px;
+  padding: 0px; /* Adjust padding to be proportional on smaller screens */
+  margin-top: 20px; /* Reduce top margin */
+  margin-bottom: 10px;
+  margin-left: auto;
+  float: left;
+}
+
+.calendar-body {
+  padding: 0;
+}
+
+.calendar-header {
+  padding: 3px;
+  width: 100%;
+  font-size: 5px;
+}
+
+.calendar-days {
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.calendar-days div {
+  width: 17px;
+  height: 13px;
+  padding: 2px;
+}
+
+.time-formate, .date-formate {
+  font-size: 0.7rem;;
+
+}
+
+.date-time-formate {
+  height: 0rem;
+}
+
+.day-text-formate {
+  font-size: 1rem;
+  padding-right: 5%;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 2%;
+}
+
+
+#entriesTable {
+  width: 95%;
+
+}
+
+
+th, td {
+  padding: 8px 6px; /* Reduce padding */
+  font-size: 10px; /* Reduce font size */
+  padding: 5px;
+  overflow: none;
+}
+
+td button {
+  font-size: 3px;
+}
+
+.tableIcons {
+  height: 20px;
+  width: 20px;
+}
+
+#formContainer, .modalContent {
+  margin: 10% auto; /* Less margin to bring the form higher on the screen */
+  padding: 20px; /* Slightly less padding */
+  width: 80%; /* Increase width for better usability */
+}
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  width: calc(100% - 20px); /* Reduce padding to increase field size */
+  font-size: 16px; /* Slightly smaller font size for small devices */
+}
+
+#formContainer button {
+  padding: 10px 20px; /* Larger padding for easier clicking */
+  margin: 10px 0; /* Standardize margin for consistency */
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
+
+#updateEntryForm {
+  justify-content: space-around; /* Better spacing management */
+}
+
+.topnav a:not(.icon) {
+  display: none;
+}
+.topnav a.icon {
+  display: block;
+}
+.topnav.responsive {
+  position: relative;
+}
+.topnav.responsive #myLinks {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  width: 100%;
+  top: 50px;
+  z-index: 99;
+}
+
+.wave#wave1,
+.wave#wave2,
+.wave#wave3,
+.wave#wave4 {
+  display: none;
+}
+}
+
+/* Normaali leveyskoko 400-600px */
 @media screen and (min-width: 400px) and (max-width: 600px) {
 
-  .col-1, .col-2 {
-    grid-column: span 12;
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+}
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+}
 
-  }
-
-
-  .col-1 h3, .col-2 h3 {
-    margin: 20px 0;
-    font-size: 12px;
-  }
-
-  .create_diary_form {
-    margin: 2px;
-    padding: 10px; /* Smaller padding */
-    width: 70%; /* Utilizes full width for small devices */
-    box-shadow: none;
-  }
-
-  .createEntry {
-    font-size: 10px;
-    padding: 5px;
-    margin: auto;
-    background-color: #044465;
-    color: #FFFFFF;
-    cursor: pointer;
-    height: auto;
-  }
-
-  .form-input, #notes  {
-    width: 90%;
-    padding: 5px;
-    border-radius: 8px;
-    padding: 10px;
-  }
-
-  .form-label {
-    font-size: 10px;
-  }
-
-  #slider-marks {
-    padding: 0; /* Remove padding to use the full width */
-  }
-
-  #slider-marks span {
-    font-size: 9px; /* Even smaller font size for very small devices */
-    min-width: 30px; /* Reduce minimum width to fit more items */
-  }
-
-  .stress-slider {
-    width: 100%; /* Use the full width available */
-  }
-
-  .mood-option-button {
-    font-size: 8px;
-    padding: 4px;
-    margin: 3px;
-    cursor: pointer;
-
-  }
+.col-1 h3, .col-2 h3 {
+  font-size: 14px;
+  margin: 5px auto;
+}
 
 
+.container {
+  padding: 0px;
+}
 
 
-  .topnav a:not(.icon) {
-    display: none;
-  }
-  .topnav a.icon {
-    display: block;
-  }
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive #myLinks {
-    display: block;
-    position: absolute;
-    background-color: #333;
-    width: 100%;
-    top: 50px;
-    z-index: 99;
-  }
+.create_diary_form {
+  max-width: 100%;
+  margin: auto;
+  gap: 10px;
+}
+
+.create_diary_form input,
+.create_diary_form textarea {
+  max-width: 100%; /* Ensures full width in grid column */
+  margin: 5px 0px;
+  padding: 10px;
+}
+
+.create_diary_form label {
+  font-size: 12px;
+}
+
+.createEntry {
+  padding: 8px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.stress-slider {
+  height: 5px;
+}
+
+
+.calendar {
+  width: 95%; /* Use the full width of the screen */
+  padding: 0px; /* Adjust padding to be proportional on smaller screens */
+  margin-top: 20px; /* Reduce top margin */
+  margin-bottom: 10px;
+  margin-left: auto;
+  float: left;
+}
+
+.calendar-body {
+  padding: 0;
 
 }
 
-/* Tabletit
+
+.calendar-days div {
+  width: 50%;
+  padding: 2px;
+}
+
+#entriesTable {
+  width: 95%;
+
+}
+
+
+th, td {
+  padding: 8px 6px; /* Reduce padding */
+  font-size: 10px; /* Reduce font size */
+  padding: 5px;
+  overflow: none;
+}
+
+td button {
+  font-size: 3px;
+}
+
+.tableIcons {
+  height: 20px;
+  width: 20px;
+}
+
+#formContainer, .modalContent {
+  margin: 10% auto; /* Less margin to bring the form higher on the screen */
+  padding: 20px; /* Slightly less padding */
+  width: 80%; /* Increase width for better usability */
+}
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  width: calc(100% - 20px); /* Reduce padding to increase field size */
+  font-size: 16px; /* Slightly smaller font size for small devices */
+}
+
+#formContainer button {
+  padding: 10px 20px; /* Larger padding for easier clicking */
+  margin: 10px 0; /* Standardize margin for consistency */
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
+
+#updateEntryForm {
+  justify-content: space-around; /* Better spacing management */
+}
+
+.topnav a:not(.icon) {
+  display: none;
+}
+.topnav a.icon {
+  display: block;
+}
+.topnav.responsive {
+  position: relative;
+}
+.topnav.responsive #myLinks {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  width: 100%;
+  top: 50px;
+  z-index: 99;
+}
+
+.wave#wave1,
+.wave#wave2,
+.wave#wave3,
+.wave#wave4 {
+  display: none;
+}
+}
+
+/* TABLETIT */
 @media screen and (min-width: 601px) and (max-width: 700px) {
-  #banner {
-    height: 260px;
-  }
+
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+}
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+}
+
+.col-1 h3, .col-2 h3 {
+  font-size: 14px;
+  margin: 5px auto;
+}
 
 
-  #minikuva {
-    top: 145px;
-  }
+.container {
+  padding: 0px;
+}
 
-  .col {
-    grid-column: span 6;
-  }
 
-  .col-7 {
-    grid-column: span 12;
-  }
+.create_diary_form {
+  max-width: 100%;
+  margin: auto;
+  gap: 10px;
+}
+
+.create_diary_form input,
+.create_diary_form textarea {
+  max-width: 100%; /* Ensures full width in grid column */
+  margin: 5px 0px;
+  padding: 10px;
+}
+
+.create_diary_form label {
+  font-size: 12px;
+}
+
+.createEntry {
+  padding: 8px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.stress-slider {
+  height: 5px;
+}
+
+
+.calendar {
+  width: 95%; /* Use the full width of the screen */
+  padding: 0px; /* Adjust padding to be proportional on smaller screens */
+  margin-top: 20px; /* Reduce top margin */
+  margin-bottom: 10px;
+  margin-left: auto;
+  float: left;
+}
+
+.calendar-body {
+  padding: 0;
+
+}
+
+#entriesTable {
+  width: 95%;
 
 }
 
 
+th, td {
+  padding: 8px 6px; /* Reduce padding */
+  font-size: 10px; /* Reduce font size */
+  padding: 5px;
+  overflow: none;
+}
+
+td button {
+  font-size: 3px;
+}
+
+.tableIcons {
+  height: 20px;
+  width: 20px;
+}
+
+#formContainer, .modalContent {
+  margin: 10% auto; /* Less margin to bring the form higher on the screen */
+  padding: 20px; /* Slightly less padding */
+  width: 80%; /* Increase width for better usability */
+}
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  width: calc(100% - 20px); /* Reduce padding to increase field size */
+  font-size: 16px; /* Slightly smaller font size for small devices */
+}
+
+#formContainer button {
+  padding: 10px 20px; /* Larger padding for easier clicking */
+  margin: 10px 0; /* Standardize margin for consistency */
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
+
+#updateEntryForm {
+  justify-content: space-around; /* Better spacing management */
+}
+
+.topnav a:not(.icon) {
+  display: none;
+}
+.topnav a.icon {
+  display: block;
+}
+.topnav.responsive {
+  position: relative;
+}
+.topnav.responsive #myLinks {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  width: 100%;
+  top: 50px;
+  z-index: 99;
+}
+
+.wave#wave1,
+.wave#wave2,
+.wave#wave3,
+.wave#wave4 {
+  display: none;
+}
+}
+
+
+
+
+
+
+/* TABLETIT 2 */
 @media screen and (min-width: 701px) and (max-width: 800px) {
-  #banner {
-    height: 300px;
-  }
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+}
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+}
+
+.col-1 h3, .col-2 h3 {
+  font-size: 14px;
+  margin: 5px auto;
+}
 
 
-  #minikuva {
-    top: 185px;
-  }
+.container {
+  padding: 0px;
+}
 
-  .col {
-    grid-column: span 6;
-  }
 
-  .col-7 {
-    grid-column: span 12;
-  }
+.create_diary_form {
+  max-width: 100%;
+  margin: auto;
+  gap: 10px;
+}
 
+.create_diary_form input,
+.create_diary_form textarea {
+  max-width: 100%; /* Ensures full width in grid column */
+  margin: 5px 0px;
+  padding: 10px;
+}
+
+.create_diary_form label {
+  font-size: 12px;
+}
+
+.createEntry {
+  padding: 8px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.stress-slider {
+  height: 5px;
+}
+
+
+.calendar {
+  width: 95%; /* Use the full width of the screen */
+  padding: 0px; /* Adjust padding to be proportional on smaller screens */
+  margin-top: 20px; /* Reduce top margin */
+  margin-bottom: 10px;
+  margin-left: auto;
+  float: left;
+}
+
+.calendar-body {
+  padding: 0;
+
+}
+
+#entriesTable {
+  width: 95%;
+
+}
+
+
+th, td {
+  padding: 8px 6px; /* Reduce padding */
+  font-size: 10px; /* Reduce font size */
+  padding: 5px;
+  overflow: none;
+}
+
+td button {
+  font-size: 3px;
+}
+
+.tableIcons {
+  height: 20px;
+  width: 20px;
+}
+
+#formContainer, .modalContent {
+  margin: 10% auto; /* Less margin to bring the form higher on the screen */
+  padding: 20px; /* Slightly less padding */
+  width: 80%; /* Increase width for better usability */
+}
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  width: calc(100% - 20px); /* Reduce padding to increase field size */
+  font-size: 16px; /* Slightly smaller font size for small devices */
+}
+
+#formContainer button {
+  padding: 10px 20px; /* Larger padding for easier clicking */
+  margin: 10px 0; /* Standardize margin for consistency */
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
+
+#updateEntryForm {
+  justify-content: space-around; /* Better spacing management */
+}
+
+.topnav a:not(.icon) {
+  display: none;
+}
+.topnav a.icon {
+  display: block;
+}
+.topnav.responsive {
+  position: relative;
+}
+.topnav.responsive #myLinks {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  width: 100%;
+  top: 50px;
+  z-index: 99;
+}
+
+.wave#wave1,
+.wave#wave2,
+.wave#wave3,
+.wave#wave4 {
+  display: none;
+}
 }
 
 @media screen and (min-width: 801px) and (max-width: 900px) {
-  #banner {
-    height: 330px;
-  }
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+}
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+}
 
-  #minikuva {
-    top: 215px;
-  }
+.col-1 h3, .col-2 h3 {
+  font-size: 14px;
+  margin: 5px auto;
+}
 
-  .col {
-    grid-column: span 6;
-  }
 
-  .col-7 {
-    grid-column: span 12;
-  }
+.container {
+  padding: 0px;
+}
+
+
+.create_diary_form {
+  max-width: 100%;
+  margin: auto;
+  gap: 10px;
+}
+
+.create_diary_form input,
+.create_diary_form textarea {
+  max-width: 100%; /* Ensures full width in grid column */
+  margin: 5px 0px;
+  padding: 10px;
+}
+
+.create_diary_form label {
+  font-size: 12px;
+}
+
+.createEntry {
+  padding: 8px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.stress-slider {
+  height: 5px;
+}
+
+
+.calendar {
+  width: 95%; /* Use the full width of the screen */
+  padding: 0px; /* Adjust padding to be proportional on smaller screens */
+  margin-top: 20px; /* Reduce top margin */
+  margin-bottom: 10px;
+  margin-left: auto;
+  float: left;
+}
+
+.calendar-body {
+  padding: 0;
+
+}
+
+#entriesTable {
+  width: 95%;
+
+}
+
+
+th, td {
+  padding: 8px 6px; /* Reduce padding */
+  font-size: 10px; /* Reduce font size */
+  padding: 5px;
+  overflow: none;
+}
+
+td button {
+  font-size: 3px;
+}
+
+.tableIcons {
+  height: 20px;
+  width: 20px;
+}
+
+#formContainer, .modalContent {
+  margin: 10% auto; /* Less margin to bring the form higher on the screen */
+  padding: 20px; /* Slightly less padding */
+  width: 80%; /* Increase width for better usability */
+}
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  width: calc(100% - 20px); /* Reduce padding to increase field size */
+  font-size: 16px; /* Slightly smaller font size for small devices */
+}
+
+#formContainer button {
+  padding: 10px 20px; /* Larger padding for easier clicking */
+  margin: 10px 0; /* Standardize margin for consistency */
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
+
+#updateEntryForm {
+  justify-content: space-around; /* Better spacing management */
+}
+
+.topnav a:not(.icon) {
+  display: none;
+}
+.topnav a.icon {
+  display: block;
+}
+.topnav.responsive {
+  position: relative;
+}
+.topnav.responsive #myLinks {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  width: 100%;
+  top: 50px;
+  z-index: 99;
+}
+
+.wave#wave1,
+.wave#wave2,
+.wave#wave3,
+.wave#wave4 {
+  display: none;
+}
 
 }
 
 @media screen and (min-width: 901px) and (max-width: 1100px) {
-  #banner {
-    height: 380px;
-  }
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+}
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+}
 
-  #minikuva {
-    top: 265px;
-  }
+.col-1 h3, .col-2 h3 {
+  font-size: 14px;
+  margin: 5px auto;
+}
 
-  .col {
-    grid-column: span 6;
-  }
 
-  .col-7 {
-    grid-column: span 12;
-  }
+.container {
+  padding: 0px;
+}
 
-} */
+
+.create_diary_form {
+  max-width: 100%;
+  margin: auto;
+  gap: 10px;
+}
+
+.create_diary_form input,
+.create_diary_form textarea {
+  max-width: 100%; /* Ensures full width in grid column */
+  margin: 5px 0px;
+  padding: 10px;
+}
+
+.create_diary_form label {
+  font-size: 12px;
+}
+
+.createEntry {
+  padding: 8px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.stress-slider {
+  height: 5px;
+}
+
+
+.calendar {
+  width: 95%; /* Use the full width of the screen */
+  padding: 0px; /* Adjust padding to be proportional on smaller screens */
+  margin-top: 20px; /* Reduce top margin */
+  margin-bottom: 10px;
+  margin-left: auto;
+  float: left;
+}
+
+.calendar-body {
+  padding: 0;
+
+}
+
+#entriesTable {
+  width: 95%;
+
+}
+
+
+th, td {
+  padding: 8px 6px; /* Reduce padding */
+  font-size: 10px; /* Reduce font size */
+  padding: 5px;
+  overflow: none;
+}
+
+td button {
+  font-size: 3px;
+}
+
+.tableIcons {
+  height: 20px;
+  width: 20px;
+}
+
+#formContainer, .modalContent {
+  margin: 10% auto; /* Less margin to bring the form higher on the screen */
+  padding: 20px; /* Slightly less padding */
+  width: 80%; /* Increase width for better usability */
+}
+
+#formContainer input,
+#formContainer textarea,
+#formContainer select {
+  width: calc(100% - 20px); /* Reduce padding to increase field size */
+  font-size: 16px; /* Slightly smaller font size for small devices */
+}
+
+#formContainer button {
+  padding: 10px 20px; /* Larger padding for easier clicking */
+  margin: 10px 0; /* Standardize margin for consistency */
+  font-size: 14px; /* Adjust font size for smaller screens */
+}
+
+#updateEntryForm {
+  justify-content: space-around; /* Better spacing management */
+}
+
+.topnav a:not(.icon) {
+  display: none;
+}
+.topnav a.icon {
+  display: block;
+}
+.topnav.responsive {
+  position: relative;
+}
+.topnav.responsive #myLinks {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  width: 100%;
+  top: 50px;
+  z-index: 99;
+}
+
+.wave#wave1,
+.wave#wave2,
+.wave#wave3,
+.wave#wave4 {
+  display: none;
+}
+}
