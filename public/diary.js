@@ -109,13 +109,13 @@ document.addEventListener('DOMContentLoaded', function() {
         addEntryToTable(result);
         form.reset();
         document.querySelectorAll('.mood-option-button').forEach(button => button.classList.remove('moodSelected'));
-        alert('Päiväkirjamekrintä lisätty!');
+        alert('Päiväkirjamerkintä lisätty onnistuneesti! ');
          // Päivitetään kalenterinäkymä heti uuden merkinnän lisäämisen jälkeen
         const newEntryDate = new Date(data.entry_date);
         getDiaryEntries(newEntryDate.getFullYear(), newEntryDate.getMonth(), newEntryDate.getDate());
     } catch (error) {
         console.error('Error adding entry:', error);
-        alert(`Virhe merkinnän lisäämisessä, tarkista lomake: ${error.message || error}`);
+        alert(`Virhe lisättäessä päiväkirjamerkintää: ${error.message || error}`);
     }
 
   });
@@ -241,14 +241,14 @@ async function updateEntryById(evt) {
         }
         parent.appendChild(input);
       }
-    
+
       addInputField(form, 'updateEntryDate', 'date', 'Entry Date', data.entry_date, true);
       addInputField(form, 'updateMood', 'text', 'Tunnetila', data.mood, true);
       addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä', data.stress_level, true);
       addInputField(form, 'updateWeight', 'number', 'Paino', data.weight, true);
       addInputField(form, 'updateSleepHours', 'number', 'Nukutut tunnit', data.sleep_hours, true);
       addInputField(form, 'updateNotes', 'text', 'Muistinpanot', data.notes, true);
-    
+
 
       // Päivitettyn formin lähetä nappi
       const submitButton = document.createElement('button');
@@ -269,7 +269,7 @@ async function updateEntryById(evt) {
       throw new Error('Failed to fetch entry data');
     }
   } catch (error) {
-    alert('Error fetching entry data: ' + error.message);
+    alert('Virhe haettaessa päiväkirjamerkintä: ' + error.message);
     console.error('Error fetching entry data:', error);
   }
 
@@ -319,7 +319,7 @@ async function updateEntryById(evt) {
         throw new Error('Virhe merkinnän muokkaamisessa, tarkista lomake: ' + data.message);
       }
     } catch (error) {
-      alert('' + error.message);
+      alert('Virhe päivittäessä päiväkirjamerkintää: ' + error.message);
       console.error('Error updating entry:', error);
     }
   });
