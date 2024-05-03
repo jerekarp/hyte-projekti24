@@ -503,11 +503,6 @@ h3 {
 
 /* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
 @media screen and (max-width: 399px) {
-
-}
-
-/* Media Query Puhelimet */
-@media screen and (min-width: 400px) and (max-width: 600px) {
   /* MAX data laatikko */
   #max-data-container {
     text-align: center;
@@ -516,8 +511,8 @@ h3 {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 3px 10px #044465;
-    width: 300px;
-    margin: 0 auto;
+    width: 90%;
+    margin: 0 auto; 
   }
 
   h1 {
@@ -525,7 +520,8 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0;
+    margin-left: 0; 
+    font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
@@ -536,9 +532,9 @@ h3 {
     border-radius: 10px;
     padding: 20px;
     padding-top: 5px;
-    width: 300px;
-    margin: 0 auto;
-  }
+    width: 90%;
+    margin: 0 auto; 
+  }  
 
   .show-more-icon {
     width: 25px;
@@ -553,7 +549,7 @@ h3 {
   label[for="dataAmount"] {
     display: none;
   }
-
+  
   label[for="dataAmount2"] {
     display: none;
   }
@@ -565,7 +561,7 @@ h3 {
   .navbar {
     display: none;
   }
-
+  
   .mobile-navbar {
     display: flex;
     justify-content: center;
@@ -641,13 +637,13 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0;
+    margin-left: 0; 
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 90%;
-  }
+  }  
 
   .show-more-icon {
     width: 25px;
@@ -662,7 +658,7 @@ h3 {
   label[for="dataAmount"] {
     display: none;
   }
-
+  
   label[for="dataAmount2"] {
     display: none;
   }
@@ -755,14 +751,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0;
+    margin-left: 0; 
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 380px;
-  }
+  }  
 
   .show-more-icon {
     width: 25px;
@@ -778,7 +774,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-
+  
   label[for="dataAmount2"] {
     font-size: 14px;
   }
@@ -801,14 +797,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0;
+    margin-left: 0; 
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 380px;
-  }
+  }  
 
   .show-more-icon {
     width: 25px;
@@ -824,7 +820,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-
+  
   label[for="dataAmount2"] {
     font-size: 14px;
   }
@@ -847,14 +843,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0;
+    margin-left: 0; 
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 380px;
-  }
+  }  
 
   .show-more-icon {
     width: 25px;
@@ -870,7 +866,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-
+  
   label[for="dataAmount2"] {
     font-size: 14px;
   }
@@ -893,14 +889,14 @@ h3 {
   }
 
   #max-data-container p {
-    margin-left: 0;
+    margin-left: 0; 
     font-size: 16px;
   }
 
   /* DATAn info, selite koodit */
   .data-info-container {
     width: 450px;
-  }
+  }  
 
   .show-more-icon {
     width: 25px;
@@ -916,7 +912,7 @@ h3 {
     font-size: 14px;
     margin-left: 12px;
   }
-
+  
   label[for="dataAmount2"] {
     font-size: 14px;
   }
