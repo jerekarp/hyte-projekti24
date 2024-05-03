@@ -109,13 +109,13 @@ document.addEventListener('DOMContentLoaded', function() {
         addEntryToTable(result);
         form.reset();
         document.querySelectorAll('.mood-option-button').forEach(button => button.classList.remove('moodSelected'));
-        alert('Entry added successfully!');
+        alert('Päiväkirjamerkintä lisätty onnistuneesti! ');
          // Päivitetään kalenterinäkymä heti uuden merkinnän lisäämisen jälkeen
         const newEntryDate = new Date(data.entry_date);
         getDiaryEntries(newEntryDate.getFullYear(), newEntryDate.getMonth(), newEntryDate.getDate());
     } catch (error) {
         console.error('Error adding entry:', error);
-        alert(`Error adding entry: ${error.message || error}`);
+        alert(`Virhe lisättäessä päiväkirjamerkintää: ${error.message || error}`);
     }
 
   });
@@ -267,7 +267,7 @@ async function updateEntryById(evt) {
       throw new Error('Failed to fetch entry data');
     }
   } catch (error) {
-    alert('Error fetching entry data: ' + error.message);
+    alert('Virhe haettaessa päiväkirjamerkintä: ' + error.message);
     console.error('Error fetching entry data:', error);
   }
 
@@ -317,7 +317,7 @@ async function updateEntryById(evt) {
         throw new Error('Update failed: ' + data.message);
       }
     } catch (error) {
-      alert('Error updating entry: ' + error.message);
+      alert('Virhe päivittäessä päiväkirjamerkintää: ' + error.message);
       console.error('Error updating entry:', error);
     }
   });

@@ -44,7 +44,6 @@ import {
   };
 
   const getEntryByDay = async (req, res, next) => {
-    console.log("testi")
     // Authentication: Check if user is authenticated
     if (!req.user) {
       return res.sendStatus(401); // Unauthorized

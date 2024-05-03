@@ -936,227 +936,64 @@ td {
 
 
 /* Responsiivisuus */
-@media screen and (max-width: 239px) {
-  .col-1 {
-    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
-    margin: 0px;
-}
-  .col-2 {
-    visibility: hidden;
-    margin: 0px;
-}
-
-.col-1 h3, .col-2 h3 {
-  font-size: 14px;
-  margin: 5px auto;
-}
-
-
-.container {
-  padding: 0px;
-}
-
-
-.create_diary_form {
-  max-width: 100%;
-  margin: auto;
-  gap: 10px;
-}
-
-.create_diary_form input,
-.create_diary_form textarea {
-  max-width: 100%; /* Ensures full width in grid column */
-  margin: 5px 0px;
-  padding: 10px;
-}
-
-.create_diary_form label {
-  font-size: 12px;
-}
-
-.createEntry {
-  padding: 8px;
-  width: 100%;
-  font-size: 12px;
-}
-
-.stress-slider {
-  height: 3px;
-}
-
-
-.calendar {
-  width: 80%; /* Use the full width of the screen */
-  height: 50%;
-  border-radius: 16px;
-  padding: 0px; /* Adjust padding to be proportional on smaller screens */
-  margin-top: 20px; /* Reduce top margin */
-  margin-bottom: 10px;
-  margin-left: auto;
-  float: left;
-}
-
-.calendar-body {
-  padding: 0;
-}
-
-.calendar-header {
-  padding: 3px;
-  width: 100%;
-  font-size: 5px;
-}
-
-.calendar-days {
-  grid-template-columns: repeat(7, 1fr);
-  gap: 1px;
-}
-
-.calendar-days div {
-  width: 17px;
-  height: 13px;
-  padding: 2px;
-}
-
-.time-formate, .date-formate {
-  font-size: 0.7rem;;
-}
-
-.date-time-formate {
-  height: 0rem;
-}
-
-.day-text-formate {
-  font-size: 1rem;
-  padding-right: 5%;
-}
-
-.date-time-value {
-  display: block;
-  position: relative;
-  text-align: center;
-  padding-left: 2%;
-}
-
-
-#entriesTable {
-  width: 95%;
-
-}
-
-
-th, td {
-  padding: 8px 6px; /* Reduce padding */
-  font-size: 10px; /* Reduce font size */
-  padding: 5px;
-  overflow: none;
-}
-
-td button {
-  font-size: 3px;
-}
-
-.tableIcons {
-  height: 20px;
-  width: 20px;
-}
-
-#formContainer, .modalContent {
-  margin: 10% auto; /* Less margin to bring the form higher on the screen */
-  padding: 20px; /* Slightly less padding */
-  width: 80%; /* Increase width for better usability */
-}
-
-#formContainer input,
-#formContainer textarea,
-#formContainer select {
-  width: calc(100% - 20px); /* Reduce padding to increase field size */
-  font-size: 16px; /* Slightly smaller font size for small devices */
-}
-
-#formContainer button {
-  padding: 10px 20px; /* Larger padding for easier clicking */
-  margin: 10px 0; /* Standardize margin for consistency */
-  font-size: 14px; /* Adjust font size for smaller screens */
-}
-
-#updateEntryForm {
-  justify-content: space-around; /* Better spacing management */
-}
-
-.topnav a:not(.icon) {
-  display: none;
-}
-.topnav a.icon {
-  display: block;
-}
-.topnav.responsive {
-  position: relative;
-}
-.topnav.responsive #myLinks {
-  display: block;
-  position: absolute;
-  background-color: #333;
-  width: 100%;
-  top: 50px;
-  z-index: 99;
-}
-
-.wave#wave1,
-.wave#wave2,
-.wave#wave3,
-.wave#wave4 {
-  display: none;
-}
-}
 
 /* Media Query Mobiililaitteet */
-@media screen and (min-width: 200px) and (max-width: 399px) {
+@media screen and (min-width: 260px) and (max-width: 399px) {
   .col-1 {
-    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    grid-column: span 12;
     margin: 0px;
 }
   .col-2 {
-    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
-}
+    grid-column: span 12;
+    margin: 0px;
+  }
 
 .col-1 h3, .col-2 h3 {
   font-size: 14px;
   margin: 5px auto;
 }
 
-
 .container {
   padding: 0px;
 }
 
-
 .create_diary_form {
   max-width: 100%;
-  margin: auto;
+  margin: 0 auto;
+  padding: 0 10px;
   gap: 10px;
 }
 
 .create_diary_form input,
 .create_diary_form textarea {
-  max-width: 100%; /* Ensures full width in grid column */
-  margin: 5px 0px;
-  padding: 10px;
+  max-width: 100%;
+  margin: 0;
+  padding: 5px;
 }
 
 .create_diary_form label {
-  font-size: 12px;
+  font-size: 10px;
+  width: 100%
 }
 
 .createEntry {
   padding: 8px;
   width: 100%;
-  font-size: 12px;
+  font-size: 8px;
 }
 
-.stress-slider {
-  height: 3px;
+#slider-marks span {
+  font-size: 10px;
+  min-width: 30px;
 }
 
+.stress-slider{
+  height: 7px;
+}
+
+.mood-option-button {
+  font-size: 10px;
+}
 
 .calendar {
   width: 100%; /* Use the full width of the screen */
@@ -1175,8 +1012,7 @@ td button {
 
 .calendar-header {
   padding: 3px;
-  width: 100%;
-  font-size: 5px;
+  font-size: 10px;
 }
 
 .calendar-days {
@@ -1211,27 +1047,35 @@ td button {
   padding-left: 2%;
 }
 
+.month-list {
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  gap: 1px;
+  font-size: 10px;
+  padding: 2px;
+}
+
 
 #entriesTable {
-  width: 95%;
-
+  width: 100%;
 }
 
 
 th, td {
-  padding: 8px 6px; /* Reduce padding */
   font-size: 10px; /* Reduce font size */
   padding: 5px;
   overflow: none;
 }
 
-td button {
-  font-size: 3px;
+.tableIcons {
+  height: 15px;
+  width: 15px;
 }
 
-.tableIcons {
-  height: 20px;
-  width: 20px;
+#notesButton, #updateButton, #deleteButton  {
+  font-size: 8px;
 }
 
 #formContainer, .modalContent {
@@ -1256,6 +1100,7 @@ td button {
 #updateEntryForm {
   justify-content: space-around; /* Better spacing management */
 }
+
 
 .topnav a:not(.icon) {
   display: none;
@@ -1283,8 +1128,16 @@ td button {
 }
 }
 
+@media screen and (max-width: 320px){
+  /* poisetaan delete & update napit */
+#entriesTable {
+  display: none;
+}
+}
+
 /* Normaali leveyskoko 400-600px */
 @media screen and (min-width: 400px) and (max-width: 600px) {
+
 
   .col-1 {
     grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
@@ -1341,17 +1194,53 @@ td button {
   margin-left: auto;
   float: left;
 }
-
 .calendar-body {
   padding: 0;
 
 }
 
+.calendar-header {
+  padding: 5px;
+  font-size: 15px;
+}
+
 
 .calendar-days div {
-  width: 50%;
+  width: auto;
+  height: 40px;
+}
+
+.time-formate, .date-formate {
+  font-size: 1rem;;
+
+}
+
+.date-time-formate {
+  height: 7rem;
+}
+
+.day-text-formate {
+  font-size: 1.5rem;
+  padding-right: 5%;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 2%;
+}
+
+.month-list {
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%; /* Asettaa leveyden, muokkaa tarpeen mukaan */
+  max-height: 300px; /* Maksimikorkeus ennen kuin vierityspalkki ilmestyy, muokkaa tarpeen mukaan */
+  overflow-y: auto; /* Mahdollistaa pystysuunnan vierityksen, jos sisältö ylittää maksimikorkeuden */
+  gap: 1px;
+  font-size: 15px;
   padding: 2px;
 }
+
 
 #entriesTable {
   width: 95%;
@@ -1482,11 +1371,53 @@ td button {
   margin-left: auto;
   float: left;
 }
-
 .calendar-body {
   padding: 0;
 
 }
+
+.calendar-header {
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+.calendar-days div {
+  width: auto;
+  height: 40px;
+}
+
+.time-formate, .date-formate {
+  font-size: 1rem;;
+
+}
+
+.date-time-formate {
+  height: 7rem;
+}
+
+.day-text-formate {
+  font-size: 1.5rem;
+  padding-right: 5%;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 2%;
+}
+
+.month-list {
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%; /* Asettaa leveyden, muokkaa tarpeen mukaan */
+  max-height: 300px; /* Maksimikorkeus ennen kuin vierityspalkki ilmestyy, muokkaa tarpeen mukaan */
+  overflow-y: auto; /* Mahdollistaa pystysuunnan vierityksen, jos sisältö ylittää maksimikorkeuden */
+  gap: 1px;
+  font-size: 15px;
+  padding: 2px;
+}
+
 
 #entriesTable {
   width: 95%;
@@ -1558,14 +1489,11 @@ td button {
   display: none;
 }
 }
-
-
-
-
 
 
 /* TABLETIT 2 */
 @media screen and (min-width: 701px) and (max-width: 800px) {
+
   .col-1 {
     grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
     margin: 0px;
@@ -1621,11 +1549,53 @@ td button {
   margin-left: auto;
   float: left;
 }
-
 .calendar-body {
   padding: 0;
 
 }
+
+.calendar-header {
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+.calendar-days div {
+  width: auto;
+  height: 40px;
+}
+
+.time-formate, .date-formate {
+  font-size: 1rem;;
+
+}
+
+.date-time-formate {
+  height: 7rem;
+}
+
+.day-text-formate {
+  font-size: 1.5rem;
+  padding-right: 5%;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 2%;
+}
+
+.month-list {
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%; /* Asettaa leveyden, muokkaa tarpeen mukaan */
+  max-height: 300px; /* Maksimikorkeus ennen kuin vierityspalkki ilmestyy, muokkaa tarpeen mukaan */
+  overflow-y: auto; /* Mahdollistaa pystysuunnan vierityksen, jos sisältö ylittää maksimikorkeuden */
+  gap: 1px;
+  font-size: 15px;
+  padding: 2px;
+}
+
 
 #entriesTable {
   width: 95%;
@@ -1696,9 +1666,11 @@ td button {
 .wave#wave4 {
   display: none;
 }
+
 }
 
 @media screen and (min-width: 801px) and (max-width: 900px) {
+
   .col-1 {
     grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
     margin: 0px;
@@ -1754,11 +1726,53 @@ td button {
   margin-left: auto;
   float: left;
 }
-
 .calendar-body {
   padding: 0;
 
 }
+
+.calendar-header {
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+.calendar-days div {
+  width: auto;
+  height: 40px;
+}
+
+.time-formate, .date-formate {
+  font-size: 1rem;;
+
+}
+
+.date-time-formate {
+  height: 7rem;
+}
+
+.day-text-formate {
+  font-size: 1.5rem;
+  padding-right: 5%;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 2%;
+}
+
+.month-list {
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%; /* Asettaa leveyden, muokkaa tarpeen mukaan */
+  max-height: 300px; /* Maksimikorkeus ennen kuin vierityspalkki ilmestyy, muokkaa tarpeen mukaan */
+  overflow-y: auto; /* Mahdollistaa pystysuunnan vierityksen, jos sisältö ylittää maksimikorkeuden */
+  gap: 1px;
+  font-size: 15px;
+  padding: 2px;
+}
+
 
 #entriesTable {
   width: 95%;
@@ -1829,10 +1843,10 @@ td button {
 .wave#wave4 {
   display: none;
 }
-
 }
 
 @media screen and (min-width: 901px) and (max-width: 1100px) {
+
   .col-1 {
     grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
     margin: 0px;
@@ -1888,11 +1902,53 @@ td button {
   margin-left: auto;
   float: left;
 }
-
 .calendar-body {
   padding: 0;
 
 }
+
+.calendar-header {
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+.calendar-days div {
+  width: auto;
+  height: 40px;
+}
+
+.time-formate, .date-formate {
+  font-size: 1rem;;
+
+}
+
+.date-time-formate {
+  height: 7rem;
+}
+
+.day-text-formate {
+  font-size: 1.5rem;
+  padding-right: 5%;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 2%;
+}
+
+.month-list {
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%; /* Asettaa leveyden, muokkaa tarpeen mukaan */
+  max-height: 300px; /* Maksimikorkeus ennen kuin vierityspalkki ilmestyy, muokkaa tarpeen mukaan */
+  overflow-y: auto; /* Mahdollistaa pystysuunnan vierityksen, jos sisältö ylittää maksimikorkeuden */
+  gap: 1px;
+  font-size: 15px;
+  padding: 2px;
+}
+
 
 #entriesTable {
   width: 95%;
