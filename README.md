@@ -12,7 +12,7 @@ Nodejs + Express sovellus.
 > - [Sovelluksen rautalankamallit](https://imgur.com/a/9DV8Moe)
 
 
-***Tietokannan kuva tähän***
+![Tietokannan Rakenne](db/db-diagram.png)
 
 # Käyttö
 
