@@ -501,6 +501,47 @@ function logOut(evt) {
   }
 }
 
+
+// Ajastettu ehdotus uloskirjautumisesta jos käyttäjä on inaktiivinen
+// let inactivityTime = 0;
+// let maxInactivityTime = 600 * 1000; // 10min = 600 sekuntia * 1000 millisekuntia
+// let intervalId = null;
+
+// function resetInactivityTime() {
+//   inactivityTime = 0;
+// }
+
+// function startInactivityTimer() {
+//   window.addEventListener('mousemove', resetInactivityTime);
+//   window.addEventListener('keydown', resetInactivityTime);
+
+//   intervalId = setInterval(function() {
+//     inactivityTime += 1000; // Lisää 1 sekunti inaktiivisuuden aikaan
+
+//     if (inactivityTime >= maxInactivityTime) {
+//       clearInterval(intervalId); // Pysäytä ajastin
+//       logOutAutomatically();
+//     }
+//   }, 1000); // Tarkista joka sekunti
+// }
+
+// function logOutAutomatically() {
+//   // Näytä ilmoitus ja kun käyttäjä klikkaa "OK", kirjaa käyttäjä ulos
+//   if (window.confirm("Olet ollut inaktiivinen. Haluatko kirjautua ulos?")) {
+//     // Poista käyttäjätiedot selaimen localStoragesta
+//     localStorage.removeItem("token");
+//     localStorage.removeItem("user_id");
+//     localStorage.removeItem("name");
+
+//     // Ohjaa käyttäjä takaisin etusivulle
+//     window.location.href = "index.html";
+//   }
+// }
+
+// startInactivityTimer();
+
+// JATKOKEHITYSIDEA (jota en saanut onnistumaan): Luo automaattinen uloskirjautuminen kun token vanhentuu (60min)
+
 latestDiaryEntry();
 latestMeasurementData();
 showUserName();
