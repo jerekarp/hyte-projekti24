@@ -11,8 +11,16 @@ Nodejs + Express sovellus.
 > - Linkki sovelluksen API-dokumentaatioon
 > - [Sovelluksen rautalankamallit](https://imgur.com/a/9DV8Moe)
 
-
+# Tietokannan rakenne
 ![Tietokannan Rakenne](db/dbDiagram.png)
+
+# Sovelluksen toiminnallisuudet
+
+- **Responsiivisuus** - Sovelluksen käyttöliittymässä on otettu huomioon responsiivisuus, ja sitä voi käyttää haluamallaan laitteella, kuten mobiililla, tabletilla tai tietokoneella.
+
+- **Kirjautuminen** - Sovellukseen kirjaudutaan Kubios-käyttäjätunnuksella.
+
+-
 
 # Käyttö
 
