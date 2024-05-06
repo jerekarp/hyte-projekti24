@@ -69,7 +69,7 @@ Nodejs + Express sovellus.
 - Ei tiedossa olevia
 
 
-# Käyttö
+# Käyttö omassa paikallisympäristössä
 
 1. Kloonaa/lataa koodi
 2. Suorita npm i projektikansiossa
