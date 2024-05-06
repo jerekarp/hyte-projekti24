@@ -3,7 +3,6 @@ import {body, param} from 'express-validator';
 import {
   getUserById,
   postUser,
-  putUser,
   getStudentInfo,
   putStudentInfo,
   postStudentInfo
@@ -14,55 +13,6 @@ const userRouter = express.Router();
 
 userRouter
 .route('/')
-// update user
-/**
- * @api {put} users Update user's own data
- * @apiVersion 1.0.0
- * @apiName UpdateUser
- * @apiGroup Users
- * @apiPermission token
- * @apiHeader {String} Authorization Bearer token.
- * @apiHeader {String} Content-Type application/json.
- *
- * @apiParam {String} username New username for the user.
- * @apiParam {String} password New password for the user.
- * @apiParam {String} email New email for the user.
- *
- * @apiSuccess {String} message Confirmation message.
- * @apiSuccess {Number} user_id Id of the updated user.
- *
- * @apiParamExample {json} Request-Example:
- *     {
- *       "username": "testuser",
- *       "password": "testpassword55",
- *       "email": "test@example.com"
- *     }
- *
- * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     {
- *        "message": "user data updated",
- *        "user_id": 17
- *     }
- *
- * @apiUse InvalidTokenError
- */
-.put(
-  authenticateToken,
-  body('username', 'username must be 3-20 characters long and alphanumeric')
-    .trim()
-    .isLength({min: 3, max: 20})
-    .isAlphanumeric(),
-  body('password', 'minimum password length is 8 characters')
-    .trim()
-    .isLength({min: 8, max: 128}),
-  body('email', 'must be a valid email address')
-    .trim()
-    .isEmail()
-    .normalizeEmail(),
-  validationErrorHandler,
-  putUser,
-)
 // user registration
 /**
  * @api {post} users Create user
