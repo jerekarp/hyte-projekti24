@@ -46,10 +46,10 @@ authRouter
    * @apiGroup Authentication
    * @apiPermission all
    *
-   * @apiDescription Sign in and get an authentication token for the user.
+   * @apiDescription Sign in and get an authentication token for the user. **Login with Kubios account.**
    *
-   * @apiParam {String} username Username of the user.
-   * @apiParam {String} password Password of the user.
+   * @apiParam {String} username Username of the user (Kubios)
+   * @apiParam {String} password Password of the user (Kubios)
    *
    * @apiParamExample {json} Request-Example:
    *    {
