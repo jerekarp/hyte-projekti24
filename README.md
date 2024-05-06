@@ -15,17 +15,17 @@ Nodejs + Express sovellus.
 ![Tietokannan Rakenne](db/dbDiagram.png)
 
 # Sovelluksen käyttöliittymän kuvat
-![Login yläosa](https://imgur.com/IdY4DzD)
-![Login alaosa](https://imgur.com/zhJj7WR)
-![Etusivu yläosa](https://imgur.com/5vvs5Mm)
-![Etusivu alaosa](https://imgur.com/gpkNEsy)
-![Päiväkirja yläosa](https://imgur.com/9blWnuP)
-![Päiväkirja aloasa](https://imgur.com/rvbwsMF)
-![Datasivun yläosa](https://imgur.com/nCZRGVz)
-![Datasivun alaosa](https://imgur.com/OSCYFzI)
-![Infosivun yläosa](https://imgur.com/D6UADpD)
-![Infosivun alaosa](https://imgur.com/UtWgvnL)
-![Työkalut sivu](https://imgur.com/iTfF1lF)
+![Login yläosa](https://i.imgur.com/IdY4DzD.png)
+![Login alaosa](https://i.imgur.com/zhJj7WR.png)
+![Etusivu yläosa](https://i.imgur.com/5vvs5Mm.png)
+![Etusivu alaosa](https://i.imgur.com/gpkNEsy.png)
+![Päiväkirja yläosa](https://i.imgur.com/9blWnuP.png)
+![Päiväkirja aloasa](https://i.imgur.com/rvbwsMF.png)
+![Datasivun yläosa](https://i.imgur.com/nCZRGVz.png)
+![Datasivun alaosa](https://i.imgur.com/OSCYFzI.png)
+![Infosivun yläosa](https://i.imgur.com/D6UADpD.png)
+![Infosivun alaosa](https://i.imgur.com/UtWgvnL.png)
+![Työkalut sivu](https://i.imgur.com/iTfF1lF.png)
 
 
 # Sovelluksen toiminnallisuudet
