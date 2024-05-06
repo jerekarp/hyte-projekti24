@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
 
       const responseData = await fetchData(url, options);
-      console.log(responseData)
+
 
       if (responseData.status === 'ok' && responseData.filteredData && responseData.maxValues) {
         let filteredData = responseData.filteredData;
@@ -279,7 +279,3 @@ function logOut(evt) {
       window.location.href = "index.html";
   }
 }
-
-
-
-

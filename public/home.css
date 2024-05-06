@@ -527,14 +527,7 @@ button:hover {
   #minikuva {
     display: none;
   }
-
-  .wave#wave1,
-  .wave#wave2,
-  .wave#wave3,
-  .wave#wave4 {
-    display: none;
-  }
-
+  
   .navbar {
     display: none;
   }

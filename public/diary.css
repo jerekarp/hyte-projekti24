@@ -986,6 +986,26 @@ th, td {
     float: left;
   }
 
+  .dayMarked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    background-color: #0b8fcc;
+    opacity: 40%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  .createEntry {
+    width: 100%;
+    height: 90%;
+    font-size: 14px;
+  }
+
   .calendar-body {
     padding: 0;
   }
@@ -1043,7 +1063,7 @@ th, td {
   }
 
   th, td {
-    font-size: 10px;
+    font-size: 12px;
     padding: 5px;
     overflow: none;
   }
@@ -1112,13 +1132,6 @@ th, td {
     display: none;
   }
 
-  .wave#wave1,
-  .wave#wave2,
-  .wave#wave3,
-  .wave#wave4 {
-    display: none;
-  }
-
   table {
     border-radius: 16px;
   }
@@ -1143,6 +1156,7 @@ th, td {
 
   #notesButton, #updateButton, #deleteButton  {
     font-size: 8px;
+    margin-left: -5px;
   }
 
   table {
@@ -1260,13 +1274,19 @@ th, td {
 
   /* Taulu */
   #entriesTable {
-    width: 90%;
+    width: 95%;
+    margin: 0 auto;
+    margin-left: 0px;
     margin-bottom: 100px;
+  }
+
+  #notesButton, #updateButton, #deleteButton  {
+    font-size: 12px;
   }
 
   th, td {
     padding: 8px 6px;
-    font-size: 10px;
+    font-size: 12px;
     padding: 10x;
     overflow: none;
   }
