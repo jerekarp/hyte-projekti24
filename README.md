@@ -146,6 +146,9 @@ Testien logit ja reportit katsottavissa allanäkyvistä linkeistä.
 - [Poista päiväkirjamerkintä Report](https://jerekarp.github.io/poista_merkinta_report.html)
 - [Poista päiväkirjamerkintä Log](https://jerekarp.github.io/poista_merkinta_log.html)
 
+- [Hae päiväkirjamerkintä Report](https://jerekarp.github.io/hae_merkinta_report.html)
+- [Hae päiväkirjamerkintä Log](https://jerekarp.github.io/hae_merkinta_log.html)
+
 # Referenssit
 
 - [Kirjautumissivun HTML5 pohja](https://html5up.net/highlights) | html5up.net | **@ajlkn**
