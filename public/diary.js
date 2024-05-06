@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const marks = ['0', '2', '4', '6', '8', '10'];
 
   marks.forEach(mark => {
+      // Luodaan uusi merkintä arvolle
       const span = document.createElement('span');
       span.textContent = mark;
       marksContainer.appendChild(span);
 
+      // Annetaan liukusäätimelle arvo
       span.addEventListener('click', function() {
           const slider = document.getElementById('stress_level');
           slider.value = mark;
@@ -22,14 +24,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Tunnetila napit
   const moodInput = document.querySelector('input[name="mood"]');
+  // Luodaan tyhjä lista, johon lisätään valitut tunnetilat
   let selectedMoods = [];
 
   const moodButtons = document.querySelectorAll('.mood-option-button');
 
   moodButtons.forEach(button => {
       button.addEventListener('click', function() {
+          // Hakee nappien 'data-mood' arvo
           const moodValue = this.getAttribute('data-mood');
-
+          // Pushataan valittu tunnetilaa selectedMoods listaan
           if (!selectedMoods.includes(moodValue)) {
               selectedMoods.push(moodValue);
               this.classList.add('moodSelected');
@@ -43,11 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 
-  // Kuuntelee muutoksia input-kentässä ja päivittää nappien tilan
+  // Päivitetään nappien tilan
   moodInput.addEventListener('click', function() {
       const inputValues = this.value.split(',').map(mood => mood.trim());
       selectedMoods = inputValues;
-
+      // Käydään läpi valitut tunnetilaat ja merkkataan valitut napit
       moodButtons.forEach(button => {
           const moodValue = button.getAttribute('data-mood');
           if (selectedMoods.includes(moodValue)) {
@@ -58,16 +62,16 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 
-  // Aseta nykyinen päivä oletusarvoksi
+  // Luodaan tämänhetkisen päivään ja ajan, kuukauden, vuoden
   let currentDate = new Date();
   let currentMonth = { value: currentDate.getMonth() };
   let currentYear = { value: currentDate.getFullYear() };
   generateCalendar(currentMonth.value, currentYear.value);
 
-  // Hae päiväkirjamerkinnät heti sivun latauksen yhteydessä
+  // Haetaan päiväkirjamerkinnät heti sivun latauksen yhteydessä
   getDiaryEntries(currentYear.value, currentMonth.value, currentDate.getDate());
 
-  // POST entries formi
+  // POST päivkirjamerkintä lomake
   const createEntry = document.querySelector('.createEntry');
 
   createEntry.addEventListener('click', async(evt) => {
@@ -78,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const form = document.querySelector('.create_diary_form');
 
 
-      // Check if the form is valid
+      // Tarkistetaan onko formi täytetty oikein
       if (!form.checkValidity()) {
           form.reportValidity();
           return;
@@ -106,8 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const response = await fetch(url, options);
         if (!response.ok) throw new Error('Network response was not ok');
         const result = await response.json();
+        // Kutustaan funktio ja listään merkintä taulukkoon
         addEntryToTable(result);
+        // Nolla lomakke
         form.reset();
+        // Nollataan valitut mood napit
         document.querySelectorAll('.mood-option-button').forEach(button => button.classList.remove('moodSelected'));
         alert('Päiväkirjamerkintä lisätty onnistuneesti! ');
          // Päivitetään kalenterinäkymä heti uuden merkinnän lisäämisen jälkeen
@@ -123,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // HAE DATAA KALENTERISTA
 async function getDiaryEntries(year, month, day) {
+  // Muodostetaan päivämäärä oikeasa muodossa
   const date = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
   const url = `http://127.0.0.1:3000/api/entries/date/${date}` /*`/api/entries/date/${date}`;*/
   const token = localStorage.getItem('token');
@@ -136,9 +144,11 @@ async function getDiaryEntries(year, month, day) {
   };
 
   fetchData(url, options).then((data) => {
+    // kutustaan funktio ja annetaan sille data
     showDiaryEntries(data);
   });
 }
+
 
 function showNotification(message, type) {
   let notification = document.getElementById('notification');
@@ -147,9 +157,10 @@ function showNotification(message, type) {
     notification.id = 'notification';
     document.body.appendChild(notification);
   }
+
   notification.textContent = message;
   notification.className = type;
-
+  // Näyetään ilmoitus
   notification.style.opacity = '1';
 
   // Ajastin ilmoituksen piilottamiseen
@@ -164,6 +175,7 @@ function showNotification(message, type) {
 // POISTA merkkintä
 async function deleteEntryById(evt) {
   evt.preventDefault();
+  // Haetaan lähin deleteButton
   const button = evt.target.closest('#deleteButton');
   const id = button.getAttribute('data-id');
   const url = `http://127.0.0.1:3000/api/entries/${id}`;
@@ -181,10 +193,13 @@ async function deleteEntryById(evt) {
     if (!response.ok) {
       throw new Error('HTTP error, status = ' + response.status);
     }
+    // Poista taulukon rivin
     button.closest('tr').remove();
+    // Kutsutaan funktio ja näytetään onnistunut viesti
     showNotification('Päiväkirjamerkintä poistettu!', 'success');
   } catch (error) {
     console.error("Error deleting entry:", error);
+    // Kutsutaan funktio ja näytetään virheviesti
     showNotification('Virhe poistettaessa merkintää.', 'error');
   }
 }
@@ -193,6 +208,7 @@ async function deleteEntryById(evt) {
 function openUpdateForm() {
   const openForm = document.getElementById('updateFormContainer');
   if (openForm) {
+    // Näyetetään lomake
     openForm.style.display = 'block';
   }
 }
@@ -200,17 +216,23 @@ function openUpdateForm() {
 // sulje lomakke
 function closeUpdateForm() {
   const formContainer = document.getElementById('updateFormContainer');
-  formContainer.style.display = 'none'; // Piilota lomake asettamalla display-arvo 'none'
+  // Piilota lomake
+  formContainer.style.display = 'none';
 }
 
-// Muokkaa lomake
+// Muokkaa lomake funktio
 async function updateEntryById(evt) {
   evt.preventDefault();
+
+  // Avataan muokka lomakkee tietylle päiväkirjamerkinnälle
+  // Hakee ensimmäisen updateButton
   const updateButton = evt.target.closest('#updateButton');
+  // Haetaan id arvo
   const id = updateButton.getAttribute('data-id');
   const url = `http://127.0.0.1:3000/api/entries/${id}`;
   let token = localStorage.getItem('token');
 
+  // Haetaan tietyn merkinnän dataa ja käytetään niitä lomakkeen esitäyttämiseen
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -218,30 +240,36 @@ async function updateEntryById(evt) {
         Authorization: 'Bearer ' + token,
       },
     });
+
     const data = await response.json();
 
     // Tarkista, että data saatiin ja se sisältää tarvittavat tiedot
     if (response.ok && data) {
+      // Avataan update lomake
       openUpdateForm();
 
       const formContainer = document.getElementById('formContainer');
       formContainer.innerHTML = '';
 
+      // Luodaan update lomake
       const form = document.createElement('form');
+      // Annetaan lomakkeelle id
       form.setAttribute('id', 'updateEntryForm');
 
+      // Lomaken inputit, jossa on eri kenttiä
       function addInputField(parent, fieldId, type, placeholder, value, required) {
         const input = document.createElement('input');
-        input.type = type;
-        input.id = fieldId;
-        input.placeholder = placeholder;
-        input.value = value || '';
+        input.type = type; // inputin tyypi
+        input.id = fieldId; // inputin id
+        input.placeholder = placeholder; // inputin viestikentä
+        input.value = value || ''; // // iputin alkuarvo
         if (required) {
-            input.required = true;
+            input.required = true; // booolean arvo: onko kentä pakollinen
         }
         parent.appendChild(input);
       }
 
+      // Annetaan joka inputille id, type, placeholder, dataa(arvo), määritetään pakolliseksi
       addInputField(form, 'updateEntryDate', 'date', 'Entry Date', data.entry_date, true);
       addInputField(form, 'updateMood', 'text', 'Tunnetila', data.mood, true);
       addInputField(form, 'updateStressLevel', 'number', 'Stressinmäärä', data.stress_level, true);
@@ -250,17 +278,18 @@ async function updateEntryById(evt) {
       addInputField(form, 'updateNotes', 'text', 'Muistinpanot', data.notes, true);
 
 
-      // Päivitettyn formin lähetä nappi
+      // Päivitettyn lomakkeen lähetä nappi
       const submitButton = document.createElement('button');
       submitButton.type = 'submit';
       submitButton.textContent = 'Päivitä merkintä';
       form.appendChild(submitButton);
       formContainer.appendChild(form);
 
-      // Sulje nappi
+      // Päivitettyn lomakkeen sulje nappi
       const closeButton = document.createElement('button');
       closeButton.type = 'button';
       closeButton.textContent = 'Sulje';
+      // Kun sulje nappi painetaan kutustaan closeUpdateFrom funktio
       closeButton.onclick = function(evt) { closeUpdateForm(evt); };
       form.appendChild(closeButton);
 
@@ -273,10 +302,12 @@ async function updateEntryById(evt) {
     console.error('Error fetching entry data:', error);
   }
 
-  // Lisää muokkaustapahtuma lomakkeelle
+ // Päivittää merkinnät palvelimmelle
   const form = document.getElementById('updateEntryForm');
+  // Kutsu funktio kun lomakketta yritetään lähettää
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
+    // Haetaan lomakkeen eri kenttien arvot ID:iden perusteella ja tallennetaan ne muuttujiksi
     const entryDate = document.getElementById('updateEntryDate').value;
     const mood = document.getElementById('updateMood').value;
     const stressLevel = document.getElementById('updateStressLevel').value;
@@ -311,9 +342,13 @@ async function updateEntryById(evt) {
       console.log(data);  // Lokitetaan vastaus selvyyden vuoksi
 
       if (response.ok && data.message === 'Entry data updated') {
+        // Päivietään taulukkorvi
         updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, notes);
+        // Onnitunut ilmoitusviesti
         showNotification('Päiväkirjamerkintä muokattu onnistuneesti', 'success');
+        // Tyhjennetään lomake
         form.reset();
+        // Suljetaan lomake kun data on lähetetty
         closeUpdateForm();
       } else {
         throw new Error('Virhe merkinnän muokkaamisessa, tarkista lomake: ' + data.message);
@@ -325,20 +360,22 @@ async function updateEntryById(evt) {
   });
 }
 
-// Päivitetyn tiedon uusi rivi taulussa
+// Päivitetyn merkinnään uusi rivi taulussa
 function updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, notes) {
+  // Haetaan id ja row
   const row = document.getElementById(`row-${id}`);
   if (!row) {
     console.error('Failed to find the row for id', id);
     return;
   }
+  // Pävitetään soulun sisällön arvolla
   row.cells[0].textContent = entryDate;
   row.cells[1].textContent = mood;
   row.cells[2].textContent = stressLevel;
   row.cells[3].textContent = weight;
   row.cells[4].textContent = sleepHours;
 
-  // varmitetaan että notes nappi ei häviä
+  // Varmitetaan että notes nappi ei häviä
   const notesButton = row.cells[5].querySelector('#notesButton');
   if (notesButton) {
     notesButton.setAttribute('data-id', id);
@@ -349,24 +386,26 @@ function updateTableRow(id, entryDate, mood, stressLevel, weight, sleepHours, no
 
 }
 
-// TABLE AND SHOW TABLE
-
-// Tehdän taulu
+// Luodaan taulu
 function initializeTable() {
   let container = document.getElementById('entriesTable');
   let table;
 
+  // Jos ei ole taulukko, luodaan sellainen
   if (container.tagName !== 'TABLE') {
       table = document.createElement('table');
       container.appendChild(table);
   } else {
+  // Jos container on taulukko, käytetään sitä suoraan
       table = container;
   }
 
+  // Luodaan taululle otsikkorivi
   if (!table.tHead) {
       const thead = table.createTHead();
       const headerRow = thead.insertRow();
 
+      // Lisätään ikoneja muuttujaan
       const icons = [
         'date.png',
         'mood.png',
@@ -376,13 +415,15 @@ function initializeTable() {
         'notes.png',
       ];
 
+      // Lisätään jokaiselle ikonille
       icons.forEach(iconPath => {
+         // Lisätään jokaiselle ikonille otsikkorivi
           const headerCell = headerRow.insertCell();
           const img = document.createElement('img');
-          img.src = `/images/${iconPath}`; // Make sure path is correct
-          img.alt = iconPath.split('-')[0]; // Alt text as first part of the file name
+          img.src = `/images/${iconPath}`; // Polkku
+          img.alt = iconPath.split('.')[0]; // Alt text as first part of the file name
           img.classList.add('tableIcons');
-          headerCell.appendChild(img);
+          headerCell.appendChild(img); // Lisätään kuva
       });
   }
 
@@ -397,10 +438,12 @@ function addEntryToTable(entry) {
   const table = document.getElementById('entriesTable');
   const tbody = table.tBodies[0];
 
+  // Lisätään uusi rivi tbodyn
   const row = tbody.insertRow();
+  // Yksilöidän rivi
   row.id = `row-${entry.entry_id}`;
 
-
+  // Asetetaan riveille HTML-sisällön
   row.innerHTML = `
       <td>${formatDate(entry.entry_date)}</td>
       <td>${entry.mood}</td>
@@ -411,71 +454,79 @@ function addEntryToTable(entry) {
       <td><button class="tableButtons" id="updateButton" data-id="${entry.entry_id}"><i class="fa fa-edit"></i></button></td>
       <td><button class="tableButtons" id="deleteButton" data-id="${entry.entry_id}"><i class="fa fa-trash"></i></button></td>
   `;
-
+  // Avataan muistinpanot ikkunnassa kutsumalla showModal(enty.notes)
   row.querySelector('#notesButton').addEventListener('click', function() {
     showModal(entry.notes);
   });
+  // Kutsutaan funktio, joka poista merkinnän
   row.querySelector('#deleteButton').addEventListener('click', deleteEntryById);
+  // Kutsutaan funktio, joka päivittää merkinnän
   row.querySelector('#updateButton').addEventListener('click', updateEntryById);
 }
 
 // Moduuli muistinpamoille
+// Funktio showModal ottaa parametrina notes-muuttujan, joka sisältää muistiinpanotekstin
 function showModal(notes) {
   const modal = document.getElementById('entryModal');
   const modalText = modal.querySelector('#modalText');
+  // Asetetaan teksti moduuli ikkunaan
   modalText.textContent = notes;
+  // Näytetään moduuli
   modal.style.display = 'block';
 
   // Lisää sulku-toiminnallisuus
   const closeButton = modal.querySelector('.closeButton');
+  // Piilotetaan moduuli
   closeButton.onclick = function() {
   modal.style.display = 'none';
   }
-
-  /*Sulje modaalissa klikkaamalla sen ulkopuolelle
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = 'none';
-    }
-  } */
 }
 
 // Näytetään merkinnät
 async function showDiaryEntries(entries) {
+  // Luodaan pohja taulukolle
   initializeTable();
+  // Luodaan taulu viestille jos ei ole merkkintöjä
   const table = document.querySelector('#entriesTable');
   const tbody = table.tBodies[0];
   tbody.innerHTML = '';
 
-  // Jos merkintöjä ei ole
+  // Jos merkintöjä ei ole luodaan rivi
   if (entries.length === 0) {
       const noEntriesMessage = document.createElement('tr');
       noEntriesMessage.innerHTML = `<td colspan="8">Tällä päivällä ei ole tehty päiväkirjamerkintöjä. Voit tarkastella toista päivämäärää, jolle merkintöjä on kirjattu.</td>`;
       tbody.appendChild(noEntriesMessage);
       return;
   }
-
+  // Käy läpi merkinnät ja lisä yksittäinen merkintä taulukkoon
   entries.forEach(entry => addEntryToTable(entry, tbody));
 
-  // Jos päivälle löyty merkintä: lisätään merkki kalenterin
+  // Kutsutaan funktio jos päivälle löyty merkintä
   markCalendarDays(entries);
 }
 
+// Luodaan funktio joka merkkaa kalenterin päivät joille on päiväkirjamerkintöjä
 function markCalendarDays(entries) {
   const calendarDays = document.querySelectorAll('.day');
 
   entries.forEach(entry => {
+      // Päivämäärän selvittäminen
       const entryDate = new Date(entry.entry_date);
       const dayNum = entryDate.getDate();
-
+      // Käydään päivär läpi
       calendarDays.forEach(day => {
+          // Jos kalenterinpäivän ja merkinnät vastaavat keskennään merkkataan päivää
           if (parseInt(day.textContent) === dayNum) {
               day.classList.add('dayMarked');
           }
       });
   });
 }
+
+
 // KALENTERI
+
+// Luodaan karkausvuosi
 const isLeapYear = (year) => {
   return (
     (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
@@ -486,6 +537,7 @@ const getFebDays = (year) => {
   return isLeapYear(year) ? 29 : 28;
 };
 
+// Kalenterin toiminnallisuuksien perusrunko
 let calendar = document.querySelector('.calendar');
 const month_names = [
     'Tammikuu',
@@ -541,14 +593,19 @@ const generateCalendar = (month, year) => {
   ];
 
   let currentDate = new Date();
+  // Luo uuden päivämääräobjektin kopioiden `currentDate`-objektin aikaleiman
   let selectedDate = new Date(currentDate.getTime());
 
+  //  Päivittää kuukauden nimen otsikossa
   month_picker.innerHTML = month_names[month];
+  // Asetta vuoden numeron näkyviin
   calendar_header_year.innerHTML = year;
 
   let first_day = new Date(year, month);
+  // Muunetaan viikon ensimmäisen päivän indeksin maanantaille (0 = maanantai).
   let firstDayMonday = first_day.getDay() === 0 ? 6 : first_day.getDay() - 1;
 
+  // Luodaan ruutu jokaista kalenteripäivää varten
   for (let i = 0; i <= days_of_month[month] + firstDayMonday - 1; i++) {
     let day = document.createElement('div');
 
@@ -560,22 +617,27 @@ const generateCalendar = (month, year) => {
         selectedDate.setDate(dayNum);
         selectedDate.setMonth(month);
         selectedDate.setYear(year);
+        // Päivittää kalenterinäkymän valitun päivän korostamiseksi
         updateCalendarDayStyles(calendar_days, selectedDate);
+        // Hakee päiväkirjamerkinnät valitulle päivämäärälle
         getDiaryEntries(year, month, dayNum);
       });
 
+      // Tarkistetaan onko tämä päivä nykyinen päivä, ja korostetaan sitä
       if (dayNum === currentDate.getDate() && year === currentDate.getFullYear() && month === currentDate.getMonth()) {
         day.classList.add('current-date');
       }
-
+      // Hakee päiväkirjamerkinnät valitulle päivämäärälle
       getDiaryEntries(year, month, dayNum);
     }
     calendar_days.appendChild(day);
   }
 };
 
+// Korostetaan valittu päivää
 function updateCalendarDayStyles(calendarElement, selectedDate) {
   let days = calendarElement.querySelectorAll('.day');
+  // Lisää korostuksen päivälle, joka täsmää 'selectedDate' päivän kanssa
   days.forEach(day => {
     day.classList.remove('current-date');
     let dayNumber = parseInt(day.textContent);
@@ -655,9 +717,9 @@ setInterval(() => {
   todayShowTime.textContent = formateTimer;
 }, 1000);
 
+// Muunetaan päivämäärän ymmärrettävään muotoon
 function formatDate(dateStr) {
   const date = new Date(dateStr);
- // console.log("Formatted date:", date); // Check how dates are being parsed
   return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 }
 
