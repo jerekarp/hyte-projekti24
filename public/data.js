@@ -65,8 +65,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const chartSelection = document.getElementById('chartSelection');
   const maxDataElement = document.getElementById('max-data');
   const dataAmountInput = document.getElementById('dataAmount');
+  const incrementButton = document.getElementById('increment');
+  const decrementButton = document.getElementById('decrement');
 
-  dataAmountInput.addEventListener('keyup', function() {
+  incrementButton.addEventListener('click', function() {
+    dataAmountInput.stepUp();
+    updateChartWithData(chartSelection.value, dataAmountInput.value);
+  });
+
+  decrementButton.addEventListener('click', function() {
+    dataAmountInput.stepDown();
     updateChartWithData(chartSelection.value, dataAmountInput.value);
   });
 
