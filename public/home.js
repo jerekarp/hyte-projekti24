@@ -103,10 +103,8 @@ async function fetchStudentInfo() {
     const data = await response.json();
 
     if (!data.found) {
-      console.log("No student information found, opening modal...");
       document.getElementById('myModal').style.display = 'flex';
     } else {
-      console.log("Student information found:", data);
     }
 
     return data;
@@ -165,7 +163,6 @@ function addStudentInfo(evt) {
   };
 
   fetchData(url, options).then((data) => {
-    console.log(data);
     if (data && !data.error) {
       alert("Tiedot lisätty onnistuneesti!");
       document.getElementById('myModal').style.display = 'none';
@@ -272,7 +269,6 @@ function updateStudentInfo (evt) {
   };
 
   fetchData(url, options).then((data) => {
-    console.log(data);
     if (data && !data.error) {
       alert("Tiedot päivitetty onnistuneesti!");
       closeEditModal();

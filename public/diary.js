@@ -450,9 +450,9 @@ function addEntryToTable(entry) {
       <td>${entry.stress_level}</td>
       <td>${entry.weight}</td>
       <td>${entry.sleep_hours}</td>
-      <td><button class="tableButtons" id="notesButton" data-id="28" aria-label="Lisätietoja"><i class="fa fa-ellipsis-v"></i></button>
-      <td><button class="tableButtons" id="updateButton" data-id="28" aria-label="Päivitä"><i class="fa fa-edit"></i></button></td>
-      <td><button class="tableButtons" id="deleteButton" data-id="28" aria-label="Poista"><i class="fa fa-trash"></i></button></td>
+      <td><button class="tableButtons" aria-label="Lisätietoja" id="notesButton" data-id="${entry.entry_id}"><i class="fa fa-ellipsis-v"></i></button></td>
+      <td><button class="tableButtons" aria-label="Päivitä" id="updateButton" data-id="${entry.entry_id}"><i class="fa fa-edit"></i></button></td>
+      <td><button class="tableButtons" aria-label="Poista" id="deleteButton" data-id="${entry.entry_id}"><i class="fa fa-trash"></i></button></td>
   `;
   // Avataan muistinpanot ikkunnassa kutsumalla showModal(enty.notes)
   row.querySelector('#notesButton').addEventListener('click', function() {
