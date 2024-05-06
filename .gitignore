@@ -18,3 +18,4 @@ testaus/back/poista_merkinta/poista_merkinta_keywords.resource
 testaus/back/poista_merkinta/poista_merkinta_keywords.resource
 testaus/tools/login_variables.resource
 testaus/back/lisaa_merkinta/lisaa_merkinta_keywords.resource
+testaus/back/hae_merkinta/hae_merkinta_keywords.resource
