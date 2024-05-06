@@ -82,7 +82,7 @@ Nodejs + Express sovellus.
 > ZenBot käyttää OpenAI Api avainta. Se täytyy itse luoda OpenAI verkkosivulta, jotta sitä voi käyttää.
 
 # Automaatiotestaukset
-![Testauskansio]((https://github.com/jerekarp/hyte-projekti24/tree/main/testaus)
+![Testauskansio](https://github.com/jerekarp/hyte-projekti24/tree/main/testaus)
 
 Testien logit ja reportit katsottavissa allanäkyvistä linkeistä.
 
