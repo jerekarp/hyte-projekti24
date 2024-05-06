@@ -63,14 +63,15 @@
                     <!-- Tähän lisätään kuvaaja -->
                 </div>
                 <div>
-                  <select id="chartSelection">
+                  <select id="chartSelection" aria-label="Vaihda datanäkymää">
                     <option value="" selected disabled hidden>Vaihda datanäkymää</option>
                     <option id="all" value="all">Kaikki data</option>
                     <option id="stress_index" value="stress_index">Stressi</option>
                     <option id="respiratory_rate" value="respiratory_rate">Hengitystaajuus</option>
                     <option id="mean_hr_bpm" value="mean_hr_bpm">Keskimääräinen syke</option>
                     <option id="readiness" value="readiness">Readiness</option>
-                  </select>
+                </select>
+                
 
                   <label for="dataAmount">Näytetään</label>
                   <input type="number" id="dataAmount" name="dataAmount" min="1" value="15">

@@ -44,7 +44,8 @@
               <form class="create_diary_form">
                 <!--merkintäpäivämäärä-->
                 <label class="form-label" id="day-label" for="entry_date">Merkintäpäivämäärä:</label>
-                <input class="form-input" type="date" name="entry_date" required>
+                <input class="form-input" type="date" name="entry_date" id="entry_date" aria-labelledby="day-label" required placeholder="Valitse päivämäärä">
+
                 <!-- tunnetila-->
                 <label class="form-label" id="mood-label" for="mood">Tunnetila:</label>
                 <input class="form-input" type="text" name="mood" id="mood" placeholder="Klikkaa hymiötä tai kirjoita" value="">
@@ -67,10 +68,12 @@
                 <div id="slider-marks"></div>
                 <!-- uni -->
                 <label class="form-label" id="sleep-label" for="sleep_hours">Kuinka monta tuntia nukuit viime yönä?</label>
-                <input class="form-input" type="number" name="sleep_hours">
+                <input class="form-input" type="number" name="sleep_hours" id="sleep_hours" aria-labelledby="sleep-label" placeholder="Syötä tuntimäärä">
+
                 <!-- muistinpanot & paino -->
                 <label class="form-label" id="weight-label" for="weight">Paino:</label>
-                <input class="form-input" type="number" name="weight" required>
+                <input class="form-input" type="number" name="weight" id="weight" aria-labelledby="weight-label" required placeholder="Syötä paino kilogrammoina">
+
                 <label class="form-label" id="note-label" for="notes">Muistinpanot:</label>
                 <textarea id="notes" name="notes" required rows="5" cols="50"></textarea>
                 <input name="submit" type="submit" value="Tallenna" class="createEntry">
