@@ -134,7 +134,8 @@ main {
 
 .col {
     background-color: #f4f4f4;
-    padding: 20px;
+    padding: 30px;
+    margin: 7px;
     border: 1px solid #ccc;
     border-radius: 20px;
     box-shadow: 0 3px 10px #044465;
@@ -156,6 +157,7 @@ main {
 /* Määritä erikokoiset sarakkeet */
 .col-1 {
     grid-column: span 12;
+    margin-top: 50px;
 }
 
 .col-2 {
@@ -283,6 +285,7 @@ main {
   padding: 20px 50px;
   display: flex;
   justify-content: center;
+  margin-top: 370px;
   align-items: center;
   flex-direction: column;
 }
