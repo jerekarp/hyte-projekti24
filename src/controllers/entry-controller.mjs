@@ -29,12 +29,11 @@ import {
   };
 
   const getEntryById = async (req, res, next) => {
-    // Authentication: Check if user is authenticated
+    // Varmistetaan, että käyttäjä on todennettu
     if (!req.user) {
-      return res.sendStatus(401); // Unauthorized
+      return res.sendStatus(401);
     }
 
-    // Retrieve entry by id
     const entry = await findEntryById(req.params.id, req.user.user_id);
     if (entry) {
       res.json(entry);
@@ -44,13 +43,11 @@ import {
   };
 
   const getEntryByDay = async (req, res, next) => {
-    console.log("testi")
-    // Authentication: Check if user is authenticated
+    // Varmistetaan, että käyttäjä on todennettu
     if (!req.user) {
-      return res.sendStatus(401); // Unauthorized
+      return res.sendStatus(401);
     }
-    // Retrieve entry by id
-    // console.log(req)
+
     const date = await listAllEntriesByDay(req.user.user_id, req.params.date);
     if (date) {
       res.json(date);

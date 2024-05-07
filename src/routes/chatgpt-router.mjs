@@ -5,7 +5,8 @@ import {authenticateToken} from '../middlewares/authentication.mjs';
 const router = express.Router();
 
 /**
- * @api {post} zenbot Send message to GPT-3.5 model for completion
+ * @api {post} zenbot Send message to GPT-3.5 model for completion.
+ * @apiDescription You'll need an OpenAI API key for the bearer token. You'll need to create the API key yourself if you want to test this functionality anywhere other than on a published website (e.g., Postman).
  * @apiVersion 1.0.0
  * @apiName ChatCompletion
  * @apiGroup Chat

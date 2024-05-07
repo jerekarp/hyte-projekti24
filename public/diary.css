@@ -18,6 +18,11 @@
   height: 25px;
 }
 
+.mobile-navbar {
+  display: none;
+}
+
+
 .navbar-menu {
   display: flex;
   justify-content: center; /* Aseta linkit keskelle */
@@ -57,7 +62,7 @@
 }
 
 
-
+/* Yleisiä tyyliä sivulle */
 ol, ul {
 	list-style: none;
 }
@@ -97,12 +102,7 @@ input, select, textarea {
 /* Sivuston perusrunko, 12 column grid */
 
 body {
-    /* background-image: url(images/diarytausta.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed; */
     background: linear-gradient(to bottom, #044465, #0A8ECC, #1EB9CF, #BEF6E0);
-
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -124,18 +124,18 @@ nav {
 }
 
 main {
-    padding: 20px;
-    margin-top: 100px;
-    margin-bottom: 130px;
+  padding: 20px;
+  margin-top: 100px;
+  margin-bottom: 130px;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 20px;
 }
 
 .col {
@@ -145,8 +145,7 @@ main {
 
 /* Määritä erikokoiset sarakkeet */
 .col-1 {
-    grid-column: 1 / span 6;
-
+  grid-column: 1 / span 6;
 }
 
 .col-2 {
@@ -208,7 +207,6 @@ main {
 
 }
 
-
 #notes {
   padding: 10px;
   border-radius: 8px;
@@ -223,11 +221,10 @@ main {
   background-color: #f0fcfc;
   cursor: pointer;
 }
-
-
+/* Tallenna napin tyyli */
 .createEntry {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Vaakasuunnasa keskelle*/
   padding: 15px;
   border-radius: 20px;
   width: 60%;
@@ -245,75 +242,68 @@ main {
 }
 
 .createEntry:hover {
-    color: #044465;
-    background-color: transparent;
+  color: #044465;
+  background-color: transparent;
 }
 
 
-/* Tyyli stressille */
+/* Tyyli stressi liukusäätimen */
+
 .stress-slider {
   width: auto;
   height: 15px;
   border-radius: 15px;
   background: linear-gradient(to right, #CFF0CC, #FFFACD, #FFB6C1);
-  opacity: 0.6; /* Makes it slightly transparent */
+  opacity: 0.6;
 }
 
+/* .stress-slider {
+  margin: 0 auto;
+  width: calc(100% - 20px);
+} */
+
+/* Liukusäätimen kahva (Google Chrome ja Safari) */
 .stress-slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default appearance */
+  -webkit-appearance: none; /* Poistaa selainten oletustyylin*/
   appearance: none;
-  width: 25px; /* Custom thumb width */
-  height: 25px; /* Custom thumb height */
-  border-radius: 50%; /* Circular thumb */
-  background: #046398; /* Thumb color */
-  cursor: pointer; /* Cursor changes to pointer when hovering over the thumb */
-}
-
-.stress-slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #046398; /* Thumb color */
+  background: #046398;
   cursor: pointer;
 }
 
 .stress-slider:focus,
 .stress-slider:hover {
-  outline: none; /* Remove default focus outline */
-  opacity: 1; /* Full opacity on focus/hover */
+  outline: none; /* Poistaa ääriviivat */
+  opacity: 1;
 }
 
-/* Tyyli liukumerkille */
+/* liukusäätimen merkit */
 
 #slider-marks {
   display: flex;
-  justify-content: space-between;
-  margin-top: 5px; /* Adjust based on your layout */
-  padding: 0 10px; /* Aligns the edges of the marks with the slider ends */
+  justify-content: space-between; /* Jateaan tilaa tasaisesti */
+  margin-top: 5px;
+  padding: 0 10px;
 }
 
 #slider-marks span {
-  font-size: 12px; /* Adjust according to your design */
-  cursor: pointer; /* Indicates the marks are clickable */
-  user-select: none; /* Prevents text selection */
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
   text-align: center;
   min-width: 50px;
-}
-
-.stress-slider {
-  margin: 0 auto; /* Center the slider if it's not full-width */
-  width: calc(100% - 20px); /* Adjust width considering the container's padding */
 }
 
 #day-label, #mood-label, #sleep-label, #weight-label, #note-label, #stress-label{
   color: #044465;
   margin-bottom: -5px;
   margin-top: 20px;
-
 }
 
 
-/* moood formi */
+/* moood napit */
 
 #mood-options {
   display: flex;
@@ -330,7 +320,7 @@ main {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  flex: 0 1 auto;
+  flex: 0 1 auto; /* flex-grow: ei laajene, flex-shrink: kutistu, flex-basic: koko määräytyy width/height mukaan */
   font-size: 15px;
   outline: none;
   line-height: 1;
@@ -352,7 +342,7 @@ main {
   transform: scale(1.3);
 }
 
-/* KALENTERI KOODI */
+/* Kalenterin tyyli */
 
 .calendar {
   margin-top: 2.5rem;
@@ -441,7 +431,6 @@ main {
   margin: 0 10px;
   cursor: pointer;
 }
-
 
 .year-change:hover {
   background-color: #056398;
@@ -580,8 +569,6 @@ main {
 .date-formate.showtime {
   animation: showtime 1s forwards;
 }
-
-
 
 
 @keyframes to-top {
@@ -763,17 +750,11 @@ main {
   }
 }
 
-/* Merkintä ikoni */
-.entry-icon {
-  width: 35px;
-  height: 35px;
-}
-
-
-/* Muokka formi ja muistinpano moduuli */
+/* Update lomake ja muistinpano moduuli */
+/* Tyyli update lomakkelle ja moduulille, niin että se tulee näytön etuosaan */
 #updateFormContainer, .modal {
-  display: none;
-  position: fixed;
+  display: none; /* Alussa piilotetaan */
+  position: fixed; /* Pysyy samassa paikkassa */
   left: 0;
   top: 0;
   width: 100%;
@@ -783,6 +764,7 @@ main {
   z-index: 1050;
 }
 
+/* Lomakkeen ja moduuuli ulkoasu */
 #formContainer, .modalContent{
   background-color: #fff;
   color: #000;
@@ -793,11 +775,10 @@ main {
   width: 30%;
 }
 
-
 #formContainer input,
 #formContainer textarea,
 #formContainer select {
-  display: block;
+  display: block; /* Asetetaan jokaisen omalla rivillä */
   width: calc(100% - 40px);
   padding: 10px;
   margin: 10px 0;
@@ -820,13 +801,13 @@ main {
   font-size: 16px;
 }
 
+/*
 #updateEntryForm {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
-}
-
+}*/
 
 #modalText {
   font-size: 18px;
@@ -839,11 +820,6 @@ main {
   font-size: 23px;
 }
 
-.tableButtons {
-  font-size: 15px;
-
-}
-
 .closeButton:hover,
 .closeButton:focus {
   color: black;
@@ -851,8 +827,10 @@ main {
   cursor: pointer;
 }
 
+/* Taulun napit */
 .tableButtons {
   cursor: pointer;
+  font-size: 15px;
 }
 
 .tableButtons:hover, .tableButtons:focus {
@@ -860,17 +838,18 @@ main {
   color: #046398;
 }
 
+/* Tyyli ilmoitusviestille */
 #notification {
   position: fixed;
   top: 200px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* Siirtää elementin 50 % vasemmalle sen leveydestä, keskittäen vaakasuunnassa */
   z-index: 1000;
   padding: 20px 30px;
   color: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  opacity: 0;  /* Alkutila piilotettu */
+  opacity: 0;  /* Alussa piilotettu */
   transition: opacity 0.5s ease-in-out;
   font-size: 25px;
   text-align: center;
@@ -885,7 +864,7 @@ main {
   background-color: #eb4034;
 }
 
-/* Grid-säännöt taulukon sarakkeille */
+/* Taulukko */
 table {
   margin-top: 2.5rem;
   margin-left: 0.8rem;
@@ -897,6 +876,7 @@ table {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+/* Taulun otsikko sarakke ja tietosolut*/
 th, td {
   text-align: left;
   padding: 10px 12px;
@@ -910,6 +890,7 @@ th, td {
   width: 30px;
 }
 
+/* Visuaalinen merkintä päivälle, jossa on päiväkirjamerkintä */
 .dayMarked::before {
   content: "";
   position: absolute;
@@ -925,76 +906,612 @@ th, td {
 }
 
 
-
-
 /* Responsiivisuus */
 
-/* Media Query Mobiililaitteet, Normaali leveyskoko 400-600px */
-@media screen and (min-width: 400px) and (max-width: 600px) {
 
-  .col-1, .col-2 {
-    grid-column: span 12;
-
+/* Media Query Mobiililaitteet */
+@media screen and (min-width: 260px) and (max-width: 399px) {
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
   }
-
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+  }
 
   .col-1 h3, .col-2 h3 {
-    margin: 20px 0;
-    font-size: 12px;
+    font-size: 18px;
+    margin: 5px auto;
+    text-align: center;
   }
 
+  .col-2 h3 {
+    margin-top: 30px;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  /* Lomake */
   .create_diary_form {
-    margin: 2px;
-    padding: 10px; /* Smaller padding */
-    width: 70%; /* Utilizes full width for small devices */
-    box-shadow: none;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    gap: 10px;
   }
 
+  .create_diary_form input,
+  .create_diary_form textarea {
+    max-width: 100%;
+    margin: 0;
+    padding: 5px;
+  }
+
+  .create_diary_form label {
+    font-size: 10px;
+    width: 100%
+  }
+
+  /*Lomaken nappi */
   .createEntry {
-    font-size: 10px;
-    padding: 5px;
-    margin: auto;
-    background-color: #044465;
-    color: #FFFFFF;
-    cursor: pointer;
-    height: auto;
-  }
-
-  .form-input, #notes  {
-    width: 90%;
-    padding: 5px;
-    border-radius: 8px;
-    padding: 10px;
-  }
-
-  .form-label {
-    font-size: 10px;
-  }
-
-  #slider-marks {
-    padding: 0; /* Remove padding to use the full width */
+    padding: 8px;
+    width: 100%;
+    font-size: 8px;
   }
 
   #slider-marks span {
-    font-size: 9px; /* Even smaller font size for very small devices */
-    min-width: 30px; /* Reduce minimum width to fit more items */
+    font-size: 10px;
+    min-width: 30px;
   }
 
-  .stress-slider {
-    width: 100%; /* Use the full width available */
+  .stress-slider{
+    height: 7px;
   }
 
   .mood-option-button {
-    font-size: 8px;
-    padding: 4px;
-    margin: 3px;
-    cursor: pointer;
+    font-size: 10px;
+  }
+
+  /* Kalenteri */
+  .calendar {
+    width: 100%;
+    height: 50%;
+    border-radius: 16px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    float: left;
+  }
+
+  .dayMarked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    background-color: #0b8fcc;
+    opacity: 40%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  .createEntry {
+    width: 100%;
+    height: 90%;
+    font-size: 14px;
+  }
+
+  .calendar-body {
+    padding: 0;
+  }
+
+  .calendar-header {
+    padding: 3px;
+    font-size: 10px;
+  }
+
+  .calendar-days {
+    grid-template-columns: repeat(7, 1fr); /* 7 saraketta ja yhtä paljon tilaa */
+    gap: 1px;
+  }
+
+  .calendar-days div {
+    width: 17px;
+    height: 13px;
+    padding: 2px;
+  }
+
+  .time-formate, .date-formate {
+    font-size: 0.7rem;;
 
   }
 
+  .date-time-formate {
+    height: 0rem;
+  }
+
+  .day-text-formate {
+    font-size: 1rem;
+    padding-right: 5%;
+  }
+
+  .date-time-value {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-left: 2%;
+  }
+
+  .month-list {
+    grid-template-columns: repeat(2, 1fr); /* Luodaan kaksi saraketta, jotka molemmat vievät yhtä paljon tilaa */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    gap: 1px;
+    font-size: 10px;
+    padding: 2px;
+  }
+
+  /* Taulu */
+  #entriesTable {
+    width: 90%;
+  }
+
+  th, td {
+    font-size: 12px;
+    padding: 5px;
+    overflow: none;
+  }
+
+  .tableIcons {
+    height: 15px;
+    width: 15px;
+  }
+
+  #notesButton, #updateButton, #deleteButton  {
+    font-size: 8px;
+  }
+
+  /* Update lomake */
+  #formContainer, .modalContent {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+  }
+
+  #formContainer input,
+  #formContainer textarea,
+  #formContainer select {
+    width: calc(100% - 20px); /* Vähennä padding suurentaaksesi kentän kokoa */
+    font-size: 16px;
+  }
+
+  #formContainer button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  #updateEntryForm {
+    justify-content: space-around;
+  }
+
+  /* Valikkopalkki */
+  .navbar {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    height: 25px;
+  }
 
 
+  .bi {
+    color: white;
+    margin: 15px;
+  }
 
+  .nav-link {
+    display: none;
+  }
+
+  table {
+    border-radius: 16px;
+  }
+}
+
+@media screen and (min-width: 260px) and (max-width: 321px) {
+  #entriesTable {
+    width: 85%;
+    margin-left: -5px;
+  }
+
+
+  th, td {
+    font-size: 10px;
+    overflow: none;
+  }
+
+  .tableIcons {
+    height: 15px;
+    width: 15px;
+  }
+
+  #notesButton, #updateButton, #deleteButton  {
+    font-size: 8px;
+    margin-left: -5px;
+  }
+
+  table {
+    border-radius: 16px;
+  }
+}
+
+/* Normaali leveyskoko 400-600px */
+@media screen and (min-width: 400px) and (max-width: 600px) {
+
+
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+  }
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+  }
+
+  .col-1 h3, .col-2 h3 {
+    font-size: 18px;
+    margin: 5px auto;
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  /* Lomake */
+  .create_diary_form {
+    max-width: 100%;
+    margin: auto;
+    gap: 10px;
+  }
+
+  .create_diary_form input,
+  .create_diary_form textarea {
+    max-width: 100%;
+    margin: 5px 0px;
+    padding: 10px;
+  }
+
+  .create_diary_form label {
+    font-size: 12px;
+  }
+
+   /*Lomaken nappi */
+  .createEntry {
+    padding: 8px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .stress-slider {
+    height: 5px;
+  }
+
+  /* Kalenteri */
+  .calendar {
+    width: 95%;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    float: left;
+  }
+  .calendar-body {
+    padding: 0;
+
+  }
+
+  .calendar-header {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+
+  .calendar-days div {
+    width: auto;
+    height: 40px;
+  }
+
+  .time-formate, .date-formate {
+    font-size: 1rem;;
+
+  }
+
+  .date-time-formate {
+    height: 7rem;
+  }
+
+  .day-text-formate {
+    font-size: 1.5rem;
+    padding-right: 5%;
+  }
+
+  .date-time-value {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-left: 2%;
+  }
+
+  .month-list {
+    grid-template-columns: repeat(3, 1fr); /* Luodaan 3 saraketta, jotka molemmat vievät yhtä paljon tilaa */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    gap: 1px;
+    font-size: 15px;
+    padding: 2px;
+  }
+
+  /* Taulu */
+  #entriesTable {
+    width: 95%;
+    margin: 0 auto;
+    margin-left: 0px;
+    margin-bottom: 100px;
+  }
+
+  #notesButton, #updateButton, #deleteButton  {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+    padding: 10x;
+    overflow: none;
+  }
+
+  td button {
+    font-size: 3px;
+  }
+
+  table {
+    border-radius: 20px;
+  }
+
+  .tableIcons {
+    height: 20px;
+    width: 20px;
+  }
+
+  #formContainer, .modalContent {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+  }
+
+  #formContainer input,
+  #formContainer textarea,
+  #formContainer select {
+    width: calc(100% - 20px); /* Vähennä padding suurentaaksesi kentän kokoa */
+    font-size: 16px;
+  }
+
+  #formContainer button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  #updateEntryForm {
+    justify-content: space-around;
+  }
+
+  /* Valikkopalkki */
+  .navbar {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: auto;
+    height: 100%;
+    left: 20px;
+    right: 20px;
+    margin-top: 20px;
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 25px;
+  }
+
+  .bi {
+    color: white;
+    margin: 15px;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+}
+
+/* TABLETIT */
+@media screen and (min-width: 601px) and (max-width: 700px) {
+
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+  }
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+  }
+
+  .col-1 h3, .col-2 h3 {
+    font-size: 14px;
+    margin: 5px auto;
+  }
+
+
+  .container {
+    padding: 0px;
+  }
+
+  /* Lomake */
+  .create_diary_form {
+    max-width: 100%;
+    margin: auto;
+    gap: 10px;
+  }
+
+  .create_diary_form input,
+  .create_diary_form textarea {
+    max-width: 100%;
+    margin: 5px 0px;
+    padding: 10px;
+  }
+
+  .create_diary_form label {
+    font-size: 12px;
+  }
+
+  /* Lomakkeen nappi */
+  .createEntry {
+    padding: 8px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .stress-slider {
+    height: 5px;
+  }
+
+  /* Kalenteri */
+  .calendar {
+    width: 95%;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    float: left;
+  }
+  .calendar-body {
+    padding: 0;
+  }
+
+  .calendar-header {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  .calendar-days div {
+    width: auto;
+    height: 40px;
+  }
+
+  .time-formate, .date-formate {
+    font-size: 1rem;;
+  }
+
+  .date-time-formate {
+    height: 7rem;
+  }
+
+  .day-text-formate {
+    font-size: 1.5rem;
+    padding-right: 5%;
+  }
+
+  .date-time-value {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-left: 2%;
+  }
+
+  .month-list {
+    grid-template-columns: repeat(3, 1fr); /* Luodaan 3 saraketta, jotka molemmat vievät yhtä paljon tilaa */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    gap: 1px;
+    font-size: 15px;
+    padding: 2px;
+  }
+
+    /* Taulu */
+  #entriesTable {
+    width: 95%;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 10px;
+    padding: 5px;
+    overflow: none;
+  }
+
+  td button {
+    font-size: 3px;
+  }
+
+  .tableIcons {
+    height: 20px;
+    width: 20px;
+  }
+
+  /* Update lomake */
+  #formContainer, .modalContent {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+  }
+
+  #formContainer input,
+  #formContainer textarea,
+  #formContainer select {
+    width: calc(100% - 20px); /* Vähennä padding suurentaaksesi kentän kokoa */
+    font-size: 16px;
+  }
+
+  #formContainer button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  #updateEntryForm {
+    justify-content: space-around;
+  }
+
+  /* Valikkopalkki */
   .topnav a:not(.icon) {
     display: none;
   }
@@ -1015,82 +1532,512 @@ th, td {
 
 }
 
-/* Tabletit
-@media screen and (min-width: 601px) and (max-width: 700px) {
-  #banner {
-    height: 260px;
-  }
 
-
-  #minikuva {
-    top: 145px;
-  }
-
-  .col {
-    grid-column: span 6;
-  }
-
-  .col-7 {
-    grid-column: span 12;
-  }
-
-}
-
-
+/* TABLETIT 2 */
 @media screen and (min-width: 701px) and (max-width: 800px) {
-  #banner {
-    height: 300px;
+
+  .col-1 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+  }
+  .col-2 {
+    grid-column: span 12; /* Vie koko leveyden pienimmillä näytöillä */
+  }
+
+  .col-1 h3, .col-2 h3 {
+    font-size: 20px;
+    margin: 5px auto;
+  }
+
+  .col h3 {
+    margin-top: 50px;
   }
 
 
-  #minikuva {
-    top: 185px;
+  .container {
+    padding: 0px;
   }
 
-  .col {
-    grid-column: span 6;
+  /* Lomake */
+  .create_diary_form {
+    max-width: 100%;
+    margin: auto;
+    gap: 10px;
   }
 
-  .col-7 {
-    grid-column: span 12;
+  .create_diary_form input,
+  .create_diary_form textarea {
+    max-width: 100%;
+    margin: 5px 0px;
+    padding: 10px;
+  }
+
+  .create_diary_form label {
+    font-size: 12px;
+  }
+
+  /* Lomakkeen napit */
+  .createEntry {
+    padding: 8px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .stress-slider {
+    height: 5px;
+  }
+
+  /* Kalenteri */
+  .calendar {
+    width: 95%;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    float: left;
+  }
+  .calendar-body {
+    padding: 0;
+  }
+
+  .calendar-header {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  .calendar-days div {
+    width: auto;
+    height: 40px;
+  }
+
+  .time-formate, .date-formate {
+    font-size: 1rem;;
+  }
+
+  .date-time-formate {
+    height: 7rem;
+  }
+
+  .day-text-formate {
+    font-size: 1.5rem;
+    padding-right: 5%;
+  }
+
+  .date-time-value {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-left: 2%;
+  }
+
+  .month-list {
+    grid-template-columns: repeat(3, 1fr); /* Luodaan 3 saraketta, jotka molemmat vievät yhtä paljon tilaa */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    gap: 1px;
+    font-size: 15px;
+    padding: 2px;
+  }
+
+  /* Taulu */
+  #entriesTable {
+    width: 95%;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 10px;
+    padding: 5px;
+    overflow: none;
+  }
+
+  td button {
+    font-size: 3px;
+  }
+
+  .tableIcons {
+    height: 20px;
+    width: 20px;
+  }
+
+    /* Update lomake */
+  #formContainer, .modalContent {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+  }
+
+  #formContainer input,
+  #formContainer textarea,
+  #formContainer select {
+    width: calc(100% - 20px); /* Vähennä padding suurentaaksesi kentän kokoa */
+    font-size: 16px;
+  }
+
+  #formContainer button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  #updateEntryForm {
+    justify-content: space-around;
+  }
+
+  /* Valikkopalkki */
+  .topnav a:not(.icon) {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive #myLinks {
+    display: block;
+    position: absolute;
+    background-color: #333;
+    width: 100%;
+    top: 50px;
+    z-index: 99;
   }
 
 }
 
 @media screen and (min-width: 801px) and (max-width: 900px) {
-  #banner {
-    height: 330px;
+
+  .col-1 {
+    grid-column: span 6; /* Vie puolet näytön leveydestä */
+    margin: 0px;
+  }
+  .col-2 {
+    grid-column: span 6; /* Vie puolet näytön leveydestä */
   }
 
-  #minikuva {
-    top: 215px;
+  .col-1 h3, .col-2 h3 {
+    font-size: 20px;
+    margin: 5px auto;
   }
 
-  .col {
-    grid-column: span 6;
+  .container {
+    padding: 0px;
   }
 
-  .col-7 {
-    grid-column: span 12;
+  /* Lomake */
+  .create_diary_form {
+    max-width: 100%;
+    margin: auto;
+    gap: 10px;
+  }
+
+  .create_diary_form input,
+  .create_diary_form textarea {
+    max-width: 100%;
+    margin: 5px 0px;
+    padding: 10px;
+  }
+
+  .create_diary_form label {
+    font-size: 12px;
+  }
+
+  /* Lomaken napi */
+  .createEntry {
+    padding: 8px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .stress-slider {
+    height: 5px;
+  }
+
+  /* Kalenteri */
+  .calendar {
+    width: 95%;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    float: left;
+  }
+  .calendar-body {
+    padding: 0;
+  }
+
+  .calendar-header {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  .calendar-days div {
+    width: auto;
+    height: 40px;
+  }
+
+  .time-formate, .date-formate {
+    font-size: 1rem;;
+  }
+
+  .date-time-formate {
+    height: 7rem;
+  }
+
+  .day-text-formate {
+    font-size: 1.5rem;
+    padding-right: 5%;
+  }
+
+  .date-time-value {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-left: 2%;
+  }
+
+  .month-list {
+    grid-template-columns: repeat(3, 1fr); /* Luodaan 3 saraketta, jotka molemmat vievät yhtä paljon tilaa */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    gap: 1px;
+    font-size: 15px;
+    padding: 2px;
+  }
+
+  /* Taulu */
+  #entriesTable {
+    width: 95%;
+    margin-left: -5px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 10px;
+    padding: 5px;
+    overflow: none;
+  }
+
+  td button {
+    font-size: 3px;
+  }
+
+  .tableIcons {
+    height: 20px;
+    width: 20px;
+  }
+
+  /* Update lomake */
+  #formContainer, .modalContent {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+  }
+
+  #formContainer input,
+  #formContainer textarea,
+  #formContainer select {
+    width: calc(100% - 20px); /* Vähennä padding suurentaaksesi kentän kokoa */
+    font-size: 16px;
+  }
+
+  #formContainer button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  #updateEntryForm {
+    justify-content: space-around;
+  }
+
+  /* Valikkopalkki */
+  .topnav a:not(.icon) {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive #myLinks {
+    display: block;
+    position: absolute;
+    background-color: #333;
+    width: 100%;
+    top: 50px;
+    z-index: 99;
   }
 
 }
 
 @media screen and (min-width: 901px) and (max-width: 1100px) {
-  #banner {
-    height: 380px;
+
+  .col-1 {
+    grid-column: span 6; /* Vie koko leveyden pienimmillä näytöillä */
+    margin: 0px;
+  }
+  .col-2 {
+    grid-column: span 6; /* Vie koko leveyden pienimmillä näytöillä */
   }
 
-  #minikuva {
-    top: 265px;
+  .col-1 h3, .col-2 h3 {
+    font-size: 20px;
+    margin: 5px auto;
   }
 
-  .col {
-    grid-column: span 6;
+  .container {
+    padding: 0px;
   }
 
-  .col-7 {
-    grid-column: span 12;
+  /* Lomake */
+  .create_diary_form {
+    max-width: 100%;
+    margin: auto;
+    gap: 10px;
   }
 
-} */
+  .create_diary_form input,
+  .create_diary_form textarea {
+    max-width: 100%;
+    margin: 5px 0px;
+    padding: 10px;
+  }
+
+  .create_diary_form label {
+    font-size: 12px;
+  }
+
+  /* Lomaken nappi*/
+  .createEntry {
+    padding: 8px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .stress-slider {
+    height: 5px;
+  }
+
+  /* Kalenteri */
+  .calendar {
+    width: 95%;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    float: left;
+  }
+  .calendar-body {
+    padding: 0;
+  }
+
+  .calendar-header {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  .calendar-days div {
+    width: auto;
+    height: 40px;
+  }
+
+  .time-formate, .date-formate {
+    font-size: 1rem;;
+  }
+
+  .date-time-formate {
+    height: 7rem;
+  }
+
+  .day-text-formate {
+    font-size: 1.5rem;
+    padding-right: 5%;
+  }
+
+  .date-time-value {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-left: 2%;
+  }
+
+  .month-list {
+    grid-template-columns: repeat(3, 1fr); /* Luodaan 3 saraketta, jotka molemmat vievät yhtä paljon tilaa */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    gap: 1px;
+    font-size: 15px;
+    padding: 2px;
+  }
+
+
+  /* Taulu */
+  #entriesTable {
+    width: 90%;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 10px;
+    padding: 5px;
+    overflow: none;
+  }
+
+  td button {
+    font-size: 3px;
+  }
+
+  .tableIcons {
+    height: 20px;
+    width: 20px;
+  }
+
+  /* Update lomake */
+  #formContainer, .modalContent {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+  }
+
+  #formContainer input,
+  #formContainer textarea,
+  #formContainer select {
+    width: calc(100% - 20px);  /* Vähennä padding suurentaaksesi kentän kokoa */
+    font-size: 16px; /
+  }
+
+  #formContainer button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  #updateEntryForm {
+    justify-content: space-around;
+  }
+
+  /* Valikkopalkki */
+  .topnav a:not(.icon) {
+    display: none;
+  }
+  .topnav a.icon {
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive #myLinks {
+    display: block;
+    position: absolute;
+    background-color: #333;
+    width: 100%;
+    top: 50px;
+    z-index: 99;
+  }
+
+}

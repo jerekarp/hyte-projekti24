@@ -41,17 +41,19 @@
         <div id="modal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
-
-           <h3>Vinkkejä datan tarkasteluun</h3>
-           <br>
-           <p style="line-height: 1.5;">- Voit piillottaa haluamasi datan klikkaamalla kyseisen parametrin nimeä yläreunasta (esim. Stressi-indeksi).
+            <h3>Vinkkejä datan tarkasteluun</h3>
             <br>
-            - Piilotetun datan saa takaisin näkyviin klikkaamalla sitä uudestaan.
-            <br>
-            - Voit tarkastella halutun datapalkin tarkka aavoa laittamalla hiiren kursosin palkin päälle.
-            <br>
-            - Voit vaihtaa datakuvaajaa yksittäisiin parametrin viivadiagrammeihin kuvaajan alapalkista klikkaamalla "Vaihda datanäkymää".
-           </p>
+            <p style="line-height: 1.5; margin-bottom: 10px;">
+              - Voit tarkastella halutun datapalkin tarkkaa arvoa napauttamalla sitä.
+              <br><br>
+              - Pystyt vaihtamaan näytettävien mittauspäivien määrää napauttamalla + ja - ikoneita.
+              <br><br>
+              - Voit vaihtaa datakuvaajaa yksittäisiin parametrin viivadiagrammeihin kuvaajan alapalkista klikkaamalla "Vaihda datanäkymää".
+              <br><br>
+              - Lisäksi voit piilottaa haluamasi datan klikkaamalla kyseisen parametrin nimeä yläreunasta (esim. Stressi-indeksi). HUOM: Ei koske mobiililaitteita.
+              <br><br>
+              - Piilotetun datan saa takaisin näkyviin klikkaamalla sitä uudestaan.
+            </p>
           </div>
         </div>
         <div class="container">
@@ -63,18 +65,21 @@
                     <!-- Tähän lisätään kuvaaja -->
                 </div>
                 <div>
-                  <select id="chartSelection">
+                  <select id="chartSelection" aria-label="Vaihda datanäkymää">
                     <option value="" selected disabled hidden>Vaihda datanäkymää</option>
                     <option id="all" value="all">Kaikki data</option>
                     <option id="stress_index" value="stress_index">Stressi</option>
                     <option id="respiratory_rate" value="respiratory_rate">Hengitystaajuus</option>
                     <option id="mean_hr_bpm" value="mean_hr_bpm">Keskimääräinen syke</option>
                     <option id="readiness" value="readiness">Readiness</option>
-                  </select>
+                </select>
+                
 
                   <label for="dataAmount">Näytetään</label>
                   <input type="number" id="dataAmount" name="dataAmount" min="1" value="15">
                   <label for="dataAmount2">viimeisintä mittaustulosta</label>
+                  <button id="increment">+</button>
+                  <button id="decrement">-</button>
 
                 </div>
               </div>
@@ -191,25 +196,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- <div class="col col-4">
-            </div>
-            <div class="col col-5">
-            </div>
-            <div class="col col-6">
-            </div>
-            <div class="col col-7">
-            </div>
-            <div class="col col-8">
-            </div>
-            <div class="col col-9">
-            </div>
-            <div class="col col-10">
-            </div>
-            <div class="col col-11">
-            </div>
-            <div class="col col-12">
-            </div> -->
           </div>
       </main>
 
@@ -246,5 +232,6 @@
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script type="module" src="data.js"></script>
+
 </body>
 </html>

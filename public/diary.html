@@ -2,17 +2,16 @@
 
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="diary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <title>Päiväkirja</title>
 </head>
 <body>
-
-  <!-- Navbaari  -->
+  <!-- Navbar  -->
   <nav class="navbar">
     <div class="navbar-menu">
         <a href="home.html" class="nav-link">Etusivu</a>
@@ -23,6 +22,20 @@
     </div>
     <a href="index.html" class="nav-link nav-link-right">Kirjaudu ulos</a>
   </nav>
+  <nav class="mobile-navbar" id="mobileNavbar">
+    <a href="home.html"
+    ><i class="bi bi-house"></i></a>
+    <a href="diary.html"
+    ><i class="bi bi-journal-text"></i></a>
+    <a href="data.html"
+    ><i class="bi bi-bar-chart"></i></a>
+    <a href="about.html"
+    ><i class="bi bi-info-square"></i></a>
+    <a href="tools.html"
+    ><i class="bi bi-tools"></i></a>
+    <a href="index.html"
+    ><i class="bi bi-box-arrow-left"></i></a>
+  </nav>
       <main>
         <div class="container">
             <!-- Päiväkirjamerkintä lomakke -->
@@ -31,10 +44,11 @@
               <form class="create_diary_form">
                 <!--merkintäpäivämäärä-->
                 <label class="form-label" id="day-label" for="entry_date">Merkintäpäivämäärä:</label>
-                <input class="form-input" type="date" name="entry_date" required/>
+                <input class="form-input" type="date" name="entry_date" id="entry_date" aria-labelledby="day-label" required placeholder="Valitse päivämäärä">
+
                 <!-- tunnetila-->
                 <label class="form-label" id="mood-label" for="mood">Tunnetila:</label>
-                <input class="form-input" type="text" name="mood" id="mood" placeholder="Klikkaa hymiötä tai kirjoita" value="" />
+                <input class="form-input" type="text" name="mood" id="mood" placeholder="Klikkaa hymiötä tai kirjoita" value="">
                 <div id="mood-options">
                   <button type="button" class="mood-option-button" data-mood="Iloinen">😊 Iloinen</button>
                   <button type="button" class="mood-option-button" data-mood="Energinen">🥳 Energinen</button>
@@ -50,17 +64,19 @@
                 </div>
                 <!-- stressi -->
                 <label class="form-label" id="stress-label" for="stress_level">Arvioi stressin määrä asteikolla 0 (ei stressiä) - 10 (maksimaalinen stressi):</label>
-                <input type="range" id="stress_level" name="stress_level" min="0" max="10" class="stress-slider" required>
+                <input type="range" id="stress_level" name="stress_level" min="0" max="10" class="stress-slider">
                 <div id="slider-marks"></div>
                 <!-- uni -->
                 <label class="form-label" id="sleep-label" for="sleep_hours">Kuinka monta tuntia nukuit viime yönä?</label>
-                <input class="form-input" type="number" name="sleep_hours" />
+                <input class="form-input" type="number" name="sleep_hours" id="sleep_hours" aria-labelledby="sleep-label" placeholder="Syötä tuntimäärä">
+
                 <!-- muistinpanot & paino -->
                 <label class="form-label" id="weight-label" for="weight">Paino:</label>
-                <input class="form-input" type="number" name="weight" required/>
+                <input class="form-input" type="number" name="weight" id="weight" aria-labelledby="weight-label" required placeholder="Syötä paino kilogrammoina">
+
                 <label class="form-label" id="note-label" for="notes">Muistinpanot:</label>
                 <textarea id="notes" name="notes" required rows="5" cols="50"></textarea>
-                <input name="submit" type="submit" value="Tallenna" class="createEntry" />
+                <input name="submit" type="submit" value="Tallenna" class="createEntry">
               </form>
             </div>
             <!-- Kalenteri -->
@@ -119,38 +135,9 @@
               <!-- Muokattu/Poistettu ilmoitukset  -->
               <div id="notification"></div>
             </div>
-            <!-- <div class="col col-3">
-              <p>Col 3</p>
-            </div> -->
-            <!-- <div class="col col-4">
-              <p>Col 4</p>
-            </div>
-            <div class="col col-5">
-              <p>Col 5</p>
-            </div>
-            <div class="col col-6">
-              <p>Col 6</p>
-            </div>
-            <div class="col col-7">
-              <p>Col 7</p>
-            </div>
-            <div class="col col-8">
-              <p>Col 8</p>
-            </div>
-            <div class="col col-9">
-              <p>Col 9</p>
-            </div>
-            <div class="col col-10">
-              <p>Col 10</p>
-            </div>
-            <div class="col col-11">
-              <p>Col 11</p>
-            </div>
-            <div class="col col-12">
-              <p>Col 12</p>
-            </div> -->
           </div>
       </main>
+      <!-- Footer  -->
       <footer class="footer">
         <div class="waves">
           <div class="wave" id="wave1"></div>
@@ -160,16 +147,16 @@
         </div>
         <ul class="social-icon">
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-facebook"></ion-icon>
             </a></li>
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-twitter"></ion-icon>
+            <ion-icon name="logo-twitter"></ion-icon>
             </a></li>
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-linkedin"></ion-icon>
+            <ion-icon name="logo-linkedin"></ion-icon>
             </a></li>
           <li class="social-icon__item"><a class="social-icon__link" href="#">
-              <ion-icon name="logo-instagram"></ion-icon>
+            <ion-icon name="logo-instagram"></ion-icon>
             </a></li>
         </ul>
         <ul class="menu">
@@ -178,16 +165,12 @@
           <li class="menu__item"><a class="menu__link" href="data.html">Data</a></li>
           <li class="menu__item"><a class="menu__link" href="about.html">Info</a></li>
           <li class="menu__item"><a class="menu__link" href="tools.html">Työkalut</a></li>
-
         </ul>
         <p>&copy;2024 ZenBeat</p>
       </footer>
+      <!-- Footerin SOME ikonit, älä poista! -->
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script type="module" src="diary.js"></script>
-
 </body>
 </html>
-
-
-
-
-

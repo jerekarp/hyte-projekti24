@@ -15,7 +15,7 @@
   z-index: 2;
   padding: 10px;
   border-radius: 10px;
-  height: 
+  height:
   25px;
 }
 
@@ -168,51 +168,6 @@ main {
   margin: 0 auto;
 }
 
-/*.col-4 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-.col-5 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-.col-6 {
-  grid-column: span 6;
-  background-color: transparent;
-}
-
-/* 
-.col-7 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-8 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-9 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-10 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-11 {
-    grid-column: span 4;
-    background-color: transparent;
-}
-
-.col-12 {
-    grid-column: span 4;
-    background-color: transparent;
-} */
 
 
 /* Datan kuvaajien container */
@@ -235,12 +190,12 @@ main {
 }
 
 #chartSelection:active {
-  transform: translateY(2px); 
+  transform: translateY(2px);
 }
 
 #chartSelection:focus {
-  outline: none; 
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 select {
@@ -269,6 +224,13 @@ input[type="number"] {
   width: 2.7em;
   margin-left: 2px;
 }
+
+#increment, #decrement {
+  width: 25px;
+  height: 25px;
+  margin-left: 3px;
+}
+
 
 /* Icon from https://www.flaticon.com/free-icons/info >Info icons created by Freepik - Flaticon */
 #info-icon {
@@ -301,7 +263,7 @@ input[type="number"] {
   min-width: 150px;
   min-height: 150px;
   max-width: 50%;
-  max-height: 400px;
+  max-height: 900px;
   border-radius: 20px;
   box-shadow: 0 3px 10px #044465;
   padding: 20px;
@@ -350,7 +312,7 @@ input[type="number"] {
   padding-top: 5px;
   height: auto;
   width: 700px;
-}  
+}
 
 .data-info {
   margin-bottom: 20px;
@@ -377,8 +339,7 @@ input[type="number"] {
 
 .data-info.open .info-content {
   display: block;
-}  
-
+}
 
 /* Icon from https://www.flaticon.com/free-icons/more >More icons created by Google - Flaticon</a>*/
 .show-more-icon {
@@ -399,12 +360,12 @@ input[type="number"] {
 
 #readinessHeader {
   font-weight: bold;
-  color: rgba(75, 192, 192, 1); 
+  color: rgba(75, 192, 192, 1);
 }
 
 #stress_indexHeader {
   font-weight: bold;
-  color: rgba(255, 99, 132, 1); 
+  color: rgba(255, 99, 132, 1);
 }
 
 #respiratory_rateHeader {
@@ -545,10 +506,7 @@ h3 {
   }
 }
 
-
-
-/* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
-@media screen and (max-width: 399px) {
+@media screen and (min-width: 200px) and (max-width: 349px) {
   /* MAX data laatikko */
   #max-data-container {
     text-align: center;
@@ -562,12 +520,12 @@ h3 {
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   #max-data-container p {
     margin-left: 0; 
-    font-size: 16px;
+    font-size: 12px;
   }
 
   /* DATAn info, selite koodit */
@@ -578,9 +536,26 @@ h3 {
     border-radius: 10px;
     padding: 20px;
     padding-top: 5px;
-    width: 90%;
+    width: 80%;
     margin: 0 auto; 
   }  
+
+  #readinessHeader {
+    font-size: 20px;
+  }
+  
+  #stress_indexHeader {
+    font-size: 20px;
+  }
+  
+  #respiratory_rateHeader {
+    font-size: 20px;
+  }
+  
+  #mean_hr_bpmHeader {
+    font-size: 20px;
+  }
+
 
   .show-more-icon {
     width: 25px;
@@ -599,6 +574,20 @@ h3 {
   label[for="dataAmount2"] {
     display: none;
   }
+
+  #dataAmount {
+    width: 20px; 
+  }
+
+  #increment, #decrement {
+    width: 20px;
+    height: 20px;
+  }
+
+  #chart-container {
+    padding: 5px;
+  }
+
 
   #chartSelection {
     font-size: 12px;
@@ -634,10 +623,138 @@ h3 {
     display: none;
   }
 
-  .wave#wave1,
-  .wave#wave2,
-  .wave#wave3,
-  .wave#wave4 {
+  /* INFO MODAL */
+  #modal {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 90%;
+    height: 550px;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 12px;
+  }
+
+  h3 {
+    margin-bottom: -15px;
+  }
+
+}
+
+
+
+/* Media Query Mobiililaitteet Pieni leveyskoko alle 400px*/
+@media screen and (min-width: 350px) and (max-width: 399px) {
+  /* MAX data laatikko */
+  #max-data-container {
+    text-align: center;
+    background-color: rgba(4, 68, 101, 0.85);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #044465;
+    width: 90%;
+    margin: 0 auto; 
+  }
+  
+
+  h1 {
+    font-size: 22px;
+  }
+
+  #max-data-container p {
+    margin-left: 0; 
+    font-size: 16px;
+  }
+
+  /* DATAn info, selite koodit */
+  .data-info-container {
+    color: white;
+    background-color: white;
+    box-shadow: 0 3px 10px white;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 5px;
+    width: 90%;
+    margin: 0 auto; 
+  }  
+
+
+  .show-more-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+  }
+
+  .info-content p {
+    width: 90%;
+  }
+
+  label[for="dataAmount"] {
+    display: none;
+  }
+  
+  label[for="dataAmount2"] {
+    display: none;
+  }
+
+  #dataAmount {
+    width: 25px; 
+  }
+
+  #increment, #decrement {
+    width: 22px;
+    height: 22px;
+  }
+
+
+  #chart-container {
+    padding: 10px;
+  }
+
+
+  #chartSelection {
+    font-size: 12px;
+  }
+
+  .navbar {
+    display: none;
+  }
+  
+  .mobile-navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(4, 68, 101, 0.85);
+    box-shadow: 0 3px 10px white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    height: 25px;
+  }
+
+
+  .bi {
+    color: white;
+    margin: 15px;
+  }
+
+  .nav-link {
     display: none;
   }
 
@@ -653,15 +770,15 @@ h3 {
 
   .modal-content {
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
     width: 90%;
-    height: 550px;
     border-radius: 20px;
+    max-height: 600px;
     padding: 20px;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   h3 {
@@ -708,6 +825,12 @@ h3 {
   label[for="dataAmount2"] {
     display: none;
   }
+
+  #dataAmount {
+    width: 30px; 
+  }
+
+
 
   #chartSelection {
     font-size: 12px;
@@ -767,12 +890,11 @@ h3 {
 
   .modal-content {
     position: absolute;
-    top: 35%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
     width: 90%;
-    height: 500px;
     border-radius: 20px;
     padding: 20px;
     font-size: 14px;
@@ -790,6 +912,10 @@ h3 {
   /* MAX data laatikko */
   #max-data-container {
     width: 90%;
+  }
+
+  #chart-container {
+    padding: 8px;
   }
 
   h1 {
@@ -817,12 +943,16 @@ h3 {
   }
 
   label[for="dataAmount"] {
-    font-size: 14px;
-    margin-left: 12px;
+    font-size: 12px;
+    margin-left: 2px;
   }
   
   label[for="dataAmount2"] {
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  #dataAmount {
+    width: 25px; 
   }
 
   #chartSelection {

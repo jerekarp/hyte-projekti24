@@ -77,7 +77,6 @@ const sendMessage = async (message) => {
 
     const data = await response.json();
     document.getElementById('chat-output').innerText = data.response; // Näyttää palvelimen vastauksen sivulla
-    console.log('Response from server:', data);
   } catch (error) {
     console.error('Error:', error);
     document.getElementById('chat-output').innerText = 'Error: ' + error.message; // Näyttää virheviestin sivulla

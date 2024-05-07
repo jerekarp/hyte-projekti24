@@ -187,14 +187,6 @@ main {
 
 /* Sivujen esittely laatikoiden tyylittely */
 .container {
-  /* background-image: linear-gradient(
-    45deg,
-    #044465,
-    #BEF6E0,
-    #1EB9CF,
-    #0A8ECC
-  ); */
-  /* background-image: url(images/stats.png); */
   background: none;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -535,14 +527,7 @@ button:hover {
   #minikuva {
     display: none;
   }
-
-  .wave#wave1,
-  .wave#wave2,
-  .wave#wave3,
-  .wave#wave4 {
-    display: none;
-  }
-
+  
   .navbar {
     display: none;
   }

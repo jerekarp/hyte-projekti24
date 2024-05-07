@@ -1,16 +1,5 @@
 import promisePool from '../utils/database.mjs';
 
-const listAllUsers = async () => {
-  try {
-    const sql = 'SELECT user_id, username, user_level FROM Users';
-    const [rows] = await promisePool.query(sql);
-    //console.log(rows);
-    return rows;
-  } catch (error) {
-    console.error('listAllUsers', error);
-    return {error: 500, message: 'db error'};
-  }
-};
 
 const selectUserById = async (id) => {
   try {
@@ -44,41 +33,6 @@ const insertUser = async (user, next) => {
     console.error('insertUser', error);
     // Error handler can be used directly from model, if next function is passed
     return next(new Error(error));
-  }
-};
-
-const updateUserById = async (user) => {
-  try {
-    const sql =
-      'UPDATE Users SET username=?, password=?, email=? WHERE user_id=?';
-    const params = [user.username, user.password, user.email, user.userId];
-    await promisePool.query(sql, params);
-    const [result] = await promisePool.query(sql, params);
-    return {message: 'user data updated', user_id: user.userId};
-  } catch (error) {
-    // now duplicate entry error is generic 500 error, should be fixed to 400 ?
-    console.error('updateUserById', error);
-    return {error: 500, message: 'db error'};
-  }
-};
-
-const deleteUserById = async (id) => {
-  try {
-    // Poista viiteavaimet liittyvistä tauluista
-    await updateRelatedTables(id);
-
-    // Poista käyttäjä
-    const sql = 'DELETE FROM Users WHERE user_id=?';
-    const params = [id];
-    const [result] = await promisePool.query(sql, params);
-
-    if (result.affectedRows === 0) {
-      return {error: 404, message: 'user not found'};
-    }
-    return {message: 'user deleted', user_id: id};
-  } catch (error) {
-    console.error('deleteUserById', error);
-    return {error: 500, message: 'db error'};
   }
 };
 
@@ -219,11 +173,8 @@ const updateStudentInfo = async (userId, first_name, surname, student_number, we
 
 
 export {
-  listAllUsers,
   selectUserById,
   insertUser,
-  updateUserById,
-  deleteUserById,
   selectUserByUsername,
   selectUserByEmail,
   checkStudentInfo,
