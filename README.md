@@ -121,6 +121,9 @@ Testien logit ja reportit katsottavissa allanäkyvistä linkeistä.
 - [Diary Report](https://jerekarp.github.io/diary-report.html)
 - [Diary Log](https://jerekarp.github.io/diary-log.html)
 
+- [Diary Update Report](https://jerekarp.github.io/updateDiaryForm-report.html)
+- [Diary Update Log](https://jerekarp.github.io/updateDiaryForm-log.html)
+
 ---
 
 **UC_9 Stressinhalinta-työkaluihin perehtyminen**
