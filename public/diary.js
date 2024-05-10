@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
           },
           body: JSON.stringify(data),
       };
-
       try {
         const response = await fetch(url, options);
         if (!response.ok) throw new Error('Network response was not ok');
